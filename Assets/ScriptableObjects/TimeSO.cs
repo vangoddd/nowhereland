@@ -17,6 +17,10 @@ public class TimeSO : ScriptableObject {
   private int ticksPerDay;
   private int tickToNight;
 
+  public float transitionTime = 5f;
+
+  private bool isDay = true;
+
   private void OnEnable() {
     tick = 0;
     day = 1;
@@ -36,18 +40,20 @@ public class TimeSO : ScriptableObject {
 
   public void Tick() {
     tick++;
-    if (tick >= tickToNight) ChangeToNight();
+    if (tick >= tickToNight && isDay) ChangeToNight();
     if (tick >= ticksPerDay) ChangeDay();
     OnTick.Invoke(tick);
   }
 
   public void ChangeDay() {
-    day++;
+    isDay = true;
     tick -= ticksPerDay;
+    day++;
     OnDayChange.Invoke(day);
   }
 
   public void ChangeToNight() {
+    isDay = false;
     OnNightChange.Invoke();
   }
 }
