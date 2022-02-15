@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+    - {fileID: 2800000, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+    totalSpriteSurfaceArea: 6912
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 3618333012194995348, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 8953416415762076869, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 3426943880530432053, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -5932563198353475585, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 2882890675888976447, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -7915942655759083940, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -4982220007714480530, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 4603043814348491329, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -9059450431300755559, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -8618673740224997215, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 2929381139850413197, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -8447613172520661275, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -1435866694479414340, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 2874900715127511006, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -6196129813339268459, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 8798001390370120082, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -6776829611023849382, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -322951336109780389, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: -752511223875590759, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 7447299124178504727, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
+  - {fileID: 6939453993923482983, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: -4086581977278027760, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: -1301442773332708272, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: 7289476213281704364, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: 8987751343088405330, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: 5032968089809059381, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  - {fileID: -1815402387039908892, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Sprite_grass_8
+  - Sprite_grass_9
+  - Sprite_grass_2
+  - Sprite_grass_3
+  - Sprite_grass_0
+  - Sprite_grass_1
+  - Sprite_grass_6
+  - Sprite_grass_7
+  - Sprite_grass_4
+  - Sprite_grass_5
+  - Sprite_grass_11
+  - Sprite_grass_10
+  - Sprite_grass_13
+  - Sprite_grass_12
+  - Sprite_grass_15
+  - Sprite_grass_14
+  - Sprite_grass_17
+  - Sprite_grass_16
+  - Sprite_grass_19
+  - Sprite_grass_18
+  - Sprite_water_1
+  - Sprite_water_0
+  - Sprite_water_2
+  - Sprite_water_5
+  - Sprite_water_7
+  - Sprite_water_6
+  - Sprite_water_8
+  m_RenderDataMap: {}
+  m_Tag: Sprite Atlas
+  m_IsVariant: 0
