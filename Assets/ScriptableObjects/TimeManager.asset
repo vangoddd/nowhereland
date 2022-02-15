@@ -18,7 +18,11 @@ MonoBehaviour:
   OnTick:
     m_PersistentCalls:
       m_Calls: []
-  tick: 0
-  day: 1
-  secondsPerDay: 10
+  OnNightChange:
+    m_PersistentCalls:
+      m_Calls: []
+  tick: 2
+  day: 2
+  secondsPerDay: 20
   secondsPerTick: 2
+  nightRatio: 0.25
