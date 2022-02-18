@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
   public MapSO map;
+  public TilesetDatabase tileset;
 
-  // public int seed = 0;
   private int currentSeed = 0;
 
-  // public static int mapSize = 300;
-  // public static int chunkSize = 30;
-
-  // public static List<List<GameObject>> chunks = new List<List<GameObject>>();
-  // public static List<List<int>> tileMap = new List<List<int>>();
-  // public static List<List<int>> biomes = new List<List<int>>();
-  // public static List<GameObject> worldObjects = new List<GameObject>();
-
-  // List<List<float>> rawNoiseData = new List<List<float>>();
-  Dictionary<int, GameObject> tileset;
   Color[] gradientPixels;
 
   public float magnification = 12.0f;
@@ -30,12 +20,6 @@ public class MapGenerator : MonoBehaviour {
   int biome_y_offset = 0;
 
   public Texture2D levelGradient;
-
-  public GameObject tile_water;
-  public GameObject tile_grass;
-  public GameObject tile_redland;
-
-  public GameObject test;
 
   //World object to be spawned
   public GameObject[] worldObjectPrefab;
@@ -56,7 +40,6 @@ public class MapGenerator : MonoBehaviour {
   void Start() {
     biomeMagnigication = magnification * biomeScale;
     GetGradientColors();
-    CreateTileset();
     InitiateSeed();
     GenerateMap();
     SpawnObjects();
@@ -81,12 +64,6 @@ public class MapGenerator : MonoBehaviour {
     return pixelColor.grayscale;
   }
 
-  void CreateTileset() {
-    tileset = new Dictionary<int, GameObject>();
-    tileset.Add(0, tile_water);
-    tileset.Add(1, tile_grass);
-    tileset.Add(2, tile_redland);
-  }
 
   void InitiateSeed() {
     currentSeed = map.seed.ToString().GetHashCode();
@@ -125,8 +102,8 @@ public class MapGenerator : MonoBehaviour {
         biomeNoise = Mathf.Clamp01(biomeNoise);
 
         //divide the noise to <biome count> part
-        int biomeID = Mathf.FloorToInt(biomeNoise * (tileset.Count - 1));
-        if (biomeID == tileset.Count - 1) biomeID--;
+        int biomeID = Mathf.FloorToInt(biomeNoise * (tileset.tiles.Count - 1));
+        if (biomeID == tileset.tiles.Count - 1) biomeID--;
 
         //Save biome data to 2D array
         map.biomes[x].Add(biomeID);
@@ -155,9 +132,9 @@ public class MapGenerator : MonoBehaviour {
   void SpawnTile(int tileId, int x, int y) {
     GameObject tilePrefab;
     if (tileId == 1) {
-      tilePrefab = tileset[tileId + map.biomes[x][y]];
+      tilePrefab = tileset.tiles[tileId + map.biomes[x][y]];
     } else {
-      tilePrefab = tileset[tileId];
+      tilePrefab = tileset.tiles[tileId];
     }
 
     GameObject tile = Instantiate(tilePrefab);

@@ -21,8 +21,11 @@ public class MapSO : ScriptableObject {
     biomes = new List<List<int>>();
     worldObjects = new List<GameObject>();
     rawNoiseData = new List<List<float>>();
-    // for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
-    //   chunks.Add(new List<GameObject>());
-    // }
   }
+
+  //   [ContextMenu("Do Something")]
+  //   void Test() {
+  //     Debug.Log("tested");
+  //   }
+
 }
