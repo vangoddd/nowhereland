@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileTexture : MonoBehaviour
-{
+public class TileTexture : MonoBehaviour {
+  public MapSO map;
+
   public Sprite[] tile_alternate;
   public Sprite[] tile_bitmap;
   public float alternate_chance = 0.95f;
@@ -16,19 +17,16 @@ public class TileTexture : MonoBehaviour
 
   private SpriteRenderer sr;
   // Start is called before the first frame update
-  void Start()
-  {
+  void Start() {
     sr = GetComponent<SpriteRenderer>();
     x = Mathf.FloorToInt(transform.position.x);
     y = Mathf.FloorToInt(transform.position.y);
 
     //check bitmask value
-    if (tileId != 0)
-    {
+    if (tileId != 0) {
       CalculateBitmask();
 
-      switch (bitmaskValue)
-      {
+      switch (bitmaskValue) {
         case 6:
           sr.sprite = tile_bitmap[0];
           break;
@@ -77,11 +75,9 @@ public class TileTexture : MonoBehaviour
       }
     }
 
-    if (tileId == 0)
-    {
+    if (tileId == 0) {
       CalculateWaterBitmask();
-      switch (bitmaskValue)
-      {
+      switch (bitmaskValue) {
         case 6:
           sr.sprite = tile_bitmap[0];
           break;
@@ -99,10 +95,8 @@ public class TileTexture : MonoBehaviour
 
 
     //replace normal tile with alternate
-    if (Random.value > alternate_chance && bitmaskValue == 15)
-    {
-      if (tile_alternate.Length != 0)
-      {
+    if (Random.value > alternate_chance && bitmaskValue == 15) {
+      if (tile_alternate.Length != 0) {
         int index = Random.Range(0, tile_alternate.Length);
         sr.sprite = tile_alternate[index];
       }
@@ -110,26 +104,24 @@ public class TileTexture : MonoBehaviour
 
   }
 
-  void CalculateBitmask()
-  {
-    int mapSize = MapGenerator.mapSize;
+  void CalculateBitmask() {
+    int mapSize = map.mapSize;
     int top, right, bot, left;
-    top = (y + 1 >= mapSize) ? 0 : MapGenerator.tileMap[x][y + 1];
-    right = (x + 1 >= mapSize) ? 0 : MapGenerator.tileMap[x + 1][y];
-    bot = (y - 1 < 0) ? 0 : MapGenerator.tileMap[x][y - 1];
-    left = (x - 1 < 0) ? 0 : MapGenerator.tileMap[x - 1][y];
+    top = (y + 1 >= mapSize) ? 0 : map.tileMap[x][y + 1];
+    right = (x + 1 >= mapSize) ? 0 : map.tileMap[x + 1][y];
+    bot = (y - 1 < 0) ? 0 : map.tileMap[x][y - 1];
+    left = (x - 1 < 0) ? 0 : map.tileMap[x - 1][y];
 
     bitmaskValue = (top + 2 * right + 4 * bot + 8 * left);
   }
 
-  void CalculateWaterBitmask()
-  {
-    int mapSize = MapGenerator.mapSize;
+  void CalculateWaterBitmask() {
+    int mapSize = map.mapSize;
     int top, tright, tleft;
     if (y + 1 >= mapSize) return;
-    top = MapGenerator.tileMap[x][y + 1];
-    tright = (x + 1 >= mapSize) ? 0 : MapGenerator.tileMap[x + 1][y + 1];
-    tleft = (x - 1 < 0) ? 0 : MapGenerator.tileMap[x - 1][y + 1];
+    top = map.tileMap[x][y + 1];
+    tright = (x + 1 >= mapSize) ? 0 : map.tileMap[x + 1][y + 1];
+    tleft = (x - 1 < 0) ? 0 : map.tileMap[x - 1][y + 1];
 
     bitmaskValue = (tleft + 2 * top + 4 * tright);
   }

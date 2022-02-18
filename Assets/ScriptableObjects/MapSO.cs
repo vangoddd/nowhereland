@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class MapSO : ScriptableObject {
   public int seed;
   public int mapSize;
@@ -11,20 +12,17 @@ public class MapSO : ScriptableObject {
   public List<List<int>> tileMap;
   public List<List<int>> biomes;
 
-  public List<GameObject> worldObject;
+  public List<GameObject> worldObjects;
   public List<List<float>> rawNoiseData;
 
   void OnEnable() {
-    chunks = null;
-    tileMap = null;
-    biomes = null;
-    worldObject = null;
-    rawNoiseData = null;
-
-    seed = 0;
-
-    for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
-      chunks.Add(new List<GameObject>());
-    }
+    chunks = new List<List<GameObject>>();
+    tileMap = new List<List<int>>();
+    biomes = new List<List<int>>();
+    worldObjects = new List<GameObject>();
+    rawNoiseData = new List<List<float>>();
+    // for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
+    //   chunks.Add(new List<GameObject>());
+    // }
   }
 }
