@@ -35,13 +35,13 @@ public class StatUIController : MonoBehaviour {
 
   void ChangeWheelToNight() {
     LeanTween.value(gameObject, 0f, 180f, _timeSO.transitionTime).setOnUpdate((float val) => {
-      daylightWheel.eulerAngles = new Vector3(0f, 0f, val);
+      if (Mathf.FloorToInt(val) % (180 / 5) == 0) daylightWheel.eulerAngles = new Vector3(0f, 0f, val);
     });
   }
 
   void ChangeWheelToDay(int day) {
     LeanTween.value(gameObject, 180f, 360f, _timeSO.transitionTime).setOnUpdate((float val) => {
-      daylightWheel.eulerAngles = new Vector3(0f, 0f, val);
+      if (Mathf.FloorToInt(val) % (180 / 5) == 0) daylightWheel.eulerAngles = new Vector3(0f, 0f, val);
     });
   }
 

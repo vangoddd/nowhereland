@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
   private static TimeManager _instance;
+  public bool isPaused = false;
 
   public static TimeManager Instance {
     get {
@@ -27,6 +28,24 @@ public class TimeManager : MonoBehaviour {
     if (timer >= _timeSO.secondsPerTick) {
       timer -= _timeSO.secondsPerTick;
       _timeSO.Tick();
+    }
+  }
+
+  public void PauseGame() {
+    Time.timeScale = 0;
+    isPaused = true;
+  }
+
+  public void ResumeGame() {
+    Time.timeScale = 1;
+    isPaused = false;
+  }
+
+  public void togglePause() {
+    if (isPaused) {
+      ResumeGame();
+    } else {
+      PauseGame();
     }
   }
 }

@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InteractButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InteractButton : MonoBehaviour
+// , IPointerDownHandler, IPointerUpHandler 
 {
-  public PlayerMovement pm;
 
-  public void OnPointerDown(PointerEventData eventData)
-  {
-    transform.localScale = transform.localScale * 0.95f;
-    pm.MoveInteract();
-  }
+  [SerializeField] private InteractSO _interactSO;
 
-  public void OnPointerUp(PointerEventData eventData)
-  {
-    transform.localScale = Vector3.one;
-  }
+  // public void OnPointerDown(PointerEventData eventData) {
+  //   transform.localScale = transform.localScale * 0.95f;
+  //   _interactSO.DoInteractMove();
+  // }
+
+  // public void OnPointerUp(PointerEventData eventData) {
+  //   transform.localScale = Vector3.one;
+  // }
 }

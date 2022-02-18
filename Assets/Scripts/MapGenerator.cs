@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
-{
+public class MapGenerator : MonoBehaviour {
+  public MapSO map;
+
   public int seed = 0;
   private int currentSeed = 0;
 
@@ -34,25 +35,23 @@ public class MapGenerator : MonoBehaviour
   public GameObject tile_grass;
   public GameObject tile_redland;
 
+  //World object to be spawned
   public GameObject[] worldObjectPrefab;
 
+  //map texture
   public Texture2D mapTexture;
-  [SerializeField]
-  private bool generateTiles = true;
 
+  //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
 
-  void Awake()
-  {
-    for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++)
-    {
+  void Awake() {
+    for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
       chunks.Add(new List<GameObject>());
     }
   }
 
   // Start is called before the first frame update
-  void Start()
-  {
+  void Start() {
     biomeMagnigication = magnification * biomeScale;
     GetGradientColors();
     CreateTileset();
@@ -68,13 +67,11 @@ public class MapGenerator : MonoBehaviour
     _loadingEvent.FinishLoading();
   }
 
-  void GetGradientColors()
-  {
+  void GetGradientColors() {
     gradientPixels = levelGradient.GetPixels();
   }
 
-  float GetGradientFloat(int x, int y)
-  {
+  float GetGradientFloat(int x, int y) {
     float ratio = 1000f / mapSize;
     int newX = Mathf.RoundToInt(x * ratio);
     int newY = Mathf.RoundToInt(y * ratio);
@@ -82,16 +79,14 @@ public class MapGenerator : MonoBehaviour
     return pixelColor.grayscale;
   }
 
-  void CreateTileset()
-  {
+  void CreateTileset() {
     tileset = new Dictionary<int, GameObject>();
     tileset.Add(0, tile_water);
     tileset.Add(1, tile_grass);
     tileset.Add(2, tile_redland);
   }
 
-  void InitiateSeed()
-  {
+  void InitiateSeed() {
     currentSeed = seed.ToString().GetHashCode();
     Random.InitState(currentSeed);
 
@@ -101,16 +96,13 @@ public class MapGenerator : MonoBehaviour
     biome_y_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
   }
 
-  void GenerateMap()
-  {
-    for (int x = 0; x < mapSize; x++)
-    {
+  void GenerateMap() {
+    for (int x = 0; x < mapSize; x++) {
       tileMap.Add(new List<int>());
       biomes.Add(new List<int>());
       rawNoiseData.Add(new List<float>());
 
-      for (int y = 0; y < mapSize; y++)
-      {
+      for (int y = 0; y < mapSize; y++) {
         //Generate noise and save the raw noise data
         float rawNoise = Mathf.PerlinNoise((x - x_offset) / magnification, (y - y_offset) / magnification);
         float clampedNoise = Mathf.Clamp01(rawNoise);
@@ -140,40 +132,28 @@ public class MapGenerator : MonoBehaviour
     InstantiateTiles();
   }
 
-  void InstantiateTiles()
-  {
-    for (int x = 0; x < mapSize; x++)
-    {
-      for (int y = 0; y < mapSize; y++)
-      {
+  void InstantiateTiles() {
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
         SpawnTile(tileMap[x][y], x, y);
       }
     }
   }
 
-  int getTileFromPerlin(float perlinValue)
-  {
+  int getTileFromPerlin(float perlinValue) {
     //if water tile
-    if (perlinValue < 0.35f)
-    {
+    if (perlinValue < 0.35f) {
       return 0;
-    }
-    else
-    {
+    } else {
       return 1;
     }
   }
 
-  void SpawnTile(int tileId, int x, int y)
-  {
-    if (!generateTiles) return;
+  void SpawnTile(int tileId, int x, int y) {
     GameObject tilePrefab;
-    if (tileId == 1)
-    {
+    if (tileId == 1) {
       tilePrefab = tileset[tileId + biomes[x][y]];
-    }
-    else
-    {
+    } else {
       tilePrefab = tileset[tileId];
     }
 
@@ -188,21 +168,16 @@ public class MapGenerator : MonoBehaviour
 
   }
 
-  void SpawnSetPiece()
-  {
+  void SpawnSetPiece() {
 
   }
 
-  void SpawnObjects()
-  {
+  void SpawnObjects() {
     SpawnSetPiece();
 
-    for (int x = 0; x < mapSize; x += 2)
-    {
-      for (int y = 0; y < mapSize; y += 2)
-      {
-        if (Random.value > 0.99 && tileMap[x][y] == 1)
-        {
+    for (int x = 0; x < mapSize; x += 2) {
+      for (int y = 0; y < mapSize; y += 2) {
+        if (Random.value > 0.99 && tileMap[x][y] == 1) {
           int randChoice = Random.Range(0, worldObjectPrefab.Length);
           GameObject wo = Instantiate(worldObjectPrefab[randChoice]);
           wo.transform.position = new Vector3(x, y, 0);
@@ -212,15 +187,12 @@ public class MapGenerator : MonoBehaviour
     }
   }
 
-  void GenerateMapTexture()
-  {
+  void GenerateMapTexture() {
     mapTexture.filterMode = FilterMode.Point;
     Color blue = Color.blue;
     Color green = Color.green;
-    for (int x = 0; x < mapSize; x++)
-    {
-      for (int y = 0; y < mapSize; y++)
-      {
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
         if (tileMap[x][y] == 0) mapTexture.SetPixel(x, y, blue);
         else mapTexture.SetPixel(x, y, green);
       }
@@ -229,8 +201,7 @@ public class MapGenerator : MonoBehaviour
     //mapTexture.SetPixel(0, 0, Color.blue);
   }
 
-  private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity)
-  {
+  private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity) {
     return 0f;
   }
 

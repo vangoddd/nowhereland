@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
   private Vector2 movement;
@@ -25,12 +26,22 @@ public class PlayerMovement : MonoBehaviour {
 
   private Animator animator;
 
+  [SerializeField] private InteractSO _interactSO;
+
   void Start() {
     animator = GetComponent<Animator>();
   }
 
+  void OnEnable() {
+    _interactSO.OnInteractMove.AddListener(MoveInteract);
+  }
+
+  void OnDisable() {
+    _interactSO.OnInteractMove.RemoveListener(MoveInteract);
+  }
+
   void Update() {
-    //Handle idle sprite
+    //Handle aniamtion sprite
     animator.SetFloat("lastPosX", moveDir.x);
     animator.SetFloat("lastPosY", moveDir.y);
 
@@ -42,7 +53,10 @@ public class PlayerMovement : MonoBehaviour {
         Instantiate(dustParticle, (Vector2)transform.position - moveDir * 0.5f, transform.rotation);
         dustTimer = 0f;
       }
+    }
 
+    if (isMoveHold) {
+      UpdateMoveDir();
     }
 
     // if (Input.GetMouseButton(0))
@@ -52,20 +66,32 @@ public class PlayerMovement : MonoBehaviour {
     //     UpdateMoveDir();
     //   }
     // }
-    if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)) {
-      // Check if finger is over a UI element
-      if (Input.GetTouch(0).phase == TouchPhase.Began) {
-        if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
-          UpdateMoveDir();
-        }
-      } else {
-        UpdateMoveDir();
-      }
-    }
 
-    if (Input.GetKeyDown(KeyCode.F)) {
-      MoveInteract();
-    }
+    //Old input
+    // if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)) {
+    //   // Check if finger is over a UI element
+    //   if (Input.GetTouch(0).phase == TouchPhase.Began) {
+    //     if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
+    //       UpdateMoveDir();
+    //     }
+    //   } else {
+    //     UpdateMoveDir();
+    //   }
+    // }
+
+    // if (Input.GetKeyDown(KeyCode.F)) {
+    //   MoveInteract();
+    // }
+
+    // if (Input.GetKeyDown(KeyCode.P)) {
+    //   if (!TimeManager.Instance.isPaused) {
+    //     TimeManager.Instance.PauseGame();
+
+    //   } else {
+    //     TimeManager.Instance.ResumeGame();
+
+    //   }
+    // }
   }
 
 
@@ -84,17 +110,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     if (closest != null) {
-      // if (closest.GetComponent<WorldObject>().interactable)
-      // {
       interacting = true;
       moveToTarget = closest;
       UpdateMoveDir((Vector2)closest.transform.position);
-      //}
     }
   }
 
   void UpdateMoveDir() {
-    lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    // lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    lastClickedPos = Camera.main.ScreenToWorldPoint(touchPosition);
     moveDir = (lastClickedPos - (Vector2)transform.position).normalized;
     moving = true;
     interacting = false;
@@ -140,5 +164,45 @@ public class PlayerMovement : MonoBehaviour {
   void OnDrawGizmosSelected() {
     Gizmos.color = Color.white;
     Gizmos.DrawWireSphere(transform.position, interactSearchRadius);
+  }
+
+  private Vector2 touchPosition = Vector2.zero;
+  private bool isMoveHold = false;
+
+  public void OnTouch() {
+    //Debug.Log("OnTouch");
+    if (!(IsPointerOverUIObject())) UpdateMoveDir();
+    // Debug.Log((IsPointerOverUIObject()));
+  }
+
+  public void OnTouchPosition(InputValue value) {
+    touchPosition = value.Get<Vector2>();
+    //Debug.Log(touchPosition);
+  }
+
+  public void OnHold(InputValue value) {
+    //Debug.Log("OnHold");
+    if (value.isPressed) {
+      if (!IsPointerOverUIObject()) isMoveHold = true;
+    } else {
+      isMoveHold = false;
+    }
+  }
+
+  public void OnInteract() {
+    //Debug.Log("on interact");
+    MoveInteract();
+  }
+
+  public void OnPause() {
+    TimeManager.Instance.togglePause();
+  }
+
+  private bool IsPointerOverUIObject() {
+    PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+    eventDataCurrentPosition.position = touchPosition;
+    List<RaycastResult> results = new List<RaycastResult>();
+    EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+    return results.Count > 0;
   }
 }

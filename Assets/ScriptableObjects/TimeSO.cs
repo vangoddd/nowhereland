@@ -24,6 +24,7 @@ public class TimeSO : ScriptableObject {
   private void OnEnable() {
     tick = 0;
     day = 1;
+    isDay = true;
 
     ticksPerDay = Mathf.FloorToInt(secondsPerDay / secondsPerTick);
     tickToNight = Mathf.FloorToInt(ticksPerDay * (1f - nightRatio));
@@ -47,7 +48,7 @@ public class TimeSO : ScriptableObject {
 
   public void ChangeDay() {
     isDay = true;
-    tick -= ticksPerDay;
+    tick = 0;
     day++;
     OnDayChange.Invoke(day);
   }

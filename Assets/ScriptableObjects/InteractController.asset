@@ -9,21 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba31b87679e8f041b9ccd7ecc553364, type: 3}
-  m_Name: TimeManager
+  m_Script: {fileID: 11500000, guid: b071effa711474f408f5d13c6cafd1e4, type: 3}
+  m_Name: InteractController
   m_EditorClassIdentifier: 
-  OnDayChange:
+  OnInteractMove:
     m_PersistentCalls:
       m_Calls: []
-  OnTick:
-    m_PersistentCalls:
-      m_Calls: []
-  OnNightChange:
-    m_PersistentCalls:
-      m_Calls: []
-  tick: 73
-  day: 1
-  secondsPerDay: 180
-  secondsPerTick: 2
-  nightRatio: 0.25
-  transitionTime: 5
