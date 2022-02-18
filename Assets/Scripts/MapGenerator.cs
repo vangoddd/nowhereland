@@ -35,6 +35,8 @@ public class MapGenerator : MonoBehaviour {
   public GameObject tile_grass;
   public GameObject tile_redland;
 
+  public GameObject test;
+
   //World object to be spawned
   public GameObject[] worldObjectPrefab;
 
