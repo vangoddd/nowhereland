@@ -536,20 +536,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a20d2708433b14a824b93f506bc97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 120
+  map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
+  tileset: {fileID: 11400000, guid: 6149b84577100e44094ac0e943dd5244, type: 2}
   magnification: 20
   biomeMagnigication: 0
   biomeScale: 3
   levelGradient: {fileID: 2800000, guid: 1c4a79e49aabff74ebe9ca00d9c9fb77, type: 3}
-  tile_water: {fileID: 915218202702891105, guid: 8b87aa0139cb4024faf5bbce179705bd, type: 3}
-  tile_grass: {fileID: 3652801816146857845, guid: 2622c2e1cea773c4bbd89056cac388bf, type: 3}
-  tile_redland: {fileID: 3652801816146857845, guid: 6033e461d68678d4688daf4be4e27809, type: 3}
   worldObjectPrefab:
   - {fileID: 8935585944131123899, guid: ff85a22aa635f4a48a3adf5f1941e265, type: 3}
   - {fileID: 7211843886586674104, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}
   - {fileID: 7536515956877062947, guid: 839a44f91c5c66444b8ee32dd71b6a40, type: 3}
   mapTexture: {fileID: 0}
-  generateTiles: 1
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
 --- !u!4 &1129266677
 Transform:
@@ -1368,6 +1365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087393628}
   - component: {fileID: 2087393627}
+  - component: {fileID: 2087393629}
   m_Layer: 0
   m_Name: ChunkHandler
   m_TagString: Untagged
@@ -1387,6 +1385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7a2393dd39ba04589a40469eae74dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   player: {fileID: 1778751118}
   unloadChunk: 1
 --- !u!4 &2087393628
@@ -1403,6 +1402,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087393629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087393626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b948ec38f3c29c40b9d1bbb8c1404b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 6a90fbd081077eb4d984da79fb5f1365, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2087393627}
+        m_TargetAssemblyTypeName: ChunkHandlerScript, Assembly-CSharp
+        m_MethodName: UpdateLoadedChunk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &2126169417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7211843886586674111, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}

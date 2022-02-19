@@ -10,32 +10,18 @@ public class ChunkHandlerScript : MonoBehaviour {
 
   public bool unloadChunk = true;
   private bool allActive = false;
+  private bool firstUpdate = true;
 
   private int playerChunk;
 
   void Start() {
     map = _map;
     playerChunk = getChunkFromPosition(player.transform.position.x, player.transform.position.y);
-    if (unloadChunk) {
-      setActiveChunks();
-      ActivateObjects();
-    } else ActivateAllObjects();
   }
 
-  // Update is called once per frame
-  void Update() {
-    if (unloadChunk) {
-      if (getChunkFromPosition(player.transform.position.x, player.transform.position.y) == playerChunk) return;
-      setActiveChunks();
-      ActivateObjects();
-      allActive = false;
-    } else {
-      if (!allActive) {
-        ActivateAllObjects();
-        allActive = true;
-      }
-    }
-
+  public void UpdateLoadedChunk() {
+    setActiveChunks();
+    ActivateObjects();
   }
 
   public static int getChunkFromPosition(float x, float y) {
@@ -71,6 +57,7 @@ public class ChunkHandlerScript : MonoBehaviour {
     }
   }
 
+  [ContextMenu("Activate all chunks")]
   void ActivateAllObjects() {
     for (int i = 0; i < map.chunks.Count; i++) {
       foreach (GameObject tile in map.chunks[i]) tile.SetActive(true);
@@ -83,8 +70,14 @@ public class ChunkHandlerScript : MonoBehaviour {
     map.chunks[chunkIndex].Add(g);
   }
 
+  [ContextMenu("Do Test method")]
   void TestScript() {
-    float f = 29f;
-    Debug.Log(f);
+    for (int i = 0; i < map.chunks.Count; i++) {
+      foreach (GameObject obj in map.chunks[i]) {
+        if (obj.layer == 6) {
+          obj.GetComponent<WorldObject>().TestMethod();
+        }
+      }
+    }
   }
 }

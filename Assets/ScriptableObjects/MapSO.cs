@@ -23,9 +23,4 @@ public class MapSO : ScriptableObject {
     rawNoiseData = new List<List<float>>();
   }
 
-  //   [ContextMenu("Do Something")]
-  //   void Test() {
-  //     Debug.Log("tested");
-  //   }
-
 }

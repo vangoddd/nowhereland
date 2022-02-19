@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17f44d6692538540b624ef3b32b53b0, type: 3}
   m_Name: TilesetDB
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 915218202702891105, guid: 8b87aa0139cb4024faf5bbce179705bd, type: 3}
+  - {fileID: 3652801816146857845, guid: 2622c2e1cea773c4bbd89056cac388bf, type: 3}
+  - {fileID: 3652801816146857845, guid: 6033e461d68678d4688daf4be4e27809, type: 3}

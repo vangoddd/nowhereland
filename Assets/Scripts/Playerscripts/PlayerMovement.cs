@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour {
   private Vector2 moveDir;
   private Vector2 lastPosition;
 
+  private int lastChunkPos;
+
   public GameObject dustParticle;
   private float dustTimer = 0f;
   public float dustInterval = 1f;
@@ -27,6 +29,8 @@ public class PlayerMovement : MonoBehaviour {
   private Animator animator;
 
   [SerializeField] private InteractSO _interactSO;
+  [SerializeField] private MapSO map;
+  [SerializeField] private GameEvent OnChunkChanged;
 
   void Start() {
     animator = GetComponent<Animator>();
@@ -59,39 +63,12 @@ public class PlayerMovement : MonoBehaviour {
       UpdateMoveDir();
     }
 
-    // if (Input.GetMouseButton(0))
-    // {
-    //   if (!EventSystem.current.IsPointerOverGameObject())
-    //   {
-    //     UpdateMoveDir();
-    //   }
-    // }
+    int curChunkPos = Mathf.FloorToInt(transform.position.x / map.chunkSize) + (2 * Mathf.FloorToInt(transform.position.y / map.chunkSize));
+    if (curChunkPos != lastChunkPos) {
+      lastChunkPos = curChunkPos;
+      OnChunkChanged.Raise();
+    }
 
-    //Old input
-    // if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)) {
-    //   // Check if finger is over a UI element
-    //   if (Input.GetTouch(0).phase == TouchPhase.Began) {
-    //     if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
-    //       UpdateMoveDir();
-    //     }
-    //   } else {
-    //     UpdateMoveDir();
-    //   }
-    // }
-
-    // if (Input.GetKeyDown(KeyCode.F)) {
-    //   MoveInteract();
-    // }
-
-    // if (Input.GetKeyDown(KeyCode.P)) {
-    //   if (!TimeManager.Instance.isPaused) {
-    //     TimeManager.Instance.PauseGame();
-
-    //   } else {
-    //     TimeManager.Instance.ResumeGame();
-
-    //   }
-    // }
   }
 
 

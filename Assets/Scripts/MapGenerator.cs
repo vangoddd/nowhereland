@@ -153,6 +153,7 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void SpawnObjects() {
+    Debug.Log("Spawning objs");
     SpawnSetPiece();
 
     for (int x = 0; x < map.mapSize; x += 2) {
@@ -165,6 +166,8 @@ public class MapGenerator : MonoBehaviour {
         }
       }
     }
+
+    Debug.Log("Spawning finished");
   }
 
   void GenerateMapTexture() {
