@@ -149,6 +149,7 @@ MonoBehaviour:
   _interactSO: {fileID: 11400000, guid: 242b7ef130f34ff478020b3fdce3cc5f, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   OnChunkChanged: {fileID: 11400000, guid: 6a90fbd081077eb4d984da79fb5f1365, type: 2}
+  _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
 --- !u!61 &4846516622845276413
 BoxCollider2D:
   m_ObjectHideFlags: 0

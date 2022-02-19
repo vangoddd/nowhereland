@@ -9,8 +9,6 @@ public class ChunkHandlerScript : MonoBehaviour {
   public static List<int> activeChunks = new List<int>();
 
   public bool unloadChunk = true;
-  private bool allActive = false;
-  private bool firstUpdate = true;
 
   private int playerChunk;
 

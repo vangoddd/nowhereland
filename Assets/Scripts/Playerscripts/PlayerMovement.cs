@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
   [SerializeField] private InteractSO _interactSO;
   [SerializeField] private MapSO map;
   [SerializeField] private GameEvent OnChunkChanged;
+  [SerializeField] private PlayerStats _playerStat;
 
   void Start() {
     animator = GetComponent<Animator>();
@@ -108,6 +109,9 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   void FixedUpdate() {
+    if (moving) {
+      _playerStat.PlayerMove((Vector2)transform.position);
+    }
     lastPosition = transform.position;
     // rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     if (moving && (((Vector2)transform.position - lastClickedPos).sqrMagnitude > .15f)) {

@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DebugStat : MonoBehaviour
-{
+public class DebugStat : MonoBehaviour {
   public Text text;
   private string health, hunger, thirst, temp;
 
-  private PlayerStat ps;
+  private PlayerStatScript ps;
   // Start is called before the first frame update
-  void Start()
-  {
-    ps = GameManagerScript.Instance.player.GetComponent<PlayerStat>();
+  void Start() {
+    ps = GameManagerScript.Instance.player.GetComponent<PlayerStatScript>();
   }
 
   // Update is called once per frame
-  void Update()
-  {
+  void Update() {
     // health = ps.health.ToString();
     // hunger = ps.hunger.ToString();
     // thirst = ps.thirst.ToString();

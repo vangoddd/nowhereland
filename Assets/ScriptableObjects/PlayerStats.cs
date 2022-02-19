@@ -4,39 +4,35 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu]
-public class PlayerStats : ScriptableObject
-{
+public class PlayerStats : ScriptableObject {
   public float maxStat = 100;
 
   public float health, hunger, thirst;
+  public Vector2 position;
 
   public UnityEvent<PlayerStatData> OnStatChangeEvent;
   public UnityEvent OnPlayerDie;
 
-  private void OnEnable()
-  {
+  private void OnEnable() {
     maxStat = 100;
     health = maxStat;
     hunger = maxStat;
     thirst = maxStat;
-    if (OnStatChangeEvent == null)
-    {
+
+    if (OnStatChangeEvent == null) {
       OnStatChangeEvent = new UnityEvent<PlayerStatData>();
     }
-    if (OnPlayerDie == null)
-    {
+    if (OnPlayerDie == null) {
       OnPlayerDie = new UnityEvent();
     }
   }
 
-  public void decreaseHealth(float amt)
-  {
+  public void decreaseHealth(float amt) {
     health -= amt;
-    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst));
+    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
   }
 
-  public void addStat(PlayerStatData data)
-  {
+  public void addStat(PlayerStatData data) {
     health += data.health;
     hunger += data.hunger;
     thirst += data.thirst;
@@ -45,26 +41,33 @@ public class PlayerStats : ScriptableObject
     if (hunger < 0) hunger = 0;
     if (thirst < 0) thirst = 0;
 
-    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst));
-    if (health <= 0)
-    {
+    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
+    if (health <= 0) {
       Die();
     }
   }
 
-  public void Die()
-  {
+  public void Die() {
     OnPlayerDie.Invoke();
+  }
+
+  public void PlayerMove(Vector2 pos) {
+    position = pos;
   }
 }
 
-public class PlayerStatData
-{
+//Class for updateing SO value, and for saving
+[System.Serializable]
+public class PlayerStatData {
   public float health, hunger, thirst;
-  public PlayerStatData(float health, float hunger, float thirst)
-  {
+  public float[] position = new float[2];
+
+  public PlayerStatData(float health, float hunger, float thirst, Vector2 pos) {
     this.health = health;
     this.hunger = hunger;
     this.thirst = thirst;
+
+    position[0] = pos.x;
+    position[1] = pos.y;
   }
 }
