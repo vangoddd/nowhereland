@@ -5,16 +5,21 @@ using UnityEngine;
 [System.Serializable]
 public class SaveGameData {
   public PlayerStatData _playerStatData;
-  public SaveGameData(PlayerStatData playerStatData) {
+  public MapSaveData _mapSaveData;
+
+  public SaveGameData(PlayerStatData playerStatData, MapSaveData mapSaveData) {
     _playerStatData = playerStatData;
+    _mapSaveData = mapSaveData;
   }
-  //   public MapSaveData _mapSaveData;
   //   public WorldData _worldData;
 }
 
 [System.Serializable]
 public class MapSaveData {
   public int seed;
+  public int mapSize;
+  public List<int> tileData;
+  public List<WorldObjectData> worldObjectDatas;
 }
 
 [System.Serializable]

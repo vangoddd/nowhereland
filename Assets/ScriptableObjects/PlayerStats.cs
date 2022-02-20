@@ -47,6 +47,21 @@ public class PlayerStats : ScriptableObject {
     }
   }
 
+  public void setStat(PlayerStatData data) {
+    health = data.health;
+    hunger = data.hunger;
+    thirst = data.thirst;
+
+    if (health < 0) health = 0;
+    if (hunger < 0) hunger = 0;
+    if (thirst < 0) thirst = 0;
+
+    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
+    if (health <= 0) {
+      Die();
+    }
+  }
+
   public void Die() {
     OnPlayerDie.Invoke();
   }

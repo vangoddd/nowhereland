@@ -19,26 +19,27 @@ public class SaveSystem : MonoBehaviour {
   public GameObject player;
   public PlayerStats playerStat;
 
+  public MapSO map;
+
   private void Awake() {
     _instance = this;
   }
 
   [ContextMenu("Save Game")]
   public bool SaveGame() {
-    PlayerStatData playerStatData = new PlayerStatData(playerStat.health, playerStat.hunger, playerStat.thirst, playerStat.position);
-
-    SaveGameData data = new SaveGameData(playerStatData);
+    SaveGameData data = new SaveGameData(GeneratePlayerStatData(), GenerateMapSaveData());
 
     BinaryFormatter formatter = new BinaryFormatter();
     string path = Application.persistentDataPath + "/save.dat";
     FileStream stream = new FileStream(path, FileMode.Create);
     formatter.Serialize(stream, data);
+    Debug.Log("Data saved at : " + path);
     stream.Close();
 
     return true;
   }
 
-  [ContextMenu("LoadGame")]
+  [ContextMenu("Load Game")]
   public bool LoadGame() {
     string path = Application.persistentDataPath + "/save.dat";
     if (File.Exists(path)) {
@@ -47,9 +48,47 @@ public class SaveSystem : MonoBehaviour {
       SaveGameData data = formatter.Deserialize(stream) as SaveGameData;
 
       player.transform.position = new Vector3(data._playerStatData.position[0], data._playerStatData.position[1], 0f);
+      playerStat.setStat(data._playerStatData);
+
     } else {
       Debug.LogError("Savegame not found");
     }
     return true;
+  }
+
+  public PlayerStatData GeneratePlayerStatData() {
+    return new PlayerStatData(playerStat.health, playerStat.hunger, playerStat.thirst, playerStat.position);
+  }
+
+  public MapSaveData GenerateMapSaveData() {
+    MapSaveData data = new MapSaveData();
+    data.seed = map.seed;
+    data.mapSize = map.mapSize;
+
+    List<int> currentTileData = new List<int>();
+
+    int tileId;
+    //Handling adding tilemap to List
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        if (map.tileMap[x][y] == 1) {
+          tileId = map.tileMap[x][y] + map.biomes[x][y];
+        } else {
+          tileId = map.tileMap[x][y];
+        }
+        currentTileData.Add(tileId);
+      }
+    }
+    data.tileData = currentTileData;
+
+    List<WorldObjectData> currentWorldObjectDatas = new List<WorldObjectData>();
+
+    foreach (GameObject worldObject in map.worldObjects) {
+      currentWorldObjectDatas.Add(new WorldObjectData(worldObject));
+    }
+
+    data.worldObjectDatas = currentWorldObjectDatas;
+
+    return data;
   }
 }
