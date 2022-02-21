@@ -5,8 +5,12 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour {
   public MapSO map;
   public TilesetDatabase tileset;
+  public WorldObjectDB worldObjectDB;
+
+  private List<WorldObjectData> worldObjectDatas = new List<WorldObjectData>();
 
   private int currentSeed = 0;
+  public int seed = 0;
 
   Color[] gradientPixels;
 
@@ -21,14 +25,13 @@ public class MapGenerator : MonoBehaviour {
 
   public Texture2D levelGradient;
 
-  //World object to be spawned
-  public GameObject[] worldObjectPrefab;
-
   //map texture
   public Texture2D mapTexture;
 
   //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
+
+  public bool loadFromSave = false;
 
   void Awake() {
     for (int i = 0; i < (map.mapSize * map.mapSize / (map.chunkSize * map.chunkSize)); i++) {
@@ -36,13 +39,20 @@ public class MapGenerator : MonoBehaviour {
     }
   }
 
-  // Start is called before the first frame update
   void Start() {
     biomeMagnigication = magnification * biomeScale;
-    GetGradientColors();
     InitiateSeed();
-    GenerateMap();
-    SpawnObjects();
+    GetGradientColors();
+
+    if (!loadFromSave) {
+      GenerateMap();
+      GenerateWorldObject();
+      SpawnObjects();
+    } else {
+      SaveSystem.Instance.LoadGame();
+      InstantiateTiles();
+      SpawnObjects();
+    }
 
     mapTexture = new Texture2D(map.mapSize, map.mapSize, TextureFormat.ARGB32, false);
     GenerateMapTexture();
@@ -66,7 +76,12 @@ public class MapGenerator : MonoBehaviour {
 
 
   void InitiateSeed() {
-    currentSeed = map.seed.ToString().GetHashCode();
+    if (loadFromSave) {
+      map.seed = seed;
+    } else {
+      seed = map.seed;
+    }
+    currentSeed = seed.ToString().GetHashCode();
     Random.InitState(currentSeed);
 
     x_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
@@ -113,9 +128,24 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void InstantiateTiles() {
-    for (int x = 0; x < map.mapSize; x++) {
-      for (int y = 0; y < map.mapSize; y++) {
-        SpawnTile(map.tileMap[x][y], x, y);
+    if (!loadFromSave) {
+      for (int x = 0; x < map.mapSize; x++) {
+        for (int y = 0; y < map.mapSize; y++) {
+          SpawnTile(map.tileMap[x][y], x, y);
+        }
+      }
+    } else {
+      for (int x = 0; x < map.mapSize; x++) {
+        for (int y = 0; y < map.mapSize; y++) {
+          GameObject tile = Instantiate(tileset.tiles[map.tileMap[x][y]]);
+          tile.SetActive(false);
+
+          int chunkIndex = Mathf.FloorToInt(x / map.chunkSize) + (Mathf.FloorToInt(y / map.chunkSize) * (map.mapSize / map.chunkSize));
+          map.chunks[chunkIndex].Add(tile);
+
+          tile.transform.position = new Vector3(x, y, 0);
+          tile.name = string.Format("Tile_({0}, {1})", x, y);
+        }
       }
     }
   }
@@ -152,18 +182,37 @@ public class MapGenerator : MonoBehaviour {
 
   }
 
-  void SpawnObjects() {
-    SpawnSetPiece();
-
+  void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
         if (Random.value > 0.99 && map.tileMap[x][y] == 1) {
-          int randChoice = Random.Range(0, worldObjectPrefab.Length);
-          GameObject wo = Instantiate(worldObjectPrefab[randChoice]);
-          wo.transform.position = new Vector3(x, y, 0);
-          map.worldObjects.Add(wo);
+          int randChoice = Random.Range(0, worldObjectDB.worldObjects.Count);
+          Vector2 position = new Vector2(x, y);
+          worldObjectDatas.Add(new WorldObjectData(randChoice, position));
         }
       }
+    }
+
+    map.worldObjectDatas = worldObjectDatas;
+  }
+
+  void SpawnObjects() {
+    SpawnSetPiece();
+
+    // for (int x = 0; x < map.mapSize; x += 2) {
+    //   for (int y = 0; y < map.mapSize; y += 2) {
+    //     if (Random.value > 0.99 && map.tileMap[x][y] == 1) {
+    //       int randChoice = Random.Range(0, worldObjectDB.worldObjects.Count);
+    //       GameObject wo = Instantiate(worldObjectDB.worldObjects[randChoice]);
+    //       wo.transform.position = new Vector3(x, y, 0);
+    //       map.worldObjects.Add(wo);
+    //     }
+    //   }
+    // }
+    foreach (WorldObjectData data in map.worldObjectDatas) {
+      GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
+      wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
+      map.worldObjects.Add(wo);
     }
   }
 

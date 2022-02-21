@@ -50,6 +50,9 @@ public class SaveSystem : MonoBehaviour {
       player.transform.position = new Vector3(data._playerStatData.position[0], data._playerStatData.position[1], 0f);
       playerStat.setStat(data._playerStatData);
 
+      map.tileMap = Get2DTilemapListFromData(data._mapSaveData);
+      map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
+
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -79,16 +82,23 @@ public class SaveSystem : MonoBehaviour {
         currentTileData.Add(tileId);
       }
     }
+
     data.tileData = currentTileData;
-
-    List<WorldObjectData> currentWorldObjectDatas = new List<WorldObjectData>();
-
-    foreach (GameObject worldObject in map.worldObjects) {
-      currentWorldObjectDatas.Add(new WorldObjectData(worldObject));
-    }
-
-    data.worldObjectDatas = currentWorldObjectDatas;
+    data.worldObjectDatas = map.worldObjectDatas;
 
     return data;
+  }
+
+  public List<List<int>> Get2DTilemapListFromData(MapSaveData data) {
+    List<List<int>> tileMap = new List<List<int>>();
+    int counter = 0;
+    for (int x = 0; x < data.mapSize; x++) {
+      tileMap.Add(new List<int>());
+      for (int y = 0; y < data.mapSize; y++) {
+        tileMap[x].Add(data.tileData[counter]);
+        counter++;
+      }
+    }
+    return tileMap;
   }
 }

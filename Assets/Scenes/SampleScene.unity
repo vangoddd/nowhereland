@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1778751118}
   playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
+  map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
 --- !u!4 &731095791
 Transform:
   m_ObjectHideFlags: 0

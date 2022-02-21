@@ -14,6 +14,7 @@ public class MapSO : ScriptableObject {
 
   public List<GameObject> worldObjects;
   public List<List<float>> rawNoiseData;
+  public List<WorldObjectData> worldObjectDatas;
 
   void OnEnable() {
     chunks = new List<List<GameObject>>();
@@ -21,6 +22,7 @@ public class MapSO : ScriptableObject {
     biomes = new List<List<int>>();
     worldObjects = new List<GameObject>();
     rawNoiseData = new List<List<float>>();
+    worldObjectDatas = new List<WorldObjectData>();
   }
 
 }
