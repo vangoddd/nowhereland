@@ -18,6 +18,7 @@ public class SaveSystem : MonoBehaviour {
 
   public GameObject player;
   public PlayerStats playerStat;
+  public TimeSO timeSO;
 
   public MapSO map;
 
@@ -27,7 +28,7 @@ public class SaveSystem : MonoBehaviour {
 
   [ContextMenu("Save Game")]
   public bool SaveGame() {
-    SaveGameData data = new SaveGameData(GeneratePlayerStatData(), GenerateMapSaveData());
+    SaveGameData data = new SaveGameData(GeneratePlayerStatData(), GenerateMapSaveData(), GenerateWorldData());
 
     BinaryFormatter formatter = new BinaryFormatter();
     string path = Application.persistentDataPath + "/save.dat";
@@ -53,6 +54,7 @@ public class SaveSystem : MonoBehaviour {
       map.tileMap = Get2DTilemapListFromData(data._mapSaveData);
       map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
 
+      timeSO.ApplyLoadedData(data._worldData);
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -100,5 +102,13 @@ public class SaveSystem : MonoBehaviour {
       }
     }
     return tileMap;
+  }
+
+  public WorldData GenerateWorldData() {
+    WorldData data = new WorldData();
+    data.day = timeSO.day;
+    data.tick = timeSO.tick;
+    data.isDay = timeSO.isDay;
+    return data;
   }
 }

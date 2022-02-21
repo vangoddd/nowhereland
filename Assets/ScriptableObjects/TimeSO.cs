@@ -8,6 +8,7 @@ public class TimeSO : ScriptableObject {
   public UnityEvent<int> OnDayChange;
   public UnityEvent<int> OnTick;
   public UnityEvent OnNightChange;
+  public UnityEvent<WorldData> OnGameLoad;
 
   public int tick, day;
   public float secondsPerDay;
@@ -19,7 +20,7 @@ public class TimeSO : ScriptableObject {
 
   public float transitionTime = 5f;
 
-  private bool isDay = true;
+  public bool isDay = true;
 
   private void OnEnable() {
     tick = 0;
@@ -35,6 +36,14 @@ public class TimeSO : ScriptableObject {
 
     if (OnTick == null) {
       OnTick = new UnityEvent<int>();
+    }
+
+    if (OnNightChange == null) {
+      OnNightChange = new UnityEvent();
+    }
+
+    if (OnGameLoad == null) {
+      OnGameLoad = new UnityEvent<WorldData>();
     }
 
   }
@@ -56,5 +65,13 @@ public class TimeSO : ScriptableObject {
   public void ChangeToNight() {
     isDay = false;
     OnNightChange.Invoke();
+  }
+
+  public void ApplyLoadedData(WorldData data) {
+    tick = data.tick;
+    day = data.day;
+    isDay = data.isDay;
+
+    OnGameLoad.Invoke(data);
   }
 }

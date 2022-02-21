@@ -21,9 +21,13 @@ MonoBehaviour:
   OnNightChange:
     m_PersistentCalls:
       m_Calls: []
-  tick: 73
-  day: 1
+  OnGameLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  tick: 77
+  day: 17
   secondsPerDay: 180
   secondsPerTick: 2
   nightRatio: 0.25
   transitionTime: 5
+  isDay: 0

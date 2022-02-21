@@ -6,10 +6,12 @@ using UnityEngine;
 public class SaveGameData {
   public PlayerStatData _playerStatData;
   public MapSaveData _mapSaveData;
+  public WorldData _worldData;
 
-  public SaveGameData(PlayerStatData playerStatData, MapSaveData mapSaveData) {
+  public SaveGameData(PlayerStatData playerStatData, MapSaveData mapSaveData, WorldData worldData) {
     _playerStatData = playerStatData;
     _mapSaveData = mapSaveData;
+    _worldData = worldData;
   }
   //   public WorldData _worldData;
 }
@@ -26,4 +28,5 @@ public class MapSaveData {
 public class WorldData {
   public int day;
   public int tick;
+  public bool isDay;
 }

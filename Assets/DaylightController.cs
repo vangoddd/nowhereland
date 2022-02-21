@@ -13,20 +13,19 @@ public class DaylightController : MonoBehaviour {
   [SerializeField] private float nightIntensity = 0.15f;
   [SerializeField] private float dayIntensity = 1f;
 
-  // Start is called before the first frame update
   void OnEnable() {
     _timeSO.OnDayChange.AddListener(ChangeToDayTime);
     _timeSO.OnNightChange.AddListener(ChangeToNightTime);
+    _timeSO.OnGameLoad.AddListener(SetDaylight);
   }
 
   void OnDisable() {
     _timeSO.OnDayChange.RemoveListener(ChangeToDayTime);
     _timeSO.OnNightChange.RemoveListener(ChangeToNightTime);
+    _timeSO.OnGameLoad.RemoveListener(SetDaylight);
   }
 
   void ChangeToDayTime(int day) {
-    // sun.color = dayColor;
-    // sun.intensity = 1f;
     LeanTween.value(gameObject, nightIntensity, dayIntensity, _timeSO.transitionTime).setOnUpdate((float val) => {
       sun.intensity = val;
     });
@@ -37,9 +36,6 @@ public class DaylightController : MonoBehaviour {
   }
 
   void ChangeToNightTime() {
-    // sun.color = nightColor;
-    // sun.intensity = 0.15f;
-
     LeanTween.value(gameObject, dayIntensity, nightIntensity, _timeSO.transitionTime).setOnUpdate((float val) => {
       sun.intensity = val;
     });
@@ -47,6 +43,16 @@ public class DaylightController : MonoBehaviour {
     LeanTween.value(gameObject, dayColor, nightColor, _timeSO.transitionTime).setOnUpdate((Color val) => {
       sun.color = dayColor;
     });
+  }
+
+  void SetDaylight(WorldData data) {
+    if (data.isDay) {
+      sun.intensity = dayIntensity;
+      sun.color = dayColor;
+    } else {
+      sun.intensity = nightIntensity;
+      sun.color = nightColor;
+    }
   }
 
 }

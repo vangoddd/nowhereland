@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1778751118}
   playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
+  timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
 --- !u!4 &731095791
 Transform:
@@ -584,16 +585,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   tileset: {fileID: 11400000, guid: 6149b84577100e44094ac0e943dd5244, type: 2}
+  worldObjectDB: {fileID: 11400000, guid: 70be79af6438d564696c8f22150379f8, type: 2}
+  seed: 0
   magnification: 20
   biomeMagnigication: 0
   biomeScale: 3
   levelGradient: {fileID: 2800000, guid: 1c4a79e49aabff74ebe9ca00d9c9fb77, type: 3}
-  worldObjectPrefab:
-  - {fileID: 8935585944131123899, guid: ff85a22aa635f4a48a3adf5f1941e265, type: 3}
-  - {fileID: 7211843886586674104, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}
-  - {fileID: 7536515956877062947, guid: 839a44f91c5c66444b8ee32dd71b6a40, type: 3}
   mapTexture: {fileID: 0}
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
+  loadFromSave: 1
 --- !u!4 &1129266677
 Transform:
   m_ObjectHideFlags: 0
