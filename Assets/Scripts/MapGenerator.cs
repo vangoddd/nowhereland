@@ -147,15 +147,11 @@ public class MapGenerator : MonoBehaviour {
   void SpawnTile(int tileId, int x, int y) {
     GameObject tilePrefab;
 
-    // if (loadFromSave) {
-    tilePrefab = tileset.tiles[tileId];
-    // } else {
     if (tileId == 1) {
       tilePrefab = tileset.tiles[tileId + map.biomes[x][y]];
     } else {
       tilePrefab = tileset.tiles[tileId];
     }
-    //}
 
     GameObject tile = Instantiate(tilePrefab);
     tile.SetActive(false);
@@ -189,18 +185,9 @@ public class MapGenerator : MonoBehaviour {
   void SpawnObjects() {
     SpawnSetPiece();
 
-    // for (int x = 0; x < map.mapSize; x += 2) {
-    //   for (int y = 0; y < map.mapSize; y += 2) {
-    //     if (Random.value > 0.99 && map.tileMap[x][y] == 1) {
-    //       int randChoice = Random.Range(0, worldObjectDB.worldObjects.Count);
-    //       GameObject wo = Instantiate(worldObjectDB.worldObjects[randChoice]);
-    //       wo.transform.position = new Vector3(x, y, 0);
-    //       map.worldObjects.Add(wo);
-    //     }
-    //   }
-    // }
     foreach (WorldObjectData data in map.worldObjectDatas) {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
+      wo.GetComponent<WorldObject>().objectID = data.objectID;
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
       map.worldObjects.Add(wo);
     }
@@ -217,7 +204,6 @@ public class MapGenerator : MonoBehaviour {
       }
     }
     mapTexture.Apply();
-    //mapTexture.SetPixel(0, 0, Color.blue);
   }
 
   private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity) {

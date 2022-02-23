@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class WorldObject : MonoBehaviour {
 
+  public int objectID;
+
   public float interactDistance = 1f;
   public Vector3 offset = Vector3.zero;
   public bool interactable = true;
