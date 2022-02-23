@@ -128,24 +128,9 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void InstantiateTiles() {
-    if (!loadFromSave) {
-      for (int x = 0; x < map.mapSize; x++) {
-        for (int y = 0; y < map.mapSize; y++) {
-          SpawnTile(map.tileMap[x][y], x, y);
-        }
-      }
-    } else {
-      for (int x = 0; x < map.mapSize; x++) {
-        for (int y = 0; y < map.mapSize; y++) {
-          GameObject tile = Instantiate(tileset.tiles[map.tileMap[x][y]]);
-          tile.SetActive(false);
-
-          int chunkIndex = Mathf.FloorToInt(x / map.chunkSize) + (Mathf.FloorToInt(y / map.chunkSize) * (map.mapSize / map.chunkSize));
-          map.chunks[chunkIndex].Add(tile);
-
-          tile.transform.position = new Vector3(x, y, 0);
-          tile.name = string.Format("Tile_({0}, {1})", x, y);
-        }
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        SpawnTile(map.tileMap[x][y], x, y);
       }
     }
   }
@@ -161,11 +146,16 @@ public class MapGenerator : MonoBehaviour {
 
   void SpawnTile(int tileId, int x, int y) {
     GameObject tilePrefab;
+
+    // if (loadFromSave) {
+    tilePrefab = tileset.tiles[tileId];
+    // } else {
     if (tileId == 1) {
       tilePrefab = tileset.tiles[tileId + map.biomes[x][y]];
     } else {
       tilePrefab = tileset.tiles[tileId];
     }
+    //}
 
     GameObject tile = Instantiate(tilePrefab);
     tile.SetActive(false);

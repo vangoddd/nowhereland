@@ -20,7 +20,8 @@ public class SaveGameData {
 public class MapSaveData {
   public int seed;
   public int mapSize;
-  public List<int> tileData;
+  public List<int> tileMap;
+  public List<int> biomeMap;
   public List<WorldObjectData> worldObjectDatas;
 }
 

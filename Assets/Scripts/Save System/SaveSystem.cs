@@ -52,6 +52,7 @@ public class SaveSystem : MonoBehaviour {
       playerStat.setStat(data._playerStatData);
 
       map.tileMap = Get2DTilemapListFromData(data._mapSaveData);
+      map.biomes = Get2DBiomeMapListFromData(data._mapSaveData);
       map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
 
       timeSO.ApplyLoadedData(data._worldData);
@@ -70,22 +71,19 @@ public class SaveSystem : MonoBehaviour {
     data.seed = map.seed;
     data.mapSize = map.mapSize;
 
-    List<int> currentTileData = new List<int>();
+    List<int> currentMapData = new List<int>();
+    List<int> currentBiomeData = new List<int>();
 
-    int tileId;
     //Handling adding tilemap to List
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
-        if (map.tileMap[x][y] == 1) {
-          tileId = map.tileMap[x][y] + map.biomes[x][y];
-        } else {
-          tileId = map.tileMap[x][y];
-        }
-        currentTileData.Add(tileId);
+        currentMapData.Add(map.tileMap[x][y]);
+        currentBiomeData.Add(map.biomes[x][y]);
       }
     }
 
-    data.tileData = currentTileData;
+    data.tileMap = currentMapData;
+    data.biomeMap = currentBiomeData;
     data.worldObjectDatas = map.worldObjectDatas;
 
     return data;
@@ -97,11 +95,24 @@ public class SaveSystem : MonoBehaviour {
     for (int x = 0; x < data.mapSize; x++) {
       tileMap.Add(new List<int>());
       for (int y = 0; y < data.mapSize; y++) {
-        tileMap[x].Add(data.tileData[counter]);
+        tileMap[x].Add(data.tileMap[counter]);
         counter++;
       }
     }
     return tileMap;
+  }
+
+  public List<List<int>> Get2DBiomeMapListFromData(MapSaveData data) {
+    List<List<int>> biomeMap = new List<List<int>>();
+    int counter = 0;
+    for (int x = 0; x < data.mapSize; x++) {
+      biomeMap.Add(new List<int>());
+      for (int y = 0; y < data.mapSize; y++) {
+        biomeMap[x].Add(data.biomeMap[counter]);
+        counter++;
+      }
+    }
+    return biomeMap;
   }
 
   public WorldData GenerateWorldData() {
