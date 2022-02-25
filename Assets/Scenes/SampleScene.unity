@@ -586,14 +586,14 @@ MonoBehaviour:
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   tileset: {fileID: 11400000, guid: 6149b84577100e44094ac0e943dd5244, type: 2}
   worldObjectDB: {fileID: 11400000, guid: 70be79af6438d564696c8f22150379f8, type: 2}
-  seed: 0
+  seed: 69
   magnification: 20
   biomeMagnigication: 0
   biomeScale: 3
   levelGradient: {fileID: 2800000, guid: 1c4a79e49aabff74ebe9ca00d9c9fb77, type: 3}
   mapTexture: {fileID: 0}
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
-  loadFromSave: 1
+  loadFromSave: 0
 --- !u!4 &1129266677
 Transform:
   m_ObjectHideFlags: 0
