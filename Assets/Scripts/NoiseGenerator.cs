@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoiseGenerator {
   public List<List<float>> rawNoiseData;
 
-  public void GenerateNoise(int mapSize, int seed, int magnification, int octaves, float persistance, float lacunarity) {
+  public void GenerateNoise(int mapSize, int seed, float magnification, int octaves, float persistance, float lacunarity) {
     rawNoiseData = new List<List<float>>();
 
     System.Random pseudoRandom = new System.Random(seed.ToString().GetHashCode());
@@ -27,25 +27,29 @@ public class NoiseGenerator {
         float noiseHeight = 0;
 
         for (int i = 0; i < octaves; i++) {
-          float sampleX = x / magnification * frequency + x_offset;
-          float sampleY = y / magnification * frequency + y_offset;
+          float sampleX = (x + x_offset) / magnification * frequency;
+          float sampleY = (y + y_offset) / magnification * frequency;
 
           float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
+          //float perlinValue = Mathf.PerlinNoise(x, y);
+
           noiseHeight += perlinValue * amplitude;
 
           amplitude *= persistance; // 0 < persistance < 1
           frequency *= lacunarity; // lacunarity > 1
-
-          if (noiseHeight < minHeight) {
-            minHeight = noiseHeight;
-          }
-
-          if (noiseHeight > maxHeight) {
-            maxHeight = noiseHeight;
-          }
-
-          rawNoiseData[x].Add(noiseHeight);
         }
+
+        if (noiseHeight < minHeight) {
+          minHeight = noiseHeight;
+        }
+
+        if (noiseHeight > maxHeight) {
+          maxHeight = noiseHeight;
+        }
+
+        rawNoiseData[x].Add(noiseHeight);
+
+        Debug.Log("Noise height :" + noiseHeight);
 
       }
     }

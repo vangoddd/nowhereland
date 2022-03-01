@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a3a0af99447224d85493830136ab01, type: 3}
-  m_Name: berry
+  m_Script: {fileID: 11500000, guid: 9e7b58c3f1aca35448f9536a19ec9ae9, type: 3}
+  m_Name: Inventory
   m_EditorClassIdentifier: 
-  stackCount: 20
-  description: Basic Food
-  name: Berry
-  sprite: {fileID: 21300000, guid: bf7e602d4b3d3d446b86dba4d316061a, type: 3}
