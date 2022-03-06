@@ -6,12 +6,23 @@ using UnityEngine;
 public class Inventory : ScriptableObject {
   public Item[] itemList;
   private int slot = 18;
+  public ItemInteraction _itemInteraction;
 
   void OnEnable() {
     itemList = new Item[slot];
+    _itemInteraction.OnItemPickup.AddListener(AddItemListener);
+  }
+
+  private void OnDisable() {
+    _itemInteraction.OnItemPickup.RemoveListener(AddItemListener);
+  }
+
+  public void AddItemListener(Item item) {
+    AddItem(item.itemData, item.amount);
   }
 
   public void AddItem(ItemData item, int amt) {
+    if (amt <= 0) return;
     //if item is not stackable
     if (!item.isStackable()) {
       int addedAmt = amt;
@@ -25,29 +36,35 @@ public class Inventory : ScriptableObject {
     }
     //If item is stackable, look for occurences, then if theres no occurences, add to null slot
     else {
-      int firstNull = -1;
-      for (int i = 0; i < slot; i++) {
-        if (itemList[i] == null) {
-          firstNull = i;
-        } else {
-          if (itemList[i].itemData == item) {
-            if (itemList[i].GetFreeSlot() - amt >= 0) {
-              itemList[i].amount += amt;
-            } else {
-              int leftover = amt - itemList[i].GetFreeSlot();
-              itemList[i].amount = itemList[i].itemData.stackCount;
-              AddItem(item, leftover);
-            }
-            return;
+      int itemIndex = ContainNonFullItem(item);
+      if (itemIndex == -1) { //if no occurences
+        for (int i = 0; i < slot; i++) {
+          if (itemList[i] == null) {
+            itemList[i] = new Item(item, amt);
+            break;
           }
         }
-
-      }
-      if (firstNull == -1) {
-        Debug.Log("inventory full");
-        return;
+      } else { //add item to occurence
+        if (itemList[itemIndex].GetFreeSlot() < amt) { //if added item is greater than free stack in a slot
+          int addAmount = amt - itemList[itemIndex].GetFreeSlot();
+          itemList[itemIndex].amount += addAmount;
+          AddItem(item, amt - addAmount);
+        } else {
+          itemList[itemIndex].amount += amt;
+        }
       }
     }
+  }
+
+  public int ContainNonFullItem(ItemData item) {
+    int containsItem = -1;
+    for (int i = 0; i < slot; i++) {
+      if (itemList[i] == null) continue;
+      if (itemList[i].itemData == item && itemList[i].GetFreeSlot() > 0) {
+        containsItem = i;
+      }
+    }
+    return containsItem;
   }
 
   [ContextMenu("Print inv")]
