@@ -12,7 +12,7 @@ public class Item {
   }
 
   public bool isStackable() {
-    return itemData.stackCount == 1;
+    return itemData.stackCount != 1;
   }
 
   public int GetFreeSlot() {

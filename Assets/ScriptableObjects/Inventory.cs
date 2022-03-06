@@ -8,6 +8,8 @@ public class Inventory : ScriptableObject {
   private int slot = 18;
   public ItemInteraction _itemInteraction;
 
+  public GameEvent OnInventoryUpdate;
+
   void OnEnable() {
     itemList = new Item[slot];
     _itemInteraction.OnItemPickup.AddListener(AddItemListener);
@@ -22,6 +24,7 @@ public class Inventory : ScriptableObject {
   }
 
   public void AddItem(ItemData item, int amt) {
+
     if (amt <= 0) return;
     //if item is not stackable
     if (!item.isStackable()) {
@@ -47,13 +50,15 @@ public class Inventory : ScriptableObject {
       } else { //add item to occurence
         if (itemList[itemIndex].GetFreeSlot() < amt) { //if added item is greater than free stack in a slot
           int addAmount = amt - itemList[itemIndex].GetFreeSlot();
-          itemList[itemIndex].amount += addAmount;
-          AddItem(item, amt - addAmount);
+          itemList[itemIndex].amount += itemList[itemIndex].GetFreeSlot();
+          AddItem(item, addAmount);
         } else {
           itemList[itemIndex].amount += amt;
         }
       }
     }
+
+    OnInventoryUpdate.Raise();
   }
 
   public int ContainNonFullItem(ItemData item) {
