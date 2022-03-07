@@ -11,7 +11,7 @@ public class ItemDatabase : ScriptableObject {
 
   void OnEnable() {
     if (itemList == null) itemList = new List<ItemData>();
-    if (itemLookup == null) itemLookup = new Dictionary<ItemData, int>();
+    itemLookup = new Dictionary<ItemData, int>();
 
     int index = 0;
     foreach (var item in itemList) {
