@@ -1,36 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class ItemScript : MonoBehaviour {
   public SpriteRenderer sr;
   public ItemData itemData;
+  public ItemInteraction _itemInteraction;
 
   private new string name;
   private string description;
-  // Start is called before the first frame update
   void Start() {
+    ApplyData();
+  }
+
+  public void ApplyData() {
     if (itemData) {
       sr.sprite = itemData.sprite;
       name = itemData.name;
       description = itemData.description;
       gameObject.name = "Item_" + itemData.name;
     }
-
   }
-
-  // Update is called once per frame
-  void Update() {
-
-  }
-
-  public ItemInteraction _itemInteraction;
 
   void OnTriggerEnter2D(Collider2D col) {
     if (col.gameObject.tag == "Player") {
       Destroy(gameObject);
       _itemInteraction.PickupItem(new Item(itemData, 1));
-      Debug.Log("Player got " + gameObject.name);
     }
+  }
+}
+
+[CustomEditor(typeof(ItemScript))]
+public class ItemScriptEditor : Editor {
+  public override void OnInspectorGUI() {
+    base.OnInspectorGUI();
+
+    ItemScript item = (ItemScript)target;
+    item.ApplyData();
   }
 }
