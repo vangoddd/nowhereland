@@ -77,8 +77,6 @@ public class MapGenerator : MonoBehaviour {
 
   void InitiateSeed() {
     if (loadFromSave) {
-      map.seed = seed;
-    } else {
       seed = map.seed;
     }
     currentSeed = seed.ToString().GetHashCode();

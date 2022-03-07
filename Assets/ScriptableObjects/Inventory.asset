@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
+  _itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
   OnInventoryUpdate: {fileID: 11400000, guid: 89ea768d784d7a5488c57facc4abc83d, type: 2}

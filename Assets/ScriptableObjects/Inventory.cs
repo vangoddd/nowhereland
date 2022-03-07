@@ -7,6 +7,7 @@ public class Inventory : ScriptableObject {
   public Item[] itemList;
   private int slot = 18;
   public ItemInteraction _itemInteraction;
+  public ItemDatabase _itemDB;
 
   public GameEvent OnInventoryUpdate;
 
@@ -57,6 +58,8 @@ public class Inventory : ScriptableObject {
         }
       }
     }
+
+    //Debug.Log("picked up item with ID : " + _itemDB.itemLookup[item]);
 
     OnInventoryUpdate.Raise();
   }
