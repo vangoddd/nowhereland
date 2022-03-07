@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7b58c3f1aca35448f9536a19ec9ae9, type: 3}
-  m_Name: Inventory
+  m_Script: {fileID: 11500000, guid: c0a3a0af99447224d85493830136ab01, type: 3}
+  m_Name: sticks
   m_EditorClassIdentifier: 
-  _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
-  OnInventoryUpdate: {fileID: 11400000, guid: 89ea768d784d7a5488c57facc4abc83d, type: 2}
+  stackCount: 20
+  description: Smaller logs
+  name: Sticks
+  sprite: {fileID: 2957127108187555240, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

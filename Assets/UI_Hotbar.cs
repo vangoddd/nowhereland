@@ -26,6 +26,7 @@ public class UI_Hotbar : MonoBehaviour {
       RectTransform itemSlotTransform = Instantiate(ItemSlotTemplate, transform).GetComponent<RectTransform>();
       itemSlotTransform.gameObject.SetActive(true);
       itemSlotTransform.anchoredPosition = new Vector2(x + offset * i, y);
+      itemSlotTransform.GetComponent<UI_ItemSlot>().slotIndex = i;
       itemSlots[i] = itemSlotTransform;
     }
   }
