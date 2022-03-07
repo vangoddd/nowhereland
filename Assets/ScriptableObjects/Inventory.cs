@@ -75,11 +75,46 @@ public class Inventory : ScriptableObject {
     return containsItem;
   }
 
+
+
+  public void RemoveItem(ItemData item, int amt) {
+    if (amt == 0) return;
+    if (GetItemCount(item) >= amt) {
+      for (int i = 0; i < slot; i++) {
+        if (itemList[i] != null && itemList[i].itemData == item) {
+          if (itemList[i].amount < amt) {
+            int remainder = amt - itemList[i].amount;
+            itemList[i] = null;
+            RemoveItem(item, remainder);
+          } else {
+            itemList[i].amount -= amt;
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  public int GetItemCount(ItemData item) {
+    int totalCount = 0;
+    for (int i = 0; i < slot; i++) {
+      if (itemList[i] != null && itemList[i].itemData == item) totalCount += itemList[i].amount;
+    }
+    return totalCount;
+  }
+
   [ContextMenu("Print inv")]
   public void PrintInventory() {
     Debug.Log("printing inv");
     for (int i = 0; i < slot; i++) {
       if (itemList[i] != null) Debug.Log(itemList[i].itemData.name + itemList[i].amount);
     }
+  }
+  public ItemData berry;
+
+  [ContextMenu("Remove Item")]
+  public void TestRemoveItem() {
+    RemoveItem(berry, 12);
+    OnInventoryUpdate.Raise();
   }
 }
