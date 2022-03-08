@@ -103,6 +103,23 @@ public class Inventory : ScriptableObject {
     return totalCount;
   }
 
+  public void CraftItem(ItemRecipe recipe) {
+    bool itemEnough = true;
+    for (int i = 0; i < recipe.requiredItems.Length; i++) {
+      if (GetItemCount(recipe.requiredItems[i].item) < recipe.requiredItems[i].amount) {
+        itemEnough = false;
+        break;
+      }
+    }
+    if (itemEnough) {
+      for (int i = 0; i < recipe.requiredItems.Length; i++) {
+        RemoveItem(recipe.requiredItems[i].item, recipe.requiredItems[i].amount);
+      }
+      AddItem(recipe.result.item, recipe.result.amount);
+    }
+
+  }
+
   [ContextMenu("Print inv")]
   public void PrintInventory() {
     Debug.Log("printing inv");
@@ -116,5 +133,10 @@ public class Inventory : ScriptableObject {
   public void TestRemoveItem() {
     RemoveItem(berry, 12);
     OnInventoryUpdate.Raise();
+  }
+
+  [ContextMenu("Add berry")]
+  void AddBerry() {
+    AddItem(berry, 10);
   }
 }
