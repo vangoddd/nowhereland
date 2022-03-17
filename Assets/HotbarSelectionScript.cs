@@ -23,7 +23,6 @@ public class HotbarSelectionScript : MonoBehaviour {
   public void ChangeSelection(int index) {
     if (selection == index) {
       _itemInteraction.UseItem(index);
-      Debug.Log("Player using item at index : " + index);
       return;
     }
     rectTransform.localPosition = new Vector3(initialX + (index * gap), rectTransform.localPosition.y, 0f);

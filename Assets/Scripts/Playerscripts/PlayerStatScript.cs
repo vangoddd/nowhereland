@@ -19,7 +19,7 @@ public class PlayerStatScript : MonoBehaviour {
     if (godmode) return;
 
     float reductionAmt = -2 * Time.deltaTime;
-    _playerStat.addStat(new PlayerStatData(reductionAmt, reductionAmt, reductionAmt, (Vector2)transform.position));
+    _playerStat.addStat(new PlayerStatData(0f, reductionAmt, reductionAmt, (Vector2)transform.position));
   }
 
   void Die() {

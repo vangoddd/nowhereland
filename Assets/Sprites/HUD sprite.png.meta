@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: 3116985189597589531
     second: HUD sprite_12
+  - first:
+      213: -1096076864703080564
+    second: sprite_inventory_slot
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,7 +154,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HUD sprite_0
+      name: sprite_hotbar_slot
       rect:
         serializedVersion: 2
         x: 0
@@ -419,6 +422,27 @@ TextureImporter:
       bones: []
       spriteID: b103e14f381c14b20800000000000000
       internalID: 3116985189597589531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_inventory_slot
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 46
+        width: 146
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8759d816e3f9c0f0800000000000000
+      internalID: -1096076864703080564
       vertices: []
       indices: 
       edges: []

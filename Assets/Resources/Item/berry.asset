@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a3a0af99447224d85493830136ab01, type: 3}
+  m_Script: {fileID: 11500000, guid: 5022c60b1d31f95478f5c1b7772895fb, type: 3}
   m_Name: berry
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Basic Food
+  description: Natural growing snacks.
   name: Berry
   sprite: {fileID: 4515148191445370536, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  health: 3
+  hunger: 15
+  thirst: 5
+  _playerStats: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

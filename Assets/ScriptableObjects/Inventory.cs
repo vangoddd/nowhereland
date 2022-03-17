@@ -14,10 +14,21 @@ public class Inventory : ScriptableObject {
   void OnEnable() {
     itemList = new Item[slot];
     _itemInteraction.OnItemPickup.AddListener(AddItemListener);
+    _itemInteraction.OnItemUse.AddListener(UseItem);
   }
 
   private void OnDisable() {
     _itemInteraction.OnItemPickup.RemoveListener(AddItemListener);
+    _itemInteraction.OnItemUse.RemoveListener(UseItem);
+  }
+
+  public void UseItem(int index) {
+    itemList[index].itemData.UseItem();
+    if (itemList[index].itemData is Consumable) {
+      itemList[index].amount -= 1;
+      if (itemList[index].amount == 0) itemList[index] = null;
+    }
+    OnInventoryUpdate.Raise();
   }
 
   public void AddItemListener(Item item) {
@@ -88,11 +99,13 @@ public class Inventory : ScriptableObject {
             RemoveItem(item, remainder);
           } else {
             itemList[i].amount -= amt;
+            if (itemList[i].amount == 0) itemList[i] = null;
           }
           break;
         }
       }
     }
+    OnInventoryUpdate.Raise();
   }
 
   public int GetItemCount(ItemData item) {

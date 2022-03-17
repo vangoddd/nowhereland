@@ -85,4 +85,13 @@ public class PlayerStatData {
     position[0] = pos.x;
     position[1] = pos.y;
   }
+
+  public PlayerStatData(float health, float hunger, float thirst) {
+    this.health = health;
+    this.hunger = hunger;
+    this.thirst = thirst;
+
+    position[0] = 0;
+    position[1] = 0;
+  }
 }

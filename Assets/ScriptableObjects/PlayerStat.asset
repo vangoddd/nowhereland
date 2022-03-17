@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStat: 100
   health: 100
-  hunger: 100
-  thirst: 100
+  hunger: 46.138763
+  thirst: 46.138763
+  position: {x: 150.62015, y: 148.98962}
   OnStatChangeEvent:
     m_PersistentCalls:
       m_Calls: []
