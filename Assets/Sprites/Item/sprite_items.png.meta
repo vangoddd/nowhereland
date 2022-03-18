@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 4515148191445370536
     second: sprite_berry
+  - first:
+      213: -569325460869334079
+    second: sprite_empty_item
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -326,6 +329,27 @@ TextureImporter:
       bones: []
       spriteID: 8a6495b9b5709ae30800000000000000
       internalID: 4515148191445370536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_empty_item
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb3c4f72895918f0800000000000000
+      internalID: -569325460869334079
       vertices: []
       indices: 
       edges: []

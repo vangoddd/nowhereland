@@ -36,15 +36,6 @@ public class UI_Hotbar : MonoBehaviour {
     for (int i = 0; i < 4; i++) {
       if (_inventory.itemList[i] == null) itemSlots[i].gameObject.SetActive(false);
       else {
-        // itemSlots[i].GetComponent<Image>().sprite = _inventory.itemList[i].itemData.sprite;
-        // itemSlots[i].gameObject.SetActive(true);
-
-        // TextMeshProUGUI tmPro = itemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
-        // if (_inventory.itemList[i].isStackable()) {
-        //   tmPro.text = _inventory.itemList[i].amount.ToString();
-        // } else {
-        //   tmPro.text = "";
-        // }
         UpdateTemplateSlot(i);
       }
     }
