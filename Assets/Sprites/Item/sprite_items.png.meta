@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: -569325460869334079
     second: sprite_empty_item
+  - first:
+      213: -3306393700984353733
+    second: sprite_armor_wood
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -350,6 +353,27 @@ TextureImporter:
       bones: []
       spriteID: 1cb3c4f72895918f0800000000000000
       internalID: -569325460869334079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_armor_wood
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c0d3d62745d12d0800000000000000
+      internalID: -3306393700984353733
       vertices: []
       indices: 
       edges: []

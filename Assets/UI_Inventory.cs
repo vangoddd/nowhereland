@@ -10,24 +10,29 @@ public class UI_Inventory : MonoBehaviour {
   public Inventory _inventory;
   private Image[] images;
 
-  void Start() {
+  public GameEvent OnInventoryClosed;
+
+  void Awake() {
     slots = new RectTransform[18];
     slotScripts = new UI_InventorySlot[18];
     images = new Image[18];
     InitiateInventory();
     UpdateInventory();
-
   }
 
   void OnEnable() {
     UpdateInventory();
   }
 
+  void OnDisable() {
+    OnInventoryClosed.Raise();
+  }
+
   private void InitiateInventory() {
     int x = -60;
     int y = 26;
     float xOffset = 24f;
-    float yOffset = 26f;
+    float yOffset = 25f;
 
     int yCounter = 0;
 
@@ -37,6 +42,7 @@ public class UI_Inventory : MonoBehaviour {
       RectTransform itemSlotTransform = Instantiate(InventorySlotTemplate, transform).GetComponent<RectTransform>();
       itemSlotTransform.gameObject.SetActive(true);
       itemSlotTransform.anchoredPosition = new Vector2(x + (xOffset * (i - (6 * yCounter))), y + (yCounter * -yOffset));
+
       slotScripts[i] = itemSlotTransform.GetComponent<UI_InventorySlot>();
 
       slotScripts[i].slotIndex = i;
