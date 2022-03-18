@@ -1138,16 +1138,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Name
-      value: Item_Rock
+      value: Item_Stone Axe
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372904, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5558816579510887396, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+      objectReference: {fileID: -5777954866554722888, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: fd38b6ea4e16607429356e57eedb72c8, type: 2}
+      objectReference: {fileID: 11400000, guid: 212b935d086b23143acd58eb0b07a291, type: 2}
     - target: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1520,7 +1520,7 @@ PrefabInstance:
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 9694f3138c482cc40904c56f2bd7ce59, type: 2}
+      objectReference: {fileID: 11400000, guid: 4721ece3400aae9459a47c1ebc79e480, type: 2}
     - target: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1840,16 +1840,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Name
-      value: Item_Rock
+      value: Item_Wooden armor
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372904, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5558816579510887396, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+      objectReference: {fileID: 21300000, guid: 5de026515e667844f8e94447a36d8a64, type: 3}
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: fd38b6ea4e16607429356e57eedb72c8, type: 2}
+      objectReference: {fileID: 11400000, guid: 1f05d8ba56ac7da4993aa1d2ebed1be4, type: 2}
     - target: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_RootOrder
       value: 11

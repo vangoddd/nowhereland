@@ -8,5 +8,10 @@ public class UI_ItemSlot : MonoBehaviour {
 
   public void OnSlotClick() {
     _itemInteraction.ItemSlotClicked(slotIndex);
+    if (slotIndex == 4) {
+      _itemInteraction.Unequip(0);
+    } else if (slotIndex == 5) {
+      _itemInteraction.Unequip(1);
+    }
   }
 }

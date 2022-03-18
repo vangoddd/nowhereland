@@ -41,6 +41,12 @@ TextureImporter:
   - first:
       213: -1096076864703080564
     second: sprite_inventory_slot
+  - first:
+      213: -8101262735684384698
+    second: sprite_armor_overlay
+  - first:
+      213: -1256810227330033795
+    second: sprite_tools_overlay
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -443,6 +449,48 @@ TextureImporter:
       bones: []
       spriteID: c8759d816e3f9c0f0800000000000000
       internalID: -1096076864703080564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_armor_overlay
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 46
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6484c67d678829f80800000000000000
+      internalID: -8101262735684384698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_tools_overlay
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 46
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d775ae1d1c9ee8ee0800000000000000
+      internalID: -1256810227330033795
       vertices: []
       indices: 
       edges: []

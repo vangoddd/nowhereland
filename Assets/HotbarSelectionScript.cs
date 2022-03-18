@@ -21,6 +21,7 @@ public class HotbarSelectionScript : MonoBehaviour {
   }
 
   public void ChangeSelection(int index) {
+    if (index >= 4) return;
     if (selection == index) {
       _itemInteraction.UseItem(index);
       return;

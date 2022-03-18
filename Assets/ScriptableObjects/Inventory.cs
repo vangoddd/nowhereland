@@ -9,24 +9,36 @@ public class Inventory : ScriptableObject {
   public ItemInteraction _itemInteraction;
   public ItemDatabase _itemDB;
 
+  public Item handSlot;
+  public Item armorSlot;
+
   public GameEvent OnInventoryUpdate;
+  public GameEvent OnEquippableUpdated;
 
   void OnEnable() {
     itemList = new Item[slot];
+    handSlot = null;
+    armorSlot = null;
+
     _itemInteraction.OnItemPickup.AddListener(AddItemListener);
     _itemInteraction.OnItemUse.AddListener(UseItem);
+    _itemInteraction.OnUnequip.AddListener(UnequipItem);
   }
 
   private void OnDisable() {
     _itemInteraction.OnItemPickup.RemoveListener(AddItemListener);
     _itemInteraction.OnItemUse.RemoveListener(UseItem);
+    _itemInteraction.OnUnequip.RemoveListener(UnequipItem);
   }
 
   public void UseItem(int index) {
-    itemList[index].itemData.UseItem();
     if (itemList[index].itemData is Consumable) {
+      itemList[index].itemData.UseItem();
       itemList[index].amount -= 1;
       if (itemList[index].amount == 0) itemList[index] = null;
+    } else if (itemList[index].itemData is Tools || itemList[index].itemData is Armor) {
+      Item lastUsed = equipItem(itemList[index]);
+      itemList[index] = lastUsed;
     }
     OnInventoryUpdate.Raise();
   }
@@ -137,19 +149,64 @@ public class Inventory : ScriptableObject {
   public void PrintInventory() {
     Debug.Log("printing inv");
     for (int i = 0; i < slot; i++) {
-      if (itemList[i] != null) Debug.Log(itemList[i].itemData.name + itemList[i].amount);
+      if (itemList[i] != null) Debug.Log(itemList[i].itemData.name + "/" + itemList[i].amount + "/" + itemList[i].durability);
     }
   }
-  public ItemData berry;
 
-  [ContextMenu("Remove Item")]
-  public void TestRemoveItem() {
-    RemoveItem(berry, 12);
+  public Item equipItem(Item item) {
+    Item temp = null;
+    if (item.itemData is Tools) {
+      //equip to hand slot
+      temp = handSlot;
+      handSlot = item;
+
+    } else if (item.itemData is Armor) {
+      //equip to armor slot
+      temp = armorSlot;
+      armorSlot = item;
+    }
+    OnEquippableUpdated.Raise();
+    OnInventoryUpdate.Raise();
+
+    return temp;
+  }
+
+  public void UnequipItem(int index) {
+    Item unequippedItem;
+
+    int emptySlot = -1;
+    for (int i = 0; i < slot; i++) {
+      if (itemList[i] == null) {
+        emptySlot = i;
+        break;
+      }
+    }
+
+    if (emptySlot == -1) {
+      return; //slot is full, cant unequip
+    }
+
+    if (index == 0) {
+      //unequip hand
+      unequippedItem = handSlot;
+      handSlot = null;
+    } else {
+      //uneqip armor
+      unequippedItem = armorSlot;
+      armorSlot = null;
+    }
+
+    itemList[emptySlot] = unequippedItem;
+
+    OnEquippableUpdated.Raise();
     OnInventoryUpdate.Raise();
   }
 
-  [ContextMenu("Add berry")]
-  void AddBerry() {
-    AddItem(berry, 10);
+  [ContextMenu("Print equipped item")]
+  public void PrintEquippedItem() {
+    if (handSlot != null) Debug.Log(handSlot.itemData.name);
+    if (armorSlot != null) Debug.Log(armorSlot.itemData.name);
   }
+
+
 }

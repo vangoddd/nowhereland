@@ -8,6 +8,7 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<Item> OnItemPickup;
   public UnityEvent<int> OnItemSlotClicked;
   public UnityEvent<int> OnItemUse;
+  public UnityEvent<int> OnUnequip;
 
   private void OnEnable() {
     if (OnItemPickup == null) {
@@ -21,6 +22,10 @@ public class ItemInteraction : ScriptableObject {
     if (OnItemUse == null) {
       OnItemUse = new UnityEvent<int>();
     }
+
+    if (OnUnequip == null) {
+      OnUnequip = new UnityEvent<int>();
+    }
   }
 
   public void PickupItem(Item item) {
@@ -33,6 +38,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void UseItem(int index) {
     OnItemUse.Invoke(index);
+  }
+
+  public void Unequip(int index) {
+    OnUnequip.Invoke(index);
   }
 
 }
