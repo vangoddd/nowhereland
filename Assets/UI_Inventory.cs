@@ -12,6 +12,8 @@ public class UI_Inventory : MonoBehaviour {
 
   public GameEvent OnInventoryClosed;
 
+  public UI_InventoryEquippableSlot toolSlot, armorSlot;
+
   void Awake() {
     slots = new RectTransform[18];
     slotScripts = new UI_InventorySlot[18];
@@ -26,6 +28,10 @@ public class UI_Inventory : MonoBehaviour {
 
   void OnDisable() {
     OnInventoryClosed.Raise();
+  }
+
+  public void CloseInventory() {
+    this.gameObject.SetActive(false);
   }
 
   private void InitiateInventory() {
@@ -65,6 +71,18 @@ public class UI_Inventory : MonoBehaviour {
           slotScripts[i].setText("");
         }
       }
+    }
+
+    if (_inventory.handSlot == null) {
+      toolSlot.setEmpty();
+    } else {
+      toolSlot.setItem(_inventory.handSlot);
+    }
+
+    if (_inventory.armorSlot == null) {
+      armorSlot.setEmpty();
+    } else {
+      armorSlot.setItem(_inventory.armorSlot);
     }
   }
 }
