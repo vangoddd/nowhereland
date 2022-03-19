@@ -95,12 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba8a85e9d6a7d41a0fc3b5797da00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectID: 0
   interactDistance: 0.89
   offset: {x: 0, y: 0.6, z: 0}
   interactable: 1
+  _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
+  drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  regenRate: 0
   ready: 1
   sprites:
   - {fileID: 7425614336036142188, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
   - {fileID: -2932390105556509259, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
   sr: {fileID: 8935585944131123898}
-  firstUpdate: 1

@@ -11,6 +11,8 @@ public class UI_InventorySlot : MonoBehaviour {
   public Sprite emptySprite;
   public TextMeshProUGUI tmPro;
 
+  public bool isEmpty = true;
+
   public void OnSlotClick() {
     Debug.Log("clicked slot " + slotIndex);
   }
@@ -22,5 +24,6 @@ public class UI_InventorySlot : MonoBehaviour {
   public void setSlotEmpty() {
     image.sprite = emptySprite;
     tmPro.text = "";
+    isEmpty = true;
   }
 }

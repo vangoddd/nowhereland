@@ -10,18 +10,25 @@ public abstract class WorldObject : MonoBehaviour {
   public Vector3 offset = Vector3.zero;
   public bool interactable = true;
 
+  public Inventory _inventory;
+  public LootTable drops;
+
   void Start() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
     BoxCollider2D clickHitbox = gameObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
     clickHitbox.isTrigger = true;
   }
 
-  public abstract void Interact(GameObject player);
+  public virtual void Interact(GameObject player) {
+    Debug.Log("Interacting with " + gameObject.name);
+  }
 
   void OnDrawGizmosSelected() {
     Gizmos.color = Color.white;
     Gizmos.DrawWireSphere(transform.position + offset, interactDistance);
   }
+
+  public abstract bool ToolRangeCheck();
 
   public bool canInteract(Vector2 player) {
     if (!interactable) return false;
@@ -31,8 +38,15 @@ public abstract class WorldObject : MonoBehaviour {
     return false;
   }
 
-  public void TestMethod() {
-    Debug.Log("Tested");
+  public void DestroyWorldObject() {
+    //remove itself from chunk thing
+    ChunkHandlerScript.removeObjectFromChunk(gameObject);
+
+    //give item drop
+    ItemSpawner.Instance.spawnDrops(transform.position, drops);
+
+    //destroy
+    Destroy(gameObject);
   }
 
 }

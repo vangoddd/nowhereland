@@ -79,19 +79,21 @@ public class PlayerMovement : MonoBehaviour {
     GameObject closest = null;
     foreach (var hit in hitColliders) {
       if (hit.gameObject.layer == 6) {
-        if (!hit.gameObject.GetComponent<WorldObject>().interactable) continue;
+        if (!hit.gameObject.GetComponent<WorldObject>().ToolRangeCheck()) continue;
         if (closest == null) closest = hit.gameObject;
         if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position)) {
           closest = hit.gameObject;
         }
       }
     }
+    //Debug.Log("Closest : " + closest.name);
 
     if (closest != null) {
       interacting = true;
       moveToTarget = closest;
       UpdateMoveDir((Vector2)closest.transform.position);
     }
+
   }
 
   void UpdateMoveDir() {

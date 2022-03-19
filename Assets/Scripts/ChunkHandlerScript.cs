@@ -68,14 +68,9 @@ public class ChunkHandlerScript : MonoBehaviour {
     map.chunks[chunkIndex].Add(g);
   }
 
-  [ContextMenu("Do Test method")]
-  void TestScript() {
+  public static void removeObjectFromChunk(GameObject g) {
     for (int i = 0; i < map.chunks.Count; i++) {
-      foreach (GameObject obj in map.chunks[i]) {
-        if (obj.layer == 6) {
-          obj.GetComponent<WorldObject>().TestMethod();
-        }
-      }
+      map.chunks[i].Remove(g);
     }
   }
 }

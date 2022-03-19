@@ -35,8 +35,8 @@ public class UI_Inventory : MonoBehaviour {
   }
 
   private void InitiateInventory() {
-    int x = -60;
-    int y = 26;
+    float x = InventorySlotTemplate.GetComponent<RectTransform>().anchoredPosition.x;
+    float y = InventorySlotTemplate.GetComponent<RectTransform>().anchoredPosition.y;
     float xOffset = 24f;
     float yOffset = 25f;
 
@@ -63,6 +63,7 @@ public class UI_Inventory : MonoBehaviour {
       if (_inventory.itemList[i] == null) {
         slotScripts[i].setSlotEmpty();
       } else {
+        slotScripts[i].isEmpty = false;
         images[i].sprite = _inventory.itemList[i].itemData.sprite;
 
         if (_inventory.itemList[i].isStackable()) {

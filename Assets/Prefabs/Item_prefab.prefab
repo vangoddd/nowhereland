@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 6267637700089372904}
-  itemData: {fileID: 11400000, guid: cdb2b975b6cc6c144ae1e9615a84eab1, type: 2}
+  itemData: {fileID: 11400000, guid: f7ef54ec71044244eb771bc18ca483ef, type: 2}
   _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
   itemAmount: 1
+  durability: -1
 --- !u!212 &6267637700089372904
 SpriteRenderer:
   m_ObjectHideFlags: 0

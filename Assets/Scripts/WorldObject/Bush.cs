@@ -2,38 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bush : WorldObject
-{
+public class Bush : Harvestable {
   public bool ready = true;
 
   public Sprite[] sprites;
   public SpriteRenderer sr;
 
-  public bool firstUpdate = true;
-
-  void Update()
-  {
-    if (firstUpdate)
-    {
-      UpdateSprite();
-      firstUpdate = false;
-    }
+  void Start() {
+    UpdateSprite();
   }
 
-  void UpdateSprite()
-  {
-    if (ready)
-    {
+  void UpdateSprite() {
+    if (ready) {
       sr.sprite = sprites[0];
-    }
-    else
-    {
+    } else {
       sr.sprite = sprites[1];
     }
   }
 
-  public override void Interact(GameObject player)
-  {
+  public override void Interact(GameObject player) {
+    base.Interact(player);
     Debug.Log("Player interacted with Bush " + gameObject.name + player.transform.position.x.ToString());
 
     ready = false;
