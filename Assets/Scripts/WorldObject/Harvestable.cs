@@ -6,6 +6,7 @@ public abstract class Harvestable : WorldObject {
   public int regenRate;
 
   public override bool ToolRangeCheck() {
+    if (!interactable) return false;
     return true;
   }
 

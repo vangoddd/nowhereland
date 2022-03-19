@@ -22,7 +22,7 @@ public class Bush : Harvestable {
 
   public override void Interact(GameObject player) {
     base.Interact(player);
-    Debug.Log("Player interacted with Bush " + gameObject.name + player.transform.position.x.ToString());
+    ItemSpawner.Instance.spawnDrops(transform.position, drops);
 
     ready = false;
     interactable = false;
