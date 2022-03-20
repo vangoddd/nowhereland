@@ -12,12 +12,13 @@ public class UI_Inventory : MonoBehaviour {
 
   public GameEvent OnInventoryClosed;
 
-  public UI_InventoryEquippableSlot toolSlot, armorSlot;
+  public RectTransform toolSlot, armorSlot;
+  public UI_InventoryEquippableSlot toolBG, armorBG;
 
   void Awake() {
-    slots = new RectTransform[18];
-    slotScripts = new UI_InventorySlot[18];
-    images = new Image[18];
+    slots = new RectTransform[20];
+    slotScripts = new UI_InventorySlot[20];
+    images = new Image[20];
     InitiateInventory();
     UpdateInventory();
   }
@@ -56,6 +57,23 @@ public class UI_Inventory : MonoBehaviour {
       slots[i] = itemSlotTransform;
       images[i] = itemSlotTransform.GetComponent<Image>();
     }
+
+    slots[18] = toolSlot;
+    slots[19] = armorSlot;
+
+    slotScripts[18] = toolSlot.GetComponent<UI_InventorySlot>();
+    slotScripts[18].setSlotEmpty();
+    slotScripts[18].slotIndex = 18;
+    images[18] = slots[18].GetComponent<Image>();
+
+    slotScripts[19] = armorSlot.GetComponent<UI_InventorySlot>();
+    slotScripts[19].setSlotEmpty();
+    slotScripts[19].slotIndex = 19;
+    images[19] = slots[19].GetComponent<Image>();
+
+    slotScripts[18].setText("");
+    slotScripts[19].setText("");
+
   }
 
   public void UpdateInventory() {
@@ -75,15 +93,21 @@ public class UI_Inventory : MonoBehaviour {
     }
 
     if (_inventory.handSlot == null) {
-      toolSlot.setEmpty();
+      slotScripts[18].setSlotEmpty();
+      toolBG.setEmpty();
     } else {
-      toolSlot.setItem(_inventory.handSlot);
+      images[18].sprite = _inventory.handSlot.itemData.sprite;
+      slotScripts[18].isEmpty = false;
+      toolBG.setItem();
     }
 
     if (_inventory.armorSlot == null) {
-      armorSlot.setEmpty();
+      slotScripts[19].setSlotEmpty();
+      armorBG.setEmpty();
     } else {
-      armorSlot.setItem(_inventory.armorSlot);
+      images[19].sprite = _inventory.armorSlot.itemData.sprite;
+      slotScripts[19].isEmpty = false;
+      armorBG.setItem();
     }
   }
 }

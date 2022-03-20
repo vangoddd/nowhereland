@@ -205,40 +205,56 @@ public class Inventory : ScriptableObject {
   }
 
   public void SlotSwap(int from, int to) {
-    //Debug.Log("swapping slot " + from + " and " + to);
+    //Unequipping tools / armor
+    if (from > 17) {
+      if (to > 17) return;
+      if (itemList[to] == null) {
+        itemList[to] = (from - 18 == 0) ? handSlot : armorSlot;
+        if (from - 18 == 0) handSlot = null; else armorSlot = null;
+      } else if ((itemList[to].itemData is Tools && from == 18) || (itemList[to].itemData is Armor && from == 19)) {
+        itemList[to] = equipItem(itemList[to]);
+      } else {
+        UnequipItem(from - 18);
+      }
+    }
+    //equipping tools / armor
+    else if (to > 18) {
 
-    if (itemList[to] == null) {
-      itemList[to] = itemList[from];
-      itemList[from] = null;
     } else {
-      if (itemList[to].itemData == itemList[from].itemData) {
-        //combine stack
-        if (itemList[to].isFull()) {
+      if (itemList[to] == null) {
+        itemList[to] = itemList[from];
+        itemList[from] = null;
+      } else {
+        if (itemList[to].itemData == itemList[from].itemData) {
+          //combine stack
+          if (itemList[to].isFull()) {
+            //swap position
+            Item temp = itemList[from];
+            itemList[from] = itemList[to];
+            itemList[to] = temp;
+          } else {
+            //if slot enough
+            if (itemList[from].amount <= itemList[to].GetFreeSlot()) {
+              itemList[to].amount += itemList[from].amount;
+              itemList[from] = null;
+            }
+            //if slot is not enough 
+            else {
+              int freeSlot = itemList[to].GetFreeSlot();
+              itemList[to].amount += freeSlot;
+              itemList[from].amount -= freeSlot;
+            }
+          }
+        } else {
           //swap position
           Item temp = itemList[from];
           itemList[from] = itemList[to];
           itemList[to] = temp;
-        } else {
-          //if slot enough
-          if (itemList[from].amount <= itemList[to].GetFreeSlot()) {
-            itemList[to].amount += itemList[from].amount;
-            itemList[from] = null;
-          }
-          //if slot is not enough 
-          else {
-            int freeSlot = itemList[to].GetFreeSlot();
-            itemList[to].amount += freeSlot;
-            itemList[from].amount -= freeSlot;
-          }
         }
-      } else {
-        //swap position
-        Item temp = itemList[from];
-        itemList[from] = itemList[to];
-        itemList[to] = temp;
       }
     }
 
+    OnEquippableUpdated.Raise();
     OnInventoryUpdate.Raise();
   }
 

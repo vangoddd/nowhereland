@@ -59,7 +59,16 @@ public class UI_InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 
   public void OnDrop(PointerEventData eventData) {
     if (eventData.pointerDrag != null) {
-      _itemInteraction.SlotSwap(eventData.pointerDrag.gameObject.GetComponent<UI_InventorySlot>().slotIndex, slotIndex);
+      UI_InventorySlot slot = eventData.pointerDrag.gameObject.GetComponent<UI_InventorySlot>();
+      if (slot != null) {
+        _itemInteraction.SlotSwap(slot.slotIndex, slotIndex);
+      }
+
+      //tools or armor dropped into inventory
+      UI_InventoryEquippableContent equippable = eventData.pointerDrag.gameObject.GetComponent<UI_InventoryEquippableContent>();
+      if (equippable != null) {
+
+      }
     }
   }
 }
