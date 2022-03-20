@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   temp: 0
-  godmode: 1
+  godmode: 0
 --- !u!114 &4846516622845276408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,4 +235,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  berry: {fileID: 11400000, guid: 12ffb49b35c61594690ccfefc0335548, type: 2}

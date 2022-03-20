@@ -218,9 +218,15 @@ public class Inventory : ScriptableObject {
       }
     }
     //equipping tools / armor
-    else if (to > 18) {
-
-    } else {
+    else if (to > 17) {
+      if (itemList[from].itemData is Tools && (to == 18)) {
+        itemList[from] = equipItem(itemList[from]);
+      } else if (itemList[from].itemData is Armor && (to == 19)) {
+        itemList[from] = equipItem(itemList[from]);
+      }
+    }
+    //moving items
+    else {
       if (itemList[to] == null) {
         itemList[to] = itemList[from];
         itemList[from] = null;
@@ -268,6 +274,5 @@ public class Inventory : ScriptableObject {
   public void TestingAddItem() {
     itemList[17] = new Item(itemList[0].itemData, 10);
   }
-
 
 }
