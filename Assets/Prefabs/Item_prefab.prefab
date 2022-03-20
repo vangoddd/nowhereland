@@ -228,6 +228,7 @@ MonoBehaviour:
   _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
   itemAmount: 1
   durability: -1
+  _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
 --- !u!61 &8412230965625242612
 BoxCollider2D:
   m_ObjectHideFlags: 0

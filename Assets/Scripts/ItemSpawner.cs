@@ -21,6 +21,7 @@ public class ItemSpawner : MonoBehaviour {
   }
 
   public GameObject worldItemPrefab;
+  public ItemDatabase itemDB;
 
   public void SpawnItem(Vector3 pos, Item item) {
     GameObject o = Instantiate(worldItemPrefab);
@@ -63,6 +64,15 @@ public class ItemSpawner : MonoBehaviour {
       if (Random.value <= drops.chanceLoot[i].chance) {
         spawnItemUnstacked(pos, new Item(drops.chanceLoot[i].item, drops.chanceLoot[i].amount));
       }
+    }
+  }
+
+  public void SpawnItemFromLoadedData(List<WorldItemData> data) {
+    for (int i = 0; i < data.Count; i++) {
+      Vector3 pos = new Vector3(data[i].position[0], data[i].position[1], 0f);
+      Item temp = new Item(itemDB.itemList[data[i].itemId], data[i].itemAmount);
+      temp.durability = data[i].itemDurability;
+      SpawnItem(pos, temp);
     }
   }
 

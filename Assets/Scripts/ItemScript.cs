@@ -9,12 +9,15 @@ public class ItemScript : MonoBehaviour {
   public int itemAmount = 1;
   public int durability = -1;
 
+  public MapSO _map;
+
   private bool pickupCooldown = true;
 
   private new string name;
   private string description;
   void Start() {
     ApplyData();
+    _map.worldItemData.Add(gameObject);
     StartCoroutine(RemovePickupCooldownAfterDrop());
   }
 
@@ -41,6 +44,7 @@ public class ItemScript : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D col) {
     if (col.gameObject.tag == "Player" && !pickupCooldown) {
       Destroy(gameObject);
+      _map.worldItemData.Remove(gameObject);
       _itemInteraction.PickupItem(new Item(itemData, itemAmount));
     }
   }

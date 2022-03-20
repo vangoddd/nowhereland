@@ -12,6 +12,7 @@ public class MapSO : ScriptableObject {
   public List<List<int>> tileMap;
   public List<List<int>> biomes;
 
+  public List<GameObject> worldItemData;
   public List<GameObject> worldObjects;
   public List<List<float>> rawNoiseData;
   public List<WorldObjectData> worldObjectDatas;
@@ -21,6 +22,7 @@ public class MapSO : ScriptableObject {
     tileMap = new List<List<int>>();
     biomes = new List<List<int>>();
     worldObjects = new List<GameObject>();
+    worldItemData = new List<GameObject>();
     rawNoiseData = new List<List<float>>();
     worldObjectDatas = new List<WorldObjectData>();
   }

@@ -61,6 +61,7 @@ public class SaveSystem : MonoBehaviour {
       timeSO.ApplyLoadedData(data._worldData);
 
       inventory.ApplyLoadedData(data._inventoryData);
+      ItemSpawner.Instance.SpawnItemFromLoadedData(data._mapSaveData.worldItemDatas);
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -79,6 +80,7 @@ public class SaveSystem : MonoBehaviour {
     List<int> currentMapData = new List<int>();
     List<int> currentBiomeData = new List<int>();
     List<WorldObjectData> currentWorldData = new List<WorldObjectData>();
+    List<WorldItemData> currentWorldItemData = new List<WorldItemData>();
 
     //Handling adding tilemap to List
     for (int x = 0; x < map.mapSize; x++) {
@@ -95,9 +97,22 @@ public class SaveSystem : MonoBehaviour {
       currentWorldData.Add(new WorldObjectData(objId, pos));
     }
 
+    for (int i = 0; i < map.worldItemData.Count; i++) {
+      WorldItemData temp = new WorldItemData();
+      ItemScript itemScript = map.worldItemData[i].GetComponent<ItemScript>();
+      temp.itemId = itemDB.itemLookup[itemScript.itemData];
+      temp.itemAmount = itemScript.itemAmount;
+      temp.itemDurability = itemScript.durability;
+      temp.position[0] = map.worldItemData[i].transform.position.x;
+      temp.position[1] = map.worldItemData[i].transform.position.y;
+
+      currentWorldItemData.Add(temp);
+    }
+
     data.tileMap = currentMapData;
     data.biomeMap = currentBiomeData;
     data.worldObjectDatas = currentWorldData;
+    data.worldItemDatas = currentWorldItemData;
 
     return data;
   }
