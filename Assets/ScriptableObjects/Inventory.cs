@@ -264,6 +264,27 @@ public class Inventory : ScriptableObject {
     OnInventoryUpdate.Raise();
   }
 
+  public void ApplyLoadedData(InventoryData data) {
+    for (int i = 0; i < 18; i++) {
+      if (data.itemId[i] != -1) {
+        itemList[i] = new Item(_itemDB.itemList[data.itemId[i]], data.itemAmount[i]);
+        itemList[i].durability = data.itemDurability[i];
+      }
+    }
+
+    if (data.itemId[18] != -1) {
+      handSlot = new Item(_itemDB.itemList[data.itemId[18]], data.itemAmount[18]);
+      handSlot.durability = data.itemDurability[18];
+    }
+    if (data.itemId[19] != -1) {
+      armorSlot = new Item(_itemDB.itemList[data.itemId[19]], data.itemAmount[19]);
+      armorSlot.durability = data.itemDurability[19];
+    }
+
+    OnEquippableUpdated.Raise();
+    OnInventoryUpdate.Raise();
+  }
+
   [ContextMenu("Print equipped item")]
   public void PrintEquippedItem() {
     if (handSlot != null) Debug.Log(handSlot.itemData.name);

@@ -20,6 +20,9 @@ public class SaveSystem : MonoBehaviour {
   public PlayerStats playerStat;
   public TimeSO timeSO;
 
+  public ItemDatabase itemDB;
+  public Inventory inventory;
+
   public MapSO map;
 
   private void Awake() {
@@ -28,7 +31,7 @@ public class SaveSystem : MonoBehaviour {
 
   [ContextMenu("Save Game")]
   public bool SaveGame() {
-    SaveGameData data = new SaveGameData(GeneratePlayerStatData(), GenerateMapSaveData(), GenerateWorldData());
+    SaveGameData data = new SaveGameData(GeneratePlayerStatData(), GenerateMapSaveData(), GenerateWorldData(), GenerateInventoryData());
 
     BinaryFormatter formatter = new BinaryFormatter();
     string path = Application.persistentDataPath + "/save.dat";
@@ -56,6 +59,8 @@ public class SaveSystem : MonoBehaviour {
       map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
 
       timeSO.ApplyLoadedData(data._worldData);
+
+      inventory.ApplyLoadedData(data._inventoryData);
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -128,6 +133,47 @@ public class SaveSystem : MonoBehaviour {
     data.day = timeSO.day;
     data.tick = timeSO.tick;
     data.isDay = timeSO.isDay;
+    return data;
+  }
+
+  public InventoryData GenerateInventoryData() {
+    InventoryData data = new InventoryData();
+    int[] currentItemId = new int[20];
+    int[] currentItemDurability = new int[20];
+    int[] currentItemAmount = new int[20];
+
+    for (int i = 0; i < 20; i++) {
+      currentItemId[i] = -1;
+      currentItemDurability[i] = -1;
+      currentItemAmount[i] = -1;
+
+      if (i < 18) {
+        if (inventory.itemList[i] != null) {
+          currentItemId[i] = itemDB.itemLookup[inventory.itemList[i].itemData];
+          currentItemDurability[i] = inventory.itemList[i].durability;
+          currentItemAmount[i] = inventory.itemList[i].amount;
+        }
+      } else {
+        if (i == 18) {
+          if (inventory.handSlot != null) {
+            currentItemId[18] = itemDB.itemLookup[inventory.handSlot.itemData];
+            currentItemDurability[18] = inventory.handSlot.durability;
+            currentItemAmount[18] = 1;
+          }
+        } else if (i == 19) {
+          if (inventory.armorSlot != null) {
+            currentItemId[19] = itemDB.itemLookup[inventory.armorSlot.itemData];
+            currentItemDurability[19] = inventory.armorSlot.durability;
+            currentItemAmount[19] = 1;
+          }
+        }
+      }
+    }
+
+    data.itemId = currentItemId;
+    data.itemDurability = currentItemDurability;
+    data.itemAmount = currentItemAmount;
+
     return data;
   }
 }
