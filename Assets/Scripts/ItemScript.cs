@@ -9,6 +9,8 @@ public class ItemScript : MonoBehaviour {
   public int itemAmount = 1;
   public int durability = -1;
 
+  public Item itemInstance;
+
   public MapSO _map;
 
   private bool pickupCooldown = true;
@@ -39,14 +41,20 @@ public class ItemScript : MonoBehaviour {
         durability = -1;
       }
     }
+
+    itemInstance = new Item(itemData, itemAmount);
+    itemInstance.durability = durability;
   }
 
   void OnTriggerEnter2D(Collider2D col) {
     if (col.gameObject.tag == "Player" && !pickupCooldown) {
-      Destroy(gameObject);
-      _map.worldItemData.Remove(gameObject);
-      _itemInteraction.PickupItem(new Item(itemData, itemAmount));
+      _itemInteraction.PickupItem(this);
     }
+  }
+
+  public void DestroyAfterPickup() {
+    Destroy(gameObject);
+    _map.worldItemData.Remove(gameObject);
   }
 }
 

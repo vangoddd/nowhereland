@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [CreateAssetMenu]
 public class ItemInteraction : ScriptableObject {
-  public UnityEvent<Item> OnItemPickup;
+  public UnityEvent<ItemScript> OnItemPickup;
   public UnityEvent<int> OnItemSlotClicked;
   public UnityEvent<int> OnItemUse;
   public UnityEvent<int> OnUnequip;
@@ -14,7 +14,7 @@ public class ItemInteraction : ScriptableObject {
 
   private void OnEnable() {
     if (OnItemPickup == null) {
-      OnItemPickup = new UnityEvent<Item>();
+      OnItemPickup = new UnityEvent<ItemScript>();
     }
 
     if (OnItemSlotClicked == null) {
@@ -34,7 +34,7 @@ public class ItemInteraction : ScriptableObject {
     }
   }
 
-  public void PickupItem(Item item) {
+  public void PickupItem(ItemScript item) {
     OnItemPickup.Invoke(item);
   }
 

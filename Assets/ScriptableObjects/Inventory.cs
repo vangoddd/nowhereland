@@ -45,13 +45,22 @@ public class Inventory : ScriptableObject {
     OnInventoryUpdate.Raise();
   }
 
-  public void AddItemListener(Item item) {
-    AddItem(item.itemData, item.amount);
+  public void AddItemListener(ItemScript item) {
+    if (canPickUp(item.itemInstance)) {
+      item.DestroyAfterPickup();
+      AddItem(item.itemData, item.itemAmount);
+    }
   }
 
   public void AddItem(ItemData item, int amt) {
 
     if (amt <= 0) return;
+
+    if (!canPickUp(new Item(item, amt))) {
+      ItemSpawner.Instance.SpawnItemOnPlayer(new Item(item, amt));
+      return;
+    }
+
     //if item is not stackable
     if (!item.isStackable()) {
       int addedAmt = amt;
@@ -98,6 +107,15 @@ public class Inventory : ScriptableObject {
       }
     }
     return containsItem;
+  }
+
+  public bool canPickUp(Item item) {
+    for (int i = 0; i < 18; i++) {
+      if (itemList[i] == null) return true;
+    }
+    if (ContainNonFullItem(item.itemData) != -1) return true;
+
+    return false;
   }
 
 
@@ -294,6 +312,18 @@ public class Inventory : ScriptableObject {
   [ContextMenu("Populate inv")]
   public void TestingAddItem() {
     itemList[17] = new Item(itemList[0].itemData, 10);
+  }
+
+  [ContextMenu("Fill inv non stack")]
+  public void TestFillInventory() {
+    AddItem(itemList[0].itemData, 17);
+  }
+
+  [ContextMenu("Fill inv stack")]
+  public void TestFillInventoryStack() {
+    for (int x = 0; x < 17; x++) {
+      AddItem(itemList[0].itemData, 20);
+    }
   }
 
 }

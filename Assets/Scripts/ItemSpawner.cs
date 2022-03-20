@@ -1,9 +1,9 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour {
-
 
   private static ItemSpawner _instance;
 
@@ -22,6 +22,8 @@ public class ItemSpawner : MonoBehaviour {
 
   public GameObject worldItemPrefab;
   public ItemDatabase itemDB;
+
+  public Transform playerPos;
 
   public void SpawnItem(Vector3 pos, Item item) {
     GameObject o = Instantiate(worldItemPrefab);
@@ -74,6 +76,10 @@ public class ItemSpawner : MonoBehaviour {
       temp.durability = data[i].itemDurability;
       SpawnItem(pos, temp);
     }
+  }
+
+  public void SpawnItemOnPlayer(Item item) {
+    SpawnItem(playerPos.position, item);
   }
 
   private Vector3 AddRandomOffset(Vector3 vec, float amt) {

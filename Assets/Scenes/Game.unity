@@ -796,6 +796,8 @@ MonoBehaviour:
   player: {fileID: 1778751118}
   playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
+  itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
+  inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
 --- !u!4 &731095791
 Transform:
@@ -2289,6 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldItemPrefab: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
+  itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
 --- !u!4 &1738977191
 Transform:
   m_ObjectHideFlags: 0
