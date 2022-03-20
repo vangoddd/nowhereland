@@ -26,4 +26,8 @@ public class Item {
   public int GetFreeSlot() {
     return itemData.stackCount - amount;
   }
+
+  public bool isFull() {
+    return amount == itemData.stackCount;
+  }
 }

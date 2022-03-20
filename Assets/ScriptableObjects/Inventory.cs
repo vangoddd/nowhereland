@@ -23,12 +23,14 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnItemPickup.AddListener(AddItemListener);
     _itemInteraction.OnItemUse.AddListener(UseItem);
     _itemInteraction.OnUnequip.AddListener(UnequipItem);
+    _itemInteraction.OnSlotSwap.AddListener(SlotSwap);
   }
 
   private void OnDisable() {
     _itemInteraction.OnItemPickup.RemoveListener(AddItemListener);
     _itemInteraction.OnItemUse.RemoveListener(UseItem);
     _itemInteraction.OnUnequip.RemoveListener(UnequipItem);
+    _itemInteraction.OnSlotSwap.RemoveListener(SlotSwap);
   }
 
   public void UseItem(int index) {
@@ -202,10 +204,53 @@ public class Inventory : ScriptableObject {
     OnInventoryUpdate.Raise();
   }
 
+  public void SlotSwap(int from, int to) {
+    //Debug.Log("swapping slot " + from + " and " + to);
+
+    if (itemList[to] == null) {
+      itemList[to] = itemList[from];
+      itemList[from] = null;
+    } else {
+      if (itemList[to].itemData == itemList[from].itemData) {
+        //combine stack
+        if (itemList[to].isFull()) {
+          //swap position
+          Item temp = itemList[from];
+          itemList[from] = itemList[to];
+          itemList[to] = temp;
+        } else {
+          //if slot enough
+          if (itemList[from].amount <= itemList[to].GetFreeSlot()) {
+            itemList[to].amount += itemList[from].amount;
+            itemList[from] = null;
+          }
+          //if slot is not enough 
+          else {
+            int freeSlot = itemList[to].GetFreeSlot();
+            itemList[to].amount += freeSlot;
+            itemList[from].amount -= freeSlot;
+          }
+        }
+      } else {
+        //swap position
+        Item temp = itemList[from];
+        itemList[from] = itemList[to];
+        itemList[to] = temp;
+      }
+    }
+
+    OnInventoryUpdate.Raise();
+  }
+
   [ContextMenu("Print equipped item")]
   public void PrintEquippedItem() {
     if (handSlot != null) Debug.Log(handSlot.itemData.name);
     if (armorSlot != null) Debug.Log(armorSlot.itemData.name);
+  }
+
+  [ContextMenu("Populate inv")]
+  public void TestingAddItem() {
+    itemList[17] = new Item(itemList[0].itemData, 10);
   }
 
 

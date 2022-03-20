@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 988879363318663567}
   - component: {fileID: 988879363318663566}
   - component: {fileID: 988879363318663561}
+  - component: {fileID: 2899857027065826127}
   m_Layer: 0
   m_Name: InventorySlotTemplate
   m_TagString: Untagged
@@ -285,7 +286,22 @@ MonoBehaviour:
   image: {fileID: 988879363318663567}
   emptySprite: {fileID: -569325460869334079, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   tmPro: {fileID: 988879364692919701}
+  rt: {fileID: 988879363318663560}
+  canvas: {fileID: 6591183207912235385}
+  canvasGroup: {fileID: 2899857027065826127}
   isEmpty: 1
+--- !u!225 &2899857027065826127
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988879363318663563}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &988879363799374613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1201,7 @@ GameObject:
   - component: {fileID: 6591183207912235384}
   - component: {fileID: 6591183207912235391}
   - component: {fileID: 6591183207912235388}
+  - component: {fileID: 3722575185293963560}
   m_Layer: 0
   m_Name: InventoryHUD
   m_TagString: Untagged
@@ -1292,3 +1309,31 @@ MonoBehaviour:
   OnInventoryClosed: {fileID: 11400000, guid: 937eef8b4aabfa64587639cf6e69e7ee, type: 2}
   toolSlot: {fileID: 988879363929723264}
   armorSlot: {fileID: 988879363171045172}
+--- !u!114 &3722575185293963560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591183207912235390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b948ec38f3c29c40b9d1bbb8c1404b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 89ea768d784d7a5488c57facc4abc83d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6591183207912235388}
+        m_TargetAssemblyTypeName: UI_Inventory, Assembly-CSharp
+        m_MethodName: UpdateInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

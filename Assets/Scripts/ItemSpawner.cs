@@ -43,16 +43,14 @@ public class ItemSpawner : MonoBehaviour {
   }
 
   public void spawnItemUnstacked(Vector3 pos, Item item) {
-    GameObject o = worldItemPrefab;
-    ItemScript itemScript = o.GetComponent<ItemScript>();
-
-    itemScript.itemData = item.itemData;
-    itemScript.itemAmount = 1;
-    itemScript.durability = item.durability;
-
     for (int i = 0; i < item.amount; i++) {
+      GameObject o = Instantiate(worldItemPrefab);
+      ItemScript itemScript = o.GetComponent<ItemScript>();
       o.transform.position = AddRandomOffset(pos, 0.5f);
-      Instantiate(o);
+
+      itemScript.itemData = item.itemData;
+      itemScript.itemAmount = 1;
+      itemScript.durability = item.durability;
     }
   }
 
