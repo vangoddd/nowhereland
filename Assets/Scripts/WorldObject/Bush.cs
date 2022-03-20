@@ -9,6 +9,7 @@ public class Bush : Harvestable {
   public SpriteRenderer sr;
 
   void Start() {
+    InitializeObject();
     UpdateSprite();
   }
 

@@ -15,12 +15,16 @@ public abstract class WorldObject : MonoBehaviour {
 
   public MapSO _map;
 
-  void Start() {
+  protected void InitializeObject() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
     BoxCollider2D clickHitbox = gameObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
     clickHitbox.isTrigger = true;
 
     _map.worldObjects.Add(gameObject);
+  }
+
+  void Start() {
+    InitializeObject();
   }
 
   public virtual void Interact(GameObject player) {

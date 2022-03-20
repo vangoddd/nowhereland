@@ -169,7 +169,7 @@ public class MapGenerator : MonoBehaviour {
   void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
-        if (Random.value > 0.99 && map.tileMap[x][y] == 1) {
+        if (Random.value > 0.97 && map.tileMap[x][y] == 1) {
           int randChoice = Random.Range(0, worldObjectDB.worldObjects.Count);
           Vector2 position = new Vector2(x, y);
           worldObjectDatas.Add(new WorldObjectData(randChoice, position));
