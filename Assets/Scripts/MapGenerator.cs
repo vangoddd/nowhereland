@@ -185,9 +185,11 @@ public class MapGenerator : MonoBehaviour {
 
     foreach (WorldObjectData data in map.worldObjectDatas) {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
-      wo.GetComponent<WorldObject>().objectID = data.objectID;
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
-      map.worldObjects.Add(wo);
+
+      //should add obj to worldobjects from the object itself
+      //wo.GetComponent<WorldObject>().objectID = data.objectID;
+      //map.worldObjects.Add(wo);
     }
   }
 

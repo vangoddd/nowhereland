@@ -73,6 +73,7 @@ public class SaveSystem : MonoBehaviour {
 
     List<int> currentMapData = new List<int>();
     List<int> currentBiomeData = new List<int>();
+    List<WorldObjectData> currentWorldData = new List<WorldObjectData>();
 
     //Handling adding tilemap to List
     for (int x = 0; x < map.mapSize; x++) {
@@ -82,9 +83,16 @@ public class SaveSystem : MonoBehaviour {
       }
     }
 
+    //adding map data from worldobject list
+    for (int i = 0; i < map.worldObjects.Count; i++) {
+      int objId = map.worldObjects[i].GetComponent<WorldObject>().objectID;
+      Vector2 pos = new Vector2(map.worldObjects[i].transform.position.x, map.worldObjects[i].transform.position.y);
+      currentWorldData.Add(new WorldObjectData(objId, pos));
+    }
+
     data.tileMap = currentMapData;
     data.biomeMap = currentBiomeData;
-    data.worldObjectDatas = map.worldObjectDatas;
+    data.worldObjectDatas = currentWorldData;
 
     return data;
   }

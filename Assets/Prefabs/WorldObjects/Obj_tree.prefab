@@ -122,11 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b6dd8bafe6aa146b2c405be6ae178c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 0
+  objectID: 2
   interactDistance: 1.03
   offset: {x: 0, y: 0.15, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: a58f52c87d198f340b1bb74562cc1795, type: 2}
+  _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   health: 50
   requiredTool: {fileID: 11400000, guid: 799a2aa6476866649a6393b6dd528dd4, type: 2}

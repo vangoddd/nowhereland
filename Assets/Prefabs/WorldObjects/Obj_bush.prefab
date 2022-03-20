@@ -122,12 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba8a85e9d6a7d41a0fc3b5797da00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 0
+  objectID: 1
   interactDistance: 1.01
   offset: {x: 0, y: 0.45, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: ba20cf33c6308c443a67ceea36b803b7, type: 2}
+  _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   regenRate: 0
   ready: 1
   sprites:

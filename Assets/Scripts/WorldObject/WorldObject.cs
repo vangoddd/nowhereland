@@ -13,10 +13,14 @@ public abstract class WorldObject : MonoBehaviour {
   public Inventory _inventory;
   public LootTable drops;
 
+  public MapSO _map;
+
   void Start() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
     BoxCollider2D clickHitbox = gameObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
     clickHitbox.isTrigger = true;
+
+    _map.worldObjects.Add(gameObject);
   }
 
   public virtual void Interact(GameObject player) {
@@ -41,6 +45,7 @@ public abstract class WorldObject : MonoBehaviour {
   public void DestroyWorldObject() {
     //remove itself from chunk thing
     ChunkHandlerScript.removeObjectFromChunk(gameObject);
+    _map.worldObjects.Remove(gameObject);
 
     //give item drop
     ItemSpawner.Instance.spawnDrops(transform.position, drops);
