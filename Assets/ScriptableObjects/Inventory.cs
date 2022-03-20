@@ -53,8 +53,13 @@ public class Inventory : ScriptableObject {
   }
 
   public void AddItem(ItemData item, int amt) {
-
     if (amt <= 0) return;
+
+    if (amt > item.stackCount) {
+      AddItem(item, item.stackCount);
+      AddItem(item, amt - item.stackCount);
+      return;
+    }
 
     if (!canPickUp(new Item(item, amt))) {
       ItemSpawner.Instance.SpawnItemOnPlayer(new Item(item, amt));
@@ -321,9 +326,7 @@ public class Inventory : ScriptableObject {
 
   [ContextMenu("Fill inv stack")]
   public void TestFillInventoryStack() {
-    for (int x = 0; x < 17; x++) {
-      AddItem(itemList[0].itemData, 20);
-    }
+    AddItem(itemList[0].itemData, 17 * itemList[0].itemData.stackCount);
   }
 
 }
