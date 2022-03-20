@@ -97,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077667236, y: 0.27}
+  m_Offset: {x: -0.0077667236, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.14}
+    pivot: {x: 0.5, y: 0.32}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 0
-  interactDistance: 0.89
-  offset: {x: 0, y: 0.6, z: 0}
+  interactDistance: 1.01
+  offset: {x: 0, y: 0.45, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: ba20cf33c6308c443a67ceea36b803b7, type: 2}
