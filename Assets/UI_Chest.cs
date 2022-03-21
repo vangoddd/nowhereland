@@ -62,7 +62,7 @@ public class UI_Chest : MonoBehaviour {
     }
   }
 
-  private void UpdateChest() {
+  public void UpdateChest() {
     for (int i = 0; i < 12; i++) {
       if (chestHandler.chestList[chestId].itemList[i] == null) {
         slotScripts[i].setSlotEmpty();

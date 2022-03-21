@@ -13,6 +13,10 @@ public class ChestHandler : ScriptableObject {
   public int currentlyOpenChest;
   public ItemInteraction _itemInteraction;
 
+  public Inventory _inventory;
+
+  public GameEvent OnInventoryUpdate;
+
   void OnEnable() {
     chestList = new Dictionary<int, ChestContent>();
 
@@ -88,14 +92,45 @@ public class ChestHandler : ScriptableObject {
 
   public void ChestToInv(int from, int to) {
     Debug.Log("move chest item from " + from + " to inv " + to);
+    if (to > 17) return;
+
+    SwapItem(ref chestList[currentlyOpenChest].itemList[from], ref _inventory.itemList[to]);
+
+    OnInventoryUpdate.Raise();
   }
 
   public void InvToChest(int from, int to) {
-    Debug.Log("move inv item from " + from + " to chest" + to);
+    Debug.Log("move inv item from " + from + " to chest " + to);
+
+    if (from > 17) return;
+    SwapItem(ref _inventory.itemList[from], ref chestList[currentlyOpenChest].itemList[to]);
+
+    OnInventoryUpdate.Raise();
   }
 
   public void ChestSwap(int from, int to) {
-    Debug.Log("move chest item from " + from + " to chest" + to);
+    Debug.Log("move chest item from " + from + " to chest " + to);
+    SwapItem(ref chestList[currentlyOpenChest].itemList[from], ref chestList[currentlyOpenChest].itemList[to]);
+
+    OnInventoryUpdate.Raise();
+  }
+
+  private void SwapItem(ref Item from, ref Item to) {
+    if (to != null && from.itemData == to.itemData && to.isStackable() && to.GetFreeSlot() > 0) {
+      int freeSlot = to.GetFreeSlot();
+      if (from.amount > freeSlot) {
+        to.amount += freeSlot;
+        from.amount -= freeSlot;
+      } else {
+        to.amount += from.amount;
+        from = null;
+      }
+    } else {
+      Item temp = to;
+      to = from;
+      from = temp;
+    }
+
   }
 
   [ContextMenu("Print all chest")]
