@@ -26,6 +26,9 @@ public class MapSaveData {
   public List<int> biomeMap;
   public List<WorldObjectData> worldObjectDatas;
   public List<WorldItemData> worldItemDatas;
+
+  public List<int> chestIds;
+  public List<InventoryData> chestContents;
 }
 
 [System.Serializable]

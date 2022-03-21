@@ -25,6 +25,8 @@ public class SaveSystem : MonoBehaviour {
 
   public MapSO map;
 
+  public ChestHandler chestHandler;
+
   private void Awake() {
     _instance = this;
   }
@@ -58,6 +60,8 @@ public class SaveSystem : MonoBehaviour {
       map.biomes = Get2DBiomeMapListFromData(data._mapSaveData);
       map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
 
+      chestHandler.ApplyLoadedData(data._mapSaveData);
+
       timeSO.ApplyLoadedData(data._worldData);
 
       inventory.ApplyLoadedData(data._inventoryData);
@@ -82,6 +86,9 @@ public class SaveSystem : MonoBehaviour {
     List<WorldObjectData> currentWorldData = new List<WorldObjectData>();
     List<WorldItemData> currentWorldItemData = new List<WorldItemData>();
 
+    List<int> currentChestIds = new List<int>();
+    List<InventoryData> currentChestContents = new List<InventoryData>();
+
     //Handling adding tilemap to List
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
@@ -92,12 +99,10 @@ public class SaveSystem : MonoBehaviour {
 
     //adding map data from worldobject list
     for (int i = 0; i < map.worldObjects.Count; i++) {
-      int objId = map.worldObjects[i].GetComponent<WorldObject>().objectID;
-
-      Debug.Log("saving obj with ID : " + objId);
-
+      WorldObject obj = map.worldObjects[i].GetComponent<WorldObject>();
+      int objId = obj.objectID;
       Vector2 pos = new Vector2(map.worldObjects[i].transform.position.x, map.worldObjects[i].transform.position.y);
-      currentWorldData.Add(new WorldObjectData(objId, pos));
+      currentWorldData.Add(new WorldObjectData(objId, pos, obj.status));
     }
 
     for (int i = 0; i < map.worldItemData.Count; i++) {
@@ -112,10 +117,18 @@ public class SaveSystem : MonoBehaviour {
       currentWorldItemData.Add(temp);
     }
 
+    foreach (var chest in chestHandler.chestList) {
+      currentChestIds.Add(chest.Key);
+      currentChestContents.Add(chestHandler.GenerateChestData(chest.Value));
+    }
+
     data.tileMap = currentMapData;
     data.biomeMap = currentBiomeData;
     data.worldObjectDatas = currentWorldData;
     data.worldItemDatas = currentWorldItemData;
+
+    data.chestIds = currentChestIds;
+    data.chestContents = currentChestContents;
 
     return data;
   }

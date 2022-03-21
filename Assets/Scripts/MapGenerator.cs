@@ -172,7 +172,7 @@ public class MapGenerator : MonoBehaviour {
         if (Random.value > 0.97 && map.tileMap[x][y] == 1) {
           int randChoice = Random.Range(0, naturalObjDB.worldObjects.Count);
           Vector2 position = new Vector2(x, y);
-          worldObjectDatas.Add(new WorldObjectData(randChoice, position));
+          worldObjectDatas.Add(new WorldObjectData(randChoice, position, -1));
         }
       }
     }
@@ -186,6 +186,7 @@ public class MapGenerator : MonoBehaviour {
     foreach (WorldObjectData data in map.worldObjectDatas) {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
+      wo.GetComponent<WorldObject>().status = data.status;
 
       //should add obj to worldobjects from the object itself
       //wo.GetComponent<WorldObject>().objectID = data.objectID;

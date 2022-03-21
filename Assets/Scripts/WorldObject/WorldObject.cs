@@ -15,6 +15,8 @@ public abstract class WorldObject : MonoBehaviour {
 
   public MapSO _map;
 
+  public int status = -1;
+
   protected void InitializeObject() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
     BoxCollider2D clickHitbox = gameObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
