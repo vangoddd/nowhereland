@@ -21,6 +21,8 @@ public class Chest : Useable {
     } else {
       //load from list
     }
+
+    DebugPopulateChest();
   }
 
   public override void UseObject() {

@@ -14,6 +14,10 @@ public class ItemInteraction : ScriptableObject {
 
   public UnityEvent<int, int> OnSlotSwap;
 
+  public UnityEvent<int, int> OnInvToChest;
+  public UnityEvent<int, int> OnChestToInv;
+  public UnityEvent<int, int> OnChestSwap;
+
   private void OnEnable() {
     if (OnItemPickup == null) {
       OnItemPickup = new UnityEvent<ItemScript>();
@@ -37,6 +41,18 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnChestOpen == null) {
       OnChestOpen = new UnityEvent<int>();
+    }
+
+    if (OnInvToChest == null) {
+      OnInvToChest = new UnityEvent<int, int>();
+    }
+
+    if (OnChestToInv == null) {
+      OnChestToInv = new UnityEvent<int, int>();
+    }
+
+    if (OnChestSwap == null) {
+      OnChestSwap = new UnityEvent<int, int>();
     }
   }
 
@@ -62,6 +78,18 @@ public class ItemInteraction : ScriptableObject {
 
   public void OpenChest(int chestId) {
     OnChestOpen.Invoke(chestId);
+  }
+
+  public void ChestToInv(int from, int to) {
+    OnChestToInv.Invoke(from, to);
+  }
+
+  public void InvToChest(int from, int to) {
+    OnInvToChest.Invoke(from, to);
+  }
+
+  public void ChestSwap(int from, int to) {
+    OnChestSwap.Invoke(from, to);
   }
 
 }

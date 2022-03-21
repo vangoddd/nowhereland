@@ -25,10 +25,12 @@ public class UI_Chest : MonoBehaviour {
 
   void OnEnable() {
     OnChestOpen.Raise();
+    chestHandler.currentlyOpenChest = chestId;
     UpdateChest();
   }
 
   void OnDisable() {
+    chestHandler.currentlyOpenChest = -1;
     OnChestClosed.Raise();
   }
 

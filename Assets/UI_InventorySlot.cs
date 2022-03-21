@@ -59,9 +59,16 @@ public class UI_InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 
   public virtual void OnDrop(PointerEventData eventData) {
     if (eventData.pointerDrag != null) {
+
+      //if item is from inventory, swap normally
       UI_InventorySlot slot = eventData.pointerDrag.gameObject.GetComponent<UI_InventorySlot>();
-      if (slot != null) {
+      if (slot != null && !(slot is UI_ChestSlot)) {
         _itemInteraction.SlotSwap(slot.slotIndex, slotIndex);
+      }
+
+      //if item is from chest, add item from chest to inv
+      if (slot != null && slot is UI_ChestSlot) {
+        _itemInteraction.ChestToInv(slot.slotIndex, slotIndex);
       }
     }
   }

@@ -10,8 +10,21 @@ public class ChestHandler : ScriptableObject {
 
   public ItemDatabase itemDB;
 
+  public int currentlyOpenChest;
+  public ItemInteraction _itemInteraction;
+
   void OnEnable() {
     chestList = new Dictionary<int, ChestContent>();
+
+    _itemInteraction.OnChestToInv.AddListener(ChestToInv);
+    _itemInteraction.OnInvToChest.AddListener(InvToChest);
+    _itemInteraction.OnChestSwap.AddListener(ChestSwap);
+  }
+
+  void OnDisable() {
+    _itemInteraction.OnChestToInv.RemoveListener(ChestToInv);
+    _itemInteraction.OnInvToChest.RemoveListener(InvToChest);
+    _itemInteraction.OnChestSwap.RemoveListener(ChestSwap);
   }
 
   public void AddNewChestToList(Chest chest) {
@@ -71,6 +84,18 @@ public class ChestHandler : ScriptableObject {
     temp.itemAmount = _itemAmount;
 
     return temp;
+  }
+
+  public void ChestToInv(int from, int to) {
+    Debug.Log("move chest item from " + from + " to inv " + to);
+  }
+
+  public void InvToChest(int from, int to) {
+    Debug.Log("move inv item from " + from + " to chest" + to);
+  }
+
+  public void ChestSwap(int from, int to) {
+    Debug.Log("move chest item from " + from + " to chest" + to);
   }
 
   [ContextMenu("Print all chest")]
