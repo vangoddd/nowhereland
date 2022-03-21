@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Destroyable : WorldObject {
+public class Destroyable : WorldObject {
   public float health;
   public ToolType requiredTool = null;
 
@@ -22,7 +22,5 @@ public abstract class Destroyable : WorldObject {
     }
     return false;
   }
-
-
 
 }

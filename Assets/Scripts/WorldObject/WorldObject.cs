@@ -46,7 +46,7 @@ public abstract class WorldObject : MonoBehaviour {
     return false;
   }
 
-  public void DestroyWorldObject() {
+  public virtual void DestroyWorldObject() {
     //remove itself from chunk thing
     ChunkHandlerScript.removeObjectFromChunk(gameObject);
     _map.worldObjects.Remove(gameObject);

@@ -93,6 +93,9 @@ public class SaveSystem : MonoBehaviour {
     //adding map data from worldobject list
     for (int i = 0; i < map.worldObjects.Count; i++) {
       int objId = map.worldObjects[i].GetComponent<WorldObject>().objectID;
+
+      Debug.Log("saving obj with ID : " + objId);
+
       Vector2 pos = new Vector2(map.worldObjects[i].transform.position.x, map.worldObjects[i].transform.position.y);
       currentWorldData.Add(new WorldObjectData(objId, pos));
     }

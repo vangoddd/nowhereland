@@ -9,7 +9,7 @@
                     "name": "Touch",
                     "type": "Value",
                     "id": "6caf07ff-72c0-4ac7-91bb-90968a3366a4",
-                    "expectedControlType": "Touch",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -50,7 +50,7 @@
                 {
                     "name": "",
                     "id": "baa44a23-e974-49e7-9a77-25637b9e7bdf",
-                    "path": "<Touchscreen>/press",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",

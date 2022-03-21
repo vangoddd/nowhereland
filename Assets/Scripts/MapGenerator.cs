@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour {
   public MapSO map;
   public TilesetDatabase tileset;
-  public WorldObjectDB worldObjectDB;
+  public WorldObjectDB worldObjectDB, naturalObjDB;
 
   private List<WorldObjectData> worldObjectDatas = new List<WorldObjectData>();
 
@@ -170,7 +170,7 @@ public class MapGenerator : MonoBehaviour {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
         if (Random.value > 0.97 && map.tileMap[x][y] == 1) {
-          int randChoice = Random.Range(0, worldObjectDB.worldObjects.Count);
+          int randChoice = Random.Range(0, naturalObjDB.worldObjects.Count);
           Vector2 position = new Vector2(x, y);
           worldObjectDatas.Add(new WorldObjectData(randChoice, position));
         }

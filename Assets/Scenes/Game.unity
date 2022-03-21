@@ -1133,7 +1133,7 @@ MonoBehaviour:
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   tileset: {fileID: 11400000, guid: 6149b84577100e44094ac0e943dd5244, type: 2}
   worldObjectDB: {fileID: 11400000, guid: 70be79af6438d564696c8f22150379f8, type: 2}
-  seed: 420
+  seed: 69
   magnification: 20
   biomeMagnigication: 0
   biomeScale: 3
@@ -2292,6 +2292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldItemPrefab: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
   itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
+  playerPos: {fileID: 1778751127}
 --- !u!4 &1738977191
 Transform:
   m_ObjectHideFlags: 0
@@ -2309,6 +2310,11 @@ Transform:
 --- !u!1 &1778751118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4846516622845276384, guid: 2df62e8e0afb1144bb7c67d66c90c118, type: 3}
+  m_PrefabInstance: {fileID: 4846516622408705646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1778751127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4846516622845276414, guid: 2df62e8e0afb1144bb7c67d66c90c118, type: 3}
   m_PrefabInstance: {fileID: 4846516622408705646}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1778751128
@@ -2722,6 +2728,22 @@ PrefabInstance:
     - target: {fileID: 1822558771596613396, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822558771596613397, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822558771596613397, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.57254905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822558771596613397, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.6901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822558771596613397, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.54509807
       objectReference: {fileID: 0}
     - target: {fileID: 1822558771596613399, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
       propertyPath: m_RenderPostProcessing

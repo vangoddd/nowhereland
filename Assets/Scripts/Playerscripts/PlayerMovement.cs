@@ -153,9 +153,12 @@ public class PlayerMovement : MonoBehaviour {
   private bool isMoveHold = false;
 
   public void OnTouch() {
-    //Debug.Log("OnTouch");
-    if (!(IsPointerOverUIObject())) UpdateMoveDir();
-    // Debug.Log((IsPointerOverUIObject()));
+    if (!(IsPointerOverUIObject())) {
+      //do raycast to get hit obj
+      RaycastClickedObject();
+
+      UpdateMoveDir();
+    }
   }
 
   public void OnTouchPosition(InputValue value) {
@@ -188,4 +191,25 @@ public class PlayerMovement : MonoBehaviour {
     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
     return results.Count > 0;
   }
+
+  private void RaycastClickedObject() {
+    Vector2 origin = Vector2.zero;
+    Vector2 dir = Vector2.zero;
+    Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+    origin = ray.origin;
+    dir = ray.direction;
+
+    RaycastHit2D hit = Physics2D.Raycast(origin, dir);
+
+    //Check if we hit anything
+    if (hit) {
+      if (hit.collider.gameObject.layer == 6) { //if hit on worldobject
+        WorldObject obj = hit.collider.gameObject.GetComponent<WorldObject>();
+        if (obj != null && obj is Useable) {
+          ((Useable)obj).UseObject();
+        }
+      }
+    }
+  }
 }
+
