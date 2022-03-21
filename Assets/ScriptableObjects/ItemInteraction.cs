@@ -10,6 +10,8 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int> OnItemUse;
   public UnityEvent<int> OnUnequip;
 
+  public UnityEvent<int> OnChestOpen;
+
   public UnityEvent<int, int> OnSlotSwap;
 
   private void OnEnable() {
@@ -32,6 +34,10 @@ public class ItemInteraction : ScriptableObject {
     if (OnSlotSwap == null) {
       OnSlotSwap = new UnityEvent<int, int>();
     }
+
+    if (OnChestOpen == null) {
+      OnChestOpen = new UnityEvent<int>();
+    }
   }
 
   public void PickupItem(ItemScript item) {
@@ -52,6 +58,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void SlotSwap(int from, int to) {
     OnSlotSwap.Invoke(from, to);
+  }
+
+  public void OpenChest(int chestId) {
+    OnChestOpen.Invoke(chestId);
   }
 
 }

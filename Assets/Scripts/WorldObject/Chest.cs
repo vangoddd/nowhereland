@@ -8,6 +8,8 @@ public class Chest : Useable {
   public ChestHandler chestHandler;
   public ItemDatabase itemDB;
 
+  public ItemInteraction _itemInteraction;
+
   void Start() {
     base.InitializeObject();
 
@@ -22,6 +24,7 @@ public class Chest : Useable {
   }
 
   public override void UseObject() {
+    _itemInteraction.OnChestOpen.Invoke(chestId);
     Debug.Log("Using object " + gameObject.name);
   }
 
@@ -41,7 +44,7 @@ public class Chest : Useable {
   public void DebugPrintChestContent() {
     Item[] content = chestHandler.chestList[chestId].itemList;
     for (int x = 0; x < 12; x++) {
-      if (content[x] != null) Debug.Log(content[x].itemData.name);
+      if (content[x] != null) Debug.Log(content[x].itemData.name + " Index : " + x);
     }
   }
 
