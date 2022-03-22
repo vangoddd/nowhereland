@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ed951c44fd1754d9f138c2e1be36c3, type: 3}
   m_Name: ChestHandler
   m_EditorClassIdentifier: 
+  itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
+  currentlyOpenChest: -1
+  _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
+  _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
+  OnInventoryUpdate: {fileID: 11400000, guid: 89ea768d784d7a5488c57facc4abc83d, type: 2}

@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviour {
   public float interactSearchRadius = 2f;
 
   private Animator animator;
+  private PlayerInput playerInput;
+
+  private bool UIOpen = false;
+
+  private bool isUsing = false;
 
   [SerializeField] private InteractSO _interactSO;
   [SerializeField] private MapSO map;
@@ -35,6 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 
   void Start() {
     animator = GetComponent<Animator>();
+    playerInput = GetComponent<PlayerInput>();
   }
 
   void OnEnable() {
@@ -97,6 +103,7 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   void UpdateMoveDir() {
+    if (UIOpen) return;
     // lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     lastClickedPos = Camera.main.ScreenToWorldPoint(touchPosition);
     moveDir = (lastClickedPos - (Vector2)transform.position).normalized;
@@ -125,8 +132,17 @@ public class PlayerMovement : MonoBehaviour {
           targetObject.Interact(gameObject);
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
-
         }
+      } else if (isUsing) {
+        Useable targetObject = moveToTarget.GetComponent<WorldObject>() as Useable;
+        if (targetObject.canInteract(transform.position)) {
+          moving = false;
+          isUsing = false;
+          targetObject.UseObject();
+        } else {
+          rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+        }
+
       } else {
         rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
       }
@@ -184,6 +200,22 @@ public class PlayerMovement : MonoBehaviour {
     TimeManager.Instance.togglePause();
   }
 
+  public void CancelMovement() {
+    Debug.Log("cancelling movement");
+    moving = false;
+    isUsing = false;
+  }
+
+  public void OnUIOpen() {
+    playerInput.SwitchCurrentActionMap("UI");
+    UIOpen = true;
+  }
+
+  public void OnUIClosed() {
+    playerInput.SwitchCurrentActionMap("Gameplay");
+    UIOpen = false;
+  }
+
   private bool IsPointerOverUIObject() {
     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
     eventDataCurrentPosition.position = touchPosition;
@@ -206,7 +238,12 @@ public class PlayerMovement : MonoBehaviour {
       if (hit.collider.gameObject.layer == 6) { //if hit on worldobject
         WorldObject obj = hit.collider.gameObject.GetComponent<WorldObject>();
         if (obj != null && obj is Useable) {
-          ((Useable)obj).UseObject();
+          if (obj.canInteract(transform.position)) {
+            ((Useable)obj).UseObject();
+          } else {
+            isUsing = true;
+            moveToTarget = obj.gameObject;
+          }
         }
       }
     }

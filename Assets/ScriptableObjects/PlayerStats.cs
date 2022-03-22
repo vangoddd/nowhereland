@@ -42,8 +42,8 @@ public class PlayerStats : ScriptableObject {
     if (thirst < 0) thirst = 0;
 
     if (health > maxStat) health = maxStat;
-    if (hunger > maxStat) health = maxStat;
-    if (thirst > maxStat) health = maxStat;
+    if (hunger > maxStat) hunger = maxStat;
+    if (thirst > maxStat) thirst = maxStat;
 
     OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
     if (health <= 0) {
@@ -59,6 +59,10 @@ public class PlayerStats : ScriptableObject {
     if (health < 0) health = 0;
     if (hunger < 0) hunger = 0;
     if (thirst < 0) thirst = 0;
+
+    if (health > maxStat) health = maxStat;
+    if (hunger > maxStat) hunger = maxStat;
+    if (thirst > maxStat) thirst = maxStat;
 
     OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
     if (health <= 0) {

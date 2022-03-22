@@ -12,22 +12,16 @@ public class Chest : Useable {
 
   void Start() {
     base.InitializeObject();
-
     chestId = status;
-
     if (chestId == -1) {
-      //add to list
       chestHandler.AddNewChestToList(this);
-    } else {
-      //load from list
     }
-
-    DebugPopulateChest();
   }
 
   public override void UseObject() {
+    base.UseObject();
     _itemInteraction.OnChestOpen.Invoke(chestId);
-    Debug.Log("Using object " + gameObject.name);
+    // Debug.Log("Using object " + gameObject.name);
   }
 
   public override void DestroyWorldObject() {

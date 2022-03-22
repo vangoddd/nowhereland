@@ -3,5 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Useable : Destroyable {
-  public abstract void UseObject();
+  public GameEvent OnWorldItemUse;
+
+  public virtual void UseObject() {
+    OnWorldItemUse.Raise();
+  }
 }
