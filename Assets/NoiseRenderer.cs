@@ -9,6 +9,8 @@ public class NoiseRenderer : MonoBehaviour {
   public int mapSize, seed, octaves;
   public float magnification, presistance, lacunarity;
 
+  public float cutoff;
+
   public Texture2D tex;
   // Start is called before the first frame update
   void Start() {
@@ -43,12 +45,12 @@ public class NoiseRenderer : MonoBehaviour {
   }
 
   Color GetNoiseColor(float val) {
-    // if (val > 0.35) {
-    //   return Color.white;
-    // } else {
-    //   return Color.black;
-    // }
-    return new Color(val, val, val, 1f);
+    if (val > cutoff) {
+      return Color.white;
+    } else {
+      return Color.black;
+    }
+    //return new Color(val, val, val, 1f);
   }
 }
 

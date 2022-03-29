@@ -3,35 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
+  private int currentSeed = 0;
+
+  [Header("Save system")]
+  public bool loadFromSave = false;
+  [Space(10)]
+
+  [Header("Base Noise Setting")]
+  public int mapSize;
+  public int seed = 0;
+  public int octaves;
+  public float magnification;
+  public float presistance;
+  public float lacunarity;
+  public float cutoff;
+  [Space(10)]
+
+  [Header("Biome Noise Setting")]
+  public int biome_octaves;
+  public float biome_magnification;
+  public float biome_presistance;
+  public float biome_lacunarity;
+  [Space(10)]
+
+  [Header("Generated Textures")]
+  public Texture2D noise1;
+  public Texture2D noise2;
+  public Texture2D noise3;
+  public Texture2D noiseBiome1;
+  public Texture2D noiseBiome2;
+  //map texture
+  public Texture2D mapTexture;
+  [Space(10)]
+
+  [Header("References")]
   public MapSO map;
   public TilesetDatabase tileset;
   public WorldObjectDB worldObjectDB, naturalObjDB;
 
-  private List<WorldObjectData> worldObjectDatas = new List<WorldObjectData>();
-
-  private int currentSeed = 0;
-  public int seed = 0;
-
   Color[] gradientPixels;
-
-  public float magnification = 12.0f;
-  public float biomeMagnigication;
-  public float biomeScale = 2f;
-
-  int x_offset = 0;
-  int y_offset = 0;
-  int biome_x_offset = 0;
-  int biome_y_offset = 0;
-
   public Texture2D levelGradient;
 
-  //map texture
-  public Texture2D mapTexture;
-
+  private List<WorldObjectData> worldObjectDatas = new List<WorldObjectData>();
   //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
 
-  public bool loadFromSave = false;
+  /*----------------------------------------*/
 
   void Awake() {
     for (int i = 0; i < (map.mapSize * map.mapSize / (map.chunkSize * map.chunkSize)); i++) {
@@ -40,16 +57,17 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void Start() {
-    biomeMagnigication = magnification * biomeScale;
     InitiateSeed();
     GetGradientColors();
 
     if (!loadFromSave) {
+      map.mapSize = mapSize;
       GenerateMap();
       GenerateWorldObject();
       SpawnObjects();
     } else {
       SaveSystem.Instance.LoadGame();
+      mapSize = map.mapSize;
       InstantiateTiles();
       SpawnObjects();
     }
@@ -81,47 +99,54 @@ public class MapGenerator : MonoBehaviour {
     }
     currentSeed = seed.ToString().GetHashCode();
     Random.InitState(currentSeed);
-
-    x_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
-    y_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
-    biome_x_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
-    biome_y_offset = Mathf.FloorToInt(Random.Range(-10000f, 10000f));
   }
 
   void GenerateMap() {
     for (int x = 0; x < map.mapSize; x++) {
-      //initializing containers
       map.tileMap.Add(new List<int>());
       map.biomes.Add(new List<int>());
-      map.rawNoiseData.Add(new List<float>());
+    }
 
+    //generate base noise
+    NoiseGenerator baseNoise = new NoiseGenerator();
+    baseNoise.GenerateNoise(map.mapSize, seed, magnification, octaves, presistance, lacunarity);
+    map.rawNoiseData = baseNoise.rawNoiseData;
+
+    noise1 = GeneratePartTexture(map.rawNoiseData);
+
+    //multiply noise with gradient
+    for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
-        //Generate noise and save the raw noise data
-        float rawNoise = Mathf.PerlinNoise((x - x_offset) / magnification, (y - y_offset) / magnification);
-        float clampedNoise = Mathf.Clamp01(rawNoise);
-
-        //Add gradient to ensure outside is water
         float gradFloat = GetGradientFloat(x, y);
-        float finalNoise = clampedNoise * gradFloat;
+        float finalNoise = map.rawNoiseData[x][y] * gradFloat;
         finalNoise = (finalNoise + gradFloat / 2) / 2;
-        map.rawNoiseData[x].Add(finalNoise);
+        map.rawNoiseData[x][y] = finalNoise;
 
-        //getting tile ID and saving it in a 2D array
+        //getting tile ID from noise data
         int tileId = getTileFromPerlin(finalNoise);
         map.tileMap[x].Add(tileId);
+      }
+    }
 
-        //Generate biome data using another perlin
-        float biomeNoise = Mathf.PerlinNoise((x - biome_x_offset) / biomeMagnigication, (y - biome_y_offset) / biomeMagnigication);
-        biomeNoise = Mathf.Clamp01(biomeNoise);
+    noise2 = GeneratePartTexture(map.rawNoiseData);
+    noise3 = GeneratePartTexturePosterized(map.rawNoiseData);
 
-        //divide the noise to <biome count> part
-        int biomeID = Mathf.FloorToInt(biomeNoise * (tileset.tiles.Count - 1));
+    //generate biome noise
+    NoiseGenerator biomeNoise = new NoiseGenerator();
+    biomeNoise.GenerateNoise(map.mapSize, seed, biome_magnification, biome_octaves, biome_presistance, biome_lacunarity);
+
+    noiseBiome1 = GeneratePartTexture(biomeNoise.rawNoiseData);
+
+    //get biome data from biome noise
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        int biomeID = Mathf.FloorToInt(biomeNoise.rawNoiseData[x][y] * (tileset.tiles.Count - 1));
         if (biomeID == tileset.tiles.Count - 1) biomeID--;
 
-        //Save biome data to 2D array
         map.biomes[x].Add(biomeID);
       }
     }
+
     InstantiateTiles();
   }
 
@@ -187,10 +212,6 @@ public class MapGenerator : MonoBehaviour {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
       wo.GetComponent<WorldObject>().status = data.status;
-
-      //should add obj to worldobjects from the object itself
-      //wo.GetComponent<WorldObject>().objectID = data.objectID;
-      //map.worldObjects.Add(wo);
     }
   }
 
@@ -205,6 +226,44 @@ public class MapGenerator : MonoBehaviour {
       }
     }
     mapTexture.Apply();
+  }
+
+  public Texture2D GeneratePartTexture(List<List<float>> data) {
+    Texture2D texture = new Texture2D(map.mapSize, map.mapSize, TextureFormat.ARGB32, false);
+    texture.filterMode = FilterMode.Point;
+
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        texture.SetPixel(x, y, getColorFromFloat(data[x][y]));
+      }
+    }
+
+    return texture;
+  }
+
+  public Texture2D GeneratePartTexturePosterized(List<List<float>> data) {
+    Texture2D texture = new Texture2D(map.mapSize, map.mapSize, TextureFormat.ARGB32, false);
+    texture.filterMode = FilterMode.Point;
+
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        texture.SetPixel(x, y, getColorFromFloatPosterized(data[x][y], 0.35f));
+      }
+    }
+
+    return texture;
+  }
+
+  private Color getColorFromFloat(float val) {
+    return new Color(val, val, val, 1f);
+  }
+
+  private Color getColorFromFloatPosterized(float val, float cutoff) {
+    if (val > cutoff) {
+      return Color.white;
+    } else {
+      return Color.black;
+    }
   }
 
   private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity) {
