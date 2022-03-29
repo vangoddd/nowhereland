@@ -153,7 +153,7 @@ public class Inventory : ScriptableObject {
     return totalCount;
   }
 
-  public void CraftItem(ItemRecipe recipe) {
+  public bool CanCraftItem(ItemRecipe recipe) {
     bool itemEnough = true;
     for (int i = 0; i < recipe.requiredItems.Length; i++) {
       if (GetItemCount(recipe.requiredItems[i].item) < recipe.requiredItems[i].amount) {
@@ -161,13 +161,45 @@ public class Inventory : ScriptableObject {
         break;
       }
     }
-    if (itemEnough) {
+    return itemEnough;
+  }
+
+  public void CraftItem(ItemRecipe recipe) {
+    if (CanCraftItem(recipe)) {
       for (int i = 0; i < recipe.requiredItems.Length; i++) {
         RemoveItem(recipe.requiredItems[i].item, recipe.requiredItems[i].amount);
       }
       AddItem(recipe.result.item, recipe.result.amount);
     }
+  }
 
+  public List<int> GetRequiredItemAmountHeld(ItemRecipe recipe) {
+    List<int> temp = new List<int>();
+
+    for (int i = 0; i < recipe.requiredItems.Length; i++) {
+
+      int tempAmount = 0;
+      for (int j = 0; j < 18; j++) {
+        if (itemList[j] == null) continue;
+        if (itemList[j].itemData == recipe.requiredItems[i].item) {
+          tempAmount += itemList[j].amount;
+        }
+      }
+
+      temp.Add(tempAmount);
+    }
+    return temp;
+  }
+
+  public int GetTotalHeldItem(ItemData item) {
+    int temp = 0;
+    for (int i = 0; i < 18; i++) {
+      if (itemList[i] == null) continue;
+      if (itemList[i].itemData == item) {
+        temp += itemList[i].amount;
+      }
+    }
+    return temp;
   }
 
   [ContextMenu("Print inv")]

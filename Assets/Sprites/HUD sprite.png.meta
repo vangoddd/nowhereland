@@ -68,6 +68,15 @@ TextureImporter:
   - first:
       213: 9158156049289954363
     second: inv_empty
+  - first:
+      213: -8709777020078257291
+    second: crafting_slot
+  - first:
+      213: 2479410801181264896
+    second: panel
+  - first:
+      213: -4183697710719971980
+    second: craft_selection
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -659,6 +668,69 @@ TextureImporter:
       bones: []
       spriteID: b34c583a76e481f70800000000000000
       internalID: 9158156049289954363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crafting_slot
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b006552f7a02780800000000000000
+      internalID: -8709777020078257291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panel
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 36
+        width: 65
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c0da8bcf2a86220800000000000000
+      internalID: 2479410801181264896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: craft_selection
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47dcbe8291580f5c0800000000000000
+      internalID: -4183697710719971980
       vertices: []
       indices: 
       edges: []
