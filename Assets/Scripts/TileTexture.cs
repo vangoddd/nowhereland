@@ -21,6 +21,8 @@ public class TileTexture : MonoBehaviour {
     sr = GetComponent<SpriteRenderer>();
     x = Mathf.FloorToInt(transform.position.x);
     y = Mathf.FloorToInt(transform.position.y);
+
+    ApplyTexture();
   }
 
   public void ApplyTexture() {
