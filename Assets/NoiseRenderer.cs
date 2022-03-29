@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class NoiseRenderer : MonoBehaviour {
+
+  public int mapSize, seed, octaves;
+  public float magnification, presistance, lacunarity;
 
   public Texture2D tex;
   // Start is called before the first frame update
@@ -13,16 +17,22 @@ public class NoiseRenderer : MonoBehaviour {
     GetComponent<RawImage>().texture = tex;
   }
 
+  [ContextMenu("Regenerate Texture")]
+  public void RegenerateTexture() {
+    tex = generateTexture();
+    GetComponent<RawImage>().texture = tex;
+  }
+
   Texture2D generateTexture() {
-    Texture2D texture = new Texture2D(300, 300, TextureFormat.ARGB32, false);
+    Texture2D texture = new Texture2D(mapSize, mapSize, TextureFormat.ARGB32, false);
 
     List<List<float>> rawNoiseData;
     NoiseGenerator ng = new NoiseGenerator();
-    ng.GenerateNoise(300, 240, 12f, 1, 0.2f, 1f);
+    ng.GenerateNoise(mapSize, seed, magnification, octaves, presistance, lacunarity);
     rawNoiseData = ng.rawNoiseData;
 
-    for (int x = 0; x < 300; x++) {
-      for (int y = 0; y < 300; y++) {
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
         //Debug.Log(rawNoiseData[x][y]);
         texture.SetPixel(x, y, GetNoiseColor(rawNoiseData[x][y]));
       }
@@ -33,11 +43,23 @@ public class NoiseRenderer : MonoBehaviour {
   }
 
   Color GetNoiseColor(float val) {
-    if (val > 0.35) {
-      return Color.white;
-    } else {
-      return Color.black;
-    }
-    //return new Color(val, val, val, 1f);
+    // if (val > 0.35) {
+    //   return Color.white;
+    // } else {
+    //   return Color.black;
+    // }
+    return new Color(val, val, val, 1f);
+  }
+}
+
+
+
+[CustomEditor(typeof(NoiseRenderer))]
+public class NoiseRendererEditor : Editor {
+  public override void OnInspectorGUI() {
+    base.OnInspectorGUI();
+
+    NoiseRenderer script = (NoiseRenderer)target;
+    script.RegenerateTexture();
   }
 }

@@ -49,7 +49,7 @@ public class NoiseGenerator {
 
         rawNoiseData[x].Add(noiseHeight);
 
-        Debug.Log("Noise height :" + noiseHeight);
+        //Debug.Log("Noise height :" + noiseHeight);
 
       }
     }
