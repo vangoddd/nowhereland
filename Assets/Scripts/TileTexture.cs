@@ -21,7 +21,9 @@ public class TileTexture : MonoBehaviour {
     sr = GetComponent<SpriteRenderer>();
     x = Mathf.FloorToInt(transform.position.x);
     y = Mathf.FloorToInt(transform.position.y);
+  }
 
+  public void ApplyTexture() {
     //check bitmask value
     if (tileId != 0) {
       CalculateBitmask();
@@ -101,7 +103,6 @@ public class TileTexture : MonoBehaviour {
         sr.sprite = tile_alternate[index];
       }
     }
-
   }
 
   void CalculateBitmask() {

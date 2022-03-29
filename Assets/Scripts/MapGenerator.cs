@@ -48,6 +48,8 @@ public class MapGenerator : MonoBehaviour {
   //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
 
+  private List<TileTexture> runtimeTiles = new List<TileTexture>();
+
   /*----------------------------------------*/
 
   void Awake() {
@@ -147,6 +149,8 @@ public class MapGenerator : MonoBehaviour {
       }
     }
 
+    noiseBiome2 = GenerateBiomeTexture(map.biomes);
+
     InstantiateTiles();
   }
 
@@ -184,6 +188,8 @@ public class MapGenerator : MonoBehaviour {
 
     tile.transform.position = new Vector3(x, y, 0);
     tile.name = string.Format("Tile_({0}, {1})", x, y);
+
+    runtimeTiles.Add(tile.GetComponent<TileTexture>());
 
   }
 
@@ -254,6 +260,25 @@ public class MapGenerator : MonoBehaviour {
     return texture;
   }
 
+  public Texture2D GenerateBiomeTexture(List<List<int>> data) {
+    Texture2D texture = new Texture2D(map.mapSize, map.mapSize, TextureFormat.ARGB32, false);
+    texture.filterMode = FilterMode.Point;
+
+    Color[] colorList = new Color[tileset.tiles.Count - 1];
+
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      colorList[i] = Random.ColorHSV();
+    }
+
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        texture.SetPixel(x, y, colorList[map.biomes[x][y]]);
+      }
+    }
+
+    return texture;
+  }
+
   private Color getColorFromFloat(float val) {
     return new Color(val, val, val, 1f);
   }
@@ -268,6 +293,13 @@ public class MapGenerator : MonoBehaviour {
 
   private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity) {
     return 0f;
+  }
+
+  [ContextMenu("Apply Tile Texture")]
+  public void ApplyTileTexture() {
+    foreach (TileTexture tile in runtimeTiles) {
+      tile.ApplyTexture();
+    }
   }
 
 }
