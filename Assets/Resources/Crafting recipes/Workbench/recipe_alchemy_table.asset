@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 535e8da5bd7953b458461447cc0494cd, type: 3}
-  m_Name: recipe_berry
+  m_Name: recipe_alchemy_table
   m_EditorClassIdentifier: 
   requiredItems:
-  - item: {fileID: 11400000, guid: 264af0d7081a1d048b1aeaaa9921bbc3, type: 2}
-    amount: 2
+  - item: {fileID: 11400000, guid: f7ef54ec71044244eb771bc18ca483ef, type: 2}
+    amount: 4
+  - item: {fileID: 11400000, guid: fd38b6ea4e16607429356e57eedb72c8, type: 2}
+    amount: 12
   result:
-    item: {fileID: 11400000, guid: b677b1873098afc439f27e16d414d2ed, type: 2}
+    item: {fileID: 11400000, guid: 076684415b461a642a5fa455ed704b5f, type: 2}
     amount: 1

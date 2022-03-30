@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42bf981c618974f4e803da6c1d2809be, type: 3}
-  m_Name: chest
+  m_Name: furnace
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Box to store your things.
-  name: Chest
-  sprite: {fileID: 2313550211383612676, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
-  worldObjectPrefab: {fileID: 5763722464360170854, guid: 7d11e39c48e31764b82ce294c9721d2c, type: 3}
+  description: Cooks various ingredients into food.
+  name: Furnace
+  sprite: {fileID: 5483334918051397544, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
+  worldObjectPrefab: {fileID: 0}
