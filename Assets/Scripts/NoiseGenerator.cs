@@ -10,13 +10,17 @@ public class NoiseGenerator {
 
     System.Random pseudoRandom = new System.Random(seed.ToString().GetHashCode());
 
-    Random.InitState(seed.ToString().GetHashCode());
+    Vector2[] offsets = new Vector2[octaves];
+    for (int i = 0; i < octaves; i++) {
+      int x_offset = pseudoRandom.Next(-10000, 10000);
+      int y_offset = pseudoRandom.Next(-10000, 10000);
+      offsets[i] = new Vector2(x_offset, y_offset);
+    }
 
-    int x_offset = pseudoRandom.Next(-10000, 10000);
-    int y_offset = pseudoRandom.Next(-10000, 10000);
+    float minHeight = 0f;
+    float maxHeight = 0f;
 
-    float minHeight = float.MaxValue;
-    float maxHeight = float.MinValue;
+    float halfSize = mapSize / 2f;
 
     for (int x = 0; x < mapSize; x++) {
       rawNoiseData.Add(new List<float>());
@@ -27,8 +31,8 @@ public class NoiseGenerator {
         float noiseHeight = 0;
 
         for (int i = 0; i < octaves; i++) {
-          float sampleX = (x + x_offset) / magnification * frequency;
-          float sampleY = (y + y_offset) / magnification * frequency;
+          float sampleX = (x - halfSize) / magnification * frequency + offsets[i].x;
+          float sampleY = (y - halfSize) / magnification * frequency + offsets[i].y;
 
           float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
           //float perlinValue = Mathf.PerlinNoise(x, y);
@@ -37,6 +41,11 @@ public class NoiseGenerator {
 
           amplitude *= persistance; // 0 < persistance < 1
           frequency *= lacunarity; // lacunarity > 1
+        }
+
+        if (x == 0 && y == 0) {
+          minHeight = noiseHeight;
+          maxHeight = noiseHeight;
         }
 
         if (noiseHeight < minHeight) {

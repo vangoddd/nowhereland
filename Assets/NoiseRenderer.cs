@@ -45,12 +45,15 @@ public class NoiseRenderer : MonoBehaviour {
   }
 
   Color GetNoiseColor(float val) {
-    if (val > cutoff) {
-      return Color.white;
+    if (cutoff < 0) {
+      return new Color(val, val, val, 1f);
     } else {
-      return Color.black;
+      if (val > cutoff) {
+        return Color.white;
+      } else {
+        return Color.black;
+      }
     }
-    //return new Color(val, val, val, 1f);
   }
 }
 
