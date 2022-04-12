@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftingController : MonoBehaviour {
 
@@ -25,6 +26,10 @@ public class CraftingController : MonoBehaviour {
 
   void Start() {
     GenerateCraftingList();
+  }
+
+  public void SetButtonText(string text) {
+    craftButton.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = text;
   }
 
   public void GenerateCraftingList() {

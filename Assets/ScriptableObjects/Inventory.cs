@@ -41,6 +41,8 @@ public class Inventory : ScriptableObject {
     } else if (itemList[index].itemData is Tools || itemList[index].itemData is Armor) {
       Item lastUsed = equipItem(itemList[index]);
       itemList[index] = lastUsed;
+    } else if (itemList[index].itemData is Placeable) {
+      _itemInteraction.OnItemPlaceAction.Invoke(itemList[index].itemData as Placeable, index);
     }
     OnInventoryUpdate.Raise();
   }
@@ -123,7 +125,14 @@ public class Inventory : ScriptableObject {
     return false;
   }
 
-
+  public void RemoveItemAtSlot(int index, int amt) {
+    if (itemList[index] != null) {
+      itemList[index].amount -= amt;
+      if (itemList[index].amount <= 0) {
+        itemList[index] = null;
+      }
+    }
+  }
 
   public void RemoveItem(ItemData item, int amt) {
     if (amt == 0) return;

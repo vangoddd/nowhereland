@@ -5,5 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Item/Placeable item")]
 public class Placeable : ItemData {
   public GameObject worldObjectPrefab;
+  public ItemInteraction itemInteraction;
+
+  public override void UseItem() {
+    base.UseItem();
+  }
 
 }

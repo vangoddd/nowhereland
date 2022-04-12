@@ -28,11 +28,13 @@ public class UIManager : MonoBehaviour {
 
   public void OpenCraftingWorkbench() {
     UI_crafting.path = "Workbench";
+    UI_crafting.SetButtonText("Craft!");
     UI_crafting.gameObject.SetActive(true);
   }
 
   public void OpenCraftingCookPot() {
     UI_crafting.path = "Cooking";
+    UI_crafting.SetButtonText("Cook!");
     UI_crafting.gameObject.SetActive(true);
   }
 }
