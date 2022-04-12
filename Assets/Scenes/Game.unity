@@ -2944,6 +2944,8 @@ MonoBehaviour:
   tileset: {fileID: 11400000, guid: 6149b84577100e44094ac0e943dd5244, type: 2}
   worldObjectDB: {fileID: 11400000, guid: 70be79af6438d564696c8f22150379f8, type: 2}
   naturalObjDB: {fileID: 11400000, guid: 5cd06066688ed7e4589b9a2b3247d4a0, type: 2}
+  decals:
+  - {fileID: 4889024062735647205, guid: 70f4397b185b6b447be63c047efdb614, type: 3}
   levelGradient: {fileID: 2800000, guid: 1c4a79e49aabff74ebe9ca00d9c9fb77, type: 3}
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
 --- !u!4 &1129266677

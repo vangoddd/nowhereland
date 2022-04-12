@@ -40,6 +40,7 @@ public class MapGenerator : MonoBehaviour {
   public MapSO map;
   public TilesetDatabase tileset;
   public WorldObjectDB worldObjectDB, naturalObjDB;
+  public GameObject[] decals;
 
   Color[] gradientPixels;
   public Texture2D levelGradient;
@@ -160,6 +161,7 @@ public class MapGenerator : MonoBehaviour {
         SpawnTile(map.tileMap[x][y], x, y);
       }
     }
+    GenerateDecal();
   }
 
   int getTileFromPerlin(float perlinValue) {
@@ -191,6 +193,40 @@ public class MapGenerator : MonoBehaviour {
 
     runtimeTiles.Add(tile.GetComponent<TileTexture>());
 
+  }
+
+  void GenerateDecal() {
+    for (int x = 0; x < map.mapSize; x++) {
+      for (int y = 0; y < map.mapSize; y++) {
+        if (map.tileMap[x][y] == 0) continue;
+        int currentBiome = map.biomes[x][y];
+        GameObject decal;
+        //check up
+        if (y + 1 < mapSize && map.biomes[x][y + 1] > currentBiome && map.tileMap[x][y + 1] != 0) {
+          decal = Instantiate(decals[0]);
+          decal.GetComponent<DecalTexture>().SetFace(0);
+          decal.transform.position = new Vector2(x, y);
+        }
+        //check right
+        if (x + 1 < mapSize && map.biomes[x + 1][y] > currentBiome && map.tileMap[x + 1][y] != 0) {
+          decal = Instantiate(decals[0]);
+          decal.GetComponent<DecalTexture>().SetFace(1);
+          decal.transform.position = new Vector2(x, y);
+        }
+        //check down
+        if (y - 1 >= 0 && map.biomes[x][y - 1] > currentBiome && map.tileMap[x][y - 1] != 0) {
+          decal = Instantiate(decals[0]);
+          decal.GetComponent<DecalTexture>().SetFace(2);
+          decal.transform.position = new Vector2(x, y);
+        }
+        //check left
+        if (x - 1 >= 0 && map.biomes[x - 1][y] > currentBiome && map.tileMap[x - 1][y] != 0) {
+          decal = Instantiate(decals[0]);
+          decal.GetComponent<DecalTexture>().SetFace(3);
+          decal.transform.position = new Vector2(x, y);
+        }
+      }
+    }
   }
 
   void SpawnSetPiece() {

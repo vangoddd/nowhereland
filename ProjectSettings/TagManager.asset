@@ -44,6 +44,9 @@ TagManager:
   - name: Background2
     uniqueID: 212286825
     locked: 0
+  - name: Decal
+    uniqueID: 2398072495
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
