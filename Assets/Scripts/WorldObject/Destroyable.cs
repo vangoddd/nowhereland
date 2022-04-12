@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Destroyable : WorldObject {
-  public float health;
+  public int health;
   public ToolType requiredTool = null;
+
+  void Start() {
+    base.InitializeObject();
+    status = health;
+  }
 
   public override void Interact(GameObject player) {
     base.Interact(player);
     if (_inventory.handSlot != null) {
-      health -= ((Tools)_inventory.handSlot.itemData).damage;
+      health -= (int)((Tools)_inventory.handSlot.itemData).damage;
       if (health <= 0) DestroyWorldObject();
     }
   }

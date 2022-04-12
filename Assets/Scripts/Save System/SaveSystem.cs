@@ -102,7 +102,10 @@ public class SaveSystem : MonoBehaviour {
       WorldObject obj = map.worldObjects[i].GetComponent<WorldObject>();
       int objId = obj.objectID;
       Vector2 pos = new Vector2(map.worldObjects[i].transform.position.x, map.worldObjects[i].transform.position.y);
-      currentWorldData.Add(new WorldObjectData(objId, pos, obj.status));
+
+      int status = obj.status;
+      if (obj is Destroyable && !(obj is Chest)) status = ((Destroyable)obj).health;
+      currentWorldData.Add(new WorldObjectData(objId, pos, status));
     }
 
     for (int i = 0; i < map.worldItemData.Count; i++) {
