@@ -38,7 +38,7 @@ public class Inventory : ScriptableObject {
       itemList[index].itemData.UseItem();
       itemList[index].amount -= 1;
       if (itemList[index].amount == 0) itemList[index] = null;
-    } else if (itemList[index].itemData is Tools || itemList[index].itemData is Armor) {
+    } else if (itemList[index].itemData is Tools || itemList[index].itemData is Armor || (itemList[index].itemData is Weapon)) {
       Item lastUsed = equipItem(itemList[index]);
       itemList[index] = lastUsed;
     } else if (itemList[index].itemData is Placeable) {
@@ -221,7 +221,7 @@ public class Inventory : ScriptableObject {
 
   public Item equipItem(Item item) {
     Item temp = null;
-    if (item.itemData is Tools) {
+    if (item.itemData is Tools || item.itemData is Weapon) {
       //equip to hand slot
       temp = handSlot;
       handSlot = item;

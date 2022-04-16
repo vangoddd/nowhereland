@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 
   private bool moving = false;
   public bool interacting = false;
+  private bool attacking = false;
   private Vector2 lastClickedPos;
   private Vector2 moveDir;
   private Vector2 lastPosition;
@@ -37,8 +38,13 @@ public class PlayerMovement : MonoBehaviour {
   [SerializeField] private MapSO map;
   [SerializeField] private GameEvent OnChunkChanged;
   [SerializeField] private PlayerStats _playerStat;
+  [SerializeField] private Inventory _inventory;
+
+  private int enemyLayerMask;
+  [SerializeField] private float attackRadius;
 
   void Start() {
+    enemyLayerMask = LayerMask.GetMask("Enemy");
     animator = GetComponent<Animator>();
     playerInput = GetComponent<PlayerInput>();
   }
@@ -102,6 +108,27 @@ public class PlayerMovement : MonoBehaviour {
 
   }
 
+  //Attack handling
+  public void MoveAttack() {
+    //Debug.Log("interacting");
+    Collider2D[] hitColliders = Physics2D.OverlapCircleAll((Vector2)transform.position, interactSearchRadius, enemyLayerMask);
+    GameObject closest = null;
+    foreach (var hit in hitColliders) {
+      if (closest == null) closest = hit.gameObject;
+      if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position)) {
+        closest = hit.gameObject;
+      }
+    }
+    //Debug.Log("Closest : " + closest.name);
+
+    if (closest != null) {
+      attacking = true;
+      moveToTarget = closest;
+      UpdateMoveDir((Vector2)closest.transform.position);
+    }
+
+  }
+
   void UpdateMoveDir() {
     if (UIOpen) return;
     // lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -124,6 +151,7 @@ public class PlayerMovement : MonoBehaviour {
     lastPosition = transform.position;
     // rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     if (moving && (((Vector2)transform.position - lastClickedPos).sqrMagnitude > .15f)) {
+      //Handle interact
       if (interacting) {
         WorldObject targetObject = moveToTarget.GetComponent<WorldObject>();
         if (targetObject.canInteract(transform.position)) {
@@ -133,7 +161,9 @@ public class PlayerMovement : MonoBehaviour {
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
         }
-      } else if (isUsing) {
+      }
+      //Handle use
+      else if (isUsing) {
         Useable targetObject = moveToTarget.GetComponent<WorldObject>() as Useable;
         if (targetObject.canInteract(transform.position)) {
           moving = false;
@@ -143,12 +173,38 @@ public class PlayerMovement : MonoBehaviour {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
         }
 
-      } else {
+      }
+      //handle attack
+       else if (attacking) {
+        Enemy targetObject = moveToTarget.GetComponent<Enemy>();
+        if (canAttack(targetObject)) {
+          moving = false;
+          attacking = false;
+
+          //Applying damage to enemy
+          if (_inventory.handSlot != null && _inventory.handSlot.itemData is Weapon) {
+            targetObject.Hurt((_inventory.handSlot.itemData as Weapon).damage);
+          } else {
+            targetObject.Hurt(10);
+          }
+        } else {
+          rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+        }
+      }
+      //handle move only
+       else {
         rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
       }
     } else {
       moving = false;
     }
+  }
+
+  private bool canAttack(Enemy e) {
+    if ((transform.position - e.transform.position).sqrMagnitude <= attackRadius * attackRadius) {
+      return true;
+    }
+    return false;
   }
 
   public void setSpeed(float speed) {
@@ -189,6 +245,10 @@ public class PlayerMovement : MonoBehaviour {
     } else {
       isMoveHold = false;
     }
+  }
+
+  public void OnAttack() {
+    MoveAttack();
   }
 
   public void OnInteract() {

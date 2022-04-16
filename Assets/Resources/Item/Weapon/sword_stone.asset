@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06237656416da746a816d4541c432e3, type: 3}
+  m_Script: {fileID: 11500000, guid: de1b63202df188746a4428bdfed477e3, type: 3}
   m_Name: sword_stone
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Cut your enemies with this stone sword
+  description: Sword made out of sturdy stones.
   name: Stone Sword
   sprite: {fileID: 314624492961450763, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
-  type: {fileID: 11400000, guid: 0123afe1f8a42f644bfe55ae3a5aef96, type: 2}
-  durability: 70
-  damage: 35
+  durability: 50
+  damage: 30
