@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class CraftingController : MonoBehaviour {
 
@@ -34,6 +35,7 @@ public class CraftingController : MonoBehaviour {
 
   public void GenerateCraftingList() {
     recipes = Resources.LoadAll(basePath + path, typeof(ItemRecipe));
+    recipes = recipes.OrderBy(o => (o as ItemRecipe).result.item.GetType().ToString()).ToArray();
 
     ResetList();
 
