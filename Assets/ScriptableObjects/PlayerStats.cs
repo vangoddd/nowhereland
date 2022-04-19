@@ -9,6 +9,7 @@ public class PlayerStats : ScriptableObject {
 
   public float health, hunger, thirst;
   public Vector2 position;
+  public Vector2 playerDirection;
 
   public UnityEvent<PlayerStatData> OnStatChangeEvent;
   public UnityEvent OnPlayerDie;

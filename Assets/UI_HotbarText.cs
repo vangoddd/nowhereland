@@ -13,16 +13,37 @@ public class UI_HotbarText : MonoBehaviour {
 
   void OnEnable() {
     _itemInteraction.OnItemSlotClicked.AddListener(ShowText);
+    _itemInteraction.OnPickupNull.AddListener(ShowText);
   }
 
   void OnDisable() {
     _itemInteraction.OnItemSlotClicked.RemoveListener(ShowText);
+    _itemInteraction.OnPickupNull.RemoveListener(ShowText);
   }
 
   public void ShowText(int slot) {
     if (slot > 3) return;
     if (slot == lastClicked) return;
 
+    lastClicked = slot;
+
+    if (tweenId != -1) {
+      LeanTween.cancel(tweenId);
+    }
+
+    tmPro.color = Color.white;
+
+    tmPro.text = _inventory.itemList[slot].itemData.name;
+
+    tweenId = LeanTween.value(gameObject, Color.white, Color.clear, 3f).setEase(LeanTweenType.easeInCubic).setOnUpdate((Color col) => {
+      tmPro.color = col;
+    }).id;
+  }
+
+  public void ShowText() {
+    int slot = lastClicked;
+    if (_inventory.itemList[slot] == null) return;
+    if (slot > 3) return;
     lastClicked = slot;
 
     if (tweenId != -1) {

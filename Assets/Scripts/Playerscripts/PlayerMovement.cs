@@ -146,12 +146,11 @@ public class PlayerMovement : MonoBehaviour {
 
   void FixedUpdate() {
     _playerStat.PlayerMove((Vector2)transform.position);
-    // if (moving) {
-    //   _playerStat.PlayerMove((Vector2)transform.position);
-    // }
+    _playerStat.playerDirection = moveDir;
+
     rb.velocity = new Vector2(0f, 0f);
     lastPosition = transform.position;
-    // rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+
     if (moving && (((Vector2)transform.position - lastClickedPos).sqrMagnitude > .15f)) {
       //Handle interact
       if (interacting) {

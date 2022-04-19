@@ -20,6 +20,10 @@ public class ItemInteraction : ScriptableObject {
 
   public UnityEvent<Placeable, int> OnItemPlaceAction;
 
+  public UnityEvent<bool> OnPlaceableSelected;
+
+  public UnityEvent OnPickupNull;
+
   private void OnEnable() {
     if (OnItemPickup == null) {
       OnItemPickup = new UnityEvent<ItemScript>();
@@ -59,6 +63,14 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnItemPlaceAction == null) {
       OnItemPlaceAction = new UnityEvent<Placeable, int>();
+    }
+
+    if (OnPlaceableSelected == null) {
+      OnPlaceableSelected = new UnityEvent<bool>();
+    }
+
+    if (OnPickupNull == null) {
+      OnPickupNull = new UnityEvent();
     }
 
   }
@@ -103,5 +115,12 @@ public class ItemInteraction : ScriptableObject {
     OnItemPlaceAction.Invoke(item, index);
   }
 
+  public void PlaceableSelected(bool selection) {
+    OnPlaceableSelected.Invoke(selection);
+  }
+
+  public void PickupNull() {
+    OnPickupNull.Invoke();
+  }
 
 }
