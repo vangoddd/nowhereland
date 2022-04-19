@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     _enemyHandler.enemyList.Add(this);
+    ChunkHandlerScript.addObjectToChunk(this.gameObject);
   }
 
   public void Stun(float duration) {
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour {
 
   public void Die() {
     _enemyHandler.enemyList.Remove(this);
+    ChunkHandlerScript.removeObjectFromChunk(this.gameObject);
     Destroy(this.gameObject);
   }
 
