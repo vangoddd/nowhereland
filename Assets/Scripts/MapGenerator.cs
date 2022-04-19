@@ -151,6 +151,15 @@ public class MapGenerator : MonoBehaviour {
     }
 
     noiseBiome2 = GenerateBiomeTexture(map.biomes);
+    int radius = 30;
+    for (int x = mapSize / 2 - radius; x < mapSize / 2 + radius; x++) {
+      for (int y = mapSize / 2 - radius; y < mapSize / 2 + radius; y++) {
+        if ((x - mapSize / 2) * (x - mapSize / 2) + (y - mapSize / 2) * (y - mapSize / 2) < radius * radius) {
+          map.biomes[x][y] = 0;
+          map.tileMap[x][y] = 1;
+        }
+      }
+    }
 
     InstantiateTiles();
   }

@@ -20,6 +20,7 @@ public class ItemScript : MonoBehaviour {
   void Start() {
     ApplyData();
     _map.worldItemData.Add(gameObject);
+    ChunkHandlerScript.addObjectToChunk(this.gameObject);
     StartCoroutine(RemovePickupCooldownAfterDrop());
   }
 
@@ -53,6 +54,7 @@ public class ItemScript : MonoBehaviour {
   }
 
   public void DestroyAfterPickup() {
+    ChunkHandlerScript.removeObjectFromChunk(this.gameObject);
     Destroy(gameObject);
     _map.worldItemData.Remove(gameObject);
   }
