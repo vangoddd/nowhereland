@@ -16,4 +16,5 @@ MonoBehaviour:
   description: Cooks various ingredients into food.
   name: Furnace
   sprite: {fileID: 5483334918051397544, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
-  worldObjectPrefab: {fileID: 0}
+  worldObjectPrefab: {fileID: 6481357683641852850, guid: 85b8438eea1884044802e6011cc483d7, type: 3}
+  itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
