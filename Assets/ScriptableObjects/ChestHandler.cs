@@ -18,7 +18,7 @@ public class ChestHandler : ScriptableObject {
   public GameEvent OnInventoryUpdate;
 
   void OnEnable() {
-    chestList = new Dictionary<int, ChestContent>();
+    ResetValues();
 
     _itemInteraction.OnChestToInv.AddListener(ChestToInv);
     _itemInteraction.OnInvToChest.AddListener(InvToChest);
@@ -29,6 +29,10 @@ public class ChestHandler : ScriptableObject {
     _itemInteraction.OnChestToInv.RemoveListener(ChestToInv);
     _itemInteraction.OnInvToChest.RemoveListener(InvToChest);
     _itemInteraction.OnChestSwap.RemoveListener(ChestSwap);
+  }
+
+  public void ResetValues() {
+    chestList = new Dictionary<int, ChestContent>();
   }
 
   public void AddNewChestToList(Chest chest) {

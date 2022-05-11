@@ -23,6 +23,10 @@ public class TimeSO : ScriptableObject {
   public bool isDay = true;
 
   private void OnEnable() {
+    ResetValues();
+  }
+
+  public void ResetValues() {
     tick = 0;
     day = 1;
     isDay = true;
@@ -45,7 +49,6 @@ public class TimeSO : ScriptableObject {
     if (OnGameLoad == null) {
       OnGameLoad = new UnityEvent<WorldData>();
     }
-
   }
 
   public void Tick() {

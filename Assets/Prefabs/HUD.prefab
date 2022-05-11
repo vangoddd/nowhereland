@@ -1081,7 +1081,6 @@ GameObject:
   - component: {fileID: 2666208790295911806}
   - component: {fileID: 6313883109240478915}
   - component: {fileID: 2483555055569972419}
-  - component: {fileID: 8206706556485090624}
   - component: {fileID: 843574233355446832}
   m_Layer: 0
   m_Name: Pause Button
@@ -1190,7 +1189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2666208790295911806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2483555055569972419}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2483555055569972419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,19 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4456adafa72163d469dd8fc5495e6c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8206706556485090624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2666208790295911792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/escape
+  onPauseButton: {fileID: 11400000, guid: e037fc5306f0be340aedceae34a656c2, type: 2}
 --- !u!114 &843574233355446832
 MonoBehaviour:
   m_ObjectHideFlags: 0

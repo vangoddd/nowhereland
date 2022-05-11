@@ -6,8 +6,11 @@ public class Enemy : MonoBehaviour {
   public int enemyID;
   public float health = 100;
   public float moveSpeed = 0.5f;
+  public float damage = 10f;
 
   private float stunTimer = 0f;
+  private float attackTimer = 0f;
+
   public bool aggro = false;
   public float aggroRange = 5f;
   public float offAggroRange = 15f;
@@ -15,6 +18,8 @@ public class Enemy : MonoBehaviour {
   public EnemyHandler _enemyHandler;
   private Rigidbody2D rb;
   private SpriteRenderer spriteRenderer;
+
+  public HealthInteraction _healthInteraction;
 
   void Start() {
     rb = GetComponent<Rigidbody2D>();
@@ -64,7 +69,9 @@ public class Enemy : MonoBehaviour {
       stunTimer -= Time.deltaTime;
     }
 
-
+    if (attackTimer > 0) {
+      attackTimer -= Time.deltaTime;
+    }
   }
 
   void FixedUpdate() {
@@ -74,6 +81,22 @@ public class Enemy : MonoBehaviour {
         Vector2 moveDir = (_enemyHandler._playerStat.position - (Vector2)this.transform.position).normalized;
         rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
       }
+    }
+  }
+
+  void OnCollisionEnter2D(Collision2D collision) {
+    if (collision.gameObject.tag == "Player") {
+      Debug.Log("apply damage");
+      _healthInteraction.HurtPlayer(damage);
+    }
+    attackTimer = 1f;
+  }
+
+  void OnCollisionStay2D(Collision2D collision) {
+    Stun(1f);
+    if (attackTimer <= 0f) {
+      _healthInteraction.HurtPlayer(damage);
+      attackTimer = 1f;
     }
   }
 }

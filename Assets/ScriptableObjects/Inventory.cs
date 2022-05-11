@@ -16,9 +16,7 @@ public class Inventory : ScriptableObject {
   public GameEvent OnEquippableUpdated;
 
   void OnEnable() {
-    itemList = new Item[slot];
-    handSlot = null;
-    armorSlot = null;
+    ResetValues();
 
     _itemInteraction.OnItemPickup.AddListener(AddItemListener);
     _itemInteraction.OnItemUse.AddListener(UseItem);
@@ -31,6 +29,12 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnItemUse.RemoveListener(UseItem);
     _itemInteraction.OnUnequip.RemoveListener(UnequipItem);
     _itemInteraction.OnSlotSwap.RemoveListener(SlotSwap);
+  }
+
+  public void ResetValues() {
+    itemList = new Item[slot];
+    handSlot = null;
+    armorSlot = null;
   }
 
   public void UseItem(int index) {

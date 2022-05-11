@@ -10,6 +10,10 @@ public class EnemyHandler : ScriptableObject {
   public List<Enemy> aggroList;
 
   void OnEnable() {
+    ResetValues();
+  }
+
+  public void ResetValues() {
     enemyList = new List<Enemy>();
     aggroList = new List<Enemy>();
   }

@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
   public GameObject UI_Inventory;
   public UI_Chest UI_Chest;
   public CraftingController UI_crafting;
+  public GameObject pauseMenu;
 
   public ItemInteraction _itemInteraction;
 
@@ -36,5 +37,9 @@ public class UIManager : MonoBehaviour {
     UI_crafting.path = "Cooking";
     UI_crafting.SetButtonText("Cook!");
     UI_crafting.gameObject.SetActive(true);
+  }
+
+  public void OpenPauseMenu() {
+    pauseMenu.SetActive(true);
   }
 }

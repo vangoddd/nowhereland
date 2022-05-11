@@ -17,3 +17,4 @@ MonoBehaviour:
   name: Chest
   sprite: {fileID: 2313550211383612676, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
   worldObjectPrefab: {fileID: 5763722464360170854, guid: 7d11e39c48e31764b82ce294c9721d2c, type: 3}
+  itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}

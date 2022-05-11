@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour {
 
   private bool isUsing = false;
 
+  private float actionCooldownTimer = 0f;
+  public float actionCooldownDuration = 0.5f;
+
   [SerializeField] private InteractSO _interactSO;
   [SerializeField] private MapSO map;
   [SerializeField] private GameEvent OnChunkChanged;
@@ -58,6 +61,10 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   void Update() {
+    if (actionCooldownTimer > 0f) {
+      actionCooldownTimer -= Time.deltaTime;
+    }
+
     //Handle aniamtion sprite
     animator.SetFloat("lastPosX", moveDir.x);
     animator.SetFloat("lastPosY", moveDir.y);
@@ -86,6 +93,10 @@ public class PlayerMovement : MonoBehaviour {
 
 
   public void MoveInteract() {
+    if (actionCooldownTimer > 0f) {
+      Debug.Log("action is on cooldown");
+      return;
+    }
     //Debug.Log("interacting");
     Collider2D[] hitColliders = Physics2D.OverlapCircleAll((Vector2)transform.position, interactSearchRadius);
     GameObject closest = null;
@@ -110,6 +121,10 @@ public class PlayerMovement : MonoBehaviour {
 
   //Attack handling
   public void MoveAttack() {
+    if (actionCooldownTimer > 0f) {
+      Debug.Log("action is on cooldown");
+      return;
+    }
     //Debug.Log("interacting");
     Collider2D[] hitColliders = Physics2D.OverlapCircleAll((Vector2)transform.position, interactSearchRadius, enemyLayerMask);
     GameObject closest = null;
@@ -159,6 +174,7 @@ public class PlayerMovement : MonoBehaviour {
           moving = false;
           interacting = false;
           targetObject.Interact(gameObject);
+          actionCooldownTimer = actionCooldownDuration;
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
         }
@@ -188,6 +204,8 @@ public class PlayerMovement : MonoBehaviour {
           } else {
             targetObject.Hurt(10);
           }
+
+          actionCooldownTimer = actionCooldownDuration;
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
         }

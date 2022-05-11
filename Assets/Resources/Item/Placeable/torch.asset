@@ -16,4 +16,5 @@ MonoBehaviour:
   description: Lights up your path
   name: Torch
   sprite: {fileID: 8529432555382494415, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
-  worldObjectPrefab: {fileID: 0}
+  worldObjectPrefab: {fileID: 6640273454762199213, guid: 4c9fe49e685c38746bc85cb9f82b5827, type: 3}
+  itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}

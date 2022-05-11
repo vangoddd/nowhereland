@@ -24,7 +24,7 @@ MonoBehaviour:
   OnGameLoad:
     m_PersistentCalls:
       m_Calls: []
-  tick: 15
+  tick: 4
   day: 1
   secondsPerDay: 180
   secondsPerTick: 2

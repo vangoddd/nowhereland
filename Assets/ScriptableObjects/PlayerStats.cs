@@ -14,11 +14,10 @@ public class PlayerStats : ScriptableObject {
   public UnityEvent<PlayerStatData> OnStatChangeEvent;
   public UnityEvent OnPlayerDie;
 
+  public HealthInteraction _healthInteraction;
+
   private void OnEnable() {
-    maxStat = 100;
-    health = maxStat;
-    hunger = maxStat;
-    thirst = maxStat;
+    ResetValues();
 
     if (OnStatChangeEvent == null) {
       OnStatChangeEvent = new UnityEvent<PlayerStatData>();
@@ -26,6 +25,19 @@ public class PlayerStats : ScriptableObject {
     if (OnPlayerDie == null) {
       OnPlayerDie = new UnityEvent();
     }
+
+    _healthInteraction.OnPlayerHurt.AddListener(decreaseHealth);
+  }
+
+  void OnDisable() {
+    _healthInteraction.OnPlayerHurt.RemoveListener(decreaseHealth);
+  }
+
+  public void ResetValues() {
+    maxStat = 100;
+    health = maxStat;
+    hunger = maxStat;
+    thirst = maxStat;
   }
 
   public void decreaseHealth(float amt) {

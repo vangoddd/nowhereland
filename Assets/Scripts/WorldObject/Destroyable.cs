@@ -22,6 +22,7 @@ public class Destroyable : WorldObject {
   public override bool ToolRangeCheck() {
     if (_inventory.handSlot == null) return false;
     Tools tool = _inventory.handSlot.itemData as Tools;
+    if (tool == null) return false;
     if (tool.type == requiredTool) {
       return true;
     }

@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStat: 100
   health: 100
-  hunger: 46.138763
-  thirst: 46.138763
-  position: {x: 150.62015, y: 148.98962}
+  hunger: 81.78955
+  thirst: 81.78955
+  position: {x: 151.71477, y: 153.58403}
+  playerDirection: {x: -0.83095014, y: 0.55634683}
   OnStatChangeEvent:
     m_PersistentCalls:
       m_Calls: []
   OnPlayerDie:
     m_PersistentCalls:
       m_Calls: []
+  _healthInteraction: {fileID: 11400000, guid: cb737cc051d1e204c82646d881d94e6a, type: 2}

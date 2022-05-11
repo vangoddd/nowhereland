@@ -54,14 +54,19 @@ public class MapGenerator : MonoBehaviour {
   /*----------------------------------------*/
 
   void Awake() {
-    for (int i = 0; i < (map.mapSize * map.mapSize / (map.chunkSize * map.chunkSize)); i++) {
-      map.chunks.Add(new List<GameObject>());
-    }
+    // for (int i = 0; i < (map.mapSize * map.mapSize / (map.chunkSize * map.chunkSize)); i++) {
+    //   map.chunks.Add(new List<GameObject>());
+    // }
+    map.ResetValues();
   }
 
   void Start() {
+    TimeManager.Instance.ResumeGame();
+
     InitiateSeed();
     GetGradientColors();
+
+    //map.ResetValues();
 
     if (!loadFromSave) {
       map.mapSize = mapSize;

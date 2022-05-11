@@ -17,7 +17,7 @@ public class MapSO : ScriptableObject {
   public List<List<float>> rawNoiseData;
   public List<WorldObjectData> worldObjectDatas;
 
-  void OnEnable() {
+  public void ResetValues() {
     chunks = new List<List<GameObject>>();
     tileMap = new List<List<int>>();
     biomes = new List<List<int>>();
@@ -25,6 +25,9 @@ public class MapSO : ScriptableObject {
     worldItemData = new List<GameObject>();
     rawNoiseData = new List<List<float>>();
     worldObjectDatas = new List<WorldObjectData>();
-  }
 
+    for (int i = 0; i < (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
+      chunks.Add(new List<GameObject>());
+    }
+  }
 }
