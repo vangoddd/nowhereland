@@ -10,12 +10,11 @@ public class UI_Hotbar : MonoBehaviour {
   public Transform ItemSlotTemplate;
   private RectTransform[] itemSlots;
 
-  void Start() {
+  void Awake() {
     itemSlots = new RectTransform[6];
     InitiateHotbar();
     UpdateHotbar();
   }
-
 
   private void InitiateHotbar() {
     int x = -60;
@@ -34,6 +33,7 @@ public class UI_Hotbar : MonoBehaviour {
   [ContextMenu("Update Hotbar")]
   public void UpdateHotbar() {
     for (int i = 0; i < 4; i++) {
+      if (itemSlots[i] == null) return;
       if (_inventory.itemList[i] == null) itemSlots[i].gameObject.SetActive(false);
       else {
         UpdateTemplateSlot(i);
@@ -43,6 +43,7 @@ public class UI_Hotbar : MonoBehaviour {
   }
 
   void UpdateTemplateSlot(int i) {
+    if (itemSlots[i] == null) return;
     itemSlots[i].GetComponent<Image>().sprite = _inventory.itemList[i].itemData.sprite;
     itemSlots[i].gameObject.SetActive(true);
 

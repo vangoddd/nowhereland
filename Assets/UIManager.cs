@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
   public UI_Chest UI_Chest;
   public CraftingController UI_crafting;
   public GameObject pauseMenu;
+  public GameObject mapMenu;
 
   public ItemInteraction _itemInteraction;
 
@@ -41,5 +42,9 @@ public class UIManager : MonoBehaviour {
 
   public void OpenPauseMenu() {
     pauseMenu.SetActive(true);
+  }
+
+  public void OpenMap() {
+    mapMenu.SetActive(true);
   }
 }

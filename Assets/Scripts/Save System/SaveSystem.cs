@@ -27,6 +27,7 @@ public class SaveSystem : MonoBehaviour {
   public MapSO map;
 
   public ChestHandler chestHandler;
+  public Camera cam;
 
   private void Awake() {
     _instance = this;
@@ -55,6 +56,7 @@ public class SaveSystem : MonoBehaviour {
       SaveGameData data = formatter.Deserialize(stream) as SaveGameData;
 
       player.transform.position = new Vector3(data._playerStatData.position[0], data._playerStatData.position[1], 0f);
+      cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, cam.transform.position.z);
       playerStat.setStat(data._playerStatData);
 
       map.tileMap = Get2DTilemapListFromData(data._mapSaveData);

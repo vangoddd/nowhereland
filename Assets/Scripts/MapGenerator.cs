@@ -7,6 +7,7 @@ public class MapGenerator : MonoBehaviour {
 
   [Header("Save system")]
   public bool loadFromSave = false;
+  public bool randomSeed = false;
   [Space(10)]
 
   [Header("Base Noise Setting")]
@@ -48,33 +49,35 @@ public class MapGenerator : MonoBehaviour {
   private List<WorldObjectData> worldObjectDatas = new List<WorldObjectData>();
   //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
+  public StartMode startMode;
 
   private List<TileTexture> runtimeTiles = new List<TileTexture>();
 
   /*----------------------------------------*/
 
   void Awake() {
-    // for (int i = 0; i < (map.mapSize * map.mapSize / (map.chunkSize * map.chunkSize)); i++) {
-    //   map.chunks.Add(new List<GameObject>());
-    // }
     map.ResetValues();
+
+    loadFromSave = startMode.loadGame;
+    if (!loadFromSave && randomSeed) seed = Random.Range(0, 100000);
   }
 
   void Start() {
     TimeManager.Instance.ResumeGame();
 
-    InitiateSeed();
     GetGradientColors();
 
     //map.ResetValues();
 
     if (!loadFromSave) {
+      InitiateSeed();
       map.mapSize = mapSize;
       GenerateMap();
       GenerateWorldObject();
       SpawnObjects();
     } else {
       SaveSystem.Instance.LoadGame();
+      InitiateSeed();
       mapSize = map.mapSize;
       InstantiateTiles();
       SpawnObjects();
@@ -107,6 +110,10 @@ public class MapGenerator : MonoBehaviour {
     }
     currentSeed = seed.ToString().GetHashCode();
     Random.InitState(currentSeed);
+
+    map.seed = seed;
+
+    Debug.Log("seed : " + seed);
   }
 
   void GenerateMap() {

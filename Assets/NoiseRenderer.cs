@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class NoiseRenderer : MonoBehaviour {
 
@@ -59,12 +58,12 @@ public class NoiseRenderer : MonoBehaviour {
 
 
 
-[CustomEditor(typeof(NoiseRenderer))]
-public class NoiseRendererEditor : Editor {
-  public override void OnInspectorGUI() {
-    base.OnInspectorGUI();
+// [CustomEditor(typeof(NoiseRenderer))]
+// public class NoiseRendererEditor : Editor {
+//   public override void OnInspectorGUI() {
+//     base.OnInspectorGUI();
 
-    NoiseRenderer script = (NoiseRenderer)target;
-    script.RegenerateTexture();
-  }
-}
+//     NoiseRenderer script = (NoiseRenderer)target;
+//     script.RegenerateTexture();
+//   }
+// }
