@@ -26,6 +26,7 @@ public class MapSaveData {
   public List<int> biomeMap;
   public List<WorldObjectData> worldObjectDatas;
   public List<WorldItemData> worldItemDatas;
+  public List<WorldEnemyData> worldEnemyDatas;
 
   public List<int> chestIds;
   public List<InventoryData> chestContents;
@@ -44,3 +45,10 @@ public class InventoryData {
   public int[] itemDurability;
   public int[] itemAmount;
 }
+
+[System.Serializable]
+public class WorldEnemyData {
+  public int enemyID;
+  public float[] position = new float[2];
+}
+

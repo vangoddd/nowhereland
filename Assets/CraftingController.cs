@@ -41,7 +41,7 @@ public class CraftingController : MonoBehaviour {
 
     foreach (Object o in recipes) {
       ItemRecipe temp = o as ItemRecipe;
-      Debug.Log(temp.result.item.name);
+      //Debug.Log(temp.result.item.name);
 
       CraftingSlot slot = Instantiate(template, content).GetComponent<CraftingSlot>();
       slot.recipe = temp;

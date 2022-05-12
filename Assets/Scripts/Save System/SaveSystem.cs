@@ -19,6 +19,7 @@ public class SaveSystem : MonoBehaviour {
   public GameObject player;
   public PlayerStats playerStat;
   public TimeSO timeSO;
+  public EnemyHandler enemyHandler;
 
   public ItemDatabase itemDB;
   public Inventory inventory;
@@ -66,6 +67,7 @@ public class SaveSystem : MonoBehaviour {
 
       inventory.ApplyLoadedData(data._inventoryData);
       ItemSpawner.Instance.SpawnItemFromLoadedData(data._mapSaveData.worldItemDatas);
+      EnemySpawner.Instance.LoadEnemy(data._mapSaveData.worldEnemyDatas);
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -85,6 +87,7 @@ public class SaveSystem : MonoBehaviour {
     List<int> currentBiomeData = new List<int>();
     List<WorldObjectData> currentWorldData = new List<WorldObjectData>();
     List<WorldItemData> currentWorldItemData = new List<WorldItemData>();
+    List<WorldEnemyData> currentEnemyData = new List<WorldEnemyData>();
 
     List<int> currentChestIds = new List<int>();
     List<InventoryData> currentChestContents = new List<InventoryData>();
@@ -108,6 +111,7 @@ public class SaveSystem : MonoBehaviour {
       currentWorldData.Add(new WorldObjectData(objId, pos, status));
     }
 
+    //handle world item
     for (int i = 0; i < map.worldItemData.Count; i++) {
       WorldItemData temp = new WorldItemData();
       ItemScript itemScript = map.worldItemData[i].GetComponent<ItemScript>();
@@ -120,15 +124,27 @@ public class SaveSystem : MonoBehaviour {
       currentWorldItemData.Add(temp);
     }
 
+    //handle chest data
     foreach (var chest in chestHandler.chestList) {
       currentChestIds.Add(chest.Key);
       currentChestContents.Add(chestHandler.GenerateChestData(chest.Value));
+    }
+
+    //handle enemy
+    foreach (Enemy e in enemyHandler.enemyList) {
+      WorldEnemyData temp = new WorldEnemyData();
+      temp.enemyID = e.enemyID;
+      temp.position[0] = e.gameObject.transform.position.x;
+      temp.position[1] = e.gameObject.transform.position.y;
+      currentEnemyData.Add(temp);
+      Debug.Log("saving enemy with id " + temp.enemyID + "at " + temp.position[0] + ", " + temp.position[1]);
     }
 
     data.tileMap = currentMapData;
     data.biomeMap = currentBiomeData;
     data.worldObjectDatas = currentWorldData;
     data.worldItemDatas = currentWorldItemData;
+    data.worldEnemyDatas = currentEnemyData;
 
     data.chestIds = currentChestIds;
     data.chestContents = currentChestContents;
@@ -211,3 +227,4 @@ public class SaveSystem : MonoBehaviour {
     return data;
   }
 }
+
