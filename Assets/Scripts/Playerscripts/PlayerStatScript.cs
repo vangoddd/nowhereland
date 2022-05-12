@@ -18,8 +18,16 @@ public class PlayerStatScript : MonoBehaviour {
   void Update() {
     if (godmode) return;
 
-    float reductionAmt = -2 * Time.deltaTime;
-    _playerStat.addStat(new PlayerStatData(0f, reductionAmt, reductionAmt, (Vector2)transform.position));
+    // float reductionAmt = -2 * Time.deltaTime;
+    _playerStat.addStat(new PlayerStatData(0f, -_playerStat.drain_hunger * Time.deltaTime, -_playerStat.drain_thirst * Time.deltaTime, (Vector2)transform.position));
+
+    if (_playerStat.hunger <= 0f) {
+      _playerStat.addStat(new PlayerStatData(-_playerStat.drain_health * Time.deltaTime, 0f, 0f, (Vector2)transform.position));
+    }
+
+    if (_playerStat.thirst <= 0f) {
+      _playerStat.addStat(new PlayerStatData(-_playerStat.drain_health * Time.deltaTime, 0f, 0f, (Vector2)transform.position));
+    }
   }
 
   void Die() {

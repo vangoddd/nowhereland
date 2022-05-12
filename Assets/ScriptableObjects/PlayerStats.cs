@@ -11,6 +11,8 @@ public class PlayerStats : ScriptableObject {
   public Vector2 position;
   public Vector2 playerDirection;
 
+  public float drain_hunger, drain_thirst, drain_health;
+
   public UnityEvent<PlayerStatData> OnStatChangeEvent;
   public UnityEvent OnPlayerDie;
 

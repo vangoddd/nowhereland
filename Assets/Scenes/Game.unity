@@ -2992,6 +2992,7 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   chestHandler: {fileID: 11400000, guid: 2b714a5ff9e09a344a9b622d8fb2110b, type: 2}
+  cam: {fileID: 1548681011}
 --- !u!4 &731095791
 Transform:
   m_ObjectHideFlags: 0
@@ -4021,6 +4022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
+  randomSeed: 0
   mapSize: 300
   seed: 69
   octaves: 3
@@ -6278,6 +6280,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!20 &1548681011 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1822558771596613397, guid: be5e37fa4b0ada64c857f5d8cc4a847a, type: 3}
+  m_PrefabInstance: {fileID: 1822558770178626073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1560746928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}

@@ -139,7 +139,7 @@ public class SaveSystem : MonoBehaviour {
       temp.position[0] = e.gameObject.transform.position.x;
       temp.position[1] = e.gameObject.transform.position.y;
       currentEnemyData.Add(temp);
-      Debug.Log("saving enemy with id " + temp.enemyID + "at " + temp.position[0] + ", " + temp.position[1]);
+      //Debug.Log("saving enemy with id " + temp.enemyID + "at " + temp.position[0] + ", " + temp.position[1]);
     }
 
     data.tileMap = currentMapData;

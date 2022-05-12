@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour {
 
   public void LoadEnemy(List<WorldEnemyData> data) {
     foreach (WorldEnemyData e in data) {
-      Debug.Log("spawning enemy with id " + e.enemyID + "at " + e.position[0] + ", " + e.position[1]);
+      //Debug.Log("spawning enemy with id " + e.enemyID + "at " + e.position[0] + ", " + e.position[1]);
       SpawnEnemy(e.enemyID, e.position[0], e.position[1]);
     }
   }
