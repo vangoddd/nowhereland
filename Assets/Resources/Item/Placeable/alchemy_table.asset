@@ -16,4 +16,5 @@ MonoBehaviour:
   description: Brew various kind of potions.
   name: Alchemy Table
   sprite: {fileID: -7622317152740404197, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
-  worldObjectPrefab: {fileID: 0}
+  worldObjectPrefab: {fileID: 2218084597079102623, guid: c5483fd529ad02b4c8596849b143fedf, type: 3}
+  itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}

@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour {
 
   public HealthInteraction _healthInteraction;
 
+  public GameObject[] damageAnimation;
+
   void Start() {
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,6 +38,9 @@ public class Enemy : MonoBehaviour {
     health -= amt;
     Stun(0.5f);
     StartCoroutine(ApplyFlashingEffect(0.1f));
+
+    int RandomChoice = Random.Range(0, damageAnimation.Length);
+    Instantiate(damageAnimation[RandomChoice], transform.position, transform.rotation);
 
     if (health <= 0) {
       Die();
@@ -99,4 +104,5 @@ public class Enemy : MonoBehaviour {
       attackTimer = 1f;
     }
   }
+
 }

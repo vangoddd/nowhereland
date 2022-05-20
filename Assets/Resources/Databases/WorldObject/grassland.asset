@@ -14,6 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldObjects:
   - {fileID: 7211843886586674104, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}
+  - {fileID: 8935585944131123899, guid: ff85a22aa635f4a48a3adf5f1941e265, type: 3}
   - {fileID: 8923530923195784956, guid: 6891043c60fc25f4483d7c54b4eef824, type: 3}
   - {fileID: 8923530923195784956, guid: 6f5e36274446dcb4e8ae6c009d3a57b0, type: 3}
   - {fileID: 8923530923195784956, guid: 49e3fe185815b654cab0e593640ce477, type: 3}
+  spawnWeight:
+  - 6
+  - 3
+  - 4
+  - 4
+  - 1
+  spawnWeightThreshold:
+  - 0.33333334
+  - 0.5
+  - 0.7222222
+  - 0.9444444
+  - 1

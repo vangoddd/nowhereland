@@ -15,7 +15,7 @@ MonoBehaviour:
   stackCount: 20
   description: A dish of cooked berry
   name: Cooked berry
-  sprite: {fileID: 21300000, guid: 5de026515e667844f8e94447a36d8a64, type: 3}
+  sprite: {fileID: -6829208128941288417, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 5
   hunger: 40
   thirst: 0

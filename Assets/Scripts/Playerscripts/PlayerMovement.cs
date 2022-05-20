@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour {
 
   private float actionCooldownTimer = 0f;
   public float actionCooldownDuration = 0.5f;
+  private float moveTimer = 0f;
+
+  public Animator _animator;
 
   [SerializeField] private InteractSO _interactSO;
   [SerializeField] private MapSO map;
@@ -64,10 +67,15 @@ public class PlayerMovement : MonoBehaviour {
     if (actionCooldownTimer > 0f) {
       actionCooldownTimer -= Time.deltaTime;
     }
+    if (moveTimer > 0f) {
+      moveTimer -= Time.deltaTime;
+    }
 
     //Handle aniamtion sprite
     animator.SetFloat("lastPosX", moveDir.x);
     animator.SetFloat("lastPosY", moveDir.y);
+
+    animator.SetBool("moving", moving); 
 
     //Handle dust timer
     dustTimer += Time.deltaTime;
@@ -166,7 +174,7 @@ public class PlayerMovement : MonoBehaviour {
     rb.velocity = new Vector2(0f, 0f);
     lastPosition = transform.position;
 
-    if (moving && (((Vector2)transform.position - lastClickedPos).sqrMagnitude > .15f)) {
+    if (moving && (((Vector2)transform.position - lastClickedPos).sqrMagnitude > .15f) && moveTimer <= 0) {
       //Handle interact
       if (interacting) {
         WorldObject targetObject = moveToTarget.GetComponent<WorldObject>();
@@ -174,7 +182,9 @@ public class PlayerMovement : MonoBehaviour {
           moving = false;
           interacting = false;
           targetObject.Interact(gameObject);
+          animator.SetTrigger("Action");
           actionCooldownTimer = actionCooldownDuration;
+          moveTimer = 0.2f;
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
         }
@@ -205,6 +215,9 @@ public class PlayerMovement : MonoBehaviour {
             targetObject.Hurt(10);
           }
 
+          animator.SetTrigger("Action");
+
+          moveTimer = 0.2f;
           actionCooldownTimer = actionCooldownDuration;
         } else {
           rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);

@@ -20,6 +20,8 @@ public class UI_CraftingInfo : MonoBehaviour {
 
     itemName.text = recipe.result.item.name;
     itemType.text = recipe.result.item.GetType().ToString();
+    if (recipe.result.item.GetType().ToString() == "ItemData") itemType.text = "Item";
+    if (recipe.result.item.GetType().ToString() == "Placeable") itemType.text = "Structure";
     itemDescription.text = recipe.result.item.description;
 
     UpdateRequiredItem(null);

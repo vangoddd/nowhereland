@@ -40,6 +40,18 @@ public class UIManager : MonoBehaviour {
     UI_crafting.gameObject.SetActive(true);
   }
 
+  public void OpenCraftingAlchemy() {
+    UI_crafting.path = "Alchemy";
+    UI_crafting.SetButtonText("Brew!");
+    UI_crafting.gameObject.SetActive(true);
+  }
+
+  public void OpenCraftingStarter() {
+    UI_crafting.path = "Starter";
+    UI_crafting.SetButtonText("Craft!");
+    UI_crafting.gameObject.SetActive(true);
+  }
+
   public void OpenPauseMenu() {
     pauseMenu.SetActive(true);
   }

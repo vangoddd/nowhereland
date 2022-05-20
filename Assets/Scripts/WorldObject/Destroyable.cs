@@ -15,11 +15,15 @@ public class Destroyable : WorldObject {
     base.Interact(player);
     if (_inventory.handSlot != null) {
       health -= (int)((Tools)_inventory.handSlot.itemData).damage;
-      if (health <= 0) DestroyWorldObject();
+    } else {
+      health -= 1;
     }
+
+    if (health <= 0) DestroyWorldObject();
   }
 
   public override bool ToolRangeCheck() {
+    if (requiredTool.name == "hand") return true;
     if (_inventory.handSlot == null) return false;
     Tools tool = _inventory.handSlot.itemData as Tools;
     if (tool == null) return false;

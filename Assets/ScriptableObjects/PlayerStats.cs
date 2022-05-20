@@ -17,6 +17,7 @@ public class PlayerStats : ScriptableObject {
   public UnityEvent OnPlayerDie;
 
   public HealthInteraction _healthInteraction;
+  public Inventory _inventory;
 
   private void OnEnable() {
     ResetValues();
@@ -28,11 +29,11 @@ public class PlayerStats : ScriptableObject {
       OnPlayerDie = new UnityEvent();
     }
 
-    _healthInteraction.OnPlayerHurt.AddListener(decreaseHealth);
+    _healthInteraction.OnPlayerHurt.AddListener(playerHurt);
   }
 
   void OnDisable() {
-    _healthInteraction.OnPlayerHurt.RemoveListener(decreaseHealth);
+    _healthInteraction.OnPlayerHurt.RemoveListener(playerHurt);
   }
 
   public void ResetValues() {
@@ -47,10 +48,39 @@ public class PlayerStats : ScriptableObject {
     OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
   }
 
+  public void playerHurt(float amt) {
+    float reduction = 0f;
+    if (_inventory.armorSlot != null) {
+      Armor armor = _inventory.armorSlot.itemData as Armor;
+      reduction = armor.def / 100f;
+    }
+    health -= amt * (1f - reduction);
+    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
+  }
+
   public void addStat(PlayerStatData data) {
     health += data.health;
     hunger += data.hunger;
     thirst += data.thirst;
+
+    if (health < 0) health = 0;
+    if (hunger < 0) hunger = 0;
+    if (thirst < 0) thirst = 0;
+
+    if (health > maxStat) health = maxStat;
+    if (hunger > maxStat) hunger = maxStat;
+    if (thirst > maxStat) thirst = maxStat;
+
+    OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
+    if (health <= 0) {
+      Die();
+    }
+  }
+
+  public void addStat(float _health, float _hunger, float _thirst) {
+    health += _health;
+    hunger += _hunger;
+    thirst += _thirst;
 
     if (health < 0) health = 0;
     if (hunger < 0) hunger = 0;

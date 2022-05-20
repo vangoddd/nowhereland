@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Harvestable : WorldObject {
+public class Harvestable : WorldObject {
   public int regenRate;
 
   public override bool ToolRangeCheck() {

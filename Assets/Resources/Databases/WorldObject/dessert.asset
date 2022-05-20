@@ -15,3 +15,9 @@ MonoBehaviour:
   worldObjects:
   - {fileID: 8923530923195784956, guid: 6891043c60fc25f4483d7c54b4eef824, type: 3}
   - {fileID: 7536515956877062947, guid: 839a44f91c5c66444b8ee32dd71b6a40, type: 3}
+  spawnWeight:
+  - 4
+  - 1
+  spawnWeightThreshold:
+  - 0.8
+  - 1

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bf981c618974f4e803da6c1d2809be, type: 3}
+  m_Name: workbench
+  m_EditorClassIdentifier: 
+  stackCount: 1
+  description: Craft more things!
+  name: Workbench
+  sprite: {fileID: -1338957881226970466, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
+  worldObjectPrefab: {fileID: 5745440469397650191, guid: 600f1f67bdfdb4a4fb8d74dd61c5302d, type: 3}
+  itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}

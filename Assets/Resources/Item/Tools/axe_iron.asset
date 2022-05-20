@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06237656416da746a816d4541c432e3, type: 3}
+  m_Name: axe_iron
+  m_EditorClassIdentifier: 
+  stackCount: 1
+  description: Used to chop tree. Stronger than its stone counterpart.
+  name: Iron Axe
+  sprite: {fileID: -3903273229249315364, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  type: {fileID: 11400000, guid: 799a2aa6476866649a6393b6dd528dd4, type: 2}
+  durability: 70
+  damage: 15

@@ -40,9 +40,14 @@ public class MapGenerator : MonoBehaviour {
   [Header("References")]
   public MapSO map;
   public TilesetDatabase tileset;
-  public WorldObjectDB worldObjectDB, naturalObjDB;
+  public WorldObjectDB worldObjectDB;
   public GameObject[] decals;
   public WorldObjectDB[] naturalObjPerBiomeDB;
+
+  public float[] biomeWeight;
+  public float[] biomeObjectSpawnrate;
+
+  [Space(10)]
 
   Color[] gradientPixels;
   public Texture2D levelGradient;
@@ -117,6 +122,20 @@ public class MapGenerator : MonoBehaviour {
     Debug.Log("seed : " + seed);
   }
 
+  float[] CalculateBiomeThreshold() {
+    // Calculate biome threshold
+    float[] biomeThreshold = new float[tileset.tiles.Count - 1];
+    float total = 0;
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      total += biomeWeight[i];
+    }
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      if (i == 0) biomeThreshold[i] = biomeWeight[i] / total;
+      else biomeThreshold[i] = biomeThreshold[i - 1] + (biomeWeight[i] / total);
+    }
+    return biomeThreshold;
+  }
+
   void GenerateMap() {
     for (int x = 0; x < map.mapSize; x++) {
       map.tileMap.Add(new List<int>());
@@ -153,11 +172,22 @@ public class MapGenerator : MonoBehaviour {
 
     noiseBiome1 = GeneratePartTexture(biomeNoise.rawNoiseData);
 
+    float[] biomeThreshold = CalculateBiomeThreshold();
+
     //get biome data from biome noise
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
-        int biomeID = Mathf.FloorToInt(biomeNoise.rawNoiseData[x][y] * (tileset.tiles.Count - 1));
-        if (biomeID == tileset.tiles.Count - 1) biomeID--;
+        // int biomeID = Mathf.FloorToInt(biomeNoise.rawNoiseData[x][y] * (tileset.tiles.Count - 1));
+        // if (biomeID == tileset.tiles.Count - 1) biomeID--;
+
+        int biomeID = 0;
+
+        for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+          if (biomeNoise.rawNoiseData[x][y] <= biomeThreshold[i]) {
+            biomeID = i;
+            break;
+          }
+        }
 
         map.biomes[x].Add(biomeID);
       }
@@ -258,11 +288,20 @@ public class MapGenerator : MonoBehaviour {
   void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
-        if (Random.value > 0.95 && map.tileMap[x][y] == 1) {
-          int randChoice = Random.Range(0, naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects.Count);
+        if (Random.value > biomeObjectSpawnrate[map.biomes[x][y]] && map.tileMap[x][y] == 1) {
+          // int randChoice = Random.Range(0, naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects.Count);
+
+          float randomChoice = Random.Range(0f, 1f);
+          int randomID = 0;
+          for (int i = 0; i < naturalObjPerBiomeDB[map.biomes[x][y]].spawnWeightThreshold.Length; i++) {
+            if (randomChoice <= naturalObjPerBiomeDB[map.biomes[x][y]].spawnWeightThreshold[i]) {
+              randomID = i;
+              break;
+            }
+          }
           Vector2 position = new Vector2(x, y);
 
-          int worldObjectId = worldObjectDB.objectLookup[naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects[randChoice]];
+          int worldObjectId = worldObjectDB.objectLookup[naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects[randomID]];
           worldObjectDatas.Add(new WorldObjectData(worldObjectId, position, -1));
         }
       }
@@ -333,6 +372,12 @@ public class MapGenerator : MonoBehaviour {
     for (int i = 0; i < tileset.tiles.Count - 1; i++) {
       colorList[i] = Random.ColorHSV();
     }
+
+    colorList[0] = Color.green;
+    colorList[1] = Color.red;
+    colorList[2] = Color.gray;
+    colorList[3] = Color.yellow;
+
 
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {

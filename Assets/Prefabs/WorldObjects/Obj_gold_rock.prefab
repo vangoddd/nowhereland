@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077667236, y: 0.27}
+  m_Offset: {x: -0.0077667236, y: -0.35414886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3009033, y: 0.78826904}
+  m_Size: {x: 1.3009033, y: 0.81651306}
   m_EdgeRadius: 0
 --- !u!114 &2540752648681990353
 MonoBehaviour:
@@ -127,7 +127,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  drops: {fileID: 11400000, guid: 04e6a2bee8714bd468531b66381f08a7, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
   health: 150
