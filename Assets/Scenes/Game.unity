@@ -4022,7 +4022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
-  randomSeed: 0
+  randomSeed: 1
   mapSize: 300
   seed: 69
   octaves: 3
@@ -4046,6 +4046,13 @@ MonoBehaviour:
   naturalObjDB: {fileID: 11400000, guid: 5cd06066688ed7e4589b9a2b3247d4a0, type: 2}
   decals:
   - {fileID: 4889024062735647205, guid: 70f4397b185b6b447be63c047efdb614, type: 3}
+  - {fileID: 4889024062735647205, guid: 515b8106060d172408bc55f8a0f9115c, type: 3}
+  - {fileID: 4889024062735647205, guid: 7d36c851f6e16ef4db4b2ff1a5bae86a, type: 3}
+  naturalObjPerBiomeDB:
+  - {fileID: 11400000, guid: e68ffc06bbdfa73438287858326ae5ed, type: 2}
+  - {fileID: 11400000, guid: eee56a3320a96f74abb137f2ac5e70dc, type: 2}
+  - {fileID: 11400000, guid: fe80fa17aebb1e14e8434a91c282e2ce, type: 2}
+  - {fileID: 11400000, guid: 0a00e4ec5eb490144b25ae2e28ed46af, type: 2}
   levelGradient: {fileID: 2800000, guid: 1c4a79e49aabff74ebe9ca00d9c9fb77, type: 3}
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
   startMode: {fileID: 11400000, guid: e7dce47d6ab5a514e8f1ad282b897279, type: 2}

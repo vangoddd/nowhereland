@@ -1,72 +1,48 @@
 fileFormatVersion: 2
-guid: 28af73e3729e1d741a32f4f42b311aed
+guid: 1764d9f0cfc9d894cb45e50d5724b28d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2882890675888976447
-    second: Sprite_grass_0
+      213: -5349011000848780069
+    second: animation_attack_0
   - first:
-      213: -7915942655759083940
-    second: Sprite_grass_1
+      213: 8583167700496374383
+    second: animation_attack_1
   - first:
-      213: 3426943880530432053
-    second: Sprite_grass_2
+      213: -1678963232819830568
+    second: animation_attack_2
   - first:
-      213: -5932563198353475585
-    second: Sprite_grass_3
+      213: -3952652387458045956
+    second: animation_attack_3
   - first:
-      213: -9059450431300755559
-    second: Sprite_grass_4
+      213: 3632611003203021472
+    second: animation_attack_4
   - first:
-      213: -8618673740224997215
-    second: Sprite_grass_5
+      213: -4202281396181897007
+    second: animation_attack_5
   - first:
-      213: -4982220007714480530
-    second: Sprite_grass_6
+      213: 4947847802246949500
+    second: animation_attack_6
   - first:
-      213: 4603043814348491329
-    second: Sprite_grass_7
+      213: 300187518194118379
+    second: animation_attack_7
   - first:
-      213: 3618333012194995348
-    second: Sprite_grass_8
+      213: 1986068745859231332
+    second: animation_attack_8
   - first:
-      213: 8953416415762076869
-    second: Sprite_grass_9
+      213: 1504913699556556937
+    second: animation_attack_9
   - first:
-      213: -8447613172520661275
-    second: Sprite_grass_10
+      213: -5682640525514529889
+    second: animation_attack_10
   - first:
-      213: 2929381139850413197
-    second: Sprite_grass_11
-  - first:
-      213: 2874900715127511006
-    second: Sprite_grass_12
-  - first:
-      213: -1435866694479414340
-    second: Sprite_grass_13
-  - first:
-      213: 8798001390370120082
-    second: Sprite_grass_14
-  - first:
-      213: -6196129813339268459
-    second: Sprite_grass_15
-  - first:
-      213: -322951336109780389
-    second: Sprite_grass_16
-  - first:
-      213: -6776829611023849382
-    second: Sprite_grass_17
-  - first:
-      213: 7447299124178504727
-    second: Sprite_grass_18
-  - first:
-      213: -752511223875590759
-    second: Sprite_grass_19
+      213: 7863468460520053559
+    second: animation_attack_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -175,217 +151,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_grass_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f32f5a6abc5120820800000000000000
-      internalID: 2882890675888976447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c561e15581ce42290800000000000000
-      internalID: -7915942655759083940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53017387d43fe8f20800000000000000
-      internalID: 3426943880530432053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff7f592043d4bada0800000000000000
-      internalID: -5932563198353475585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99f1f0ee4dd564280800000000000000
-      internalID: -9059450431300755559
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a8d6ee95e1546880800000000000000
-      internalID: -8618673740224997215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_6
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6e9557cc499bdab0800000000000000
-      internalID: -4982220007714480530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14a0dcf06fb41ef30800000000000000
-      internalID: 4603043814348491329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_8
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49ca3fe24b6e63230800000000000000
-      internalID: 3618333012194995348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c456abfacce04c70800000000000000
-      internalID: 8953416415762076869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_10
+      name: animation_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -399,14 +165,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eecef3b39c04ca80800000000000000
-      internalID: -8447613172520661275
+      spriteID: bd470c2c5de74c5b0800000000000000
+      internalID: -5349011000848780069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_11
+      name: animation_attack_1
       rect:
         serializedVersion: 2
         x: 16
@@ -420,14 +186,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d84438c40a047a820800000000000000
-      internalID: 2929381139850413197
+      spriteID: f6a51bb4c898d1770800000000000000
+      internalID: 8583167700496374383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_12
+      name: animation_attack_2
       rect:
         serializedVersion: 2
         x: 32
@@ -441,14 +207,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed711b1f7f2b5e720800000000000000
-      internalID: 2874900715127511006
+      spriteID: 8d025d4d5df13b8e0800000000000000
+      internalID: -1678963232819830568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_13
+      name: animation_attack_3
       rect:
         serializedVersion: 2
         x: 48
@@ -462,35 +228,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbb7db259d6c21ce0800000000000000
-      internalID: -1435866694479414340
+      spriteID: cf7a6fc789b5529c0800000000000000
+      internalID: -3952652387458045956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_14
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 291676696a7c81a70800000000000000
-      internalID: 8798001390370120082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_grass_15
+      name: animation_attack_4
       rect:
         serializedVersion: 2
         x: 0
@@ -504,14 +249,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a94b563cce20aa0800000000000000
-      internalID: -6196129813339268459
+      spriteID: 0aa67150670a96230800000000000000
+      internalID: 3632611003203021472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_16
+      name: animation_attack_5
       rect:
         serializedVersion: 2
         x: 16
@@ -525,14 +270,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b52507b8875a48bf0800000000000000
-      internalID: -322951336109780389
+      spriteID: 1d07856b55f7ea5c0800000000000000
+      internalID: -4202281396181897007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_17
+      name: animation_attack_6
       rect:
         serializedVersion: 2
         x: 32
@@ -546,14 +291,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a58239bbf5dd3f1a0800000000000000
-      internalID: -6776829611023849382
+      spriteID: c7a60af7c594aa440800000000000000
+      internalID: 4947847802246949500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_18
+      name: animation_attack_7
       rect:
         serializedVersion: 2
         x: 48
@@ -567,18 +312,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71cccb0981f1a5760800000000000000
-      internalID: 7447299124178504727
+      spriteID: bee67f315fa7a2400800000000000000
+      internalID: 300187518194118379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_grass_19
+      name: animation_attack_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
+        x: 0
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -588,8 +333,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 995a663670b8e85f0800000000000000
-      internalID: -752511223875590759
+      spriteID: 46ee170700fef8b10800000000000000
+      internalID: 1986068745859231332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_attack_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98000bf490782e410800000000000000
+      internalID: 1504913699556556937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_attack_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93a77acc843321b0800000000000000
+      internalID: -5682640525514529889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_attack_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b19c307e6a02d60800000000000000
+      internalID: 7863468460520053559
       vertices: []
       indices: 
       edges: []

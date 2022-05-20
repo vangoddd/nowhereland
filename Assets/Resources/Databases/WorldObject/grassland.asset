@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353ed60276487b74bab1f7081ac8feef, type: 3}
+  m_Name: grassland
+  m_EditorClassIdentifier: 
+  worldObjects:
+  - {fileID: 7211843886586674104, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}
+  - {fileID: 8923530923195784956, guid: 6891043c60fc25f4483d7c54b4eef824, type: 3}
+  - {fileID: 8923530923195784956, guid: 6f5e36274446dcb4e8ae6c009d3a57b0, type: 3}
+  - {fileID: 8923530923195784956, guid: 49e3fe185815b654cab0e593640ce477, type: 3}

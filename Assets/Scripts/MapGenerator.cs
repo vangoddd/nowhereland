@@ -42,6 +42,7 @@ public class MapGenerator : MonoBehaviour {
   public TilesetDatabase tileset;
   public WorldObjectDB worldObjectDB, naturalObjDB;
   public GameObject[] decals;
+  public WorldObjectDB[] naturalObjPerBiomeDB;
 
   Color[] gradientPixels;
   public Texture2D levelGradient;
@@ -224,25 +225,25 @@ public class MapGenerator : MonoBehaviour {
         GameObject decal;
         //check up
         if (y + 1 < mapSize && map.biomes[x][y + 1] > currentBiome && map.tileMap[x][y + 1] != 0) {
-          decal = Instantiate(decals[0]);
+          decal = Instantiate(decals[map.biomes[x][y + 1] - 1]);
           decal.GetComponent<DecalTexture>().SetFace(0);
           decal.transform.position = new Vector2(x, y);
         }
         //check right
         if (x + 1 < mapSize && map.biomes[x + 1][y] > currentBiome && map.tileMap[x + 1][y] != 0) {
-          decal = Instantiate(decals[0]);
+          decal = Instantiate(decals[map.biomes[x + 1][y] - 1]);
           decal.GetComponent<DecalTexture>().SetFace(1);
           decal.transform.position = new Vector2(x, y);
         }
         //check down
         if (y - 1 >= 0 && map.biomes[x][y - 1] > currentBiome && map.tileMap[x][y - 1] != 0) {
-          decal = Instantiate(decals[0]);
+          decal = Instantiate(decals[map.biomes[x][y - 1] - 1]);
           decal.GetComponent<DecalTexture>().SetFace(2);
           decal.transform.position = new Vector2(x, y);
         }
         //check left
         if (x - 1 >= 0 && map.biomes[x - 1][y] > currentBiome && map.tileMap[x - 1][y] != 0) {
-          decal = Instantiate(decals[0]);
+          decal = Instantiate(decals[map.biomes[x - 1][y] - 1]);
           decal.GetComponent<DecalTexture>().SetFace(3);
           decal.transform.position = new Vector2(x, y);
         }
@@ -257,10 +258,12 @@ public class MapGenerator : MonoBehaviour {
   void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
-        if (Random.value > 0.97 && map.tileMap[x][y] == 1) {
-          int randChoice = Random.Range(0, naturalObjDB.worldObjects.Count);
+        if (Random.value > 0.95 && map.tileMap[x][y] == 1) {
+          int randChoice = Random.Range(0, naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects.Count);
           Vector2 position = new Vector2(x, y);
-          worldObjectDatas.Add(new WorldObjectData(randChoice, position, -1));
+
+          int worldObjectId = worldObjectDB.objectLookup[naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects[randChoice]];
+          worldObjectDatas.Add(new WorldObjectData(worldObjectId, position, -1));
         }
       }
     }

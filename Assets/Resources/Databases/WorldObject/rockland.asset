@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353ed60276487b74bab1f7081ac8feef, type: 3}
+  m_Name: rockland
+  m_EditorClassIdentifier: 
+  worldObjects:
+  - {fileID: 7536515956877062947, guid: 839a44f91c5c66444b8ee32dd71b6a40, type: 3}
+  - {fileID: 8923530923195784956, guid: 0a18865951764c949a4d2e56a1628a37, type: 3}
+  - {fileID: 8923530923195784956, guid: 40948909ef647014691a88a6c3c23b75, type: 3}
+  - {fileID: 8923530923195784956, guid: 3c43eb3eaa4b6054999dac4db0a7b8af, type: 3}
