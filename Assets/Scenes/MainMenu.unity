@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 628381326}
   mode: {fileID: 11400000, guid: e7dce47d6ab5a514e8f1ad282b897279, type: 2}
+  button: {fileID: 479411584}
 --- !u!114 &479411584
 MonoBehaviour:
   m_ObjectHideFlags: 0

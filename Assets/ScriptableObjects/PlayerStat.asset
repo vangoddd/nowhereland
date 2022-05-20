@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStat: 100
   health: 100
-  hunger: 94.748795
-  thirst: 92.45371
-  position: {x: 221.73087, y: 240.25407}
-  playerDirection: {x: -0.9897664, y: 0.14269675}
+  hunger: 100
+  thirst: 100
+  position: {x: 201.4431, y: 194.24426}
+  playerDirection: {x: -0.999151, y: 0.041198485}
   drain_hunger: 0.167
   drain_thirst: 0.24
   drain_health: 1.67

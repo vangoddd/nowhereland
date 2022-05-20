@@ -20,6 +20,7 @@ public class PlayerStats : ScriptableObject {
 
   public HealthInteraction _healthInteraction;
   public Inventory _inventory;
+  private bool alive = true;
 
   private void OnEnable() {
     ResetValues();
@@ -43,6 +44,7 @@ public class PlayerStats : ScriptableObject {
     health = maxStat;
     hunger = maxStat;
     thirst = maxStat;
+    alive = true;
   }
 
   public void decreaseHealth(float amt) {
@@ -118,6 +120,8 @@ public class PlayerStats : ScriptableObject {
   }
 
   public void Die() {
+    if (!alive) return;
+    alive = false;
     OnPlayerDieEvent.Raise();
     OnPlayerDie.Invoke();
   }

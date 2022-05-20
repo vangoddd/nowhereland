@@ -76,6 +76,16 @@ public class SaveSystem : MonoBehaviour {
     return true;
   }
 
+  [ContextMenu("Delete Save")]
+  public void DeleteSave() {
+    string path = Application.persistentDataPath + "/save.dat";
+    if (File.Exists(path)) {
+      File.Delete(path);
+    } else {
+      Debug.LogError("Savegame not found");
+    }
+  }
+
   public PlayerStatData GeneratePlayerStatData() {
     return new PlayerStatData(playerStat.health, playerStat.hunger, playerStat.thirst, playerStat.position);
   }

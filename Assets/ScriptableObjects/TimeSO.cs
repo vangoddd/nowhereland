@@ -22,6 +22,8 @@ public class TimeSO : ScriptableObject {
 
   public bool isDay = true;
 
+  public GameEvent OnDayChangeEvent;
+
   private void OnEnable() {
     ResetValues();
   }
@@ -63,6 +65,7 @@ public class TimeSO : ScriptableObject {
     tick = 0;
     day++;
     OnDayChange.Invoke(day);
+    OnDayChangeEvent.Raise();
   }
 
   public void ChangeToNight() {

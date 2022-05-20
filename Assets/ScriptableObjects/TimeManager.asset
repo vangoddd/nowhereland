@@ -24,10 +24,11 @@ MonoBehaviour:
   OnGameLoad:
     m_PersistentCalls:
       m_Calls: []
-  tick: 35
+  tick: 0
   day: 1
   secondsPerDay: 240
   secondsPerTick: 2
   nightRatio: 0.25
   transitionTime: 5
   isDay: 1
+  OnDayChangeEvent: {fileID: 11400000, guid: 2c99a325945baa74aa5e869b0d1c0c13, type: 2}
