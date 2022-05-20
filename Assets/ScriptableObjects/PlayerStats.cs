@@ -16,6 +16,8 @@ public class PlayerStats : ScriptableObject {
   public UnityEvent<PlayerStatData> OnStatChangeEvent;
   public UnityEvent OnPlayerDie;
 
+  public GameEvent OnPlayerDieEvent;
+
   public HealthInteraction _healthInteraction;
   public Inventory _inventory;
 
@@ -116,6 +118,7 @@ public class PlayerStats : ScriptableObject {
   }
 
   public void Die() {
+    OnPlayerDieEvent.Raise();
     OnPlayerDie.Invoke();
   }
 

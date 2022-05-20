@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour {
   public CraftingController UI_crafting;
   public GameObject pauseMenu;
   public GameObject mapMenu;
+  public GameObject gameOver;
 
   public ItemInteraction _itemInteraction;
 
@@ -50,6 +51,10 @@ public class UIManager : MonoBehaviour {
     UI_crafting.path = "Starter";
     UI_crafting.SetButtonText("Craft!");
     UI_crafting.gameObject.SetActive(true);
+  }
+
+  public void OpenGameOverHUD() {
+    gameOver.SetActive(true);
   }
 
   public void OpenPauseMenu() {

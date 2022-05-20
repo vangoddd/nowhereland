@@ -59,9 +59,12 @@ public class MapGenerator : MonoBehaviour {
 
   private List<TileTexture> runtimeTiles = new List<TileTexture>();
 
+  public PlayerMovement _pm;
+
   /*----------------------------------------*/
 
   void Awake() {
+    map.mapSize = mapSize;
     map.ResetValues();
 
     loadFromSave = startMode.loadGame;
@@ -69,6 +72,8 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void Start() {
+    Vector2 startPos = new Vector2(mapSize / 2, mapSize / 2);
+    Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -1f);
     TimeManager.Instance.ResumeGame();
 
     GetGradientColors();
@@ -81,6 +86,7 @@ public class MapGenerator : MonoBehaviour {
       GenerateMap();
       GenerateWorldObject();
       SpawnObjects();
+      _pm.gameObject.transform.position = startPos;
     } else {
       SaveSystem.Instance.LoadGame();
       InitiateSeed();
@@ -194,7 +200,7 @@ public class MapGenerator : MonoBehaviour {
     }
 
     noiseBiome2 = GenerateBiomeTexture(map.biomes);
-    int radius = 30;
+    int radius = 12;
     for (int x = mapSize / 2 - radius; x < mapSize / 2 + radius; x++) {
       for (int y = mapSize / 2 - radius; y < mapSize / 2 + radius; y++) {
         if ((x - mapSize / 2) * (x - mapSize / 2) + (y - mapSize / 2) * (y - mapSize / 2) < radius * radius) {
@@ -330,8 +336,13 @@ public class MapGenerator : MonoBehaviour {
     Color green = Color.green;
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
-        if (map.tileMap[x][y] == 0) mapTexture.SetPixel(x, y, blue);
-        else mapTexture.SetPixel(x, y, green);
+        if (map.tileMap[x][y] == 0) mapTexture.SetPixel(x, y, new Color(0.38f, 0.49f, 0.68f));
+        else {
+          if (map.biomes[x][y] == 0) mapTexture.SetPixel(x, y, new Color(0.53f, 0.69f, 0.57f));
+          if (map.biomes[x][y] == 1) mapTexture.SetPixel(x, y, new Color(0.94f, 0.51f, 0.50f));
+          if (map.biomes[x][y] == 2) mapTexture.SetPixel(x, y, new Color(0.52f, 0.52f, 0.52f));
+          if (map.biomes[x][y] == 3) mapTexture.SetPixel(x, y, new Color(0.95f, 0.87f, 0.72f));
+        }
       }
     }
     mapTexture.Apply();
