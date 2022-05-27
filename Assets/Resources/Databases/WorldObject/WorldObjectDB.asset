@@ -27,3 +27,6 @@ MonoBehaviour:
   - {fileID: 8923530923195784956, guid: 6891043c60fc25f4483d7c54b4eef824, type: 3}
   - {fileID: 8923530923195784956, guid: 6f5e36274446dcb4e8ae6c009d3a57b0, type: 3}
   - {fileID: 8923530923195784956, guid: 49e3fe185815b654cab0e593640ce477, type: 3}
+  - {fileID: 8182442961856981354, guid: a73e9eed8363608498b33d72ac2e5032, type: 3}
+  spawnWeight: []
+  spawnWeightThreshold: []

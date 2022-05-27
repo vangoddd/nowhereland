@@ -15,6 +15,8 @@ MonoBehaviour:
   fixedLoot:
   - item: {fileID: 11400000, guid: 36034ff62c0afc945826aff76790277c, type: 2}
     amount: 4
+  - item: {fileID: 11400000, guid: fd38b6ea4e16607429356e57eedb72c8, type: 2}
+    amount: 2
   chanceLoot:
   - item: {fileID: 11400000, guid: 36034ff62c0afc945826aff76790277c, type: 2}
     amount: 1

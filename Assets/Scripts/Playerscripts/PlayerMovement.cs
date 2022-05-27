@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour {
   private Vector2 moveDir;
   private Vector2 lastPosition;
 
+  public int facing;
+
   private int lastChunkPos;
 
   public GameObject dustParticle;
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour {
     animator.SetFloat("lastPosX", moveDir.x);
     animator.SetFloat("lastPosY", moveDir.y);
 
-    animator.SetBool("moving", moving); 
+    animator.SetBool("moving", moving);
 
     //Handle dust timer
     dustTimer += Time.deltaTime;
@@ -339,6 +341,14 @@ public class PlayerMovement : MonoBehaviour {
         }
       }
     }
+  }
+
+  public bool isMoving() {
+    return moving;
+  }
+
+  public Vector2 getMoveDir() {
+    return moveDir;
   }
 }
 

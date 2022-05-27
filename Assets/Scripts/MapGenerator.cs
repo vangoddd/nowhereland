@@ -46,6 +46,7 @@ public class MapGenerator : MonoBehaviour {
 
   public float[] biomeWeight;
   public float[] biomeObjectSpawnrate;
+  public SetpieceData[] setpieceDatas;
 
   [Space(10)]
 
@@ -61,11 +62,15 @@ public class MapGenerator : MonoBehaviour {
 
   public PlayerMovement _pm;
 
+  private bool[,] tileUnavailable;
+
   /*----------------------------------------*/
 
   void Awake() {
     map.mapSize = mapSize;
     map.ResetValues();
+
+    tileUnavailable = new bool[mapSize, mapSize];
 
     loadFromSave = startMode.loadGame;
     if (!loadFromSave && randomSeed) seed = Random.Range(0, 100000);
@@ -178,7 +183,7 @@ public class MapGenerator : MonoBehaviour {
     //generate biome noise
     NoiseGenerator biomeNoise = new NoiseGenerator();
     biomeNoise.GenerateNoise(map.mapSize, seed, biome_magnification, biome_octaves, biome_presistance, biome_lacunarity);
-    biomeNoise.CalculateDistribution(1);
+    //biomeNoise.CalculateDistribution(1);
 
     noiseBiome1 = GeneratePartTexture(biomeNoise.rawNoiseData);
 
@@ -308,13 +313,24 @@ public class MapGenerator : MonoBehaviour {
     }
 
     for (int i = 0; i < tileset.tiles.Count - 1; i++) {
-      //Debug.Log("setpiece counter " + biomeTiles[i].Count);
+      if (setpieceDatas[i].objects.Length > 0) {
+        for (int j = 0; j < setpieceDatas[i].objects.Length; j++) {
+          for (int k = 0; k < setpieceDatas[i].objects[j].amount; k++) {
+            int randomNum = Random.Range(0, biomeTiles[i].Count);
+            GameObject go = Instantiate(setpieceDatas[i].objects[j].prefab);
+            go.transform.position = new Vector3(biomeTiles[i][randomNum].x, biomeTiles[i][randomNum].y, 0);
+            tileUnavailable[(int)biomeTiles[i][randomNum].x, (int)biomeTiles[i][randomNum].y] = true;
+            biomeTiles[i].RemoveAt(randomNum);
+          }
+        }
+      }
     }
   }
 
   void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
+        if (tileUnavailable[x, y]) continue;
         if (Random.value > biomeObjectSpawnrate[map.biomes[x][y]] && map.tileMap[x][y] == 1) {
           float randomChoice = Random.Range(0f, 1f);
           int randomID = 0;

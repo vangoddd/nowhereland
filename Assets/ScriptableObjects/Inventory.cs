@@ -22,6 +22,8 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnItemUse.AddListener(UseItem);
     _itemInteraction.OnUnequip.AddListener(UnequipItem);
     _itemInteraction.OnSlotSwap.AddListener(SlotSwap);
+    _itemInteraction.OnItemDrop.AddListener(DropItem);
+    _itemInteraction.OnItemDelete.AddListener(DeleteItem);
   }
 
   private void OnDisable() {
@@ -29,6 +31,8 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnItemUse.RemoveListener(UseItem);
     _itemInteraction.OnUnequip.RemoveListener(UnequipItem);
     _itemInteraction.OnSlotSwap.RemoveListener(SlotSwap);
+    _itemInteraction.OnItemDrop.RemoveListener(DropItem);
+    _itemInteraction.OnItemDelete.RemoveListener(DeleteItem);
   }
 
   public void ResetValues() {
@@ -183,6 +187,21 @@ public class Inventory : ScriptableObject {
         RemoveItem(recipe.requiredItems[i].item, recipe.requiredItems[i].amount);
       }
       AddItem(recipe.result.item, recipe.result.amount);
+    }
+  }
+
+  public void DropItem(int slot) {
+    if (slot < 18) {
+      ItemSpawner.Instance.SpawnItemOnPlayer(itemList[slot]);
+      RemoveItemAtSlot(slot, itemList[slot].amount);
+      OnInventoryUpdate.Raise();
+    }
+  }
+
+  public void DeleteItem(int slot) {
+    if (slot < 18) {
+      RemoveItemAtSlot(slot, itemList[slot].amount);
+      OnInventoryUpdate.Raise();
     }
   }
 

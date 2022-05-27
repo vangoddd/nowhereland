@@ -15,17 +15,17 @@ public class Destroyable : WorldObject {
 
   public override void Interact(GameObject player) {
     base.Interact(player);
-    if (_inventory.handSlot != null) {
+    if (_inventory.handSlot != null && _inventory.handSlot.itemData is Tools) {
       health -= (int)((Tools)_inventory.handSlot.itemData).damage;
     } else {
       health -= 1;
     }
 
-    if(DestroyAnimation.Length > 0){
+    if (DestroyAnimation.Length > 0) {
       int RandomChoice = Random.Range(0, DestroyAnimation.Length);
       Instantiate(DestroyAnimation[RandomChoice], transform.position, transform.rotation);
     }
-    
+
 
     if (health <= 0) DestroyWorldObject();
   }

@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour {
   public float aggroRange = 5f;
   public float offAggroRange = 15f;
 
+  public LootTable drops;
+
   public EnemyHandler _enemyHandler;
   private Rigidbody2D rb;
   private SpriteRenderer spriteRenderer;
@@ -50,6 +52,9 @@ public class Enemy : MonoBehaviour {
   public void Die() {
     _enemyHandler.enemyList.Remove(this);
     ChunkHandlerScript.removeObjectFromChunk(this.gameObject);
+
+    ItemSpawner.Instance.spawnDrops(transform.position, drops);
+
     Destroy(this.gameObject);
   }
 

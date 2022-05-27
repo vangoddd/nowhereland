@@ -9,6 +9,8 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int> OnItemSlotClicked;
   public UnityEvent<int> OnItemUse;
   public UnityEvent<int> OnUnequip;
+  public UnityEvent<int> OnItemDrop;
+  public UnityEvent<int> OnItemDelete;
 
   public UnityEvent<int> OnChestOpen;
 
@@ -73,6 +75,14 @@ public class ItemInteraction : ScriptableObject {
       OnPickupNull = new UnityEvent();
     }
 
+    if (OnItemDrop == null) {
+      OnItemDrop = new UnityEvent<int>();
+    }
+
+    if (OnItemDelete == null) {
+      OnItemDelete = new UnityEvent<int>();
+    }
+
   }
 
   public void PickupItem(ItemScript item) {
@@ -121,6 +131,14 @@ public class ItemInteraction : ScriptableObject {
 
   public void PickupNull() {
     OnPickupNull.Invoke();
+  }
+
+  public void DropItem(int slot) {
+    OnItemDrop.Invoke(slot);
+  }
+
+  public void DeleteItem(int slot) {
+    OnItemDelete.Invoke(slot);
   }
 
 }

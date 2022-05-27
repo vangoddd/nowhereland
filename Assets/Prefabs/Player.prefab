@@ -150,6 +150,8 @@ MonoBehaviour:
   dustParticle: {fileID: 1254911816006349180, guid: 50e0c34fafb15f1418a70448068ec2f3, type: 3}
   dustInterval: 0.5
   interactSearchRadius: 4.2
+  actionCooldownDuration: 0.5
+  _animator: {fileID: 0}
   _interactSO: {fileID: 11400000, guid: 242b7ef130f34ff478020b3fdce3cc5f, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   OnChunkChanged: {fileID: 11400000, guid: 6a90fbd081077eb4d984da79fb5f1365, type: 2}
