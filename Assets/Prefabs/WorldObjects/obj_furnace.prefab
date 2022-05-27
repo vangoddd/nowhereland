@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1697930187680756940}
   - component: {fileID: 3102281242440749712}
   m_Layer: 6
-  m_Name: obj_cookpot
+  m_Name: obj_furnace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,4 +132,8 @@ MonoBehaviour:
   status: -1
   health: 50
   requiredTool: {fileID: 11400000, guid: d1eca3da37d0f0c49a120c44d5b43a6b, type: 2}
+  DestroyAnimation:
+  - {fileID: 3737388343061337553, guid: 741c5cd79aa078947ba6947dfd2c2fc4, type: 3}
+  - {fileID: 5876203432594074283, guid: a38fdebf0306a3145956426f18141c0d, type: 3}
+  - {fileID: 2624484487037589561, guid: 369728fcbdc589c46815918009c582c0, type: 3}
   OnWorldItemUse: {fileID: 11400000, guid: 60b626cec1cb8dd42a96077d4d23d77a, type: 2}

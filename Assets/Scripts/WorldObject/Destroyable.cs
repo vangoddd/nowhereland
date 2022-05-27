@@ -6,6 +6,8 @@ public class Destroyable : WorldObject {
   public int health;
   public ToolType requiredTool = null;
 
+  public GameObject[] DestroyAnimation;
+
   void Start() {
     base.InitializeObject();
     status = health;
@@ -18,6 +20,12 @@ public class Destroyable : WorldObject {
     } else {
       health -= 1;
     }
+
+    if(DestroyAnimation.Length > 0){
+      int RandomChoice = Random.Range(0, DestroyAnimation.Length);
+      Instantiate(DestroyAnimation[RandomChoice], transform.position, transform.rotation);
+    }
+    
 
     if (health <= 0) DestroyWorldObject();
   }

@@ -139,6 +139,9 @@ public class MapGenerator : MonoBehaviour {
       if (i == 0) biomeThreshold[i] = biomeWeight[i] / total;
       else biomeThreshold[i] = biomeThreshold[i - 1] + (biomeWeight[i] / total);
     }
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      Debug.Log(biomeThreshold[i]);
+    }
     return biomeThreshold;
   }
 
@@ -175,6 +178,7 @@ public class MapGenerator : MonoBehaviour {
     //generate biome noise
     NoiseGenerator biomeNoise = new NoiseGenerator();
     biomeNoise.GenerateNoise(map.mapSize, seed, biome_magnification, biome_octaves, biome_presistance, biome_lacunarity);
+    biomeNoise.CalculateDistribution(1);
 
     noiseBiome1 = GeneratePartTexture(biomeNoise.rawNoiseData);
 
@@ -211,6 +215,8 @@ public class MapGenerator : MonoBehaviour {
     }
 
     InstantiateTiles();
+
+    CountBiomes();
   }
 
   void InstantiateTiles() {
@@ -288,15 +294,28 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void SpawnSetPiece() {
+    if (loadFromSave) return;
+    List<List<Vector2>> biomeTiles = new List<List<Vector2>>();
 
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      biomeTiles.Add(new List<Vector2>());
+    }
+
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
+        if (map.tileMap[x][y] == 1) biomeTiles[map.biomes[x][y]].Add(new Vector2(x, y));
+      }
+    }
+
+    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+      //Debug.Log("setpiece counter " + biomeTiles[i].Count);
+    }
   }
 
   void GenerateWorldObject() {
     for (int x = 0; x < map.mapSize; x += 2) {
       for (int y = 0; y < map.mapSize; y += 2) {
         if (Random.value > biomeObjectSpawnrate[map.biomes[x][y]] && map.tileMap[x][y] == 1) {
-          // int randChoice = Random.Range(0, naturalObjPerBiomeDB[map.biomes[x][y]].worldObjects.Count);
-
           float randomChoice = Random.Range(0f, 1f);
           int randomID = 0;
           for (int i = 0; i < naturalObjPerBiomeDB[map.biomes[x][y]].spawnWeightThreshold.Length; i++) {
@@ -415,6 +434,24 @@ public class MapGenerator : MonoBehaviour {
   public void ApplyTileTexture() {
     foreach (TileTexture tile in runtimeTiles) {
       tile.ApplyTexture();
+    }
+  }
+
+  private void CountBiomes() {
+    int biomeCount = tileset.tiles.Count - 1;
+    int[] occurence = new int[biomeCount];
+    for (int i = 0; i < biomeCount; i++) {
+      occurence[i] = 0;
+    }
+
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
+        occurence[map.biomes[x][y]]++;
+      }
+    }
+
+    for (int i = 0; i < biomeCount; i++) {
+      Debug.Log(i + " : " + occurence[i] + " occurence");
     }
   }
 

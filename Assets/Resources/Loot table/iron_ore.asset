@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: iron_ore
   m_EditorClassIdentifier: 
   fixedLoot:
-  - item: {fileID: 11400000, guid: 7a30aece6f694c946a5a1443476ea505, type: 2}
+  - item: {fileID: 11400000, guid: 36034ff62c0afc945826aff76790277c, type: 2}
     amount: 4
   chanceLoot:
-  - item: {fileID: 11400000, guid: b949c87ff6abac44981b7cade4046f2f, type: 2}
+  - item: {fileID: 11400000, guid: 36034ff62c0afc945826aff76790277c, type: 2}
     amount: 1
     chance: 0.5

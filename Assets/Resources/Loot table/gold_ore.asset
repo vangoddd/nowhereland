@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: gold_ore
   m_EditorClassIdentifier: 
   fixedLoot:
-  - item: {fileID: 11400000, guid: b949c87ff6abac44981b7cade4046f2f, type: 2}
+  - item: {fileID: 11400000, guid: 8e9178862357dd747a0078caa97b4c7d, type: 2}
     amount: 4
   chanceLoot:
-  - item: {fileID: 11400000, guid: b949c87ff6abac44981b7cade4046f2f, type: 2}
+  - item: {fileID: 11400000, guid: 8e9178862357dd747a0078caa97b4c7d, type: 2}
     amount: 1
     chance: 0.5

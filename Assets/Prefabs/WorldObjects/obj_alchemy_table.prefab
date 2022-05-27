@@ -132,4 +132,8 @@ MonoBehaviour:
   status: -1
   health: 50
   requiredTool: {fileID: 11400000, guid: d1eca3da37d0f0c49a120c44d5b43a6b, type: 2}
+  DestroyAnimation:
+  - {fileID: 3737388343061337553, guid: 741c5cd79aa078947ba6947dfd2c2fc4, type: 3}
+  - {fileID: 5876203432594074283, guid: a38fdebf0306a3145956426f18141c0d, type: 3}
+  - {fileID: 2624484487037589561, guid: 369728fcbdc589c46815918009c582c0, type: 3}
   OnWorldItemUse: {fileID: 11400000, guid: 1a2bfaad28d31cf40b5b03904ea0b3be, type: 2}

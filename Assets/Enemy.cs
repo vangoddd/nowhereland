@@ -93,15 +93,17 @@ public class Enemy : MonoBehaviour {
     if (collision.gameObject.tag == "Player") {
       Debug.Log("apply damage");
       _healthInteraction.HurtPlayer(damage);
+      attackTimer = 1f;
     }
-    attackTimer = 1f;
   }
 
   void OnCollisionStay2D(Collision2D collision) {
-    Stun(1f);
-    if (attackTimer <= 0f) {
-      _healthInteraction.HurtPlayer(damage);
-      attackTimer = 1f;
+    if (collision.gameObject.tag == "Player") {
+      Stun(1f);
+      if (attackTimer <= 0f) {
+        _healthInteraction.HurtPlayer(damage);
+        attackTimer = 1f;
+      }
     }
   }
 
