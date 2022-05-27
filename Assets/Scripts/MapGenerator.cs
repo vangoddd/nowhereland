@@ -73,7 +73,7 @@ public class MapGenerator : MonoBehaviour {
 
   void Start() {
     Vector2 startPos = new Vector2(mapSize / 2, mapSize / 2);
-    Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -1f);
+    Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -100f);
     TimeManager.Instance.ResumeGame();
 
     GetGradientColors();
@@ -160,7 +160,7 @@ public class MapGenerator : MonoBehaviour {
       for (int y = 0; y < map.mapSize; y++) {
         float gradFloat = GetGradientFloat(x, y);
         float finalNoise = map.rawNoiseData[x][y] * gradFloat;
-        finalNoise = (finalNoise + gradFloat / 2) / 2;
+        //finalNoise = (finalNoise + gradFloat / 2) / 2;
         map.rawNoiseData[x][y] = finalNoise;
 
         //getting tile ID from noise data
@@ -409,10 +409,6 @@ public class MapGenerator : MonoBehaviour {
     } else {
       return Color.black;
     }
-  }
-
-  private float GenerateNoiseHeight(float amp, float freq, int octaves, float presistance, float lacunarity) {
-    return 0f;
   }
 
   [ContextMenu("Apply Tile Texture")]

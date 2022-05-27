@@ -12,6 +12,6 @@ public class GameOverScript : MonoBehaviour {
   }
 
   void UpdateText() {
-    daySurvived.text = "Survived : " + _timeSO.day.ToString() + " days.";
+    daySurvived.text = "Survived " + _timeSO.day.ToString() + " days.";
   }
 }

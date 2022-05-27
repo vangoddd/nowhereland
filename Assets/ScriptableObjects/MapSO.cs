@@ -30,7 +30,7 @@ public class MapSO : ScriptableObject {
 
     // for (int i = 0; i <= (mapSize * mapSize / (chunkSize * chunkSize)); i++) {
     for (int i = 0; i < (pseudoMapsize * pseudoMapsize / (chunkSize * chunkSize)); i++) {
-      Debug.Log("adding chunks number " + i);
+      //Debug.Log("adding chunks number " + i);
       chunks.Add(new List<GameObject>());
     }
   }

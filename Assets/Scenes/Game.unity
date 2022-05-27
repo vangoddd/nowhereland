@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 53fa287200000000d9417d30
+  m_ApplyToSortingLayers: 53fa287200000000d9417d30afaeef8e
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -1498,7 +1498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372904, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Sprite
@@ -1510,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: acce60c0b2970be46abd82485a242eea, type: 2}
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemAmount
-      value: 3
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_RootOrder
@@ -3220,7 +3220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372903, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372904, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_Sprite
@@ -4852,7 +4852,7 @@ MonoBehaviour:
   - 1
   - 1
   biomeObjectSpawnrate:
-  - 0.93
+  - 0.9
   - 0.96
   - 0.85
   - 0.9
@@ -4970,7 +4970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177056579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150.00008, y: 145.6226, z: -1.6891775}
+  m_LocalPosition: {x: 200, y: 200, z: -1.6891775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 763202092}
