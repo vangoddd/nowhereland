@@ -137,4 +137,4 @@ MonoBehaviour:
   sr: {fileID: 8923530923195784959}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
   disableHitboxOnCooldown: 1
-  collider: {fileID: 8923530923195784945}
+  boxCollider: {fileID: 8923530923195784945}

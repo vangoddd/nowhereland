@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ae631de9f1e13c40a3d2e2201845fbe, type: 3}
-  m_Name: carrot
+  m_Name: mushroom
   m_EditorClassIdentifier: 
   fixedLoot:
-  - item: {fileID: 11400000, guid: 268ee94e0a748754394948acbd4c99a9, type: 2}
+  - item: {fileID: 11400000, guid: 4d814d865a55c0e43a3f9375de07caf4, type: 2}
     amount: 1
   chanceLoot: []

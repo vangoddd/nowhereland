@@ -17,13 +17,16 @@ MonoBehaviour:
   - {fileID: 8923530923195784956, guid: 49e3fe185815b654cab0e593640ce477, type: 3}
   - {fileID: 7211843886586674104, guid: d2423ab2e901d0f40b58917d783719d4, type: 3}
   - {fileID: 8923530923195784956, guid: 6f5e36274446dcb4e8ae6c009d3a57b0, type: 3}
+  - {fileID: 8923530923195784956, guid: b4d7825f4c231b743b5dc16f3061c01a, type: 3}
   spawnWeight:
   - 3
   - 2
   - 3
   - 3
+  - 2
   spawnWeightThreshold:
-  - 0.27272728
-  - 0.45454547
-  - 0.72727275
+  - 0.23076923
+  - 0.3846154
+  - 0.61538464
+  - 0.84615386
   - 1

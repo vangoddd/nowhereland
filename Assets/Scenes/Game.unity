@@ -4988,8 +4988,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
-  randomSeed: 0
-  mapSize: 300
+  randomSeed: 1
+  mapSize: 400
   seed: 69
   octaves: 3
   magnification: 20

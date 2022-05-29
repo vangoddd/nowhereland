@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackCount: 20
   description: A healthy vegetable. Good for your health.
-  name: Wild Mushroom
-  sprite: {fileID: -1253108841443780298, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  name: Carrot
+  sprite: {fileID: -8527883323647652179, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 3
   hunger: 9
   thirst: 0
