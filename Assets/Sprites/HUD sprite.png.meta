@@ -86,6 +86,12 @@ TextureImporter:
   - first:
       213: 8412052498497639625
     second: Hotbar_new
+  - first:
+      213: 8061343679755633028
+    second: button_plus
+  - first:
+      213: 4798497393088181134
+    second: button_minus
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -803,6 +809,48 @@ TextureImporter:
       bones: []
       spriteID: 9c493ecad2d9db470800000000000000
       internalID: 8412052498497639625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_plus
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 156
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481cc2cad55afdf60800000000000000
+      internalID: 8061343679755633028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_minus
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 156
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83b8aa94ffa79240800000000000000
+      internalID: 4798497393088181134
       vertices: []
       indices: 
       edges: []

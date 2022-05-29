@@ -47,6 +47,30 @@ public class MapUI : MonoBehaviour, IDragHandler {
   void OnEnable() {
     UpdateMap();
 
+    // Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
+
+    // //unscaled anchorpos
+    // anchoredPos *= 150f / (float)mapGenerator.mapSize;
+
+    // //scaled pos
+    // anchoredPos *= (float)scale[selection] * -1f;
+
+    // rectTransform.anchoredPosition = anchoredPos;
+    // Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
+    // rectTransform.anchoredPosition = clampedPosition;
+
+    // playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
+    // playerRT.anchoredPosition = anchoredPos * -1f;
+  }
+
+  [ContextMenu("Update Map")]
+  public void UpdateMap() {
+    rawImage.texture = magnification[selection];
+    rawImage.SetNativeSize();
+
+    rectTransform.sizeDelta = rectTransform.sizeDelta / 2;
+    maxDelta = ((magnification[selection].width / 2) - 150) / 2;
+
     Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
 
     //unscaled anchorpos
@@ -61,18 +85,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
     playerRT.anchoredPosition = anchoredPos * -1f;
-  }
-
-  [ContextMenu("Update Map")]
-  public void UpdateMap() {
-    rawImage.texture = magnification[selection];
-    rawImage.SetNativeSize();
-
-    rectTransform.sizeDelta = rectTransform.sizeDelta / 2;
-    maxDelta = ((magnification[selection].width / 2) - 150) / 2;
-
-    Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
-    rectTransform.anchoredPosition = clampedPosition;
   }
 
   void GenerateMagnification() {
@@ -103,5 +115,21 @@ public class MapUI : MonoBehaviour, IDragHandler {
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
+  }
+
+  public void OnZoom() {
+    selection++;
+    if (selection >= mag) {
+      selection = mag - 1;
+    }
+    UpdateMap();
+  }
+
+  public void OnUnZoom() {
+    selection--;
+    if (selection < 0) {
+      selection = 0;
+    }
+    UpdateMap();
   }
 }
