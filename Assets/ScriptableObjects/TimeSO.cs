@@ -60,6 +60,7 @@ public class TimeSO : ScriptableObject {
     OnTick.Invoke(tick);
   }
 
+  [ContextMenu("Invoke Change Day Event")]
   public void ChangeDay() {
     isDay = true;
     tick = 0;

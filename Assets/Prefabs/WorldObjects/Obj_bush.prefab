@@ -135,3 +135,4 @@ MonoBehaviour:
   readySprite: {fileID: 7425614336036142188, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
   cooldownSprite: {fileID: -2932390105556509259, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
   sr: {fileID: 8935585944131123898}
+  _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}

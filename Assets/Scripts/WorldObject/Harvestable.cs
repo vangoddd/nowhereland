@@ -12,11 +12,19 @@ public class Harvestable : WorldObject {
 
   public SpriteRenderer sr;
 
+  public TimeSO _timeSO;
+
   void Start() {
     Debug.Log("OnStart Load");
     InitializeObject();
     if (status == -1) status = regenCounter;
     UpdateSprite();
+
+    _timeSO.OnDayChange.AddListener(DayListener);
+  }
+
+  void OnDestroy() {
+    _timeSO.OnDayChange.RemoveListener(DayListener);
   }
 
   void UpdateSprite() {
@@ -42,8 +50,8 @@ public class Harvestable : WorldObject {
   }
 
   [ContextMenu("Tick Day")]
-  private void DayListener() {
-    Debug.Log("Bush Listened for day change event : " + transform.position.x + " " + transform.position.y);
+  private void DayListener(int day) {
+    //Debug.Log(gameObject.name + " Listened for day change event : " + transform.position.x + " " + transform.position.y);
     if (regenCounter > 0) {
       regenCounter--;
       if (regenCounter <= 0) {
