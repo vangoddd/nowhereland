@@ -8,7 +8,7 @@ public class HotbarSelectionScript : MonoBehaviour {
   public ItemInteraction _itemInteraction;
   public Inventory _inventory;
 
-  private int initialX = -60;
+  private int initialX = -64;
   private int gap = 24;
 
   public int selection = 0;

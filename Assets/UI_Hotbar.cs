@@ -17,14 +17,18 @@ public class UI_Hotbar : MonoBehaviour {
   }
 
   private void InitiateHotbar() {
-    int x = -60;
+    int x = -64;
     int y = 0;
     float offset = 24f;
 
     for (int i = 0; i < 6; i++) {
       RectTransform itemSlotTransform = Instantiate(ItemSlotTemplate, transform).GetComponent<RectTransform>();
       itemSlotTransform.gameObject.SetActive(true);
-      itemSlotTransform.anchoredPosition = new Vector2(x + offset * i, y);
+      if (i >= 4) {
+        itemSlotTransform.anchoredPosition = new Vector2((x + offset * i) + 8, y);
+      } else {
+        itemSlotTransform.anchoredPosition = new Vector2(x + offset * i, y);
+      }
       itemSlotTransform.GetComponent<UI_ItemSlot>().slotIndex = i;
       itemSlots[i] = itemSlotTransform;
     }
