@@ -83,6 +83,9 @@ TextureImporter:
   - first:
       213: 4478021162038501113
     second: drop slot
+  - first:
+      213: 8412052498497639625
+    second: Hotbar_new
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -750,7 +753,7 @@ TextureImporter:
         width: 33
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -771,7 +774,7 @@ TextureImporter:
         width: 26
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -779,6 +782,27 @@ TextureImporter:
       bones: []
       spriteID: 9fe9cf37580252e30800000000000000
       internalID: 4478021162038501113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hotbar_new
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 367
+        width: 153
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c493ecad2d9db470800000000000000
+      internalID: 8412052498497639625
       vertices: []
       indices: 
       edges: []

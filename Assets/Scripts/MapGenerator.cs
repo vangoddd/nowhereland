@@ -47,6 +47,7 @@ public class MapGenerator : MonoBehaviour {
   public float[] biomeWeight;
   public float[] biomeObjectSpawnrate;
   public SetpieceData[] setpieceDatas;
+  public GameEvent OnTextureCreated;
 
   [Space(10)]
 
@@ -383,6 +384,8 @@ public class MapGenerator : MonoBehaviour {
       }
     }
     mapTexture.Apply();
+
+    OnTextureCreated.Raise();
   }
 
   public Texture2D GeneratePartTexture(List<List<float>> data) {
