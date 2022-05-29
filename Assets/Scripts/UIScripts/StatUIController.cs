@@ -15,12 +15,14 @@ public class StatUIController : MonoBehaviour {
     _playerStats.OnStatChangeEvent.AddListener(UpdateStat);
     _timeSO.OnDayChange.AddListener(ChangeWheelToDay);
     _timeSO.OnNightChange.AddListener(ChangeWheelToNight);
+    _timeSO.OnIngameHourTick.AddListener(IngameHourTickListener);
   }
 
   void OnDisable() {
     _playerStats.OnStatChangeEvent.RemoveListener(UpdateStat);
     _timeSO.OnDayChange.RemoveListener(ChangeWheelToDay);
     _timeSO.OnNightChange.RemoveListener(ChangeWheelToNight);
+    _timeSO.OnIngameHourTick.RemoveListener(IngameHourTickListener);
   }
 
   void UpdateStat(PlayerStatData data) {
@@ -43,6 +45,10 @@ public class StatUIController : MonoBehaviour {
     LeanTween.value(gameObject, 180f, 360f, _timeSO.transitionTime).setOnUpdate((float val) => {
       if (Mathf.FloorToInt(val) % (180 / 5) == 0) daylightWheel.eulerAngles = new Vector3(0f, 0f, val);
     });
+  }
+
+  void IngameHourTickListener(string time) {
+    Debug.Log(time);
   }
 
 }
