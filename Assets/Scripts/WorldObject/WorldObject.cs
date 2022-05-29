@@ -60,4 +60,8 @@ public abstract class WorldObject : MonoBehaviour {
     Destroy(gameObject);
   }
 
+  public virtual void OnDataLoad() {
+
+  }
+
 }

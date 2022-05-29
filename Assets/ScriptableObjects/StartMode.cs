@@ -5,4 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class StartMode : ScriptableObject {
   public bool loadGame = false;
+
+  void OnEnable() {
+    loadGame = false;
+  }
 }

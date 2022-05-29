@@ -19,11 +19,11 @@ MonoBehaviour:
   - {fileID: 8923530923195784956, guid: 6f5e36274446dcb4e8ae6c009d3a57b0, type: 3}
   spawnWeight:
   - 3
-  - 1
+  - 2
   - 3
   - 3
   spawnWeightThreshold:
-  - 0.3
-  - 0.4
-  - 0.7
+  - 0.27272728
+  - 0.45454547
+  - 0.72727275
   - 1

@@ -359,9 +359,11 @@ public class MapGenerator : MonoBehaviour {
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
       WorldObject woScript = wo.GetComponent<WorldObject>();
       woScript.status = data.status;
-      if (woScript is Destroyable && !(woScript is Chest)) {
-        if (woScript.status != -1) ((Destroyable)woScript).health = woScript.status;
-      }
+      if (loadFromSave) woScript.OnDataLoad();
+
+      // if (woScript is Destroyable && !(woScript is Chest)) {
+      //   if (woScript.status != -1) ((Destroyable)woScript).health = woScript.status;
+      // }
     }
   }
 

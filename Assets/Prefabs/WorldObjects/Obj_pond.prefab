@@ -131,4 +131,8 @@ MonoBehaviour:
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
   regenRate: 0
+  ready: 1
+  readySprite: {fileID: -8966409312447845192, guid: 19135cd621860894a8717b29b6fccc64, type: 3}
+  cooldownSprite: {fileID: -8966409312447845192, guid: 19135cd621860894a8717b29b6fccc64, type: 3}
+  sr: {fileID: 8923530923195784959}
   _playerstat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

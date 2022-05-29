@@ -10,7 +10,7 @@ public class Destroyable : WorldObject {
 
   void Start() {
     base.InitializeObject();
-    status = health;
+    if (status == -1) status = health;
   }
 
   public override void Interact(GameObject player) {
@@ -39,6 +39,11 @@ public class Destroyable : WorldObject {
       return true;
     }
     return false;
+  }
+
+  public override void OnDataLoad() {
+    base.OnDataLoad();
+    this.health = this.status;
   }
 
 }

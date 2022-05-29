@@ -21,7 +21,6 @@ public class Chest : Useable {
   public override void UseObject() {
     base.UseObject();
     _itemInteraction.OnChestOpen.Invoke(chestId);
-    // Debug.Log("Using object " + gameObject.name);
   }
 
   public override void DestroyWorldObject() {
