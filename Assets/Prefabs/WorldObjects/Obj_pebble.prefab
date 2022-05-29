@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: 12
   interactDistance: 1
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: -0.32, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: 91d712912992b0348ba80b575c3d1b9a, type: 2}
@@ -132,3 +132,4 @@ MonoBehaviour:
   status: -1
   health: 1
   requiredTool: {fileID: 11400000, guid: dd468d2eb23ec3841a15833505a6546e, type: 2}
+  DestroyAnimation: []

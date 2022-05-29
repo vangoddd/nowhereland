@@ -5,16 +5,20 @@ using TMPro;
 
 public class TimeUIController : MonoBehaviour {
   [SerializeField] TextMeshProUGUI day;
+  [SerializeField] TextMeshProUGUI timeOfDay;
   [SerializeField] TimeSO _timeSO;
 
   void OnEnable() {
     _timeSO.OnDayChange.AddListener(changeDay);
     _timeSO.OnGameLoad.AddListener(LoadEvent);
+    _timeSO.OnIngameHourTick.AddListener(IngameHourTickListener);
+
     changeDay(_timeSO.day);
   }
   void OnDisable() {
     _timeSO.OnDayChange.RemoveListener(changeDay);
     _timeSO.OnGameLoad.RemoveListener(LoadEvent);
+    _timeSO.OnIngameHourTick.RemoveListener(IngameHourTickListener);
   }
 
   void changeDay(int dayData) {
@@ -23,5 +27,9 @@ public class TimeUIController : MonoBehaviour {
 
   void LoadEvent(WorldData data) {
     day.text = "Day " + data.day.ToString();
+  }
+
+  void IngameHourTickListener(string time) {
+    timeOfDay.text = time;
   }
 }

@@ -90,14 +90,16 @@ public class TimeSO : ScriptableObject {
     tick = data.tick;
     day = data.day;
     isDay = data.isDay;
+    inGameMinuteCounter = tick * inGameMinutePerTick;
 
+    OnIngameHourTick.Invoke(CalculateInGameHour(inGameMinuteCounter));
     OnGameLoad.Invoke(data);
   }
 
   public string CalculateInGameHour(int inGameMinute) {
     int hour = (inGameMinute / 60 + 6) % 24;
-    int minute = (inGameMinute % 60) / 10 * 10;
-    string ingameHour = hour + " " + minute;
+    int minute = (inGameMinute % 60) / 30 * 30;
+    string ingameHour = hour.ToString("D2") + ":" + minute.ToString("D2");
     return ingameHour;
   }
 }

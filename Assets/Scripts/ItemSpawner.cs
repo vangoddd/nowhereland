@@ -45,6 +45,17 @@ public class ItemSpawner : MonoBehaviour {
     itemScript.itemData = item;
   }
 
+  public void SpawnItemWithOffset(Vector3 pos, Item item) {
+    GameObject o = Instantiate(worldItemPrefab);
+    ItemScript itemScript = o.GetComponent<ItemScript>();
+
+    o.transform.position = AddRandomOffset(pos, 0.5f);
+
+    itemScript.itemData = item.itemData;
+    itemScript.itemAmount = item.amount;
+    itemScript.durability = item.durability;
+  }
+
   public void spawnItemUnstacked(Vector3 pos, Item item) {
     for (int i = 0; i < item.amount; i++) {
       GameObject o = Instantiate(worldItemPrefab);

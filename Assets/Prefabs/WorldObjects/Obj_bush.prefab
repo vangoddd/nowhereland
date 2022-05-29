@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 1
-  interactDistance: 1
-  offset: {x: 0, y: 0.45, z: 0}
+  interactDistance: 1.13
+  offset: {x: 0, y: 0.18, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: ba20cf33c6308c443a67ceea36b803b7, type: 2}

@@ -171,10 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: 7
   interactDistance: 1
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.19, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  drops: {fileID: 11400000, guid: 1af919ccf0621734881e1f17e351fb41, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
   health: 50
@@ -199,7 +199,7 @@ BoxCollider2D:
   m_Offset: {x: -0.0126571655, y: -0.04209137}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.24}
+    pivot: {x: 0.5, y: 0.09}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5

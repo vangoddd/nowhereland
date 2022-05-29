@@ -123,11 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 3
-  interactDistance: 1
+  interactDistance: 1.5
   offset: {x: 0, y: 0, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  drops: {fileID: 11400000, guid: b78b0f98752149545a9737a73c7e9c12, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
   health: 50

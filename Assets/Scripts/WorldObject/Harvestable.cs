@@ -15,7 +15,6 @@ public class Harvestable : WorldObject {
   public TimeSO _timeSO;
 
   void Start() {
-    Debug.Log("OnStart Load");
     InitializeObject();
     if (status == -1) status = regenCounter;
     UpdateSprite();
@@ -68,7 +67,6 @@ public class Harvestable : WorldObject {
   }
 
   public override void OnDataLoad() {
-    Debug.Log("OnData Load");
     regenCounter = status;
     SetReady(regenCounter == 0);
   }

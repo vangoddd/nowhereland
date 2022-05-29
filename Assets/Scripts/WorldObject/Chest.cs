@@ -27,6 +27,11 @@ public class Chest : Useable {
     base.DestroyWorldObject();
 
     Debug.Log("Dropping chest content : ");
+    for (int i = 0; i < 12; i++) {
+      if (chestHandler.chestList[chestId].itemList[i] != null) {
+        ItemSpawner.Instance.SpawnItemWithOffset(transform.position, chestHandler.chestList[chestId].itemList[i]);
+      }
+    }
   }
 
   [ContextMenu("Add random item")]
