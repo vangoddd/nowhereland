@@ -136,4 +136,6 @@ MonoBehaviour:
   cooldownSprite: {fileID: -8966409312447845192, guid: 19135cd621860894a8717b29b6fccc64, type: 3}
   sr: {fileID: 8923530923195784959}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
+  disableHitboxOnCooldown: 0
+  collider: {fileID: 0}
   _playerstat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

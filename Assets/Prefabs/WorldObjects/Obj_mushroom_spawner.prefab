@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8935585944131123899
+--- !u!1 &8923530923195784956
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8935585944131123897}
-  - component: {fileID: 8935585944131123898}
-  - component: {fileID: 7273905458704229853}
-  - component: {fileID: 2046716827419247673}
+  - component: {fileID: 8923530923195784958}
+  - component: {fileID: 8923530923195784959}
+  - component: {fileID: 8923530923195784945}
+  - component: {fileID: -9012083087896245089}
   m_Layer: 6
-  m_Name: Obj_bush
+  m_Name: Obj_mushroom_spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &8935585944131123897
+--- !u!4 &8923530923195784958
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935585944131123899}
+  m_GameObject: {fileID: 8923530923195784956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 146.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8935585944131123898
+--- !u!212 &8923530923195784959
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935585944131123899}
+  m_GameObject: {fileID: 8923530923195784956}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 813515225
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2932390105556509259, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
+  m_Sprite: {fileID: -1253108841443780298, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,57 +84,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &7273905458704229853
+--- !u!61 &8923530923195784945
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935585944131123899}
+  m_GameObject: {fileID: 8923530923195784956}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077667236, y: 0.02}
+  m_Offset: {x: 0, y: -0.16}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.32}
-    oldSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3009033, y: 0.78826904}
+  m_Size: {x: 0.1711452, y: 0.42}
   m_EdgeRadius: 0
---- !u!114 &2046716827419247673
+--- !u!114 &-9012083087896245089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935585944131123899}
+  m_GameObject: {fileID: 8923530923195784956}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ff982f50cbd1e42982870c368e64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 1
-  interactDistance: 1.13
-  offset: {x: 0, y: 0.18, z: 0}
+  objectID: 15
+  interactDistance: 1
+  offset: {x: 0, y: 0, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  drops: {fileID: 11400000, guid: ba20cf33c6308c443a67ceea36b803b7, type: 2}
+  drops: {fileID: 11400000, guid: 1274776b7231e5c44b09a5692990754d, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
-  regenRate: 2
+  regenRate: 3
   ready: 1
-  readySprite: {fileID: 7425614336036142188, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
-  cooldownSprite: {fileID: -2932390105556509259, guid: 643c19932bf9a514799b2bf5fb84f806, type: 3}
-  sr: {fileID: 8935585944131123898}
+  readySprite: {fileID: -1253108841443780298, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  cooldownSprite: {fileID: -569325460869334079, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  sr: {fileID: 8923530923195784959}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
-  disableHitboxOnCooldown: 0
-  collider: {fileID: 0}
+  disableHitboxOnCooldown: 1
+  collider: {fileID: 8923530923195784945}

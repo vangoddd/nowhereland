@@ -80,6 +80,21 @@ TextureImporter:
   - first:
       213: 3069679114947738666
     second: sprite_axe_gold
+  - first:
+      213: -1253108841443780298
+    second: sprite_mushroom
+  - first:
+      213: -8527883323647652179
+    second: sprite_carrot
+  - first:
+      213: -7382240418812304617
+    second: sprite_mushroom_cooked
+  - first:
+      213: -8720136270334553059
+    second: sprite_carrot_cooked
+  - first:
+      213: 6230084411388827874
+    second: sprite_sapling
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -734,6 +749,111 @@ TextureImporter:
       bones: []
       spriteID: a2c35e424e0b99a20800000000000000
       internalID: 3069679114947738666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_mushroom
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63997d0e5201c9ee0800000000000000
+      internalID: -1253108841443780298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_carrot
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae0100cc4fd6a980800000000000000
+      internalID: -8527883323647652179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_mushroom_cooked
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713692ea3730d8990800000000000000
+      internalID: -7382240418812304617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_carrot_cooked
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1495bd634adbf680800000000000000
+      internalID: -8720136270334553059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sapling
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8978583c4b57650800000000000000
+      internalID: 6230084411388827874
       vertices: []
       indices: 
       edges: []

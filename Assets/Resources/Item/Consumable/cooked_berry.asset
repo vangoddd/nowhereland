@@ -17,6 +17,6 @@ MonoBehaviour:
   name: Cooked berry
   sprite: {fileID: -6829208128941288417, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 5
-  hunger: 40
+  hunger: 18
   thirst: 0
   _playerStats: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

@@ -25,7 +25,7 @@ public class ItemScript : MonoBehaviour {
   }
 
   IEnumerator RemovePickupCooldownAfterDrop() {
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(0.5f);
     pickupCooldown = false;
   }
 

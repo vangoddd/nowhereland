@@ -28,7 +28,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
   [SerializeField] private Vector2 originalPos;
 
   public void InitiateMap() {
-    Debug.Log("Map Generated");
     scale = new int[mag];
     scale[0] = 1;
     for (int i = 1; i < mag; i++) {
@@ -46,21 +45,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   void OnEnable() {
     UpdateMap();
-
-    // Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
-
-    // //unscaled anchorpos
-    // anchoredPos *= 150f / (float)mapGenerator.mapSize;
-
-    // //scaled pos
-    // anchoredPos *= (float)scale[selection] * -1f;
-
-    // rectTransform.anchoredPosition = anchoredPos;
-    // Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
-    // rectTransform.anchoredPosition = clampedPosition;
-
-    // playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
-    // playerRT.anchoredPosition = anchoredPos * -1f;
   }
 
   [ContextMenu("Update Map")]
@@ -79,7 +63,7 @@ public class MapUI : MonoBehaviour, IDragHandler {
     //scaled pos
     anchoredPos *= (float)scale[selection] * -1f;
 
-    rectTransform.anchoredPosition = anchoredPos;
+    //rectTransform.anchoredPosition = anchoredPos;
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
 

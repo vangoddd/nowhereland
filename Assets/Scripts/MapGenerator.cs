@@ -145,9 +145,9 @@ public class MapGenerator : MonoBehaviour {
       if (i == 0) biomeThreshold[i] = biomeWeight[i] / total;
       else biomeThreshold[i] = biomeThreshold[i - 1] + (biomeWeight[i] / total);
     }
-    for (int i = 0; i < tileset.tiles.Count - 1; i++) {
-      Debug.Log(biomeThreshold[i]);
-    }
+    // for (int i = 0; i < tileset.tiles.Count - 1; i++) {
+    //   Debug.Log(biomeThreshold[i]);
+    // }
     return biomeThreshold;
   }
 

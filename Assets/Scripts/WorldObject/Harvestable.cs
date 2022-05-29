@@ -14,6 +14,9 @@ public class Harvestable : WorldObject {
 
   public TimeSO _timeSO;
 
+  public bool disableHitboxOnCooldown = true;
+  public BoxCollider2D collider;
+
   void Start() {
     InitializeObject();
     if (status == -1) status = regenCounter;
@@ -29,8 +32,14 @@ public class Harvestable : WorldObject {
   void UpdateSprite() {
     if (ready) {
       sr.sprite = readySprite;
+      if (disableHitboxOnCooldown) {
+        collider.enabled = true;
+      }
     } else {
       sr.sprite = cooldownSprite;
+      if (disableHitboxOnCooldown) {
+        collider.enabled = false;
+      }
     }
   }
 

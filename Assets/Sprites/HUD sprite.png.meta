@@ -92,6 +92,12 @@ TextureImporter:
   - first:
       213: 4798497393088181134
     second: button_minus
+  - first:
+      213: 6799906893728651363
+    second: button_plus_pressed
+  - first:
+      213: 8891479227389673952
+    second: button_minus_pressed
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -822,7 +828,7 @@ TextureImporter:
         width: 22
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -843,7 +849,7 @@ TextureImporter:
         width: 22
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -851,6 +857,48 @@ TextureImporter:
       bones: []
       spriteID: e83b8aa94ffa79240800000000000000
       internalID: 4798497393088181134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_plus_pressed
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 132
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3681d6ada4f1e5e50800000000000000
+      internalID: 6799906893728651363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_minus_pressed
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 132
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1835c8f31e46b70800000000000000
+      internalID: 8891479227389673952
       vertices: []
       indices: 
       edges: []

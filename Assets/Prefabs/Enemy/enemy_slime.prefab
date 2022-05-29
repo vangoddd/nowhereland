@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 0
   health: 100
-  moveSpeed: 0.5
+  moveSpeed: 1.25
   damage: 10
   aggro: 0
   aggroRange: 5

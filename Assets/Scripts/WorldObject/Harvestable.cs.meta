@@ -3,7 +3,14 @@ guid: d9ff982f50cbd1e42982870c368e64a4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
+  - drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  - _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
+  - readySprite: {instanceID: 0}
+  - cooldownSprite: {instanceID: 0}
+  - sr: {instanceID: 0}
+  - _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
