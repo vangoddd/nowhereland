@@ -10,6 +10,10 @@ public class ItemDatabase : ScriptableObject {
   public Dictionary<ItemData, int> itemLookup;
 
   void OnEnable() {
+    //InitiateDict();
+  }
+
+  public void InitiateDict() {
     if (itemList == null) itemList = new List<ItemData>();
     itemLookup = new Dictionary<ItemData, int>();
 

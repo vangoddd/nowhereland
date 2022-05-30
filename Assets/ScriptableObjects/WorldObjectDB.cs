@@ -11,6 +11,10 @@ public class WorldObjectDB : ScriptableObject {
   public Dictionary<GameObject, int> objectLookup;
 
   void OnEnable() {
+    InitiateDict();
+  }
+
+  public void InitiateDict() {
     if (worldObjects == null) worldObjects = new List<GameObject>();
     objectLookup = new Dictionary<GameObject, int>();
 
