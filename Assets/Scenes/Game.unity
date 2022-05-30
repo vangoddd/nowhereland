@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadFromSave: 0
   randomSeed: 1
-  mapSize: 400
+  mapSize: 300
   seed: 69
   octaves: 3
   magnification: 20
@@ -5139,7 +5139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1177056580
 Transform:
   m_ObjectHideFlags: 0
