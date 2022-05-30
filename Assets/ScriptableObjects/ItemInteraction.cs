@@ -13,6 +13,7 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int> OnItemDelete;
 
   public UnityEvent<int> OnChestOpen;
+  public UnityEvent<int> OnShowTooltip;
 
   public UnityEvent<int, int> OnSlotSwap;
 
@@ -37,6 +38,10 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnItemUse == null) {
       OnItemUse = new UnityEvent<int>();
+    }
+
+    if (OnShowTooltip == null) {
+      OnShowTooltip = new UnityEvent<int>();
     }
 
     if (OnUnequip == null) {
@@ -139,6 +144,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void DeleteItem(int slot) {
     OnItemDelete.Invoke(slot);
+  }
+
+  public void ShowTooltip(int slot) {
+    OnShowTooltip.Invoke(slot);
   }
 
 }

@@ -1718,12 +1718,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventorySlotTemplate: {fileID: 988879363318663560}
+  _itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   OnInventoryClosed: {fileID: 11400000, guid: 937eef8b4aabfa64587639cf6e69e7ee, type: 2}
   toolSlot: {fileID: 988879364689679647}
   armorSlot: {fileID: 988879363799374618}
   toolBG: {fileID: 988879363929723264}
   armorBG: {fileID: 988879363171045172}
+  TooltipPanel: {fileID: 0}
 --- !u!114 &3722575185293963560
 MonoBehaviour:
   m_ObjectHideFlags: 0
