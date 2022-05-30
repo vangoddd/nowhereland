@@ -16,7 +16,8 @@ public class DebugText : MonoBehaviour {
     "\nchunk : " + ChunkHandlerScript.getChunkFromPosition(_stat.position.x, _stat.position.y)
     + "\npos : " + (int)_stat.position.x + " " + (int)_stat.position.y
     + "\ntick : " + _time.tick
-    + "\nfps : " + getFPS();
+    + "\nfps : " + getFPS()
+    + "\nversion : " + Application.version;
   }
 
   string getFPS() {

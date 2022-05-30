@@ -17,6 +17,10 @@ public class UI_Tooltip : MonoBehaviour {
     type.text = item.itemData.name;
     desc.text = item.itemData.description;
 
+    type.text = item.itemData.GetType().ToString();
+    if (item.itemData.GetType().ToString() == "ItemData") type.text = "Item";
+    if (item.itemData.GetType().ToString() == "Placeable") type.text = "Structure";
+
     image.sprite = item.itemData.sprite;
     Canvas.ForceUpdateCanvases();
     // LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRT);

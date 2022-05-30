@@ -16,7 +16,7 @@ public class PauseMenuButton : MonoBehaviour {
   }
 
   public void OnQuit() {
-    SceneManager.UnloadSceneAsync(1);
+    //SceneManager.UnloadSceneAsync(1);
     SceneManager.LoadScene(0);
   }
 }

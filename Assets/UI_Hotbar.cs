@@ -10,7 +10,13 @@ public class UI_Hotbar : MonoBehaviour {
   public Transform ItemSlotTemplate;
   private RectTransform[] itemSlots;
 
-  void Awake() {
+  // void Awake() {
+  //   itemSlots = new RectTransform[6];
+  //   InitiateHotbar();
+  //   UpdateHotbar();
+  // }
+
+  void Start() {
     itemSlots = new RectTransform[6];
     InitiateHotbar();
     UpdateHotbar();

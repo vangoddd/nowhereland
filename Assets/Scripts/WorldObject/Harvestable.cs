@@ -34,7 +34,7 @@ public class Harvestable : WorldObject {
       sr.sprite = readySprite;
       if (disableHitboxOnCooldown) {
         boxCollider.enabled = true;
-        sr.sortingOrder = 1;
+        sr.sortingOrder = 0;
       }
     } else {
       sr.sprite = cooldownSprite;
