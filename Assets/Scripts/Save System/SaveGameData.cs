@@ -30,6 +30,8 @@ public class MapSaveData {
 
   public List<int> chestIds;
   public List<InventoryData> chestContents;
+
+  public bool[,] fogOfWarSaveData;
 }
 
 [System.Serializable]

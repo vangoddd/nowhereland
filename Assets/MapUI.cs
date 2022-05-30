@@ -60,16 +60,18 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   void OnEnable() {
     mapRatio = 150f / (float)mapGenerator.mapSize;
-    UpdateMap();
+    UpdateMap(true);
     UpdateFog();
   }
 
   [ContextMenu("Update Map")]
-  public void UpdateMap() {
+  public void UpdateMap(bool snap) {
     rawImage.texture = magnification[selection];
     rawImage.SetNativeSize();
 
     rectTransform.sizeDelta = rectTransform.sizeDelta / 2;
+    playerFrameRT.sizeDelta = rectTransform.sizeDelta;
+    fogOfWarRT.sizeDelta = rectTransform.sizeDelta;
     maxDelta = ((magnification[selection].width / 2) - 150) / 2;
 
     Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
@@ -80,11 +82,14 @@ public class MapUI : MonoBehaviour, IDragHandler {
     //scaled pos
     anchoredPos *= (float)scale[selection] * -1f;
 
-    rectTransform.anchoredPosition = anchoredPos;
+    //snap map into player
+    if (snap) rectTransform.anchoredPosition = anchoredPos;
+
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
 
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
+    //playerFrameRT.sizeDelta =
     playerRT.anchoredPosition = anchoredPos * -1f;
 
     ScaleFog();
@@ -136,9 +141,7 @@ public class MapUI : MonoBehaviour, IDragHandler {
   }
 
   void ScaleFog() {
-    fogOfWarImage.SetNativeSize();
-    Vector2 ScaledSize = new Vector2(mapRatio, mapRatio);
-    fogOfWarRT.sizeDelta = mapGenerator.mapSize * ScaledSize * (float)scale[selection];
+
   }
 
   public void OnZoom() {
@@ -146,7 +149,7 @@ public class MapUI : MonoBehaviour, IDragHandler {
     if (selection >= mag) {
       selection = mag - 1;
     }
-    UpdateMap();
+    UpdateMap(false);
   }
 
   public void OnUnZoom() {
@@ -154,6 +157,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
     if (selection < 0) {
       selection = 0;
     }
-    UpdateMap();
+    UpdateMap(false);
   }
 }

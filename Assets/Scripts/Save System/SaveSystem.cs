@@ -62,6 +62,7 @@ public class SaveSystem : MonoBehaviour {
       map.tileMap = Get2DTilemapListFromData(data._mapSaveData);
       map.biomes = Get2DBiomeMapListFromData(data._mapSaveData);
       map.worldObjectDatas = data._mapSaveData.worldObjectDatas;
+      map.fogOfWarData = data._mapSaveData.fogOfWarSaveData;
 
       chestHandler.ApplyLoadedData(data._mapSaveData);
 
@@ -94,6 +95,8 @@ public class SaveSystem : MonoBehaviour {
     MapSaveData data = new MapSaveData();
     data.seed = map.seed;
     data.mapSize = map.mapSize;
+
+    data.fogOfWarSaveData = map.fogOfWarData;
 
     List<int> currentMapData = new List<int>();
     List<int> currentBiomeData = new List<int>();

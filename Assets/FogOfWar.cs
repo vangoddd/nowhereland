@@ -34,6 +34,7 @@ public class FogOfWar : MonoBehaviour {
   public void UpdateFog() {
     List<Vector2Int> visionArea = circleGenerator.GetCircleList(visionRadius, (int)_playerStat.position.x, (int)_playerStat.position.y);
     foreach (Vector2Int point in visionArea) {
+      if (point.x < 0 || point.x >= _map.mapSize || point.y < 0 || point.y >= _map.mapSize) continue;
       _map.fogOfWarData[point.x, point.y] = true;
     }
   }
