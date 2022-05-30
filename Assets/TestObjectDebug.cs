@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestObjectDebug : MonoBehaviour {
   public GameObject playerObject;
 
-  void Start() {
+  void Awake() {
     transform.position = playerObject.transform.position;
   }
 

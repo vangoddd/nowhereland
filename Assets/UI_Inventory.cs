@@ -17,6 +17,7 @@ public class UI_Inventory : MonoBehaviour {
   public UI_InventoryEquippableSlot toolBG, armorBG;
 
   public UI_Tooltip TooltipPanel;
+  public RectTransform SlotParent;
 
   void Awake() {
     slots = new RectTransform[20];
@@ -56,7 +57,7 @@ public class UI_Inventory : MonoBehaviour {
     for (int i = 0; i < 18; i++) {
       if (i % 6 == 0 && i != 0) yCounter++;
 
-      RectTransform itemSlotTransform = Instantiate(InventorySlotTemplate, transform).GetComponent<RectTransform>();
+      RectTransform itemSlotTransform = Instantiate(InventorySlotTemplate, SlotParent.transform).GetComponent<RectTransform>();
       itemSlotTransform.gameObject.SetActive(true);
       itemSlotTransform.anchoredPosition = new Vector2(x + (xOffset * (i - (6 * yCounter))), y + (yCounter * -yOffset));
 
@@ -84,7 +85,7 @@ public class UI_Inventory : MonoBehaviour {
     slotScripts[18].setText("");
     slotScripts[19].setText("");
 
-    TooltipPanel.transform.SetAsLastSibling();
+    //TooltipPanel.transform.SetAsLastSibling();
 
   }
 
@@ -123,10 +124,13 @@ public class UI_Inventory : MonoBehaviour {
     }
   }
 
-  void TooltipListener(int slot) {
+
+  public void TooltipListener(int slot) {
     if (_inventory.itemList[slot] == null) return;
+    TooltipPanel.gameObject.SetActive(true);
     TooltipPanel.UpdateData(_inventory.itemList[slot]);
     TooltipPanel.panelRectTransform.anchoredPosition = slotScripts[slot].GetComponent<RectTransform>().anchoredPosition;
-    TooltipPanel.gameObject.SetActive(true);
+    TooltipPanel.ResizePanel();
   }
+
 }
