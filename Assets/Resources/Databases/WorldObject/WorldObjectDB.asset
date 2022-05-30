@@ -30,5 +30,6 @@ MonoBehaviour:
   - {fileID: 8182442961856981354, guid: a73e9eed8363608498b33d72ac2e5032, type: 3}
   - {fileID: 8923530923195784956, guid: b4d7825f4c231b743b5dc16f3061c01a, type: 3}
   - {fileID: 8923530923195784956, guid: a4f249444954d0646940d9861e1bfc71, type: 3}
+  - {fileID: 4732365544334954286, guid: 7e0762b4000be7b40ade1439a0b1d488, type: 3}
   spawnWeight: []
   spawnWeightThreshold: []

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fixedLoot:
   - item: {fileID: 11400000, guid: f7ef54ec71044244eb771bc18ca483ef, type: 2}
-    amount: 3
+    amount: 4
+  - item: {fileID: 11400000, guid: aea778254750a0c408aa82fb34c81de6, type: 2}
+    amount: 1
   chanceLoot:
   - item: {fileID: 11400000, guid: f7ef54ec71044244eb771bc18ca483ef, type: 2}
     amount: 1
@@ -22,3 +24,6 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: aa24d4899e9527a41b70bc75b7bcff87, type: 2}
     amount: 1
     chance: 0.2
+  - item: {fileID: 11400000, guid: aea778254750a0c408aa82fb34c81de6, type: 2}
+    amount: 1
+    chance: 0.5
