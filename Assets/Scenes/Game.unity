@@ -1865,14 +1865,14 @@ PrefabInstance:
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 999e1e543b453a344946c82a68c248c7, type: 2}
+      objectReference: {fileID: 11400000, guid: 91bfa32b4a6221647af45c3a8d04317c, type: 2}
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: durability
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372905, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: itemAmount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6267637700089372906, guid: 9df2d2253ff10cb4595dc1757dc15ae7, type: 3}
       propertyPath: m_RootOrder
@@ -5322,8 +5322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
-  randomSeed: 0
-  mapSize: 100
+  randomSeed: 1
+  mapSize: 350
   seed: 79006
   octaves: 3
   magnification: 20
@@ -5332,7 +5332,7 @@ MonoBehaviour:
   cutoff: 0.35
   biome_octaves: 2
   biome_magnification: 60
-  biome_presistance: 0.4
+  biome_presistance: 0.6
   biome_lacunarity: 5
   noise1: {fileID: 0}
   noise2: {fileID: 0}
@@ -5356,7 +5356,7 @@ MonoBehaviour:
   - 3
   - 1
   - 1
-  - 3
+  - 2
   biomeObjectSpawnrate:
   - 0.9
   - 0.96
