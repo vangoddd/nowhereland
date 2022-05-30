@@ -26,7 +26,7 @@ public class Destroyable : WorldObject {
       Instantiate(DestroyAnimation[RandomChoice], transform.position, transform.rotation);
     }
 
-
+    status = health;
     if (health <= 0) DestroyWorldObject();
   }
 

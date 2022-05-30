@@ -75,6 +75,8 @@ public class SaveSystem : MonoBehaviour {
       inventory.ApplyLoadedData(data._inventoryData);
       ItemSpawner.Instance.SpawnItemFromLoadedData(data._mapSaveData.worldItemDatas);
       EnemySpawner.Instance.LoadEnemy(data._mapSaveData.worldEnemyDatas);
+
+      stream.Close();
     } else {
       Debug.LogError("Savegame not found");
     }
@@ -126,7 +128,7 @@ public class SaveSystem : MonoBehaviour {
       Vector2 pos = new Vector2(map.worldObjects[i].transform.position.x, map.worldObjects[i].transform.position.y);
 
       int status = obj.status;
-      if (obj is Destroyable && !(obj is Chest)) status = ((Destroyable)obj).health;
+      //if (obj is Destroyable && !(obj is Chest)) status = ((Destroyable)obj).health;
       currentWorldData.Add(new WorldObjectData(objId, pos, status));
     }
 

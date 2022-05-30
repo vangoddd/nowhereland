@@ -9,7 +9,8 @@ public class Seed : Destroyable {
   public GameObject GrowthObject;
 
   void Start() {
-    base.InitializeObject();
+    InitializeObject();
+    if (status == -1) status = growthTimer;
     _timeSO.OnDayChange.AddListener(DayListener);
   }
 
@@ -17,12 +18,23 @@ public class Seed : Destroyable {
     _timeSO.OnDayChange.RemoveListener(DayListener);
   }
 
+  public override void Interact(GameObject player) {
+    base.Interact(player);
+    status = growthTimer;
+  }
+
   private void DayListener(int day) {
     growthTimer--;
+    status = growthTimer;
     if (growthTimer <= 0) {
       GameObject spawnedObject = Instantiate(GrowthObject);
       spawnedObject.transform.position = transform.position;
+      status = growthTimer;
       DestroyWorldObject();
     }
+  }
+
+  public override void OnDataLoad() {
+    growthTimer = status;
   }
 }

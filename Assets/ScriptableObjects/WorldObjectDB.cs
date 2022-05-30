@@ -11,7 +11,7 @@ public class WorldObjectDB : ScriptableObject {
   public Dictionary<GameObject, int> objectLookup;
 
   void OnEnable() {
-    InitiateDict();
+    //InitiateDict();
   }
 
   public void InitiateDict() {

@@ -7,15 +7,19 @@ public class DatabaseInitiator : MonoBehaviour {
   public WorldObjectDB wODB;
 
   private Object[] item;
-  string basePath = "Item/";
+  string itemPath = "Item/";
+
+  private Object[] worldObjects;
+  string ObjectPath = "Prefabs/WorldObjects/";
 
   void OnEnable() {
     LoadItem();
+    LoadWO();
   }
 
   //load Item from assset
   void LoadItem() {
-    item = Resources.LoadAll(basePath, typeof(ItemData));
+    item = Resources.LoadAll(itemPath, typeof(ItemData));
 
     itemDB.itemList = new List<ItemData>();
 
@@ -25,5 +29,22 @@ public class DatabaseInitiator : MonoBehaviour {
     }
 
     itemDB.InitiateDict();
+  }
+
+  void LoadWO() {
+    worldObjects = Resources.LoadAll(ObjectPath, typeof(GameObject));
+
+    wODB.worldObjects = new List<GameObject>();
+
+    int idCounter = 0;
+
+    foreach (Object o in worldObjects) {
+      GameObject temp = o as GameObject;
+      wODB.worldObjects.Add(temp);
+      temp.GetComponent<WorldObject>().objectID = idCounter;
+      idCounter++;
+    }
+
+    wODB.InitiateDict();
   }
 }
