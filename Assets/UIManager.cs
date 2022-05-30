@@ -9,8 +9,10 @@ public class UIManager : MonoBehaviour {
   public GameObject pauseMenu;
   public GameObject mapMenu;
   public GameObject gameOver;
+  public GameObject hurtOverlay;
 
   public ItemInteraction _itemInteraction;
+  public HealthInteraction _healthInteraction;
 
   public void OpenInventory() {
     UI_Inventory.SetActive(true);
@@ -18,10 +20,12 @@ public class UIManager : MonoBehaviour {
 
   void OnEnable() {
     _itemInteraction.OnChestOpen.AddListener(OpenChest);
+    _healthInteraction.OnPlayerHurt.AddListener(OnPlayerHurt);
   }
 
   void OnDisable() {
     _itemInteraction.OnChestOpen.RemoveListener(OpenChest);
+    _healthInteraction.OnPlayerHurt.RemoveListener(OnPlayerHurt);
   }
 
   void OpenChest(int chestId) {
@@ -51,6 +55,10 @@ public class UIManager : MonoBehaviour {
     UI_crafting.path = "Starter";
     UI_crafting.SetButtonText("Craft!");
     UI_crafting.gameObject.SetActive(true);
+  }
+
+  public void OnPlayerHurt(float amt) {
+    hurtOverlay.SetActive(true);
   }
 
   public void OpenGameOverHUD() {
