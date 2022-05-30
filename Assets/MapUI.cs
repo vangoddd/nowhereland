@@ -8,14 +8,18 @@ using UnityEngine.EventSystems;
 public class MapUI : MonoBehaviour, IDragHandler {
   public MapGenerator mapGenerator;
   public RawImage rawImage;
+  public RawImage fogOfWarImage;
   public RectTransform rectTransform;
   public RectTransform playerRT;
   public RectTransform playerFrameRT;
+  public RectTransform fogOfWarRT;
 
   public PlayerStats _playerStat;
 
   private int mag = 4;
   public int selection = 0;
+
+  float mapRatio;
 
   public int[] scale;
 
@@ -26,6 +30,8 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   [SerializeField] private Canvas canvas;
   [SerializeField] private Vector2 originalPos;
+
+  public Texture2D fogTexture;
 
   public void InitiateMap() {
     scale = new int[mag];
@@ -41,10 +47,21 @@ public class MapUI : MonoBehaviour, IDragHandler {
     originalPos = rectTransform.anchoredPosition;
 
     GenerateMagnification();
+
+    fogTexture = new Texture2D(mapGenerator.mapSize, mapGenerator.mapSize, TextureFormat.ARGB32, false);
+    fogTexture.filterMode = FilterMode.Point;
+    for (int i = 0; i < mapGenerator.mapSize; i++) {
+      for (int j = 0; j < mapGenerator.mapSize; j++) {
+        fogTexture.SetPixel(i, j, new Color(0.31f, 0.14f, 0.19f));
+      }
+    }
+    fogTexture.Apply();
   }
 
   void OnEnable() {
+    mapRatio = 150f / (float)mapGenerator.mapSize;
     UpdateMap();
+    UpdateFog();
   }
 
   [ContextMenu("Update Map")]
@@ -58,17 +75,19 @@ public class MapUI : MonoBehaviour, IDragHandler {
     Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
 
     //unscaled anchorpos
-    anchoredPos *= 150f / (float)mapGenerator.mapSize;
+    anchoredPos *= mapRatio;
 
     //scaled pos
     anchoredPos *= (float)scale[selection] * -1f;
 
-    //rectTransform.anchoredPosition = anchoredPos;
+    rectTransform.anchoredPosition = anchoredPos;
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
 
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
     playerRT.anchoredPosition = anchoredPos * -1f;
+
+    ScaleFog();
   }
 
   void GenerateMagnification() {
@@ -93,12 +112,33 @@ public class MapUI : MonoBehaviour, IDragHandler {
     }
   }
 
+  void UpdateFog() {
+    for (int x = 0; x < mapSize; x++) {
+      for (int y = 0; y < mapSize; y++) {
+        if (mapGenerator.map.fogOfWarData[x, y]) {
+          fogTexture.SetPixel(x, y, new Color(0f, 0f, 0f, 0f));
+        }
+      }
+    }
+    fogTexture.Apply();
+
+    fogOfWarImage.texture = fogTexture;
+  }
+
   //Drag handling
   public void OnDrag(PointerEventData eventData) {
     rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
+
+    ScaleFog();
+  }
+
+  void ScaleFog() {
+    fogOfWarImage.SetNativeSize();
+    Vector2 ScaledSize = new Vector2(mapRatio, mapRatio);
+    fogOfWarRT.sizeDelta = mapGenerator.mapSize * ScaledSize * (float)scale[selection];
   }
 
   public void OnZoom() {

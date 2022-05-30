@@ -17,6 +17,8 @@ public class MapSO : ScriptableObject {
   public List<List<float>> rawNoiseData;
   public List<WorldObjectData> worldObjectDatas;
 
+  public bool[,] fogOfWarData;
+
   public void ResetValues() {
     chunks = new List<List<GameObject>>();
     tileMap = new List<List<int>>();
@@ -25,6 +27,8 @@ public class MapSO : ScriptableObject {
     worldItemData = new List<GameObject>();
     rawNoiseData = new List<List<float>>();
     worldObjectDatas = new List<WorldObjectData>();
+
+    fogOfWarData = new bool[mapSize, mapSize];
 
     int pseudoMapsize = (Mathf.CeilToInt((float)mapSize / (float)chunkSize)) * chunkSize;
 
