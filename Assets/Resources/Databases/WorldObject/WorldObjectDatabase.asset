@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 353ed60276487b74bab1f7081ac8feef, type: 3}
-  m_Name: WorldObjectDB
+  m_Name: WorldObjectDatabase
   m_EditorClassIdentifier: 
   worldObjects:
   - {fileID: 7536515956877062947, guid: 839a44f91c5c66444b8ee32dd71b6a40, type: 3}
@@ -31,5 +31,6 @@ MonoBehaviour:
   - {fileID: 8923530923195784956, guid: b4d7825f4c231b743b5dc16f3061c01a, type: 3}
   - {fileID: 8923530923195784956, guid: a4f249444954d0646940d9861e1bfc71, type: 3}
   - {fileID: 4732365544334954286, guid: 7e0762b4000be7b40ade1439a0b1d488, type: 3}
+  - {fileID: 2218084597079102623, guid: c5483fd529ad02b4c8596849b143fedf, type: 3}
   spawnWeight: []
   spawnWeightThreshold: []
