@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite Atlas
+  m_Name: New Sprite Atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -16,7 +16,7 @@ SpriteAtlas:
       maxTextureSize: 2048
       textureCompression: 0
       filterMode: 0
-      generateMipMaps: 0
+      generateMipMaps: 1
       readable: 0
       crunchedCompression: 0
       sRGB: 1
@@ -43,17 +43,32 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
     - {fileID: 2800000, guid: 3e43e2a782fb04b43a2a3a028915b0b8, type: 3}
+    - {fileID: 2800000, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
     - {fileID: 2800000, guid: 64e793cdf2b96a6428962e5b6214a6cb, type: 3}
     - {fileID: 2800000, guid: c316aa2b956f84e4ea3ae08025eeb36a, type: 3}
     - {fileID: 2800000, guid: dae4d195302d7064d8dfedb66951102f, type: 3}
-    totalSpriteSurfaceArea: 22272
+    - {fileID: 2800000, guid: 36413533a85ce5b4a97bab3bc6d5bae9, type: 3}
+    - {fileID: 2800000, guid: b31a89d05cf1b6e4488fb4282dadb889, type: 3}
+    - {fileID: 2800000, guid: 7961918222e1a474ca3df5619ca6fc56, type: 3}
+    totalSpriteSurfaceArea: 25344
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: -2370071074727518963, guid: b31a89d05cf1b6e4488fb4282dadb889, type: 3}
+  - {fileID: 6889023832066720998, guid: b31a89d05cf1b6e4488fb4282dadb889, type: 3}
+  - {fileID: 6319812037527248596, guid: b31a89d05cf1b6e4488fb4282dadb889, type: 3}
+  - {fileID: -2887223690813604396, guid: b31a89d05cf1b6e4488fb4282dadb889, type: 3}
+  - {fileID: -5230320953121011884, guid: 7961918222e1a474ca3df5619ca6fc56, type: 3}
+  - {fileID: -7889756323246088541, guid: 7961918222e1a474ca3df5619ca6fc56, type: 3}
+  - {fileID: -5272648871626958761, guid: 7961918222e1a474ca3df5619ca6fc56, type: 3}
+  - {fileID: -1845463368880173331, guid: 7961918222e1a474ca3df5619ca6fc56, type: 3}
+  - {fileID: -2091269226738715560, guid: 36413533a85ce5b4a97bab3bc6d5bae9, type: 3}
+  - {fileID: 6120641506793279248, guid: 36413533a85ce5b4a97bab3bc6d5bae9, type: 3}
+  - {fileID: 9193400178688416273, guid: 36413533a85ce5b4a97bab3bc6d5bae9, type: 3}
+  - {fileID: -7807829336729036593, guid: 36413533a85ce5b4a97bab3bc6d5bae9, type: 3}
   - {fileID: 3618333012194995348, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
   - {fileID: 8953416415762076869, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
   - {fileID: 3426943880530432053, guid: 28af73e3729e1d741a32f4f42b311aed, type: 3}
@@ -142,6 +157,18 @@ SpriteAtlas:
   - {fileID: 1222162200483367274, guid: 64e793cdf2b96a6428962e5b6214a6cb, type: 3}
   - {fileID: 7800414325121589927, guid: 64e793cdf2b96a6428962e5b6214a6cb, type: 3}
   m_PackedSpriteNamesToIndex:
+  - decal_redland_0
+  - decal_redland_1
+  - decal_redland_2
+  - decal_redland_3
+  - decal_rockland_0
+  - decal_rockland_1
+  - decal_rockland_2
+  - decal_rockland_3
+  - decal_dessert_0
+  - decal_dessert_1
+  - decal_dessert_2
+  - decal_dessert_3
   - Sprite_grass_8
   - Sprite_grass_9
   - Sprite_grass_2
@@ -230,5 +257,5 @@ SpriteAtlas:
   - Sprite_redland_19
   - Sprite_redland_18
   m_RenderDataMap: {}
-  m_Tag: Sprite Atlas
+  m_Tag: New Sprite Atlas
   m_IsVariant: 0

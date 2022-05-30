@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &8182442961856981355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,10 +110,10 @@ MonoBehaviour:
   - {fileID: 3737388343061337553, guid: 741c5cd79aa078947ba6947dfd2c2fc4, type: 3}
   - {fileID: 5876203432594074283, guid: a38fdebf0306a3145956426f18141c0d, type: 3}
   - {fileID: 2624484487037589561, guid: 369728fcbdc589c46815918009c582c0, type: 3}
-  maxEnemyCount: 6
+  maxEnemyCount: 3
   spawnCooldownTick: 5
   spawnRange: 5
-  refillEnemyTick: 30
+  refillEnemyTick: 60
   _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   EnemyPrefab: {fileID: 3598684949257258421, guid: 6883d1b13822ef745b777ff621f9691e, type: 3}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}

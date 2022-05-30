@@ -155,6 +155,7 @@ MonoBehaviour:
   interactSearchRadius: 4.2
   actionCooldownDuration: 0.5
   _animator: {fileID: 0}
+  _healthInteraction: {fileID: 11400000, guid: cb737cc051d1e204c82646d881d94e6a, type: 2}
   _interactSO: {fileID: 11400000, guid: 242b7ef130f34ff478020b3fdce3cc5f, type: 2}
   map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   OnChunkChanged: {fileID: 11400000, guid: 6a90fbd081077eb4d984da79fb5f1365, type: 2}

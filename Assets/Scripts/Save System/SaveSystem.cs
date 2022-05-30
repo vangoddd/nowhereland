@@ -29,6 +29,8 @@ public class SaveSystem : MonoBehaviour {
   public ChestHandler chestHandler;
   public Camera cam;
 
+  public GameEvent OnSaveSuccess;
+
   private void Awake() {
     _instance = this;
   }
@@ -44,6 +46,8 @@ public class SaveSystem : MonoBehaviour {
     Debug.Log("Data saved at : " + path);
     stream.Close();
 
+
+    OnSaveSuccess.Raise();
     return true;
   }
 

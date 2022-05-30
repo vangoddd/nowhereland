@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 19135cd621860894a8717b29b6fccc64
+guid: ac1287fd543f43547acd8e0012619e59
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3837319326516340432
-    second: sprite_iron_rock
+      213: 9044693225499515470
+    second: saved game indicator_0
   - first:
-      213: 943159511834018424
-    second: sprite_gold_rock
+      213: -868764409242367890
+    second: saved game indicator_1
   - first:
-      213: 1195844523687204715
-    second: sprite_coal_rock
+      213: 2924413953344604976
+    second: saved game indicator_2
   - first:
-      213: 3791854657304324003
-    second: sprite_twigs
+      213: 4651343268348512636
+    second: saved game indicator_3
   - first:
-      213: 8657382238335263684
-    second: sprite_pebble
+      213: -8934002081884863954
+    second: saved game indicator_4
   - first:
-      213: -8966409312447845192
-    second: sprite_pond
+      213: 1570001580688071689
+    second: saved game indicator_5
   - first:
-      213: 4822724186829442679
-    second: spawner_slime
+      213: -2512085668204406501
+    second: saved game indicator_6
   - first:
-      213: -7159382703864336458
-    second: sprite_carrot_ready
+      213: 4128323681981285141
+    second: saved game indicator_7
   - first:
-      213: -1286131347243977170
-    second: sprite_carrot_cooldown
-  - first:
-      213: 6754844295345459419
-    second: sprite_mushroom_ready
-  - first:
-      213: -5802468309418418125
-    second: sprite_mushrom_cooldown
+      213: 7412391053924096319
+    second: saved game indicator_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,232 +142,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_iron_rock
+      name: saved game indicator_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
-        width: 32
-        height: 32
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d66fb2b895e04530800000000000000
-      internalID: 3837319326516340432
+      spriteID: e4ad7485194358d70800000000000000
+      internalID: 9044693225499515470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_gold_rock
+      name: saved game indicator_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 288
-        width: 32
-        height: 32
+        x: 126
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 872c5653496c61d00800000000000000
-      internalID: 943159511834018424
+      spriteID: e684b996f5781f3f0800000000000000
+      internalID: -868764409242367890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_coal_rock
+      name: saved game indicator_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 288
-        width: 32
-        height: 32
+        x: 252
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b67d8f8224e789010800000000000000
-      internalID: 1195844523687204715
+      spriteID: 03b0d411ffa959820800000000000000
+      internalID: 2924413953344604976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_twigs
+      name: saved game indicator_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 32
-        height: 32
+        x: 378
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a7e88088bf5f9430800000000000000
-      internalID: 3791854657304324003
+      spriteID: c7941560f04ec8040800000000000000
+      internalID: 4651343268348512636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_pebble
+      name: saved game indicator_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 256
-        width: 32
-        height: 32
+        x: 504
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c3efb8e643352870800000000000000
-      internalID: 8657382238335263684
+      spriteID: e2207aed07c040480800000000000000
+      internalID: -8934002081884863954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_pond
+      name: saved game indicator_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 256
-        width: 32
-        height: 32
+        x: 630
+        y: 0
+        width: 126
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bcaac48c3ae09380800000000000000
-      internalID: -8966409312447845192
+      spriteID: 90cd6b19e14c9c510800000000000000
+      internalID: 1570001580688071689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spawner_slime
+      name: saved game indicator_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 256
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+        x: 756
+        y: 0
+        width: 126
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77e47a59812cde240800000000000000
-      internalID: 4822724186829442679
+      spriteID: b199355f467432dd0800000000000000
+      internalID: -2512085668204406501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_carrot_ready
+      name: saved game indicator_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.29}
+        x: 882
+        y: 0
+        width: 126
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bf2715ec53c4ac90800000000000000
-      internalID: -7159382703864336458
+      spriteID: 513c3561480ca4930800000000000000
+      internalID: 4128323681981285141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_carrot_cooldown
+      name: saved game indicator_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 240
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.32}
+        x: 1008
+        y: 0
+        width: 126
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2637099a5eb62ee0800000000000000
-      internalID: -1286131347243977170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_mushroom_ready
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 240
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.35}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd0d32119170ebd50800000000000000
-      internalID: 6754844295345459419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_mushrom_cooldown
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 240
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.35}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33067acb0dd797fa0800000000000000
-      internalID: -5802468309418418125
+      spriteID: f39dd69146a1ed660800000000000000
+      internalID: 7412391053924096319
       vertices: []
       indices: 
       edges: []

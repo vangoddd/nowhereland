@@ -12,6 +12,7 @@ public class PauseMenuButton : MonoBehaviour {
 
   public void OnSave() {
     SaveSystem.Instance.SaveGame();
+    OnResume();
   }
 
   public void OnQuit() {

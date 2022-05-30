@@ -27,10 +27,10 @@ MonoBehaviour:
   OnIngameHourTick:
     m_PersistentCalls:
       m_Calls: []
-  tick: 6
+  tick: 0
   day: 1
   secondsPerDay: 240
-  secondsPerTick: 2
+  secondsPerTick: 1
   nightRatio: 0.25
   transitionTime: 5
   isDay: 1
