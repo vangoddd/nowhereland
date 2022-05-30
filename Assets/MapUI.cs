@@ -69,10 +69,12 @@ public class MapUI : MonoBehaviour, IDragHandler {
     rawImage.texture = magnification[selection];
     rawImage.SetNativeSize();
 
-    rectTransform.sizeDelta = rectTransform.sizeDelta / 2;
+    rectTransform.sizeDelta = rectTransform.sizeDelta * (150f / (float)mapGenerator.mapSize);
     playerFrameRT.sizeDelta = rectTransform.sizeDelta;
     fogOfWarRT.sizeDelta = rectTransform.sizeDelta;
+
     maxDelta = ((magnification[selection].width / 2) - 150) / 2;
+    if (maxDelta < 0) maxDelta = 0;
 
     Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
 
