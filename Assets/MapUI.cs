@@ -52,10 +52,18 @@ public class MapUI : MonoBehaviour, IDragHandler {
     fogTexture.filterMode = FilterMode.Point;
     for (int i = 0; i < mapGenerator.mapSize; i++) {
       for (int j = 0; j < mapGenerator.mapSize; j++) {
-        fogTexture.SetPixel(i, j, new Color(0.31f, 0.14f, 0.19f));
+        if ((i + j) % 2 == 1) {
+          fogTexture.SetPixel(i, j, new Color(0.31f, 0.14f, 0.19f));
+        } else {
+          fogTexture.SetPixel(i, j, new Color(0.30f, 0.13f, 0.18f));
+        }
       }
     }
     fogTexture.Apply();
+  }
+
+  Color randomizeColor(float r, float g, float b) {
+    return new Color(r + Random.Range(-0.02f, 0.02f), g + Random.Range(-0.02f, 0.02f), b + Random.Range(-0.02f, 0.02f));
   }
 
   void OnEnable() {
@@ -69,11 +77,12 @@ public class MapUI : MonoBehaviour, IDragHandler {
     rawImage.texture = magnification[selection];
     rawImage.SetNativeSize();
 
-    rectTransform.sizeDelta = rectTransform.sizeDelta * (150f / (float)mapGenerator.mapSize);
+    rectTransform.sizeDelta = rectTransform.sizeDelta * mapRatio;
     playerFrameRT.sizeDelta = rectTransform.sizeDelta;
     fogOfWarRT.sizeDelta = rectTransform.sizeDelta;
 
-    maxDelta = ((magnification[selection].width / 2) - 150) / 2;
+    //maxDelta = (int)((float)((magnification[selection].width / 2f) - 150f) * mapRatio);
+    maxDelta = (int)((rectTransform.sizeDelta.x - 150f) / 2f);
     if (maxDelta < 0) maxDelta = 0;
 
     Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);

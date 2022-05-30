@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
   private float moveTimer = 0f;
 
   public Animator _animator;
+  public HealthInteraction _healthInteraction;
 
   [SerializeField] private InteractSO _interactSO;
   [SerializeField] private MapSO map;
@@ -59,10 +60,12 @@ public class PlayerMovement : MonoBehaviour {
 
   void OnEnable() {
     _interactSO.OnInteractMove.AddListener(MoveInteract);
+    _healthInteraction.OnPlayerHurt.AddListener(PlayerHurt);
   }
 
   void OnDisable() {
     _interactSO.OnInteractMove.RemoveListener(MoveInteract);
+    _healthInteraction.OnPlayerHurt.RemoveListener(PlayerHurt);
   }
 
   void Update() {
@@ -349,6 +352,11 @@ public class PlayerMovement : MonoBehaviour {
 
   public Vector2 getMoveDir() {
     return moveDir;
+  }
+
+  void PlayerHurt(float amt) {
+    moveTimer = 0.4f;
+    animator.SetTrigger("hurt");
   }
 }
 
