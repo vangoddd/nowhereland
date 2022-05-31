@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems:
   - item: {fileID: 11400000, guid: 368e4a6e80a48c0458d197dc199c192e, type: 2}
-    amount: 2
+    amount: 1
   result:
     item: {fileID: 11400000, guid: 345d77f3acb499a4a85e2409cc16731c, type: 2}
-    amount: 1
+    amount: 2

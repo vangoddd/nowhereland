@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour {
 
   public Transform playerPos;
 
-  public void SpawnItem(Vector3 pos, Item item) {
+  public ItemScript SpawnItem(Vector3 pos, Item item) {
     GameObject o = Instantiate(worldItemPrefab);
     ItemScript itemScript = o.GetComponent<ItemScript>();
 
@@ -34,6 +34,8 @@ public class ItemSpawner : MonoBehaviour {
     itemScript.itemData = item.itemData;
     itemScript.itemAmount = item.amount;
     itemScript.durability = item.durability;
+
+    return itemScript;
   }
 
   public void SpawnItem(Vector3 pos, ItemData item) {
@@ -90,7 +92,7 @@ public class ItemSpawner : MonoBehaviour {
   }
 
   public void SpawnItemOnPlayer(Item item) {
-    SpawnItem(playerPos.position, item);
+    SpawnItem(playerPos.position, item).addCooldown();
   }
 
   private Vector3 AddRandomOffset(Vector3 vec, float amt) {

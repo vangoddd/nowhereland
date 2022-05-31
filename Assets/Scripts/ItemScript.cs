@@ -13,15 +13,20 @@ public class ItemScript : MonoBehaviour {
 
   public MapSO _map;
 
-  private bool pickupCooldown = true;
+  private bool pickupCooldown = false;
 
   private new string name;
   private string description;
+
+  public void addCooldown() {
+    pickupCooldown = true;
+  }
+
   void Start() {
     ApplyData();
     _map.worldItemData.Add(gameObject);
     ChunkHandlerScript.addObjectToChunk(this.gameObject);
-    StartCoroutine(RemovePickupCooldownAfterDrop());
+    if (pickupCooldown) StartCoroutine(RemovePickupCooldownAfterDrop());
   }
 
   IEnumerator RemovePickupCooldownAfterDrop() {

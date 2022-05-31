@@ -32,4 +32,9 @@ public class TimeUIController : MonoBehaviour {
   void IngameHourTickListener(string time) {
     timeOfDay.text = time;
   }
+
+  public void UpdateUIOnSceneLoad() {
+    changeDay(_timeSO.day);
+    IngameHourTickListener(_timeSO.CalculateInGameHour(_timeSO.inGameMinuteCounter));
+  }
 }

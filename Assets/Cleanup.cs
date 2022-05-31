@@ -11,6 +11,7 @@ public class Cleanup : MonoBehaviour {
   public ChestHandler chestHandler;
 
   public GameEvent InventoryUpdate;
+  public GameEvent UpdateUIOnSceneLoad;
 
   void Start() {
     timeSO.ResetValues();
@@ -21,6 +22,7 @@ public class Cleanup : MonoBehaviour {
     chestHandler.ResetValues();
 
     InventoryUpdate.Raise();
-    timeSO.OnDayChange.Invoke(1);
+    UpdateUIOnSceneLoad.Raise();
+    //timeSO.OnDayChange.Invoke(1);
   }
 }

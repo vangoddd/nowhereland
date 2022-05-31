@@ -19,7 +19,7 @@ public class TimeSO : ScriptableObject {
   private int ticksPerDay;
   private int tickToNight;
   private int inGameMinutePerTick;
-  private int inGameMinuteCounter;
+  public int inGameMinuteCounter;
 
   public float transitionTime = 5f;
 

@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d8393f375908244b4e1c3d7e6d5d05, type: 3}
-  m_Name: IconList
+  m_Script: {fileID: 11500000, guid: 3a21e197210788645ac0211e76dda79c, type: 3}
+  m_Name: UpdateUIOnSceneLoad
   m_EditorClassIdentifier: 
-  iconList:
-  - worldObject: {fileID: 0}
-    iconSprite: {fileID: 0}

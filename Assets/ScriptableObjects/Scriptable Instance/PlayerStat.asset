@@ -16,8 +16,8 @@ MonoBehaviour:
   health: 100
   hunger: 100
   thirst: 100
-  position: {x: 154.42097, y: 147.71942}
-  playerDirection: {x: -0.9612127, y: -0.2758081}
+  position: {x: 150.52745, y: 147.15543}
+  playerDirection: {x: 0.297234, y: 0.95480466}
   drain_hunger: 0.167
   drain_thirst: 0.24
   drain_health: 1.67

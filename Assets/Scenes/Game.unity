@@ -267,7 +267,7 @@ MonoBehaviour:
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
   nightColor: {r: 0.5, g: 0.7, b: 1, a: 1}
   dayColor: {r: 1, g: 1, b: 1, a: 1}
-  nightIntensity: 0.15
+  nightIntensity: 0.04
   dayIntensity: 1
 --- !u!1 &113958022
 GameObject:
@@ -5457,7 +5457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadFromSave: 0
   randomSeed: 1
-  mapSize: 300
+  mapSize: 100
   seed: 79006
   octaves: 3
   magnification: 20
@@ -6817,6 +6817,7 @@ MonoBehaviour:
   enemyHandler: {fileID: 11400000, guid: d0f78babd983fa24a8971cec398bbbc5, type: 2}
   chestHandler: {fileID: 11400000, guid: 2b714a5ff9e09a344a9b622d8fb2110b, type: 2}
   InventoryUpdate: {fileID: 11400000, guid: 89ea768d784d7a5488c57facc4abc83d, type: 2}
+  UpdateUIOnSceneLoad: {fileID: 11400000, guid: f3a5a98f8b7dc194c869098a63d259ec, type: 2}
 --- !u!4 &1377484261
 Transform:
   m_ObjectHideFlags: 0

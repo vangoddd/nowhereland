@@ -791,6 +791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2666208789892545483}
   - component: {fileID: 2666208789892545482}
+  - component: {fileID: 7175915311556305695}
   m_Layer: 0
   m_Name: HUD text
   m_TagString: Untagged
@@ -834,6 +835,34 @@ MonoBehaviour:
   day: {fileID: 2666208791307041655}
   timeOfDay: {fileID: 4194231902102548224}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
+--- !u!114 &7175915311556305695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2666208789892545484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b948ec38f3c29c40b9d1bbb8c1404b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: f3a5a98f8b7dc194c869098a63d259ec, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2666208789892545482}
+        m_TargetAssemblyTypeName: TimeUIController, Assembly-CSharp
+        m_MethodName: UpdateUIOnSceneLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2666208790025304398
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4040b81f47b164f86b8fffa85336dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactSO: {fileID: 11400000, guid: 242b7ef130f34ff478020b3fdce3cc5f, type: 2}
+  OnInteractButtonClick: {fileID: 0}
 --- !u!114 &2666208790025304392
 MonoBehaviour:
   m_ObjectHideFlags: 0

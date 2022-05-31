@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf4712a38b0d3b46b913d85d65a574b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 4
+  objectID: 18
   interactDistance: 1.5
   offset: {x: 0, y: 0, z: 0}
   interactable: 1
@@ -130,8 +130,8 @@ MonoBehaviour:
   drops: {fileID: 11400000, guid: 9f185abd16943f84ab6458f4a781dd44, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
-  health: 50
-  requiredTool: {fileID: 11400000, guid: d1eca3da37d0f0c49a120c44d5b43a6b, type: 2}
+  health: 30
+  requiredTool: {fileID: 11400000, guid: dd468d2eb23ec3841a15833505a6546e, type: 2}
   DestroyAnimation:
   - {fileID: 3737388343061337553, guid: 741c5cd79aa078947ba6947dfd2c2fc4, type: 3}
   - {fileID: 5876203432594074283, guid: a38fdebf0306a3145956426f18141c0d, type: 3}
