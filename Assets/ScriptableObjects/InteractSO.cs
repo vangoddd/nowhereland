@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Interact SO")]
 public class InteractSO : ScriptableObject {
   public UnityEvent OnInteractMove;
 

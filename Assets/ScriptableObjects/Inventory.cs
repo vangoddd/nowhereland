@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Inventory")]
 public class Inventory : ScriptableObject {
   public Item[] itemList;
   private int slot = 18;

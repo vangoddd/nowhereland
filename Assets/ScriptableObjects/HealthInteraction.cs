@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Health Interaction")]
 public class HealthInteraction : ScriptableObject {
   public UnityEvent<float> OnPlayerHurt;
 

@@ -21,5 +21,6 @@ public class Cleanup : MonoBehaviour {
     chestHandler.ResetValues();
 
     InventoryUpdate.Raise();
+    timeSO.OnDayChange.Invoke(1);
   }
 }

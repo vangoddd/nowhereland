@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Enemy Handler")]
 public class EnemyHandler : ScriptableObject {
   public PlayerStats _playerStat;
 

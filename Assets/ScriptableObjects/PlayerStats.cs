@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Player Stats")]
 public class PlayerStats : ScriptableObject {
   public float maxStat = 100;
 

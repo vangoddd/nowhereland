@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Item/Loot Table")]
 public class LootTable : ScriptableObject {
   public FixedLootInfo[] fixedLoot;
   public ChanceLootInfo[] chanceLoot;

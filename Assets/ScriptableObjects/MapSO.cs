@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Map SO")]
 public class MapSO : ScriptableObject {
   public int seed;
   public int mapSize;

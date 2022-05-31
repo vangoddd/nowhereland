@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/DB/WorldObject DB")]
 public class WorldObjectDB : ScriptableObject {
   public List<GameObject> worldObjects;
   public float[] spawnWeight;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Chest Handler")]
 public class ChestHandler : ScriptableObject {
 
   //Mapping chest id to chest content

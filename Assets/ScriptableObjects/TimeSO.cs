@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SO/Time")]
 public class TimeSO : ScriptableObject {
   public UnityEvent<int> OnDayChange;
   public UnityEvent<int> OnTick;
