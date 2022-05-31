@@ -7,10 +7,8 @@ public class Armor : ItemData {
   public int durability;
   public float def;
 
-  [ContextMenu("Use Armor Item")]
-  public override void UseItem() {
-    base.UseItem();
-
-    //equip the armor
+  public override string getItemType() {
+    return "Armor";
   }
+
 }

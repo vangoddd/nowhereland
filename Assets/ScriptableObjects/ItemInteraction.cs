@@ -14,6 +14,7 @@ public class ItemInteraction : ScriptableObject {
 
   public UnityEvent<int> OnChestOpen;
   public UnityEvent<int> OnShowTooltip;
+  public UnityEvent<int> OnShowChestTooltip;
 
   public UnityEvent<int, int> OnSlotSwap;
 
@@ -42,6 +43,10 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnShowTooltip == null) {
       OnShowTooltip = new UnityEvent<int>();
+    }
+
+    if (OnShowChestTooltip == null) {
+      OnShowChestTooltip = new UnityEvent<int>();
     }
 
     if (OnUnequip == null) {
@@ -148,6 +153,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void ShowTooltip(int slot) {
     OnShowTooltip.Invoke(slot);
+  }
+
+  public void ShowChestTooltip(int slot) {
+    OnShowChestTooltip.Invoke(slot);
   }
 
 }

@@ -21,4 +21,8 @@ public class UI_ChestSlot : UI_InventorySlot {
 
     }
   }
+
+  public override void OnSlotClick() {
+    _itemInteraction.ShowChestTooltip(slotIndex);
+  }
 }

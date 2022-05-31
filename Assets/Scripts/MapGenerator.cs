@@ -317,6 +317,7 @@ public class MapGenerator : MonoBehaviour {
       if (setpieceDatas[i].objects.Length > 0) {
         for (int j = 0; j < setpieceDatas[i].objects.Length; j++) {
           for (int k = 0; k < setpieceDatas[i].objects[j].amount; k++) {
+            if (biomeTiles[i].Count == 0) break;
             int randomNum = Random.Range(0, biomeTiles[i].Count);
             GameObject go = Instantiate(setpieceDatas[i].objects[j].prefab);
             go.transform.position = new Vector3(biomeTiles[i][randomNum].x, biomeTiles[i][randomNum].y, 0);

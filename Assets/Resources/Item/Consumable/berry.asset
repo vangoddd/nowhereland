@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Natural growing snacks.
   name: Berry
   sprite: {fileID: 4515148191445370536, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
-  health: 3
-  hunger: 10
+  health: 1
+  hunger: 6
   thirst: 5
   _playerStats: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

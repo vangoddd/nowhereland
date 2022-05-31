@@ -2505,6 +2505,7 @@ MonoBehaviour:
   armorBG: {fileID: 988879363171045172}
   TooltipPanel: {fileID: 2509388464716938984}
   SlotParent: {fileID: 5236627481651309358}
+  panelCanvas: {fileID: 6591183207912235386}
 --- !u!114 &3722575185293963560
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ public class ItemData : ScriptableObject {
   public string description;
   public new string name;
 
+  [SerializeField]
+  private string typeName = null;
+
   public Sprite sprite;
 
   [ContextMenu("Use Item")]
@@ -17,5 +20,14 @@ public class ItemData : ScriptableObject {
 
   public bool isStackable() {
     return stackCount != 1;
+  }
+
+  public string getItemTypeString() {
+    if (typeName != "") return typeName;
+    return getItemType();
+  }
+
+  public virtual string getItemType() {
+    return "Item";
   }
 }

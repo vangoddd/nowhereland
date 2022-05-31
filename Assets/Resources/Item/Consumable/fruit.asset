@@ -17,6 +17,6 @@ MonoBehaviour:
   name: Fruit
   sprite: {fileID: 5001492925695537564, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 5
-  hunger: 20
+  hunger: 16
   thirst: 5
   _playerStats: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

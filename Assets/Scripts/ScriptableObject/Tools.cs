@@ -8,10 +8,7 @@ public class Tools : ItemData {
   public int durability;
   public float damage;
 
-  [ContextMenu("Use Tool Item")]
-  public override void UseItem() {
-    base.UseItem();
-
-    //equipping the item
+  public override string getItemType() {
+    return "Tools";
   }
 }

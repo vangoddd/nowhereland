@@ -17,31 +17,17 @@ public class UI_Tooltip : MonoBehaviour {
     type.text = item.itemData.name;
     desc.text = item.itemData.description;
 
-    type.text = item.itemData.GetType().ToString();
-    if (item.itemData.GetType().ToString() == "ItemData") type.text = "Item";
-    if (item.itemData.GetType().ToString() == "Placeable") type.text = "Structure";
+    // type.text = item.itemData.GetType().ToString();
+    // if (item.itemData.GetType().ToString() == "ItemData") type.text = "Item";
+    // if (item.itemData.GetType().ToString() == "Placeable") type.text = "Structure";
+
+    type.text = item.itemData.getItemTypeString();
 
     image.sprite = item.itemData.sprite;
     Canvas.ForceUpdateCanvases();
-    // LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRT);
-    // LayoutRebuilder.ForceRebuildLayoutImmediate(desc.GetComponent<RectTransform>());
   }
 
   public void ResizePanel() {
     backgroundRT.sizeDelta = new Vector2(backgroundRT.sizeDelta.x, originalPanelSizeY + desc.GetComponent<RectTransform>().sizeDelta.y);
-    // Canvas.ForceUpdateCanvases();
-    // LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRT);
-    // LayoutRebuilder.ForceRebuildLayoutImmediate(desc.GetComponent<RectTransform>());
-
   }
-
-  //   public void ShowPanel(bool show) {
-  //     if (show) {
-  //       backgroundRT.GetComponent<CanvasGroup>().alpha = 1f;
-  //       backgroundRT.GetComponent<CanvasGroup>().blocksRaycasts = true;
-  //     } else {
-  //       backgroundRT.GetComponent<CanvasGroup>().alpha = 0f;
-  //       backgroundRT.GetComponent<CanvasGroup>().blocksRaycasts = false;
-  //     }
-  //   }
 }

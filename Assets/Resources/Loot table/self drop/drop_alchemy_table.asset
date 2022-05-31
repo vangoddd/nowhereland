@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d774a5b37586a0a438f233b75d7e4b35, type: 3}
-  m_Name: Setpiece_redland
+  m_Script: {fileID: 11500000, guid: 0ae631de9f1e13c40a3d2e2201845fbe, type: 3}
+  m_Name: drop_alchemy_table
   m_EditorClassIdentifier: 
-  objects:
-  - prefab: {fileID: 8182442961856981354, guid: a73e9eed8363608498b33d72ac2e5032, type: 3}
-    amount: 20
+  fixedLoot:
+  - item: {fileID: 11400000, guid: 13c79fdc490416146a5a38be3a767146, type: 2}
+    amount: 1
+  chanceLoot: []

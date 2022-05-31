@@ -15,6 +15,11 @@ public class UI_Chest : MonoBehaviour {
 
   public GameEvent OnChestOpen, OnChestClosed;
 
+  public ItemInteraction _itemInteraction;
+  public UI_Tooltip TooltipPanel;
+
+  public RectTransform SlotParent;
+
   void Awake() {
     slots = new RectTransform[12];
     slotScripts = new UI_ChestSlot[12];
@@ -24,12 +29,14 @@ public class UI_Chest : MonoBehaviour {
   }
 
   void OnEnable() {
+    _itemInteraction.OnShowChestTooltip.AddListener(TooltipListener);
     OnChestOpen.Raise();
     chestHandler.currentlyOpenChest = chestId;
     UpdateChest();
   }
 
   void OnDisable() {
+    _itemInteraction.OnShowChestTooltip.RemoveListener(TooltipListener);
     chestHandler.currentlyOpenChest = -1;
     OnChestClosed.Raise();
   }
@@ -49,7 +56,7 @@ public class UI_Chest : MonoBehaviour {
     for (int i = 0; i < 12; i++) {
       if (i % 6 == 0 && i != 0) yCounter++;
 
-      RectTransform itemSlotTransform = Instantiate(ChestSlotTemplate, transform).GetComponent<RectTransform>();
+      RectTransform itemSlotTransform = Instantiate(ChestSlotTemplate, SlotParent.transform).GetComponent<RectTransform>();
       itemSlotTransform.gameObject.SetActive(true);
       itemSlotTransform.anchoredPosition = new Vector2(x + (xOffset * (i - (6 * yCounter))), y + (yCounter * -yOffset));
 
@@ -77,6 +84,15 @@ public class UI_Chest : MonoBehaviour {
         }
       }
     }
+  }
+
+  public void TooltipListener(int slot) {
+    if (chestHandler.chestList[chestId].itemList[slot] == null) return;
+    TooltipPanel.gameObject.SetActive(true);
+    TooltipPanel.UpdateData(chestHandler.chestList[chestId].itemList[slot]);
+    TooltipPanel.panelRectTransform.anchoredPosition = slotScripts[slot].GetComponent<RectTransform>().anchoredPosition;
+
+    TooltipPanel.ResizePanel();
   }
 
 }

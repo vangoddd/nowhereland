@@ -85,25 +85,17 @@ public class MapUI : MonoBehaviour, IDragHandler {
     maxDelta = (int)((rectTransform.sizeDelta.x - 150f) / 2f);
     if (maxDelta < 0) maxDelta = 0;
 
-    Vector2 anchoredPos = _playerStat.position - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
-
-    //unscaled anchorpos
-    anchoredPos *= mapRatio;
-
-    //scaled pos
-    anchoredPos *= (float)scale[selection] * -1f;
+    Vector2 anchoredPos = GetMapPosFromWorldPos(_playerStat.position);
 
     //snap map into player
-    if (snap) rectTransform.anchoredPosition = anchoredPos;
+    if (snap) rectTransform.anchoredPosition = anchoredPos * -1;
 
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
 
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
     //playerFrameRT.sizeDelta =
-    playerRT.anchoredPosition = anchoredPos * -1f;
-
-    ScaleFog();
+    playerRT.anchoredPosition = GetMapPosFromWorldPos(_playerStat.position);
   }
 
   void GenerateMagnification() {
@@ -118,6 +110,15 @@ public class MapUI : MonoBehaviour, IDragHandler {
       }
       magnification[i].Apply();
     }
+  }
+
+  Vector2 GetMapPosFromWorldPos(Vector2 pos) {
+    Vector2 anchoredPos = pos - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
+    //unscaled anchorpos
+    anchoredPos *= mapRatio;
+    //scaled pos
+    anchoredPos *= (float)scale[selection];
+    return anchoredPos;
   }
 
   void MagnifyTexture(int x, int y, int scale, ref Texture2D newTexture) {
@@ -147,12 +148,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
     Vector2 clampedPosition = new Vector2(Mathf.Clamp(rectTransform.anchoredPosition.x, -maxDelta, maxDelta), Mathf.Clamp(rectTransform.anchoredPosition.y, -maxDelta, maxDelta));
     rectTransform.anchoredPosition = clampedPosition;
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
-
-    ScaleFog();
-  }
-
-  void ScaleFog() {
-
   }
 
   public void OnZoom() {

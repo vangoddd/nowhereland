@@ -6,4 +6,8 @@ using UnityEngine;
 public class Weapon : ItemData {
   public int durability;
   public float damage;
+
+  public override string getItemType() {
+    return "Weapon";
+  }
 }

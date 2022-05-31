@@ -12,4 +12,8 @@ public class Consumable : ItemData {
     base.UseItem();
     _playerStats.addStat(new PlayerStatData(health, hunger, thirst));
   }
+
+  public override string getItemType() {
+    return "Consumable";
+  }
 }

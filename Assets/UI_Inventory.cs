@@ -18,6 +18,7 @@ public class UI_Inventory : MonoBehaviour {
 
   public UI_Tooltip TooltipPanel;
   public RectTransform SlotParent;
+  public RectTransform panelCanvas;
 
   void Awake() {
     slots = new RectTransform[20];
@@ -130,7 +131,16 @@ public class UI_Inventory : MonoBehaviour {
     TooltipPanel.gameObject.SetActive(true);
     TooltipPanel.UpdateData(_inventory.itemList[slot]);
     TooltipPanel.panelRectTransform.anchoredPosition = slotScripts[slot].GetComponent<RectTransform>().anchoredPosition;
+
     TooltipPanel.ResizePanel();
+
+    float canvasSize = panelCanvas.rect.height / 2;
+
+    Vector2 pos = TooltipPanel.panelRectTransform.anchoredPosition;
+    float bottom = pos.y - TooltipPanel.backgroundRT.sizeDelta.y;
+    if (bottom < -canvasSize) {
+      TooltipPanel.panelRectTransform.anchoredPosition = new Vector2(pos.x, pos.y - (bottom + canvasSize) + 10f);
+    }
   }
 
 }

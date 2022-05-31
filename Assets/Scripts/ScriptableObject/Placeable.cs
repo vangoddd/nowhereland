@@ -7,8 +7,8 @@ public class Placeable : ItemData {
   public GameObject worldObjectPrefab;
   public ItemInteraction itemInteraction;
 
-  public override void UseItem() {
-    base.UseItem();
+  public override string getItemType() {
+    return "Structure";
   }
 
 }

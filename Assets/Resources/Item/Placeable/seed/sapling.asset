@@ -15,6 +15,7 @@ MonoBehaviour:
   stackCount: 20
   description: Seed for the trees to grow.
   name: Sapling
+  typeName: Seed
   sprite: {fileID: 6230084411388827874, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   worldObjectPrefab: {fileID: 4732365544334954286, guid: 7e0762b4000be7b40ade1439a0b1d488, type: 3}
   itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}
