@@ -117,5 +117,5 @@ MonoBehaviour:
   - {fileID: -2709200119446511971, guid: dae4d195302d7064d8dfedb66951102f, type: 3}
   - {fileID: 8940245166907795647, guid: dae4d195302d7064d8dfedb66951102f, type: 3}
   - {fileID: -3143189693253351662, guid: dae4d195302d7064d8dfedb66951102f, type: 3}
-  alternate_chance: 0.95
+  alternate_chance: 0.9
   tileId: 1

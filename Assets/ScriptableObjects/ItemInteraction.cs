@@ -11,6 +11,7 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int> OnUnequip;
   public UnityEvent<int> OnItemDrop;
   public UnityEvent<int> OnItemDelete;
+  public UnityEvent<int, Vector2> OnWorldObjectSpawn;
 
   public UnityEvent<int> OnChestOpen;
   public UnityEvent<int> OnShowTooltip;
@@ -39,6 +40,10 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnItemUse == null) {
       OnItemUse = new UnityEvent<int>();
+    }
+
+    if (OnWorldObjectSpawn == null) {
+      OnWorldObjectSpawn = new UnityEvent<int, Vector2>();
     }
 
     if (OnShowTooltip == null) {
@@ -157,6 +162,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void ShowChestTooltip(int slot) {
     OnShowChestTooltip.Invoke(slot);
+  }
+
+  public void WorldObjectSpawn(int id, Vector2 pos) {
+    OnWorldObjectSpawn.Invoke(id, pos);
   }
 
 }

@@ -13,6 +13,8 @@ public class Cleanup : MonoBehaviour {
   public GameEvent InventoryUpdate;
   public GameEvent UpdateUIOnSceneLoad;
 
+  public MapUI mapUI;
+
   void Start() {
     timeSO.ResetValues();
     playerStats.ResetValues();
@@ -20,6 +22,8 @@ public class Cleanup : MonoBehaviour {
     inventory.ResetValues();
     enemyHandler.ResetValues();
     chestHandler.ResetValues();
+
+    mapUI.AttachListener();
 
     InventoryUpdate.Raise();
     UpdateUIOnSceneLoad.Raise();

@@ -190,6 +190,30 @@ public class Inventory : ScriptableObject {
     }
   }
 
+  int GetFirstEmptySlot() {
+    for (int i = 0; i < 18; i++) {
+      if (itemList[i] == null) return i;
+    }
+    return -1;
+  }
+
+  public void SplitAmt(int slot, int amt) {
+    if (itemList[slot].amount <= 1) return;
+    int targetSlot = GetFirstEmptySlot();
+    if (targetSlot != -1 && itemList[slot].amount > amt) {
+      itemList[slot].amount -= amt;
+      itemList[targetSlot] = new Item(itemList[slot].itemData, amt);
+    }
+  }
+
+  public void SplitHalf(int slot) {
+    SplitAmt(slot, itemList[slot].amount / 2);
+  }
+
+  public void SplitOne(int slot) {
+    SplitAmt(slot, 1);
+  }
+
   public void DropItem(int slot) {
     if (slot < 18) {
       ItemSpawner.Instance.SpawnItemOnPlayer(itemList[slot]);
@@ -391,6 +415,16 @@ public class Inventory : ScriptableObject {
   [ContextMenu("Fill inv stack")]
   public void TestFillInventoryStack() {
     AddItem(itemList[0].itemData, 17 * itemList[0].itemData.stackCount);
+  }
+
+  [ContextMenu("test split half")]
+  public void testSplitHalf() {
+    SplitHalf(0);
+  }
+
+  [ContextMenu("test split one")]
+  public void testSplitOne() {
+    SplitOne(0);
   }
 
 }

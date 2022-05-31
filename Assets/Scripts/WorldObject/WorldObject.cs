@@ -19,6 +19,7 @@ public abstract class WorldObject : MonoBehaviour {
 
   protected void InitializeObject() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
+    ChunkHandlerScript.GenerateMapIcon(objectID, transform.position);
     BoxCollider2D clickHitbox = gameObject.AddComponent<BoxCollider2D>() as BoxCollider2D;
     clickHitbox.isTrigger = true;
 

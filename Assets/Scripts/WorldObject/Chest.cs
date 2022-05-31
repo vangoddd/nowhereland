@@ -34,18 +34,4 @@ public class Chest : Useable {
     }
   }
 
-  [ContextMenu("Add random item")]
-  public void DebugPopulateChest() {
-    int index = Random.Range(0, 12);
-    chestHandler.chestList[chestId].itemList[index] = new Item(itemDB.itemList[Random.Range(0, itemDB.itemList.Count)], 1);
-  }
-
-  [ContextMenu("Print content")]
-  public void DebugPrintChestContent() {
-    Item[] content = chestHandler.chestList[chestId].itemList;
-    for (int x = 0; x < 12; x++) {
-      if (content[x] != null) Debug.Log(content[x].itemData.name + " Index : " + x);
-    }
-  }
-
 }

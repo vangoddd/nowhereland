@@ -13,13 +13,18 @@ public class MapUI : MonoBehaviour, IDragHandler {
   public RectTransform playerRT;
   public RectTransform playerFrameRT;
   public RectTransform fogOfWarRT;
+  public RectTransform iconParent;
+  public Image iconTemplate;
 
   public PlayerStats _playerStat;
+  public ItemInteraction _itemInteraction;
+
+  public MapIconSO iconDB;
 
   private int mag = 4;
   public int selection = 0;
 
-  float mapRatio;
+  public float mapRatio;
 
   public int[] scale;
 
@@ -32,6 +37,40 @@ public class MapUI : MonoBehaviour, IDragHandler {
   [SerializeField] private Vector2 originalPos;
 
   public Texture2D fogTexture;
+
+  private List<Image> icons;
+
+  void OnEnable() {
+    mapRatio = 150f / (float)mapGenerator.mapSize;
+    UpdateMap(true);
+    UpdateFog();
+  }
+
+  public void AttachListener() {
+    mapRatio = 150f / (float)mapGenerator.mapSize;
+    icons = new List<Image>();
+    _itemInteraction.OnWorldObjectSpawn.AddListener(GenerateIcon);
+  }
+
+  void OnDestroy() {
+    _itemInteraction.OnWorldObjectSpawn.RemoveListener(GenerateIcon);
+  }
+
+  public void GenerateIcon(int id, Vector2 pos) {
+    if (!iconDB.getSprite.ContainsKey(id)) return;
+    //Debug.Log("generating icon");
+
+
+    iconTemplate.sprite = iconDB.getSprite[id];
+    iconTemplate.rectTransform.anchoredPosition = GetMapPosFromWorldPos(pos);
+
+    //Debug.Log("generating icon in " + GetMapPosFromWorldPos(pos).x + " " + GetMapPosFromWorldPos(pos).y);
+
+    GameObject icon = Instantiate(iconTemplate.gameObject, iconParent);
+    icons.Add(icon.GetComponent<Image>());
+
+    icon.SetActive(true);
+  }
 
   public void InitiateMap() {
     scale = new int[mag];
@@ -66,12 +105,6 @@ public class MapUI : MonoBehaviour, IDragHandler {
     return new Color(r + Random.Range(-0.02f, 0.02f), g + Random.Range(-0.02f, 0.02f), b + Random.Range(-0.02f, 0.02f));
   }
 
-  void OnEnable() {
-    mapRatio = 150f / (float)mapGenerator.mapSize;
-    UpdateMap(true);
-    UpdateFog();
-  }
-
   [ContextMenu("Update Map")]
   public void UpdateMap(bool snap) {
     rawImage.texture = magnification[selection];
@@ -80,6 +113,8 @@ public class MapUI : MonoBehaviour, IDragHandler {
     rectTransform.sizeDelta = rectTransform.sizeDelta * mapRatio;
     playerFrameRT.sizeDelta = rectTransform.sizeDelta;
     fogOfWarRT.sizeDelta = rectTransform.sizeDelta;
+
+
 
     //maxDelta = (int)((float)((magnification[selection].width / 2f) - 150f) * mapRatio);
     maxDelta = (int)((rectTransform.sizeDelta.x - 150f) / 2f);
@@ -96,6 +131,9 @@ public class MapUI : MonoBehaviour, IDragHandler {
     playerFrameRT.anchoredPosition = rectTransform.anchoredPosition;
     //playerFrameRT.sizeDelta =
     playerRT.anchoredPosition = GetMapPosFromWorldPos(_playerStat.position);
+
+
+
   }
 
   void GenerateMagnification() {
@@ -116,6 +154,7 @@ public class MapUI : MonoBehaviour, IDragHandler {
     Vector2 anchoredPos = pos - new Vector2(mapGenerator.mapSize / 2, mapGenerator.mapSize / 2);
     //unscaled anchorpos
     anchoredPos *= mapRatio;
+
     //scaled pos
     anchoredPos *= (float)scale[selection];
     return anchoredPos;
@@ -154,15 +193,29 @@ public class MapUI : MonoBehaviour, IDragHandler {
     selection++;
     if (selection >= mag) {
       selection = mag - 1;
+    } else {
+      UpdateMap(false);
+
+      foreach (Image icon in icons) {
+        Vector2 oldPos = icon.rectTransform.anchoredPosition;
+        icon.rectTransform.anchoredPosition *= 2;
+      }
     }
-    UpdateMap(false);
+
   }
 
   public void OnUnZoom() {
     selection--;
     if (selection < 0) {
       selection = 0;
+    } else {
+      UpdateMap(false);
+
+      foreach (Image icon in icons) {
+        Vector2 oldPos = icon.rectTransform.anchoredPosition;
+        icon.rectTransform.anchoredPosition *= 0.5f;
+      }
     }
-    UpdateMap(false);
+
   }
 }

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ChunkHandlerScript : MonoBehaviour {
   public static MapSO map;
+  public static ItemInteraction itemInteraction;
   public MapSO _map;
   public GameObject player;
   public static List<int> activeChunks = new List<int>();
+
+  public ItemInteraction _itemInteraction;
 
   public bool unloadChunk = true;
 
@@ -15,6 +18,7 @@ public class ChunkHandlerScript : MonoBehaviour {
   void Start() {
     map = _map;
     playerChunk = getChunkFromPosition(player.transform.position.x, player.transform.position.y);
+    itemInteraction = _itemInteraction;
   }
 
   public void UpdateLoadedChunk() {
@@ -72,5 +76,10 @@ public class ChunkHandlerScript : MonoBehaviour {
     for (int i = 0; i < map.chunks.Count; i++) {
       map.chunks[i].Remove(g);
     }
+  }
+
+  public static void GenerateMapIcon(int id, Vector2 pos) {
+    //Debug.Log("Spawning object");
+    itemInteraction.WorldObjectSpawn(id, pos);
   }
 }

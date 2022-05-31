@@ -52,7 +52,7 @@ public class Harvestable : WorldObject {
 
   public override void Interact(GameObject player) {
     base.Interact(player);
-    ItemSpawner.Instance.spawnDrops(transform.position, drops);
+    ItemSpawner.Instance.spawnDrops(transform.position - offset, drops);
 
     regenCounter = regenRate;
     status = regenCounter;
