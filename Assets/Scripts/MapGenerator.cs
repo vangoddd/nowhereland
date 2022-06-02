@@ -58,6 +58,8 @@ public class MapGenerator : MonoBehaviour {
   //To notify loading screen if the generation is complete
   public LoadingEvent _loadingEvent;
   public StartMode startMode;
+  public GameEvent OnChunkChanged;
+  public GameEvent OnMapDataGenerated;
 
   private List<TileTexture> runtimeTiles = new List<TileTexture>();
 
@@ -78,6 +80,10 @@ public class MapGenerator : MonoBehaviour {
   }
 
   void Start() {
+    StartCoroutine(SpawnCoroutine());
+  }
+
+  IEnumerator SpawnCoroutine() {
     TimeManager.Instance.PauseGame();
 
     Vector2 startPos = new Vector2(mapSize / 2, mapSize / 2);
@@ -85,21 +91,49 @@ public class MapGenerator : MonoBehaviour {
 
     GetGradientColors();
 
-    //map.ResetValues();
-
     if (!loadFromSave) {
       InitiateSeed();
       map.mapSize = mapSize;
       GenerateMap();
+      _loadingEvent.loadingStatus = "Generating Map Data";
+
+      yield return StartCoroutine(InstantiateTiles());
+
+      _loadingEvent.loadingStatus = "Spawning Setpiece";
+      SpawnSetPiece();
+
+      yield return null;
+
+      OnMapDataGenerated.Raise();
+      _loadingEvent.loadingStatus = "Generating Object Data";
+
       GenerateWorldObject();
-      SpawnObjects();
+
+      yield return null;
+      _loadingEvent.loadingStatus = "Spawning Objects";
+      yield return StartCoroutine(SpawnObjects());
+
+      yield return null;
+
       _pm.gameObject.transform.position = startPos;
+
     } else {
+      _loadingEvent.loadingStatus = "Loading Game";
       SaveSystem.Instance.LoadGame();
       InitiateSeed();
       mapSize = map.mapSize;
-      InstantiateTiles();
-      SpawnObjects();
+
+      yield return StartCoroutine(InstantiateTiles());
+
+      yield return null;
+
+      OnMapDataGenerated.Raise();
+      _loadingEvent.loadingStatus = "Spawning Objects";
+
+      yield return StartCoroutine(SpawnObjects());
+
+      yield return null;
+
     }
 
     mapTexture = new Texture2D(map.mapSize, map.mapSize, TextureFormat.ARGB32, false);
@@ -107,8 +141,12 @@ public class MapGenerator : MonoBehaviour {
 
     Camera.main.Render();
 
+    yield return new WaitForSecondsRealtime(0.5f);
+    Debug.Log("loading done");
+
+    OnChunkChanged.Raise();
+    _loadingEvent.loadingStatus = "";
     _loadingEvent.FinishLoading();
-    //TimeManager.Instance.ResumeGame();
   }
 
   void GetGradientColors() {
@@ -222,18 +260,29 @@ public class MapGenerator : MonoBehaviour {
       }
     }
 
-    InstantiateTiles();
+
 
     CountBiomes();
   }
 
-  void InstantiateTiles() {
+  IEnumerator InstantiateTiles() {
+    _loadingEvent.loadingStatus = "Generating Tiles";
+    int counter = 0;
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
         SpawnTile(map.tileMap[x][y], x, y);
+        counter++;
+        if (counter >= 1000) {
+          counter = 0;
+          yield return null;
+
+        }
       }
     }
     GenerateDecal();
+
+    yield return new WaitForSecondsRealtime(0.5f);
+
   }
 
   int getTileFromPerlin(float perlinValue) {
@@ -355,9 +404,8 @@ public class MapGenerator : MonoBehaviour {
     map.worldObjectDatas = worldObjectDatas;
   }
 
-  void SpawnObjects() {
-    SpawnSetPiece();
-
+  IEnumerator SpawnObjects() {
+    int counter = 0;
     foreach (WorldObjectData data in map.worldObjectDatas) {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
@@ -365,10 +413,13 @@ public class MapGenerator : MonoBehaviour {
       woScript.status = data.status;
       if (loadFromSave) woScript.OnDataLoad();
 
-      // if (woScript is Destroyable && !(woScript is Chest)) {
-      //   if (woScript.status != -1) ((Destroyable)woScript).health = woScript.status;
-      // }
+      counter++;
+      if (counter >= 1000) {
+        counter = 0;
+        yield return null;
+      }
     }
+    yield return null;
   }
 
   void GenerateMapTexture() {

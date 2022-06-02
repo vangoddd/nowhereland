@@ -113,7 +113,7 @@ MonoBehaviour:
   maxEnemyCount: 3
   spawnCooldownTick: 5
   spawnRange: 5
-  refillEnemyTick: 60
+  refillEnemyTick: 30
   _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   EnemyPrefab: {fileID: 3598684949257258421, guid: 6883d1b13822ef745b777ff621f9691e, type: 3}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}

@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class LoadingEvent : ScriptableObject {
   public bool isFinished = false;
 
+  public string loadingStatus;
+
   public UnityEvent OnLoadingFinishedEvent;
 
   private void OnEnable() {

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LoadingUI : MonoBehaviour {
   public LoadingEvent _loadingEvent;
   public RectTransform loadingtext;
   public GameObject TouchToContinueScreen;
   public GameObject LoadingBar;
+
+  public TextMeshProUGUI loadingText;
 
   private void OnEnable() {
     _loadingEvent.OnLoadingFinishedEvent.AddListener(OnLoadingFinished);
@@ -30,5 +33,9 @@ public class LoadingUI : MonoBehaviour {
   public void DisableLoading() {
     gameObject.SetActive(false);
     Destroy(gameObject);
+  }
+
+  void Update() {
+    loadingText.text = _loadingEvent.loadingStatus;
   }
 }

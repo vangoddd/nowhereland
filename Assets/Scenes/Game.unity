@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 116000851}
   - component: {fileID: 116000850}
   - component: {fileID: 116000854}
+  - component: {fileID: 116000855}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -497,6 +498,34 @@ MonoBehaviour:
       - m_Target: {fileID: 116000851}
         m_TargetAssemblyTypeName: MapUI, Assembly-CSharp
         m_MethodName: OnUnZoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &116000855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116000848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b948ec38f3c29c40b9d1bbb8c1404b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 325e70f448c70ac48bf2815203b75668, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116000851}
+        m_TargetAssemblyTypeName: MapUI, Assembly-CSharp
+        m_MethodName: InitiateMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5401,9 +5430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
-  randomSeed: 1
-  mapSize: 100
-  seed: 54478
+  randomSeed: 0
+  mapSize: 300
+  seed: 98656
   octaves: 3
   magnification: 20
   presistance: 0.35
@@ -5450,6 +5479,8 @@ MonoBehaviour:
   levelGradient: {fileID: 2800000, guid: 479ac6d14e9f15a41adc8c688a5782a0, type: 3}
   _loadingEvent: {fileID: 11400000, guid: f22097995a225da4fb6bffe36aa259e8, type: 2}
   startMode: {fileID: 11400000, guid: e7dce47d6ab5a514e8f1ad282b897279, type: 2}
+  OnChunkChanged: {fileID: 11400000, guid: 6a90fbd081077eb4d984da79fb5f1365, type: 2}
+  OnMapDataGenerated: {fileID: 11400000, guid: 325e70f448c70ac48bf2815203b75668, type: 2}
   _pm: {fileID: 1778751126}
 --- !u!4 &1129266677
 Transform:

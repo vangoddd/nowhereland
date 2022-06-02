@@ -49,6 +49,7 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   public void AttachListener() {
     mapRatio = 150f / (float)mapGenerator.mapSize;
+    InititateScale();
     icons = new Dictionary<Vector2, Image>();
     _itemInteraction.OnWorldObjectSpawn.AddListener(GenerateIcon);
     _itemInteraction.OnDestroyIcon.AddListener(DestroyIcon);
@@ -81,12 +82,15 @@ public class MapUI : MonoBehaviour, IDragHandler {
     }
   }
 
-  public void InitiateMap() {
+  void InititateScale() {
     scale = new int[mag];
     scale[0] = 1;
     for (int i = 1; i < mag; i++) {
       scale[i] = scale[i - 1] * 2;
     }
+  }
+
+  public void InitiateMap() {
 
     mapSize = mapGenerator.mapSize;
     magnification = new Texture2D[mag];

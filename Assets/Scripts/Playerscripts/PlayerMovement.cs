@@ -68,6 +68,8 @@ public class PlayerMovement : MonoBehaviour {
     _healthInteraction.OnPlayerHurt.RemoveListener(PlayerHurt);
   }
 
+  private float lastPosDelta;
+
   void Update() {
     if (actionCooldownTimer > 0f) {
       actionCooldownTimer -= Time.deltaTime;
@@ -100,6 +102,11 @@ public class PlayerMovement : MonoBehaviour {
     if (curChunkPos != lastChunkPos) {
       lastChunkPos = curChunkPos;
       OnChunkChanged.Raise();
+    }
+
+    if (moving) {
+      Vector2 actualDir = lastClickedPos - (Vector2)transform.position;
+      if (Vector2.Angle(actualDir, moveDir) > 90f) moving = false;
     }
 
   }
