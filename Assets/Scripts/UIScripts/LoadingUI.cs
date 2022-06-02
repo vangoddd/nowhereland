@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class LoadingUI : MonoBehaviour {
   public LoadingEvent _loadingEvent;
   public RectTransform loadingtext;
+  public GameObject TouchToContinueScreen;
+  public GameObject LoadingBar;
+
   private void OnEnable() {
-    _loadingEvent.OnLoadingFinishedEvent.AddListener(DisableLoading);
-    loadingtext.anchoredPosition += new Vector2(0f, -5f);
-    LeanTween.moveY(loadingtext, loadingtext.anchoredPosition.y + 10f, 2f).setEaseInOutSine().setLoopPingPong();
+    _loadingEvent.OnLoadingFinishedEvent.AddListener(OnLoadingFinished);
   }
 
   private void OnDisable() {
@@ -20,7 +21,13 @@ public class LoadingUI : MonoBehaviour {
     DontDestroyOnLoad(this.gameObject);
   }
 
-  private void DisableLoading() {
+  public void OnLoadingFinished() {
+    TouchToContinueScreen.SetActive(true);
+    loadingtext.gameObject.SetActive(false);
+    LoadingBar.gameObject.SetActive(false);
+  }
+
+  public void DisableLoading() {
     gameObject.SetActive(false);
     Destroy(gameObject);
   }

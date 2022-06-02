@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ore_iron
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Raw iron ore. Need to be refined.
+  description: Raw iron ore. Need to be refined. Can be processed using a workbench
+    to create a better material.
   name: Iron ore
+  typeName: 
   sprite: {fileID: -8092973541831322914, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

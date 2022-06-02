@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: hammer
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Made to destroy things.
+  description: Made to destroy unwanted structures. Cannot destroy rocks...
   name: Hammer
+  typeName: 
   sprite: {fileID: 8276626890105028578, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   type: {fileID: 11400000, guid: d1eca3da37d0f0c49a120c44d5b43a6b, type: 2}
   durability: 50

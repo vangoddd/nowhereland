@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TimeManager : MonoBehaviour {
   private static TimeManager _instance;
   public bool isPaused = false;
+
+  public InputActionAsset playerAction;
 
   public static TimeManager Instance {
     get {
@@ -33,11 +36,13 @@ public class TimeManager : MonoBehaviour {
 
   public void PauseGame() {
     Time.timeScale = 0;
+    playerAction.Disable();
     isPaused = true;
   }
 
   public void ResumeGame() {
     Time.timeScale = 1;
+    playerAction.Enable();
     isPaused = false;
   }
 

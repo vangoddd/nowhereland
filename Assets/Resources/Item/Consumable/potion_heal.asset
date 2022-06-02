@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022c60b1d31f95478f5c1b7772895fb, type: 3}
+  m_Name: potion_heal
+  m_EditorClassIdentifier: 
+  stackCount: 1
+  description: Restores big amount of health at the cost of hunger.
+  name: Healing Potion
+  typeName: Potion
+  sprite: {fileID: -666797842647731695, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
+  health: 50
+  hunger: -20
+  thirst: 0
+  _playerStats: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: sword_iron
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Stronger sword out of molten iron.
+  description: Stronger sword out of molten iron. Deals 24 damage to enemies. Stronger
+    than stone sword.
   name: Iron sword
+  typeName: 
   sprite: {fileID: 7850913955669060686, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   durability: 50
-  damage: 40
+  damage: 24

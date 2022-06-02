@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: log
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Dead trees.
+  description: Dead trees. Provides a sturdy material for building and crafting.
   name: Log
+  typeName: 
   sprite: {fileID: 4834821917934931748, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

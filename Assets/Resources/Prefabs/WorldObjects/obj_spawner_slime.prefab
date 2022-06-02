@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8182442961856981355}
   - component: {fileID: 8846979092684787382}
   m_Layer: 6
-  m_Name: spawner_slime
+  m_Name: obj_spawner_slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
-  drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
+  drops: {fileID: 11400000, guid: e2a189dad46e2bb48927f03c39ef7970, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
   health: 200

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ingot_iron
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Iron ingots. Can be used to craft better tools.
+  description: Iron ingots. Smelted from raw iron ores. Can be used to craft better
+    tools and armor..
   name: Iron ingot
+  typeName: 
   sprite: {fileID: 7689954664804139764, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

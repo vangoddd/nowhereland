@@ -97,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077667236, y: -0.2101059}
+  m_Offset: {x: -0.03629303, y: -0.0067825317}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 4, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3009033, y: 0.7882538}
+  m_Size: {x: 2.4566498, y: 0.92381287}
   m_EdgeRadius: 0
 --- !u!114 &-8839791047339072657
 MonoBehaviour:
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 13
-  interactDistance: 1.18
-  offset: {x: 0, y: -0.21, z: 0}
+  interactDistance: 1.69
+  offset: {x: 0, y: 0, z: 0}
   interactable: 1
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   drops: {fileID: 11400000, guid: c965ee75f6e6c2942bb6fab768dd2670, type: 2}
@@ -137,5 +137,5 @@ MonoBehaviour:
   sr: {fileID: 8923530923195784959}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
   disableHitboxOnCooldown: 0
-  collider: {fileID: 0}
+  boxCollider: {fileID: 0}
   _playerstat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}

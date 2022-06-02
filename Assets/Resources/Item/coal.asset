@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: coal
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Energy source of some kind.
+  description: Energy source of some kind. Obtained from black rocks scattered across
+    the rockyland biome.
   name: Coal ore
+  typeName: 
   sprite: {fileID: -7107363420155884103, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

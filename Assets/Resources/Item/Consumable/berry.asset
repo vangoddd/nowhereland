@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: berry
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Natural growing snacks.
+  description: Natural growing snacks. Lightly fill your stomach.
   name: Berry
+  typeName: Food
   sprite: {fileID: 4515148191445370536, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 1
   hunger: 6

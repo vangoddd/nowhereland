@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: cooked_mushroom
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: A mushroom ? But its cooked ?
+  description: A cooked mushroom ? Probably safe ?
   name: Cooked Mushroom
+  typeName: Food
   sprite: {fileID: -7382240418812304617, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 6
   hunger: 14

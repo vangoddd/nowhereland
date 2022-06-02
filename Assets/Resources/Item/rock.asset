@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: rock
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Rocks.
+  description: Rocks. Stones. Boulder. Pebble.
   name: Rock
+  typeName: 
   sprite: {fileID: -5558816579510887396, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

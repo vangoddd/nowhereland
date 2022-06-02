@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ore_gold
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Raw gold  ore. Need to be refined.
+  description: Raw gold  ore. Need to be refined. Can be processed using a workbench
+    to create a better material.
   name: Gold ore
+  typeName: 
   sprite: {fileID: 7269334162343707776, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

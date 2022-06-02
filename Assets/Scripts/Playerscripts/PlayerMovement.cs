@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour {
 
   public void MoveInteract() {
     if (actionCooldownTimer > 0f) {
-      Debug.Log("action is on cooldown");
+      //Debug.Log("action is on cooldown");
       return;
     }
     //Debug.Log("interacting");
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour {
   //Attack handling
   public void MoveAttack() {
     if (actionCooldownTimer > 0f) {
-      Debug.Log("action is on cooldown");
+      //Debug.Log("action is on cooldown");
       return;
     }
     //Debug.Log("interacting");
@@ -350,6 +350,15 @@ public class PlayerMovement : MonoBehaviour {
     return moving;
   }
 
+  public GameObject isAttacking() {
+    if (attacking) return moveToTarget;
+    else return null;
+  }
+
+  public Vector2 GetTargetPos() {
+    return lastClickedPos;
+  }
+
   public Vector2 getMoveDir() {
     return moveDir;
   }
@@ -358,5 +367,7 @@ public class PlayerMovement : MonoBehaviour {
     moveTimer = 0.4f;
     animator.SetTrigger("hurt");
   }
+
+
 }
 

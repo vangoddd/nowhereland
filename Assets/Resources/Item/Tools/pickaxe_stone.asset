@@ -15,6 +15,7 @@ MonoBehaviour:
   stackCount: 1
   description: Used to mine minerals.
   name: Stone Pickaxe
+  typeName: 
   sprite: {fileID: -82400937575883739, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   type: {fileID: 11400000, guid: 74687242db9866e4296ad619e852d383, type: 2}
   durability: 70

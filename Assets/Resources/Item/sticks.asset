@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: sticks
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Smaller logs
+  description: 'Smaller logs. '
   name: Sticks
+  typeName: 
   sprite: {fileID: 2957127108187555240, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

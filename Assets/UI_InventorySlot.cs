@@ -25,7 +25,6 @@ public class UI_InventorySlot : MonoBehaviour, IDragHandler, IBeginDragHandler, 
   }
 
   public virtual void OnSlotClick() {
-    Debug.Log("clicked slot " + slotIndex);
     _itemInteraction.ShowTooltip(slotIndex);
   }
 

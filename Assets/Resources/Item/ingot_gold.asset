@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ingot_gold
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Gold ingots. Can be used to craft strongest tools.
+  description: Gold ingots. Smelted from several raw gold ores. Can be used to craft
+    the strongest tools.
   name: Gold ingot
+  typeName: 
   sprite: {fileID: -2290418719018419200, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: sword_stone
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Sword made out of sturdy stones.
+  description: Sword made out of sturdy stones. Deals 17 damage to enemies. Might
+    look strong, but not actually.
   name: Stone Sword
+  typeName: 
   sprite: {fileID: 314624492961450763, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   durability: 50
-  damage: 30
+  damage: 17

@@ -98,6 +98,12 @@ TextureImporter:
   - first:
       213: 8891479227389673952
     second: button_minus_pressed
+  - first:
+      213: 2786763852247647990
+    second: split_button
+  - first:
+      213: -4676451984476729161
+    second: split_button_pressed
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -899,6 +905,48 @@ TextureImporter:
       bones: []
       spriteID: 0e1835c8f31e46b70800000000000000
       internalID: 8891479227389673952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: split_button
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 92
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6ce1e65f29ca620800000000000000
+      internalID: 2786763852247647990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: split_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 92
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0181072b7e91fb0800000000000000
+      internalID: -4676451984476729161
       vertices: []
       indices: 
       edges: []

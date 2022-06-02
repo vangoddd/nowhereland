@@ -24,6 +24,7 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnSlotSwap.AddListener(SlotSwap);
     _itemInteraction.OnItemDrop.AddListener(DropItem);
     _itemInteraction.OnItemDelete.AddListener(DeleteItem);
+    _itemInteraction.OnSplitItem.AddListener(SplitHalf);
   }
 
   private void OnDisable() {
@@ -33,6 +34,8 @@ public class Inventory : ScriptableObject {
     _itemInteraction.OnSlotSwap.RemoveListener(SlotSwap);
     _itemInteraction.OnItemDrop.RemoveListener(DropItem);
     _itemInteraction.OnItemDelete.RemoveListener(DeleteItem);
+    _itemInteraction.OnSplitItem.RemoveListener(SplitHalf);
+
   }
 
   public void ResetValues() {
@@ -204,14 +207,12 @@ public class Inventory : ScriptableObject {
       itemList[slot].amount -= amt;
       itemList[targetSlot] = new Item(itemList[slot].itemData, amt);
     }
+    OnEquippableUpdated.Raise();
+    OnInventoryUpdate.Raise();
   }
 
   public void SplitHalf(int slot) {
     SplitAmt(slot, itemList[slot].amount / 2);
-  }
-
-  public void SplitOne(int slot) {
-    SplitAmt(slot, 1);
   }
 
   public void DropItem(int slot) {
@@ -396,35 +397,5 @@ public class Inventory : ScriptableObject {
     OnInventoryUpdate.Raise();
   }
 
-  [ContextMenu("Print equipped item")]
-  public void PrintEquippedItem() {
-    if (handSlot != null) Debug.Log(handSlot.itemData.name);
-    if (armorSlot != null) Debug.Log(armorSlot.itemData.name);
-  }
-
-  [ContextMenu("Populate inv")]
-  public void TestingAddItem() {
-    itemList[17] = new Item(itemList[0].itemData, 10);
-  }
-
-  [ContextMenu("Fill inv non stack")]
-  public void TestFillInventory() {
-    AddItem(itemList[0].itemData, 17);
-  }
-
-  [ContextMenu("Fill inv stack")]
-  public void TestFillInventoryStack() {
-    AddItem(itemList[0].itemData, 17 * itemList[0].itemData.stackCount);
-  }
-
-  [ContextMenu("test split half")]
-  public void testSplitHalf() {
-    SplitHalf(0);
-  }
-
-  [ContextMenu("test split one")]
-  public void testSplitOne() {
-    SplitOne(0);
-  }
 
 }

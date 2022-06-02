@@ -15,6 +15,7 @@ MonoBehaviour:
   stackCount: 20
   description: A healthy vegetable. Good for your health.
   name: Carrot
+  typeName: Food
   sprite: {fileID: -8527883323647652179, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 1
   hunger: 7

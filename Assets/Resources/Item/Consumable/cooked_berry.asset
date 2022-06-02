@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: cooked_berry
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: A dish of cooked berry
+  description: A dish of cooked berry. Mmm... delicious.
   name: Cooked berry
+  typeName: Food
   sprite: {fileID: -6829208128941288417, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 4
   hunger: 18

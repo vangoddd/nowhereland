@@ -10,6 +10,12 @@ public class UI_Tooltip : MonoBehaviour {
   public TextMeshProUGUI itemName, type, desc;
   public Image image;
 
+  public Item selectedItem;
+  public int slot;
+  public ItemInteraction _itemInteraction;
+
+  public GameObject splitButton;
+
   public float originalPanelSizeY = 34.39f;
 
   public void UpdateData(Item item) {
@@ -24,10 +30,23 @@ public class UI_Tooltip : MonoBehaviour {
     type.text = item.itemData.getItemTypeString();
 
     image.sprite = item.itemData.sprite;
+    if (selectedItem != null && splitButton.activeSelf) {
+      setButtonActive(selectedItem.amount > 1);
+    }
     Canvas.ForceUpdateCanvases();
   }
 
   public void ResizePanel() {
     backgroundRT.sizeDelta = new Vector2(backgroundRT.sizeDelta.x, originalPanelSizeY + desc.GetComponent<RectTransform>().sizeDelta.y);
+  }
+
+  public void splitItem() {
+    Debug.Log("splitting item : " + selectedItem.itemData.name);
+    _itemInteraction.SplitItem(slot);
+    this.gameObject.SetActive(false);
+  }
+
+  public void setButtonActive(bool status) {
+    splitButton.SetActive(status);
   }
 }

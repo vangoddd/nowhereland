@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: cooked_carrot
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: A healthy vegetable. Good for your health.
+  description: A healthy vegetable. Even better for your health.
   name: Cooked Carrot
+  typeName: Food
   sprite: {fileID: -8720136270334553059, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   health: 7
   hunger: 17

@@ -31,7 +31,7 @@ public abstract class WorldObject : MonoBehaviour {
   }
 
   public virtual void Interact(GameObject player) {
-    Debug.Log("Interacting with " + gameObject.name);
+    //Debug.Log("Interacting with " + gameObject.name);
   }
 
   void OnDrawGizmosSelected() {

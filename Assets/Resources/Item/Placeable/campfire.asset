@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: campfire
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Warms and light you up
+  description: Warms and light you up in the darkest night.
   name: Campfire
+  typeName: 
   sprite: {fileID: -413509745576543877, guid: 800c1775a1fc20e4b9796ea1304176ba, type: 3}
   worldObjectPrefab: {fileID: 6317592565253559946, guid: beac2e9b9d030374887a789d688048f2, type: 3}
   itemInteraction: {fileID: 11400000, guid: dffaf50725aa2ef46841984d0598faf0, type: 2}

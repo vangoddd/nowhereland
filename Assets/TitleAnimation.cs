@@ -8,7 +8,6 @@ public class TitleAnimation : MonoBehaviour {
   public Image image;
 
   void Start() {
-    Debug.Log("Start method of title");
     LeanTween.value(gameObject, 0f, 1f, 5f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true).setOnUpdate((float val) => {
       image.color = new Color(1f, 1f, 1f, val);
     });

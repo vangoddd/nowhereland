@@ -95,6 +95,15 @@ TextureImporter:
   - first:
       213: 6230084411388827874
     second: sprite_sapling
+  - first:
+      213: -666797842647731695
+    second: sprite_potion_heal
+  - first:
+      213: -203382236529789317
+    second: sprite_potion_bottle
+  - first:
+      213: -1402945506758018482
+    second: sprite_slime_ball
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -854,6 +863,69 @@ TextureImporter:
       bones: []
       spriteID: 2e8978583c4b57650800000000000000
       internalID: 6230084411388827874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_potion_heal
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1123cfb15ee0fb6f0800000000000000
+      internalID: -666797842647731695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_potion_bottle
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b767406fee07d2df0800000000000000
+      internalID: -203382236529789317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_slime_ball
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a3576ae7cb78ce0800000000000000
+      internalID: -1402945506758018482
       vertices: []
       indices: 
       edges: []

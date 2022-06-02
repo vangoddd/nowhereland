@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: axe_gold
   m_EditorClassIdentifier: 
   stackCount: 1
-  description: Used to chop tree. Stronger than its iron counterpart.
+  description: Used to chop tree. The strongest axe available.
   name: Golden Axe
+  typeName: 
   sprite: {fileID: 3069679114947738666, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}
   type: {fileID: 11400000, guid: 799a2aa6476866649a6393b6dd528dd4, type: 2}
   durability: 70

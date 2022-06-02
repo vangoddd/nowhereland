@@ -23,6 +23,7 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int, int> OnInvToChest;
   public UnityEvent<int, int> OnChestToInv;
   public UnityEvent<int, int> OnChestSwap;
+  public UnityEvent<int> OnSplitItem;
 
   public UnityEvent<Placeable, int> OnItemPlaceAction;
 
@@ -73,6 +74,10 @@ public class ItemInteraction : ScriptableObject {
 
     if (OnChestToInv == null) {
       OnChestToInv = new UnityEvent<int, int>();
+    }
+
+    if (OnSplitItem == null) {
+      OnSplitItem = new UnityEvent<int>();
     }
 
     if (OnChestSwap == null) {
@@ -175,6 +180,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void DestroyIcon(Vector2 pos) {
     OnDestroyIcon.Invoke(pos);
+  }
+
+  public void SplitItem(int item) {
+    OnSplitItem.Invoke(item);
   }
 
 }

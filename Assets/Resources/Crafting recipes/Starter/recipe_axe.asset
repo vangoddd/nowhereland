@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 535e8da5bd7953b458461447cc0494cd, type: 3}
-  m_Name: WIP
+  m_Name: recipe_axe
   m_EditorClassIdentifier: 
   requiredItems:
-  - item: {fileID: 11400000, guid: 5f1f844d7889dfe43bd1b26264e2ca4f, type: 2}
-    amount: 1
+  - item: {fileID: 11400000, guid: 368e4a6e80a48c0458d197dc199c192e, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: fd38b6ea4e16607429356e57eedb72c8, type: 2}
+    amount: 3
   result:
     item: {fileID: 11400000, guid: 212b935d086b23143acd58eb0b07a291, type: 2}
     amount: 1

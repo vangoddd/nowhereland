@@ -20,10 +20,10 @@ public class ConsoleLog : MonoBehaviour {
 
   void HandleLog(string logString, string stackTrace, LogType type) {
 
-    //if (type == LogType.Error) {
-    error = error + "\n" + logString;
-    text.text = error;
-    //}
+    if (type == LogType.Error) {
+      error = error + "\n" + logString;
+      text.text = error;
+    }
 
     counter++;
     if (counter > 5) {

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: slime
   m_EditorClassIdentifier: 
   fixedLoot:
-  - item: {fileID: 11400000, guid: 264af0d7081a1d048b1aeaaa9921bbc3, type: 2}
-    amount: 2
-  chanceLoot: []
+  - item: {fileID: 11400000, guid: f0f5dfcf1ee42c042b33ac8277144470, type: 2}
+    amount: 1
+  chanceLoot:
+  - item: {fileID: 11400000, guid: f0f5dfcf1ee42c042b33ac8277144470, type: 2}
+    amount: 1
+    chance: 0.1
