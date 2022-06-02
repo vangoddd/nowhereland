@@ -87,7 +87,7 @@ public class UI_Chest : MonoBehaviour {
   }
 
   public void TooltipListener(int slot) {
-    if (chestHandler.chestList[chestId].itemList[slot] == null) return;
+    if (chestHandler.chestList[chestId].itemList[slot] == null || !gameObject.activeSelf) return;
     TooltipPanel.gameObject.SetActive(true);
     TooltipPanel.UpdateData(chestHandler.chestList[chestId].itemList[slot]);
     TooltipPanel.panelRectTransform.anchoredPosition = slotScripts[slot].GetComponent<RectTransform>().anchoredPosition;

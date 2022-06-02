@@ -127,7 +127,7 @@ public class UI_Inventory : MonoBehaviour {
 
 
   public void TooltipListener(int slot) {
-    if (_inventory.itemList[slot] == null) return;
+    if (_inventory.itemList[slot] == null || !gameObject.activeSelf) return;
     TooltipPanel.gameObject.SetActive(true);
     TooltipPanel.UpdateData(_inventory.itemList[slot]);
     TooltipPanel.panelRectTransform.anchoredPosition = slotScripts[slot].GetComponent<RectTransform>().anchoredPosition;
