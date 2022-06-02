@@ -80,7 +80,6 @@ public class MapGenerator : MonoBehaviour {
   void Start() {
     Vector2 startPos = new Vector2(mapSize / 2, mapSize / 2);
     Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -100f);
-    TimeManager.Instance.ResumeGame();
 
     GetGradientColors();
 
@@ -107,6 +106,7 @@ public class MapGenerator : MonoBehaviour {
     Camera.main.Render();
 
     _loadingEvent.FinishLoading();
+    TimeManager.Instance.ResumeGame();
   }
 
   void GetGradientColors() {

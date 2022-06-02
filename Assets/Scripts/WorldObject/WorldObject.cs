@@ -56,7 +56,7 @@ public abstract class WorldObject : MonoBehaviour {
 
     //give item drop
     ItemSpawner.Instance.spawnDrops(transform.position, drops);
-
+    ChunkHandlerScript.DestroyIcon(transform.position);
     //destroy
     Destroy(gameObject);
   }

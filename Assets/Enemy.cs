@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour {
     rb = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     _enemyHandler.enemyList.Add(this);
-    ChunkHandlerScript.addObjectToChunk(this.gameObject);
+    //ChunkHandlerScript.addObjectToChunk(this.gameObject);
   }
 
   public void Stun(float duration) {

@@ -322,7 +322,7 @@ public class Inventory : ScriptableObject {
       if (itemList[to] == null) {
         itemList[to] = (from - 18 == 0) ? handSlot : armorSlot;
         if (from - 18 == 0) handSlot = null; else armorSlot = null;
-      } else if ((itemList[to].itemData is Tools && from == 18) || (itemList[to].itemData is Armor && from == 19)) {
+      } else if (((itemList[from].itemData is Tools || itemList[from].itemData is Weapon) && from == 18) || (itemList[to].itemData is Armor && from == 19)) {
         itemList[to] = equipItem(itemList[to]);
       } else {
         UnequipItem(from - 18);
@@ -330,7 +330,7 @@ public class Inventory : ScriptableObject {
     }
     //equipping tools / armor
     else if (to > 17) {
-      if (itemList[from].itemData is Tools && (to == 18)) {
+      if ((itemList[from].itemData is Tools || itemList[from].itemData is Weapon) && (to == 18)) {
         itemList[from] = equipItem(itemList[from]);
       } else if (itemList[from].itemData is Armor && (to == 19)) {
         itemList[from] = equipItem(itemList[from]);

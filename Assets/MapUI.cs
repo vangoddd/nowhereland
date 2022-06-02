@@ -38,7 +38,8 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   public Texture2D fogTexture;
 
-  private List<Image> icons;
+  //private List<Image> icons;
+  private Dictionary<Vector2, Image> icons;
 
   void OnEnable() {
     mapRatio = 150f / (float)mapGenerator.mapSize;
@@ -48,12 +49,14 @@ public class MapUI : MonoBehaviour, IDragHandler {
 
   public void AttachListener() {
     mapRatio = 150f / (float)mapGenerator.mapSize;
-    icons = new List<Image>();
+    icons = new Dictionary<Vector2, Image>();
     _itemInteraction.OnWorldObjectSpawn.AddListener(GenerateIcon);
+    _itemInteraction.OnDestroyIcon.AddListener(DestroyIcon);
   }
 
   void OnDestroy() {
     _itemInteraction.OnWorldObjectSpawn.RemoveListener(GenerateIcon);
+    _itemInteraction.OnDestroyIcon.RemoveListener(DestroyIcon);
   }
 
   public void GenerateIcon(int id, Vector2 pos) {
@@ -67,9 +70,15 @@ public class MapUI : MonoBehaviour, IDragHandler {
     //Debug.Log("generating icon in " + GetMapPosFromWorldPos(pos).x + " " + GetMapPosFromWorldPos(pos).y);
 
     GameObject icon = Instantiate(iconTemplate.gameObject, iconParent);
-    icons.Add(icon.GetComponent<Image>());
+    icons.Add(pos, icon.GetComponent<Image>());
 
     icon.SetActive(true);
+  }
+
+  public void DestroyIcon(Vector2 pos) {
+    if (icons.ContainsKey(pos)) {
+      Destroy(icons[pos].gameObject);
+    }
   }
 
   public void InitiateMap() {
@@ -196,9 +205,14 @@ public class MapUI : MonoBehaviour, IDragHandler {
     } else {
       UpdateMap(false);
 
-      foreach (Image icon in icons) {
-        Vector2 oldPos = icon.rectTransform.anchoredPosition;
-        icon.rectTransform.anchoredPosition *= 2;
+      // foreach (Image icon in icons) {
+      //   Vector2 oldPos = icon.rectTransform.anchoredPosition;
+      //   icon.rectTransform.anchoredPosition *= 2;
+      // }
+
+      foreach (KeyValuePair<Vector2, Image> icon in icons) {
+        Vector2 oldPos = icon.Value.rectTransform.anchoredPosition;
+        icon.Value.rectTransform.anchoredPosition *= 2;
       }
     }
 
@@ -211,9 +225,13 @@ public class MapUI : MonoBehaviour, IDragHandler {
     } else {
       UpdateMap(false);
 
-      foreach (Image icon in icons) {
-        Vector2 oldPos = icon.rectTransform.anchoredPosition;
-        icon.rectTransform.anchoredPosition *= 0.5f;
+      // foreach (Image icon in icons) {
+      //   Vector2 oldPos = icon.rectTransform.anchoredPosition;
+      //   icon.rectTransform.anchoredPosition *= 0.5f;
+      // }
+      foreach (KeyValuePair<Vector2, Image> icon in icons) {
+        Vector2 oldPos = icon.Value.rectTransform.anchoredPosition;
+        icon.Value.rectTransform.anchoredPosition *= 0.5f;
       }
     }
 

@@ -82,4 +82,9 @@ public class ChunkHandlerScript : MonoBehaviour {
     //Debug.Log("Spawning object");
     itemInteraction.WorldObjectSpawn(id, pos);
   }
+
+  public static void DestroyIcon(Vector2 pos) {
+    //Debug.Log("Spawning object");
+    itemInteraction.DestroyIcon(pos);
+  }
 }

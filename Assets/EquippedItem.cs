@@ -32,6 +32,10 @@ public class EquippedItem : MonoBehaviour {
     }
   }
 
+  public void onInvUpdate() {
+    ApplyData(0);
+  }
+
   void Update() {
     Vector2 moveDir = pm.getMoveDir();
     _animator.SetFloat("moveX", moveDir.x);

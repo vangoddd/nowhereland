@@ -12,6 +12,7 @@ public class ItemInteraction : ScriptableObject {
   public UnityEvent<int> OnItemDrop;
   public UnityEvent<int> OnItemDelete;
   public UnityEvent<int, Vector2> OnWorldObjectSpawn;
+  public UnityEvent<Vector2> OnDestroyIcon;
 
   public UnityEvent<int> OnChestOpen;
   public UnityEvent<int> OnShowTooltip;
@@ -98,6 +99,10 @@ public class ItemInteraction : ScriptableObject {
       OnItemDelete = new UnityEvent<int>();
     }
 
+    if (OnDestroyIcon == null) {
+      OnDestroyIcon = new UnityEvent<Vector2>();
+    }
+
   }
 
   public void PickupItem(ItemScript item) {
@@ -166,6 +171,10 @@ public class ItemInteraction : ScriptableObject {
 
   public void WorldObjectSpawn(int id, Vector2 pos) {
     OnWorldObjectSpawn.Invoke(id, pos);
+  }
+
+  public void DestroyIcon(Vector2 pos) {
+    OnDestroyIcon.Invoke(pos);
   }
 
 }

@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: IconList
   m_EditorClassIdentifier: 
   iconList:
-  - worldObject: {fileID: 0}
-    iconSprite: {fileID: 0}
+  - worldObject: {fileID: 6317592565253559946, guid: beac2e9b9d030374887a789d688048f2, type: 3}
+    iconSprite: {fileID: -8632240093392243900, guid: 1118dcc7f307a5f4680cb377a55e58b7, type: 3}
+  - worldObject: {fileID: 5763722464360170854, guid: 7d11e39c48e31764b82ce294c9721d2c, type: 3}
+    iconSprite: {fileID: -2068391586501498795, guid: 1118dcc7f307a5f4680cb377a55e58b7, type: 3}
+  - worldObject: {fileID: 8182442961856981354, guid: a73e9eed8363608498b33d72ac2e5032, type: 3}
+    iconSprite: {fileID: -1104938260738534510, guid: 1118dcc7f307a5f4680cb377a55e58b7, type: 3}
+  - worldObject: {fileID: 8923530923195784956, guid: 49e3fe185815b654cab0e593640ce477, type: 3}
+    iconSprite: {fileID: -7942925329516436399, guid: 1118dcc7f307a5f4680cb377a55e58b7, type: 3}

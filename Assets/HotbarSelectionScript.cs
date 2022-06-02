@@ -33,6 +33,11 @@ public class HotbarSelectionScript : MonoBehaviour {
     UpdateSelection();
   }
 
+  public void ItemMoved() {
+    UpdateSelectionNull();
+    UpdateSelection();
+  }
+
   void UpdateSelectionNull() {
     isNull = _inventory.itemList[selection] == null;
   }

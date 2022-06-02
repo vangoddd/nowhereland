@@ -18,7 +18,7 @@ public class Destroyable : WorldObject {
     if (_inventory.handSlot != null && _inventory.handSlot.itemData is Tools) {
       health -= (int)((Tools)_inventory.handSlot.itemData).damage;
     } else {
-      health -= 1;
+      health -= 10;
     }
 
     if (DestroyAnimation.Length > 0) {
