@@ -92,38 +92,50 @@ public class MapGenerator : MonoBehaviour {
     GetGradientColors();
 
     if (!loadFromSave) {
+      _loadingEvent.loadingTotal = 5;
+      _loadingEvent.loadingCount = 0;
+
       InitiateSeed();
       map.mapSize = mapSize;
-      GenerateMap();
       _loadingEvent.loadingStatus = "Generating Map Data";
+      GenerateMap();
+      _loadingEvent.loadingCount++;
 
       yield return StartCoroutine(InstantiateTiles());
+      _loadingEvent.loadingCount++;
 
       _loadingEvent.loadingStatus = "Spawning Setpiece";
       SpawnSetPiece();
+      _loadingEvent.loadingCount++;
 
       yield return null;
 
       OnMapDataGenerated.Raise();
       _loadingEvent.loadingStatus = "Generating Object Data";
-
       GenerateWorldObject();
+      _loadingEvent.loadingCount++;
 
       yield return null;
+
       _loadingEvent.loadingStatus = "Spawning Objects";
       yield return StartCoroutine(SpawnObjects());
+      _loadingEvent.loadingCount++;
 
       yield return null;
 
       _pm.gameObject.transform.position = startPos;
 
     } else {
+      _loadingEvent.loadingTotal = 3;
+      _loadingEvent.loadingCount = 0;
       _loadingEvent.loadingStatus = "Loading Game";
       SaveSystem.Instance.LoadGame();
       InitiateSeed();
       mapSize = map.mapSize;
+      _loadingEvent.loadingCount++;
 
       yield return StartCoroutine(InstantiateTiles());
+      _loadingEvent.loadingCount++;
 
       yield return null;
 
@@ -131,6 +143,7 @@ public class MapGenerator : MonoBehaviour {
       _loadingEvent.loadingStatus = "Spawning Objects";
 
       yield return StartCoroutine(SpawnObjects());
+      _loadingEvent.loadingCount++;
 
       yield return null;
 

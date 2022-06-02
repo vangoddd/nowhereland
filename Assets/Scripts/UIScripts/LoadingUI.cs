@@ -12,6 +12,9 @@ public class LoadingUI : MonoBehaviour {
 
   public TextMeshProUGUI loadingText;
 
+  float loadingProgress;
+  public Image progressBar;
+
   private void OnEnable() {
     _loadingEvent.OnLoadingFinishedEvent.AddListener(OnLoadingFinished);
   }
@@ -37,5 +40,7 @@ public class LoadingUI : MonoBehaviour {
 
   void Update() {
     loadingText.text = _loadingEvent.loadingStatus;
+    loadingProgress = (float)_loadingEvent.loadingCount / (float)_loadingEvent.loadingTotal;
+    progressBar.fillAmount = loadingProgress;
   }
 }
