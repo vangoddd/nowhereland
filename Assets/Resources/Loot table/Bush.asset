@@ -18,4 +18,4 @@ MonoBehaviour:
   chanceLoot:
   - item: {fileID: 11400000, guid: 264af0d7081a1d048b1aeaaa9921bbc3, type: 2}
     amount: 1
-    chance: 0.5
+    chance: 0.3

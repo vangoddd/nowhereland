@@ -39,7 +39,9 @@ public class LoadingUI : MonoBehaviour {
   }
 
   void Update() {
-    loadingText.text = _loadingEvent.loadingStatus;
+    if (_loadingEvent.loadingStatus != "") {
+      loadingText.text = _loadingEvent.loadingStatus;
+    }
     loadingProgress = (float)_loadingEvent.loadingCount / (float)_loadingEvent.loadingTotal;
     progressBar.fillAmount = loadingProgress;
   }

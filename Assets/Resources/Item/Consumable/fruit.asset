@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: fruit
   m_EditorClassIdentifier: 
   stackCount: 20
-  description: Natural growing fruit. Nobody knows what kinf of fruit this is.
+  description: Natural growing fruit. Nobody knows what kind of fruit this is.
   name: Fruit
   typeName: Food
   sprite: {fileID: 5001492925695537564, guid: 4fe1b67042531eb48a3dfa4d5a1f9ea7, type: 3}

@@ -9,6 +9,7 @@ using TMPro;
 
 public class ContinueButton : MonoBehaviour {
   public GameObject loadingScreen;
+  public GameObject FadeScreen;
   public StartMode mode;
   public Button button;
 
@@ -17,9 +18,12 @@ public class ContinueButton : MonoBehaviour {
   public void onContinueClick() {
     mode.loadGame = true;
     //SceneManager.UnloadSceneAsync(1);
+    Instantiate(FadeScreen).GetComponent<ScreenFade>().SetAction(StartLoading);
+  }
+
+  public void StartLoading() {
     SceneManager.LoadSceneAsync(1);
-    loadingScreen.SetActive(true);
-    Destroy(this.gameObject);
+    Instantiate(loadingScreen);
   }
 
   void Start() {
