@@ -15,6 +15,8 @@ public class LoadingUI : MonoBehaviour {
   float loadingProgress;
   public Image progressBar;
 
+  public GameObject ScreenFade;
+
   private void OnEnable() {
     _loadingEvent.OnLoadingFinishedEvent.AddListener(OnLoadingFinished);
   }
@@ -34,8 +36,12 @@ public class LoadingUI : MonoBehaviour {
   }
 
   public void DisableLoading() {
+    Instantiate(ScreenFade).GetComponent<ScreenFade>().SetAction(DisableLoadingAction);
+  }
+
+  public void DisableLoadingAction() {
     gameObject.SetActive(false);
-    Destroy(gameObject);
+    Destroy(this.gameObject);
   }
 
   void Update() {

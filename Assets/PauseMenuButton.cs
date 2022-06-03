@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuButton : MonoBehaviour {
   public GameObject PauseOverlay;
+  public GameObject LoadingScreen;
+  public GameObject FadeScreen;
 
   public void OnResume() {
     PauseOverlay.SetActive(false);
@@ -16,7 +18,11 @@ public class PauseMenuButton : MonoBehaviour {
   }
 
   public void OnQuit() {
-    //SceneManager.UnloadSceneAsync(1);
+    Instantiate(FadeScreen).GetComponent<ScreenFade>().SetAction(OnQuitAction);
+  }
+
+  public void OnQuitAction() {
     SceneManager.LoadScene(0);
+    //Instantiate(LoadingScreen);
   }
 }

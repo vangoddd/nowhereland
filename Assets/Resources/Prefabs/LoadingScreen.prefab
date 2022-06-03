@@ -595,6 +595,7 @@ MonoBehaviour:
   LoadingBar: {fileID: 504988309376565574}
   loadingText: {fileID: 504988310860794208}
   progressBar: {fileID: 504988310671180301}
+  ScreenFade: {fileID: 2371318489927718581, guid: cdc3374cf604ab94481de3694d170e93, type: 3}
 --- !u!114 &504988310825771139
 MonoBehaviour:
   m_ObjectHideFlags: 0
