@@ -130,6 +130,8 @@ MonoBehaviour:
   drops: {fileID: 11400000, guid: 1274776b7231e5c44b09a5692990754d, type: 2}
   _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
   status: -1
+  interactSound: {fileID: 11400000, guid: c2e38c2dbcbe1734bafa6d466a62011c, type: 2}
+  destroySound: {fileID: 11400000, guid: 402c5a005b69a0f4a9469cd19f34a478, type: 2}
   regenRate: 3
   ready: 1
   readySprite: {fileID: 6754844295345459419, guid: 19135cd621860894a8717b29b6fccc64, type: 3}

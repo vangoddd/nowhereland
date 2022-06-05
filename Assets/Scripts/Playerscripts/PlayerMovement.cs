@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour {
   private int enemyLayerMask;
   [SerializeField] private float attackRadius;
 
+  [SerializeField] private AudioRef attackAudio;
+  [SerializeField] private AudioRef walkAudio;
+
   void Start() {
     enemyLayerMask = LayerMask.GetMask("Enemy");
     animator = GetComponent<Animator>();
@@ -90,6 +93,7 @@ public class PlayerMovement : MonoBehaviour {
     if (moving && dustTimer >= dustInterval) {
       if (((Vector2)transform.position - lastPosition).sqrMagnitude > 0.0001f) {
         Instantiate(dustParticle, (Vector2)transform.position - moveDir * 0.5f, transform.rotation);
+        AudioManager.Instance.PlayOneShot(walkAudio, 0.3f);
         dustTimer = 0f;
       }
     }
@@ -222,6 +226,7 @@ public class PlayerMovement : MonoBehaviour {
 
           //Applying damage to enemy
           if (_inventory.handSlot != null && _inventory.handSlot.itemData is Weapon) {
+            AudioManager.Instance.PlayOneShot(attackAudio);
             targetObject.Hurt((_inventory.handSlot.itemData as Weapon).damage);
           } else {
             targetObject.Hurt(10);

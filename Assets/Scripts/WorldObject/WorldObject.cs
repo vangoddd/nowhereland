@@ -17,6 +17,9 @@ public abstract class WorldObject : MonoBehaviour {
 
   public int status = -1;
 
+  public AudioRef interactSound;
+  public AudioRef destroySound;
+
   protected void InitializeObject() {
     ChunkHandlerScript.addObjectToChunk(gameObject);
     ChunkHandlerScript.GenerateMapIcon(objectID, transform.position);
@@ -31,7 +34,7 @@ public abstract class WorldObject : MonoBehaviour {
   }
 
   public virtual void Interact(GameObject player) {
-    //Debug.Log("Interacting with " + gameObject.name);
+    AudioManager.Instance.PlayOneShot(interactSound);
   }
 
   void OnDrawGizmosSelected() {
@@ -57,6 +60,8 @@ public abstract class WorldObject : MonoBehaviour {
     //give item drop
     ItemSpawner.Instance.spawnDrops(transform.position, drops);
     ChunkHandlerScript.DestroyIcon(transform.position);
+
+    AudioManager.Instance.PlayOneShot(destroySound);
     //destroy
     Destroy(gameObject);
   }

@@ -7,6 +7,7 @@ MonoImporter:
   - _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   - drops: {instanceID: 0}
   - _map: {fileID: 11400000, guid: d31354610636a59488179a0d4259c509, type: 2}
+  - interactSound: {fileID: 11400000, guid: ad6cd663e07f5f6459b5c9d00a8695b7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -88,7 +88,6 @@ public class MapGenerator : MonoBehaviour {
     TimeManager.Instance.PauseGame();
 
     Vector2 startPos = new Vector2(mapSize / 2, mapSize / 2);
-    Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -100f);
 
     GetGradientColors();
 
@@ -122,6 +121,7 @@ public class MapGenerator : MonoBehaviour {
       yield return StartCoroutine(SpawnObjects());
 
       _pm.gameObject.transform.position = startPos;
+      Camera.main.transform.position = new Vector3(mapSize / 2, mapSize / 2, -100f);
 
     } else {
       _loadingEvent.loadingTotal = 3;

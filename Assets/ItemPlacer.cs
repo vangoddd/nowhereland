@@ -15,6 +15,8 @@ public class ItemPlacer : MonoBehaviour {
 
   private Vector2 locationSnap;
 
+  public AudioRef placeSound;
+
   void OnEnable() {
     _itemInteraction.OnItemPlaceAction.AddListener(PlaceItem);
     _itemInteraction.OnPlaceableSelected.AddListener(ShowCrosshair);
@@ -35,6 +37,7 @@ public class ItemPlacer : MonoBehaviour {
       GameObject temp = Instantiate(item.worldObjectPrefab);
       temp.transform.position = locationSnap;
       _inventory.RemoveItemAtSlot(index, 1);
+      AudioManager.Instance.PlayOneShot(placeSound);
     }
   }
 

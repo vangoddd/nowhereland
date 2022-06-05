@@ -164,6 +164,8 @@ MonoBehaviour:
   _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   _inventory: {fileID: 11400000, guid: b871da4df3aa0544a9f34f6c7acd6797, type: 2}
   attackRadius: 1.3
+  attackAudio: {fileID: 11400000, guid: df442ef8cc8c3ea4abb3f3814612aad4, type: 2}
+  walkAudio: {fileID: 11400000, guid: 4a502a730464a7e4094a74df97389212, type: 2}
 --- !u!61 &4846516622845276413
 BoxCollider2D:
   m_ObjectHideFlags: 0

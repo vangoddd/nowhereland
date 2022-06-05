@@ -15,6 +15,10 @@ public class Inventory : ScriptableObject {
   public GameEvent OnInventoryUpdate;
   public GameEvent OnEquippableUpdated;
 
+  public AudioRef pickupSound;
+  public AudioRef consumeSound;
+  public AudioRef equipSound;
+
   void OnEnable() {
     ResetValues();
 
@@ -49,9 +53,11 @@ public class Inventory : ScriptableObject {
       itemList[index].itemData.UseItem();
       itemList[index].amount -= 1;
       if (itemList[index].amount == 0) itemList[index] = null;
+      AudioManager.Instance.PlayOneShot(consumeSound);
     } else if (itemList[index].itemData is Tools || itemList[index].itemData is Armor || (itemList[index].itemData is Weapon)) {
       Item lastUsed = equipItem(itemList[index]);
       itemList[index] = lastUsed;
+      AudioManager.Instance.PlayOneShot(equipSound);
     } else if (itemList[index].itemData is Placeable) {
       _itemInteraction.OnItemPlaceAction.Invoke(itemList[index].itemData as Placeable, index);
     }
@@ -62,6 +68,7 @@ public class Inventory : ScriptableObject {
     if (canPickUp(item.itemInstance)) {
       item.DestroyAfterPickup();
       AddItem(item.itemData, item.itemAmount);
+      AudioManager.Instance.PlayOneShot(pickupSound, 0.5f);
     }
   }
 
