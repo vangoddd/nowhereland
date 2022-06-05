@@ -22,7 +22,7 @@ public class PauseMenuButton : MonoBehaviour {
   }
 
   public void OnQuitAction() {
-    SceneManager.LoadScene(0);
+    SceneManager.LoadSceneAsync(0);
     //Instantiate(LoadingScreen);
   }
 }

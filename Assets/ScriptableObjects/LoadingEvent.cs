@@ -9,8 +9,8 @@ public class LoadingEvent : ScriptableObject {
 
   public string loadingStatus;
 
-  public int loadingCount;
-  public int loadingTotal;
+  public float loadingCount;
+  public float loadingTotal;
 
   public UnityEvent OnLoadingFinishedEvent;
 

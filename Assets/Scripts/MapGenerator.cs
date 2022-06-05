@@ -74,6 +74,7 @@ public class MapGenerator : MonoBehaviour {
     map.ResetValues();
 
     tileUnavailable = new bool[mapSize, mapSize];
+    tileUnavailable[mapSize / 2, mapSize / 2] = true;
 
     loadFromSave = startMode.loadGame;
     if (!loadFromSave && randomSeed) seed = Random.Range(0, 100000);
@@ -102,7 +103,7 @@ public class MapGenerator : MonoBehaviour {
       _loadingEvent.loadingCount++;
 
       yield return StartCoroutine(InstantiateTiles());
-      _loadingEvent.loadingCount++;
+
 
       _loadingEvent.loadingStatus = "Spawning Setpiece";
       SpawnSetPiece();
@@ -119,9 +120,6 @@ public class MapGenerator : MonoBehaviour {
 
       _loadingEvent.loadingStatus = "Spawning Objects";
       yield return StartCoroutine(SpawnObjects());
-      _loadingEvent.loadingCount++;
-
-      yield return null;
 
       _pm.gameObject.transform.position = startPos;
 
@@ -135,7 +133,6 @@ public class MapGenerator : MonoBehaviour {
       _loadingEvent.loadingCount++;
 
       yield return StartCoroutine(InstantiateTiles());
-      _loadingEvent.loadingCount++;
 
       yield return null;
 
@@ -143,7 +140,6 @@ public class MapGenerator : MonoBehaviour {
       _loadingEvent.loadingStatus = "Spawning Objects";
 
       yield return StartCoroutine(SpawnObjects());
-      _loadingEvent.loadingCount++;
 
       yield return null;
 
@@ -280,15 +276,18 @@ public class MapGenerator : MonoBehaviour {
 
   IEnumerator InstantiateTiles() {
     _loadingEvent.loadingStatus = "Generating Tiles";
+
     int counter = 0;
+    float loopTotal = mapSize * mapSize;
+
     for (int x = 0; x < map.mapSize; x++) {
       for (int y = 0; y < map.mapSize; y++) {
         SpawnTile(map.tileMap[x][y], x, y);
         counter++;
         if (counter >= 1000) {
+          _loadingEvent.loadingCount += counter / loopTotal;
           counter = 0;
           yield return null;
-
         }
       }
     }
@@ -419,6 +418,8 @@ public class MapGenerator : MonoBehaviour {
 
   IEnumerator SpawnObjects() {
     int counter = 0;
+    float loopTotal = map.worldObjectDatas.Count;
+
     foreach (WorldObjectData data in map.worldObjectDatas) {
       GameObject wo = Instantiate(worldObjectDB.worldObjects[data.objectID]);
       wo.transform.position = new Vector3(data.position[0], data.position[1], 0);
@@ -427,7 +428,8 @@ public class MapGenerator : MonoBehaviour {
       if (loadFromSave) woScript.OnDataLoad();
 
       counter++;
-      if (counter >= 1000) {
+      if (counter >= 100) {
+        _loadingEvent.loadingCount += counter / loopTotal;
         counter = 0;
         yield return null;
       }
