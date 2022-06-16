@@ -119,6 +119,7 @@ MonoBehaviour:
   _playerStat: {fileID: 11400000, guid: 0da50d1f1f1782249bf9fd951263eddd, type: 2}
   EnemyPrefab: {fileID: 3598684949257258421, guid: 6883d1b13822ef745b777ff621f9691e, type: 3}
   _timeSO: {fileID: 11400000, guid: 890e350b15761f447817e6a4df64874c, type: 2}
+  spawnAudio: {fileID: 11400000, guid: d8df436c6e456164683e0a06235ee467, type: 2}
 --- !u!61 &8846979092684787382
 BoxCollider2D:
   m_ObjectHideFlags: 0

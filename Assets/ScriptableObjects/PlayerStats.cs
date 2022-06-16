@@ -20,6 +20,7 @@ public class PlayerStats : ScriptableObject {
 
   public HealthInteraction _healthInteraction;
   public Inventory _inventory;
+  public AudioRef playerHurtSound;
   private bool alive = true;
 
   private void OnEnable() {
@@ -59,6 +60,7 @@ public class PlayerStats : ScriptableObject {
       reduction = armor.def / 100f;
     }
     health -= amt * (1f - reduction);
+    AudioManager.Instance.PlayOneShot(playerHurtSound);
     OnStatChangeEvent.Invoke(new PlayerStatData(health, hunger, thirst, position));
   }
 

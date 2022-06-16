@@ -8,6 +8,7 @@ public class MapGenerator : MonoBehaviour {
   [Header("Save system")]
   public bool loadFromSave = false;
   public bool randomSeed = false;
+  public bool saveTestData = false;
   [Space(10)]
 
   [Header("Base Noise Setting")]
@@ -150,6 +151,20 @@ public class MapGenerator : MonoBehaviour {
 
     Camera.main.Render();
 
+    if (saveTestData) {
+      FileIOHandler.Instance.WriteMapData(map);
+      FileIOHandler.Instance.SaveTextureImage(mapTexture, map.seed);
+
+      List<Texture2D> textures = new List<Texture2D>();
+      textures.Add(noise1);
+      textures.Add(noise2);
+      textures.Add(noise3);
+      textures.Add(noiseBiome1);
+      textures.Add(noiseBiome2);
+
+      FileIOHandler.Instance.SaveAllTexture(textures, map.seed);
+    }
+
     yield return new WaitForSecondsRealtime(0.5f);
     Debug.Log("loading done");
 
@@ -268,8 +283,6 @@ public class MapGenerator : MonoBehaviour {
         }
       }
     }
-
-
 
     CountBiomes();
   }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DatabaseInitiator : MonoBehaviour {
   public ItemDatabase itemDB;
   public WorldObjectDB wODB;
+  public MapIconSO iconList;
 
   private Object[] item;
   string itemPath = "Item/";
@@ -15,6 +16,7 @@ public class DatabaseInitiator : MonoBehaviour {
   void OnEnable() {
     LoadItem();
     LoadWO();
+    LoadIcon();
   }
 
   //load Item from assset
@@ -46,5 +48,9 @@ public class DatabaseInitiator : MonoBehaviour {
     }
 
     wODB.InitiateDict();
+  }
+
+  void LoadIcon() {
+    iconList.InitiateIcons();
   }
 }

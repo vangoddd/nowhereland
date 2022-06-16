@@ -5,13 +5,11 @@ using UnityEngine;
 public class ChunkHandlerScript : MonoBehaviour {
   public static MapSO map;
   public static ItemInteraction itemInteraction;
+
   public MapSO _map;
   public GameObject player;
-  public static List<int> activeChunks = new List<int>();
-
   public ItemInteraction _itemInteraction;
-
-  public bool unloadChunk = true;
+  public static List<int> activeChunks = new List<int>();
 
   private int playerChunk;
 

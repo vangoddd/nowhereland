@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour {
   private SpriteRenderer spriteRenderer;
 
   public HealthInteraction _healthInteraction;
+  public AudioRef defeatSound;
 
   public GameObject[] damageAnimation;
 
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour {
 
   public void Die() {
     _enemyHandler.enemyList.Remove(this);
+    AudioManager.Instance.PlayOneShot(defeatSound);
     ChunkHandlerScript.removeObjectFromChunk(this.gameObject);
 
     ItemSpawner.Instance.spawnDrops(transform.position, drops);

@@ -15,6 +15,8 @@ public class EnemySpawnerObject : Destroyable {
   public GameObject EnemyPrefab;
   public TimeSO _timeSO;
 
+  public AudioRef spawnAudio;
+
   void OnEnable() {
     _timeSO.OnTick.AddListener(tickListener);
     tickCounter = refillEnemyTick;
@@ -52,6 +54,7 @@ public class EnemySpawnerObject : Destroyable {
 
   void SpawnEnemy() {
     if (enemyCount > 0) {
+      AudioManager.Instance.PlayOneShot(spawnAudio);
       enemyCount--;
       Instantiate(EnemyPrefab, transform.position, transform.rotation);
     }

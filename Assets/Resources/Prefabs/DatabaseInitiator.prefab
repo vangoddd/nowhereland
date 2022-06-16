@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDB: {fileID: 11400000, guid: bf38aded6bc904840a25554daac0c0cd, type: 2}
   wODB: {fileID: 11400000, guid: 70be79af6438d564696c8f22150379f8, type: 2}
+  iconList: {fileID: 11400000, guid: 37c1d3e54d324d64f98c3299a3551a41, type: 2}
