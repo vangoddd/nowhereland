@@ -5148,6 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePath: v:\nowhereland test\
+  TexturePath: v:\nowhereland test\tex\
 --- !u!4 &1030536004
 Transform:
   m_ObjectHideFlags: 0
@@ -5545,10 +5546,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadFromSave: 0
-  randomSeed: 1
-  saveTestData: 1
+  randomSeed: 0
+  saveTestData: 0
   mapSize: 300
-  seed: 98656
+  seed: 7858
   octaves: 3
   magnification: 20
   presistance: 0.35
@@ -5713,7 +5714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177056579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 50, z: -1.6891775}
+  m_LocalPosition: {x: 150, y: 150, z: -1.6891775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 763202092}

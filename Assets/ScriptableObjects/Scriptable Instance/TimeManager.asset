@@ -27,12 +27,12 @@ MonoBehaviour:
   OnIngameHourTick:
     m_PersistentCalls:
       m_Calls: []
-  tick: 72
-  day: 4
+  tick: 24
+  day: 1
   secondsPerDay: 240
   secondsPerTick: 1
   nightRatio: 0.25
-  inGameMinuteCounter: 432
+  inGameMinuteCounter: 144
   transitionTime: 5
   isDay: 1
   OnDayChangeEvent: {fileID: 11400000, guid: 2c99a325945baa74aa5e869b0d1c0c13, type: 2}
